@@ -5,42 +5,49 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
+
+import image1 from '@/public/third.jpg'
+import image2 from '@/public/research-and-development.jpg'
+// import image3 from '@/public/second-carousel-3.jpg'
+import image4 from '@/public/policy.jpg'
+import Image, { StaticImageData } from 'next/image'
+
 interface Product {
   id: number
   title: string
   description: string
   gradient: string
-  image: string
+  image: StaticImageData
 }
 
 const products: Product[] = [
   {
     id: 1,
-    title: "AI Assistant",
-    description: "Your personal AI companion for everyday tasks and creative endeavors",
-    gradient: "from-purple-500 via-pink-500 to-red-500",
-    image: "/placeholder.svg?height=400&width=600"
+    title: "Digital Transformation",
+    description: "Leveraging AI, IoT, and satellite tech for precision farming.",
+    gradient: "from-green-500 via-emerald-500 to-tilt-500",
+    image: image1
   },
   {
     id: 2,
-    title: "Smart Analytics",
-    description: "Transform your data into actionable insights with AI-powered analytics",
+    title: "Research & Development",
+    description: "Developing climate-resilient crops and irrigation systems.",
     gradient: "from-blue-500 via-teal-500 to-green-500",
-    image: "/placeholder.svg?height=400&width=600"
+    image: image2
   },
   {
     id: 3,
-    title: "Neural Engine",
-    description: "Advanced neural networks for complex problem-solving and pattern recognition",
+    title: "Farmer Support",
+    description: " Incubation programs, mentorship, and funding opportunities.",
     gradient: "from-orange-500 via-amber-500 to-yellow-500",
-    image: "/placeholder.svg?height=400&width=600"
+    image: image1
   },
   {
     id: 4,
-    title: "Vision Pro",
-    description: "State-of-the-art computer vision solutions for real-world applications",
+    title: "Policy Advocacy",
+    description: "Shaping policies that promote climate-smart agriculture.",
     gradient: "from-cyan-500 via-blue-500 to-indigo-500",
-    image: "/placeholder.svg?height=400&width=600"
+    image: image4
   }
 ]
 
@@ -76,7 +83,7 @@ export default function HomeShowCaseCarousel() {
     <section className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl md:text-5xl font-bold text-center text-brand-primary mb-16">
-          Our Products
+          Our Goal
         </h2>
         <div className="relative">
           <div className="overflow-hidden">
@@ -99,17 +106,17 @@ export default function HomeShowCaseCarousel() {
           {/* Navigation Buttons */}
           <button
             onClick={prevSlide}
-            className="absolute left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors"
+            className="absolute left-4 top-1/2 md:-ml-20 border border-green-500 -translate-y-1/2 p-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors"
             aria-label="Previous product"
           >
-            <ChevronLeft className="w-6 h-6" />
+            <ChevronLeft className="w-6 stroke-green-500 h-6" />
           </button>
           <button
             onClick={nextSlide}
-            className="absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors"
+            className="absolute right-4 top-1/2 md:-mr-20 border border-green-500 -translate-y-1/2 p-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors"
             aria-label="Next product"
           >
-            <ChevronRight className="w-6 h-6" />
+            <ChevronRight className="w-6 stroke-green-500 h-6" />
           </button>
 
           {/* Dots Navigation */}
@@ -172,7 +179,7 @@ function ProductCard({ product }: { product: Product }) {
           className="w-full md:w-1/2 aspect-square relative"
         >
           <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-xl" />
-          <img
+          <Image
             src={product.image}
             alt={product.title}
             className="w-full h-full object-cover rounded-xl"
