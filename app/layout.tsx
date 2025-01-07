@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Header from "./components/Header";
+import Navbar from "./components/Navbar";
+
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://your-website.com'),
@@ -68,6 +70,8 @@ export default function RootLayout({
       <body
         className={`antialiased`}
       >
+        <Navbar />
+        {/* <Header /> */}
         {children}
       </body>
     </html>
