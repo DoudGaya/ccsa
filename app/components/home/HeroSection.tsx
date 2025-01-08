@@ -31,7 +31,7 @@ export default function HeroSection() {
         </div>
           <AnimatedText 
             text="Centre for Climate-Smart Agriculture (CCSA) Cosmopolitan University Abuja" 
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-6xl font-bold  break-words"
+            className="text-3xl sm:text-4xl  md:text-5xl lg:text-6xl xl:text-6xl font-bold  break-words"
           />
           <TextCarousel 
             texts={heroTexts} 

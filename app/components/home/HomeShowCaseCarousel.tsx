@@ -83,7 +83,7 @@ export default function HomeShowCaseCarousel() {
     <section className="py-20 bg-white">
       <div className="container mx-auto px-4">
       <div className=' flex flex-col text-center py-10 gap-4'>
-                <h2 className='text-4xl font-bold'>Mission</h2>
+                <h2 className='text-4xl text-brand font-bold'>Mission</h2>
                 <p className='text-lg max-w-4xl mx-auto text-center text-gray-600'>
                 To drive the transformation of agriculture in Sub-Saharan Africa by advancing
                 climate-smart practices through cutting-edge research, innovative education,

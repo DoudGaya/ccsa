@@ -1,8 +1,11 @@
 import React from 'react'
+import PublicBanners from '../components/PublicBanners'
 
 const page = () => {
   return (
-    <div>page</div>
+    <div className=' h-full w-full'>
+      <PublicBanners />
+    </div>
   )
 }
 
