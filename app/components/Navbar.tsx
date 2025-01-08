@@ -40,8 +40,8 @@ export default function Navbar() {
           </Link>
           <div className="hidden md:flex space-x-8">
             <NavLink href="/">Home</NavLink>
-            <NavLink href="/about">About</NavLink>
-            <NavLink href="/services">Services</NavLink>
+            <NavLink href="/about-us">About</NavLink>
+            <NavLink href="/posts">Posts</NavLink>
             <NavLink href="/contact">Contact</NavLink>
           </div>
           <button 
@@ -72,11 +72,11 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden absolute top-full left-0 right-0 bg-[rgb(6,54,103)] py-4"
+            className="md:hidden absolute top-full left-0 right-0 px-6 py-4"
           >
-            <div className="container mx-auto px-4 flex flex-col space-y-4">
+            <div className="container mx-auto flex space-y-6 px-4 bg-[rgb(6,54,103)] py-10 rounded-xl flex-col">
               <NavLink href="/" onClick={() => setIsMobileMenuOpen(false)}>Home</NavLink>
-              <NavLink href="/about" onClick={() => setIsMobileMenuOpen(false)}>About</NavLink>
+              <NavLink href="/about-us" onClick={() => setIsMobileMenuOpen(false)}>About</NavLink>
               <NavLink href="/services" onClick={() => setIsMobileMenuOpen(false)}>Services</NavLink>
               <NavLink href="/contact" onClick={() => setIsMobileMenuOpen(false)}>Contact</NavLink>
             </div>

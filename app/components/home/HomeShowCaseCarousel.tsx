@@ -82,9 +82,17 @@ export default function HomeShowCaseCarousel() {
   return (
     <section className="py-20 bg-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl md:text-5xl font-bold text-center text-brand-primary mb-16">
-          Our Goal
-        </h2>
+      <div className=' flex flex-col text-center py-10 gap-4'>
+                <h2 className='text-4xl font-bold'>Mission</h2>
+                <p className='text-lg max-w-4xl mx-auto text-center text-gray-600'>
+                To drive the transformation of agriculture in Sub-Saharan Africa by advancing
+                climate-smart practices through cutting-edge research, innovative education,
+                and collaborative partnerships, fostering resilience, enhancing capacity, and
+                ensuring sustainability in agricultural systems to mitigate the impacts of climate
+                change and promote food security, livelihoods, and environmental
+                conservation.
+                </p>
+            </div>
         <div className="relative">
           <div className="overflow-hidden">
             <div className="relative h-[600px] w-full">

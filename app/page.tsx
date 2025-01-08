@@ -3,16 +3,17 @@ import banner from '@/public/home-bannner.jpg';
 import HeroSection from "./components/home/HeroSection";
 import HomeShowCaseCarousel from "./components/home/HomeShowCaseCarousel";
 import PromptGrid from "./components/home/PromptGrid";
+import MissionAndVission from "./components/MissionAndVission";
 
 
 export default function Home() {
   return (
     <main>
       <HeroSection />
+      {/* <MissionAndVission /> */}
       <HomeShowCaseCarousel />
-      <div className="">
-        <PromptGrid />
-      </div>
+      <PromptGrid />
     </main>
   );
 }
+
