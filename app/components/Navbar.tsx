@@ -41,7 +41,7 @@ export default function Navbar() {
           <div className="hidden md:flex space-x-8">
             <NavLink href="/">Home</NavLink>
             <NavLink href="/about-us">About</NavLink>
-            <NavLink href="/posts">Posts</NavLink>
+            <NavLink href="/news">News</NavLink>
             <NavLink href="/contact">Contact</NavLink>
           </div>
           <button 
@@ -77,7 +77,7 @@ export default function Navbar() {
             <div className="container mx-auto flex space-y-6 px-4 bg-[rgb(6,54,103)] py-10 rounded-xl flex-col">
               <NavLink href="/" onClick={() => setIsMobileMenuOpen(false)}>Home</NavLink>
               <NavLink href="/about-us" onClick={() => setIsMobileMenuOpen(false)}>About</NavLink>
-              <NavLink href="/services" onClick={() => setIsMobileMenuOpen(false)}>Services</NavLink>
+              <NavLink href="/news" onClick={() => setIsMobileMenuOpen(false)}>News</NavLink>
               <NavLink href="/contact" onClick={() => setIsMobileMenuOpen(false)}>Contact</NavLink>
             </div>
           </motion.div>
@@ -95,78 +95,4 @@ function NavLink({ href, children, onClick }: { href: string; children: React.Re
   )
 }
 
-
-
-
-// 'use client'
-
-// import { useState, useEffect } from 'react'
-// import { motion, useScroll, useTransform } from 'framer-motion'
-// import Link from 'next/link'
-
-// export default function Navbar() {
-//   const [isScrolled, setIsScrolled] = useState(false)
-//   const { scrollY } = useScroll()
-
-//   const backgroundColor = useTransform(
-//     scrollY,
-//     [0, 100],
-//     ['rgba(59, 130, 246, 0)', 'rgba(59, 130, 246, 0.6)']
-//   )
-
-//   useEffect(() => {
-//     const handleScroll = () => {
-//       setIsScrolled(window.scrollY > 10)
-//     }
-//     window.addEventListener('scroll', handleScroll)
-//     return () => window.removeEventListener('scroll', handleScroll)
-//   }, [])
-
-//   return (
-//     <motion.nav
-//       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-//         isScrolled ? 'py-2' : 'py-4'
-//       }`}
-//       style={{ backgroundColor }}
-//     >
-//       <div className="container mx-auto px-4">
-//         <div className="flex justify-between items-center">
-//           <Link href="/" className="text-white text-2xl font-bold">
-//             Logo
-//           </Link>
-//           <div className="hidden md:flex space-x-8">
-//             <NavLink href="/">Home</NavLink>
-//             <NavLink href="/about">About</NavLink>
-//             <NavLink href="/services">Services</NavLink>
-//             <NavLink href="/contact">Contact</NavLink>
-//           </div>
-//           <button className="md:hidden text-white">
-//             <svg
-//               className="w-6 h-6"
-//               fill="none"
-//               stroke="currentColor"
-//               viewBox="0 0 24 24"
-//               xmlns="http://www.w3.org/2000/svg"
-//             >
-//               <path
-//                 strokeLinecap="round"
-//                 strokeLinejoin="round"
-//                 strokeWidth={2}
-//                 d="M4 6h16M4 12h16M4 18h16"
-//               />
-//             </svg>
-//           </button>
-//         </div>
-//       </div>
-//     </motion.nav>
-//   )
-// }
-
-// function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
-//   return (
-//     <Link href={href} className="text-white hover:text-gray-200 transition-colors">
-//       {children}
-//     </Link>
-//   )
-// }
 

@@ -3,7 +3,7 @@ import { Facebook, Twitter, LinkedinIcon as LinkedIn, Instagram } from 'lucide-r
 
 export default function Footer() {
   return (
-    <footer className="bg-brand text-white">
+    <footer className="bg-brand pt-20 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
@@ -35,7 +35,7 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
             <p className="text-sm text-gray-300 mb-2">Cosmopolitan University, Abuja</p>
-            <p className="text-sm text-gray-300 mb-4">Email: info@ccsa.edu.ng</p>
+            <p className="text-sm text-gray-300 mb-4">Email: ccsa@cosmopolitan.edu.ng</p>
             <div className="flex space-x-4">
               <a href="#" className="text-gray-300 hover:text-white transition-colors">
                 <Facebook size={20} />

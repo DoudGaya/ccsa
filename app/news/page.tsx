@@ -4,7 +4,7 @@ import PublicBanners from '../components/PublicBanners'
 const page = () => {
   return (
     <div>
-      <PublicBanners title='Contact Us' message='to be done...' />
+        <PublicBanners title='News Page' message='to be done...' />   
     </div>
   )
 }
