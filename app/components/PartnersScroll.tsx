@@ -98,7 +98,7 @@ export default function PartnersScroll() {
                       alt={partner.name}
                       width={120}
                       height={40}
-                      className="opacity-70 hover:opacity-100 h-24 object-contain transition-opacity grayscale hover:grayscale-0"
+                      className="opacity-70 hover:opacity-100 h-24 object-contain transition-opacity  hover:grayscale-0"
                     />
                   </div>
                 ))}
