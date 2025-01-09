@@ -5,6 +5,18 @@ import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import logo from '@/app/assets/img/ccsa-logo.png'
 import Image from 'next/image'
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuIndicator,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  NavigationMenuViewport,
+} from "@/components/ui/navigation-menu"
+
+
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -39,6 +51,10 @@ export default function Navbar() {
             <Image src={logo} alt='Cosmopolitan University Abuja' className=' h-12 px-0 object-left max-w-min  object-contain ' width={300} height={300} />
           </Link>
           <div className="hidden md:flex space-x-8">
+          {/* <NavigationMenu>
+            <NavigationMenuList className=''>
+            </NavigationMenuList>
+          </NavigationMenu> */}
             <NavLink href="/">Home</NavLink>
             <NavLink href="/about-us">About</NavLink>
             <NavLink href="/news">News</NavLink>
