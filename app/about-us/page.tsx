@@ -10,7 +10,7 @@ import { CallToAction } from '../components/CallToAction'
 import ActivitiesComponent from '../components/home/ActivitiesComponent'
 
 export const metadata: Metadata = {
-  title: 'About Us | ',
+  title: 'About Us | CCSA ',
   description: 'Learn about the Centre for Climate-Smart Agriculture (CCSA) at Cosmopolitan University, Abuja, and our mission to transform agriculture in Sub-Saharan Africa.',
 }
 

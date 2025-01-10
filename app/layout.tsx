@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://ccsa.doudgaya.com'),
   title: {
     default: 'CCSA - Cosmopolitan University Abuja',
-    template: '%s | Your Website Name'
+    template: '%s | CCSA - Cosmopolitan University Abuja',
   },
   description: 'Centre for Climate-Smart Agriculture (CCSA) - Cosmopolitan University Abuja',
   keywords: [
