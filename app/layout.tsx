@@ -1,11 +1,9 @@
-import type { Metadata } from "next";
+import type {
+   Metadata 
+} from "next";
 import "./globals.css";
-import Header from "./components/Header";
-// import Navbar from "./components/Navbar";
-// import { Navbar } from "./components/Navbar";
 import Navbar from "./components/Navbar";
 import Footer from "./components/footer";
-
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://ccsa.doudgaya.com'),
