@@ -8,6 +8,7 @@ import PublicBanners from '../components/PublicBanners'
 import PartnersScroll from '../components/PartnersScroll'
 import { CallToAction } from '../components/CallToAction'
 import ActivitiesComponent from '../components/home/ActivitiesComponent'
+import AboutGrid from './_component/AboutGrid'
 
 export const metadata: Metadata = {
   title: 'About Us | CCSA ',
@@ -55,70 +56,14 @@ export default function AboutPage() {
           </div>
         </section>
 
+        <section className=' w-full bg-[rgb(6,54,103)] text-white py-20 max-w-max mx-auto flex flex-col items-center'>
+            <AboutGrid  /> 
+        </section>
+
         <ActivitiesComponent />
 
-        {/* <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-6 text-[rgb(6,54,103)]">Our Objectives</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              {
-                icon: <Zap className="w-8 h-8 text-[rgb(6,54,103)]" />,
-                title: "Research and Innovation",
-                description: "Develop, test and promote climate-smart agricultural technologies and practices."
-              },
-              {
-                icon: <Users className="w-8 h-8 text-[rgb(6,54,103)]" />,
-                title: "Capacity Building",
-                description: "Increase the capacity of stakeholders on climate-resilient agricultural practices."
-              },
-              {
-                icon: <BookOpen className="w-8 h-8 text-[rgb(6,54,103)]" />,
-                title: "Policy and Advocacy",
-                description: "Shape policies that support climate-smart agriculture through collaboration."
-              },
-              {
-                icon: <Globe className="w-8 h-8 text-[rgb(6,54,103)]" />,
-                title: "Public-Private Partnerships",
-                description: "Implement impactful projects through diverse collaborations."
-              },
-              {
-                icon: <Zap className="w-8 h-8 text-[rgb(6,54,103)]" />,
-                title: "Digital Transformation",
-                description: "Leverage emerging technologies to enhance agricultural practices and outcomes."
-              }
-            ].map((objective, index) => (
-              <div key={index} className="bg-white p-6 rounded-lg shadow-md">
-                {objective.icon}
-                <h3 className="text-xl font-semibold my-4">{objective.title}</h3>
-                <p>{objective.description}</p>
-              </div>
-            ))}
-          </div>
-        </section> */}
 
         <PartnersScroll />
-
-        {/* <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-6 text-[rgb(6,54,103)]">Strategic Partnerships</h2>
-          <p className="text-lg mb-6">
-            CCSA collaborates with leading global and regional organizations to advance 
-            climate-smart agricultural practices and mitigate risks associated with future climate crises.
-          </p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {[
-              "International Fund for Agricultural Development (IFAD)",
-              "Alliance for a Green Revolution in Africa (AGRA)",
-              "World Bank Group",
-              "African Development Bank (AfDB)",
-              "Food and Agriculture Organization (FAO)",
-              "United States Department of Agriculture (USDA)"
-            ].map((partner, index) => (
-              <div key={index} className="bg-gray-100 p-4 rounded-lg">
-                {partner}
-              </div>
-            ))}
-          </div>
-        </section> */}
 
         <CallToAction />
       </main>

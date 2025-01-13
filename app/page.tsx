@@ -6,6 +6,7 @@ import PromptGrid from "./components/home/ActivitiesComponent";
 import MissionAndVission from "./components/MissionAndVission";
 import PartnersScroll from "./components/PartnersScroll";
 import { CallToAction } from "./components/CallToAction";
+import WhoWeAre from "./components/home/HomeActivity";
 
 
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
     <main>
       <HeroSection />
       <HomeShowCaseCarousel />
+      <WhoWeAre />
       <PromptGrid />
       <PartnersScroll />
       <CallToAction />
