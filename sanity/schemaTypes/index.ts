@@ -1,12 +1,14 @@
 import { type SchemaTypeDefinition } from 'sanity'
 import { authorType } from './author'
-import { activityType } from './activities'
 import { newsType } from './news'
+import { activity } from './activities'
+import { activityType } from './activityType'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
     authorType,
-    activityType,
     newsType,
+    activity,
+    activityType,
   ],
 }

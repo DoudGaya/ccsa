@@ -44,14 +44,6 @@ const partners: Partner[] = [
     name: "USDA",
     logo: usda
 }
-//   {
-//     name: "Atlassian",
-//     logo: "/placeholder.svg?height=40&width=120"
-//   },
-//   {
-//     name: "Basic/Dept",
-//     logo: "/placeholder.svg?height=40&width=120"
-//   }
 ]
 
 export default function PartnersScroll() {

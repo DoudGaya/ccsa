@@ -1,9 +1,18 @@
+'use client'
+
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import logo from '@/app/assets/img/cosmopolitan-logo.png'
+import useInvalidPathName from '@/lib/use-invalid-path'
 
 const Header = () => {
+
+  const invalidPath: boolean = useInvalidPathName()
+  
+  if (invalidPath) {
+    return <></>
+  }
   return (
     <div className=' w-full top-0 fixed bg-white/50 z-50'>
       <div className="max-w-7xl mx-auto flex items-center px-4 sm:px-6 lg:px-8 justify-between">
