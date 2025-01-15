@@ -78,7 +78,7 @@ const activities: Activity[] = [
 
 ]
 
-export default function HomeActivity() {
+export default function HomeNews() {
   const controls = useAnimationControls()
 
   useEffect(() => {
@@ -108,7 +108,7 @@ export default function HomeActivity() {
   }
 
   return (
-    <section className=" bg-white dark:bg-black text-brand py-20">
+    <section className=" bg-white dark:bg-black text-brand dark:text-blue-200 py-20">
       <div className="container mx-auto px-4 mb-12">
         <h2 className="text-3xl md:text-4xl text-gray-400 font-bold text-center mb-4">
           Event and Activties
@@ -151,11 +151,11 @@ export default function HomeActivity() {
                       className="opacity-70 group-hover:opacity-100 h-full w-full object-cover transition-opacity group-hover:grayscale-0"
                     />
                   </div>
-                  <div className=" flex flex-col px-1 group-hover:opacity-100 items-start w-full">
+                  <div className=" flex flex-col space-y-2 px-1 group-hover:opacity-100 items-start w-full">
                     <p className={
                       `text-xs px-4 py-0.5 rounded-xl 
                       ${event.badge === 'Event' ? 'bg-green-500' :
-                        event.badge === 'Announcement' ? 'bg-yellow-500' :
+                        event.badge === 'Announcement' ? 'bg-yellow-500 text-yellow-900' :
                         event.badge === 'Update' ? ' bg-purple-500' : ' bg-red-500'} `}
                       >{ event.badge.toUpperCase()}</p>
                     <p className='text-xs'>{ event.date }</p>

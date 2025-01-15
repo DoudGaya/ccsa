@@ -52,7 +52,7 @@ const prompts: Prompt[] = [
   },
 ]
 
-export default function ActivitiesComponent() {
+export default function ObjectivesComponents() {
   return (
     <section
       style={{
@@ -61,12 +61,12 @@ export default function ActivitiesComponent() {
         backgroundPosition: 'center'
 
        }}
-    className="bg-black bg-fixed py-20 bg-blend-overlay bg-opacity-50">
-      <div className="container mx-auto px-4">
+    className="bg-black bg-fixed h-screen opacity-90 py-20 bg-blend-overlay bg-opacity-50">
+      <div className=" mx-auto px-4">
         <h2 className="text-4xl md:text-4xl font-bold text-white mb-16 text-center">
         Objectives
        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-4">
           {prompts.map((prompt) => (
             <PromptCard key={prompt.id} prompt={prompt} />
           ))}
@@ -86,16 +86,15 @@ function PromptCard({ prompt }: { prompt: Prompt }) {
       className="group relative overflow-hidden"
     >
       <motion.div
-        className="bg-zinc-900/80 rounded-xl p-6 h-full border border-zinc-800 cursor-pointer 
+        className="bg-zinc-900/90 p-6 h-full border text-center border-zinc-800 cursor-pointer 
                    transition-colors duration-300 hover:border-zinc-700"
       >
-        <div className="flex flex-col items-start h-full">
-          <h3 className='text-white text-xs font-bold '>
+        <div className="flex flex-col space-y-3 text-center items-start h-full">
+          <h3 className='text-white font-poppins font-bold w-full text-lg '>
             {prompt.title}
           </h3>
-          <div className="text-white w-full flex justify-between pr-8">
-           <p className=' w-full'> {prompt.text}</p>
-          <ArrowUpRight className="w-5 h-5" />
+          <div className="text-white w-full flex justify-between ">
+           <p className=' w-full text-sm'> {prompt.text}</p>
           </div>
           <motion.div
             initial={{ opacity: 0.5 }}

@@ -48,7 +48,7 @@ const partners: Partner[] = [
 
 export default function PartnersScroll() {
   return (
-    <section className="bg-white py-20">
+    <section className="bg-white dark:bg-black py-20">
       <div className="container mx-auto px-4 mb-12">
         <h2 className="text-4xl md:text-4xl text-brand font-bold text-center mb-4">
         Our Strategic Partnerships
@@ -58,10 +58,10 @@ export default function PartnersScroll() {
         </p>
       </div>
 
-      <div className="relative w-full overflow-hidden bg-gradient-to-r from-white via-white to-gray-50">
+      <div className="relative w-full overflow-hidden bg-gradient-to-r from-white via-white dark:from-black dark:via-black dark:to-gray-950 to-gray-50">
         {/* Gradient Overlays */}
-        <div className="absolute left-0 top-0 w-32 h-full bg-gradient-to-r from-white to-transparent z-10" />
-        <div className="absolute right-0 top-0 w-32 h-full bg-gradient-to-l from-white to-transparent z-10" />
+        <div className="absolute left-0 top-0 w-32 h-full bg-gradient-to-r from-white dark:from-gray-900 to-transparent z-10" />
+        <div className="absolute right-0 top-0 w-32 h-full bg-gradient-to-l from-white dark:from-gray-900 to-transparent z-10" />
 
         {/* Scrolling Content */}
         <div className="flex overflow-hidden py-8">

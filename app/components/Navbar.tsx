@@ -6,7 +6,7 @@ import Link from 'next/link'
 import logo from '@/app/assets/img/ccsa-logo.png'
 import Image from 'next/image'
 import { NavMenu } from './NavigationMenu'
-import { MobileNavMenu } from './mobile-nav-menu'
+
 
 
 export default function Navbar() {

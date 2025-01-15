@@ -129,7 +129,15 @@ export function NavMenu() {
           <NavigationMenuItem>
             <Link href="/knowledge-hub" legacyBehavior passHref>
               <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                Knowledge Hub
+                 News
+              </NavigationMenuLink>
+            </Link>
+          </NavigationMenuItem>
+
+          <NavigationMenuItem>
+            <Link href="/knowledge-hub" legacyBehavior passHref>
+              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                Activities
               </NavigationMenuLink>
             </Link>
           </NavigationMenuItem>

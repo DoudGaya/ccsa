@@ -24,7 +24,7 @@ export default function HeroSection() {
           quality={100}
           priority
         />
-        <div className="absolute inset-0 bg-black opacity-50" />
+        <div className="absolute inset-0 bg-black opacity-50 dark:opacity-80" />
         <div className="relative z-10 text-center text-white px-4 sm:px-6 lg:px-8">
         <div className=" flex items-center justify-center">
                 <Image src={logo} alt='Cosmopolitan University Abuja' className=' h-36 px-0 object-left max-w-min  object-contain ' width={120} height={120} />
