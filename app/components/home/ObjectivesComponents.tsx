@@ -119,7 +119,7 @@ function PromptCard({ prompt }: { prompt: Prompt }) {
            <p className=' w-full '> {prompt.text}</p>
           </div>
           <motion.div
-            initial={{ opacity: 0.5 }}
+            initial={{ opacity: 0.5 }}p
             whileHover={{ opacity: 1 }}
             className="text-white"
           >

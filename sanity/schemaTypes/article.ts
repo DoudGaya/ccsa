@@ -1,8 +1,8 @@
 import { defineField, defineType } from "sanity";
 
-export const newsType = defineType({
-    name: 'news',
-    title: 'News',
+export const article = defineType({
+    name: 'article',
+    title: 'Article',
     type: 'document',
     fields: [
         {
@@ -30,6 +30,12 @@ export const newsType = defineType({
                 source: 'title',
                 maxLength: 96,
             }, 
+        }),
+        defineField({
+            name: 'type',
+            title: 'Type',
+            type: 'reference',
+            to: [{ type: 'articleType' }],
         }),
         defineField({
             name: 'image',

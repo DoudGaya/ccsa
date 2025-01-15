@@ -111,7 +111,7 @@ export default function HomeNews() {
     <section className=" bg-white dark:bg-black text-brand dark:text-blue-200 py-20">
       <div className="container mx-auto px-4 mb-12">
         <h2 className="text-3xl md:text-4xl text-gray-400 font-bold text-center mb-4">
-          Event and Activties
+          News and Posts
         </h2>
       </div>
 
