@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { ArrowUpRight } from 'lucide-react'
-import banner from '@/public/banner-fixed.jpg'
+import banner from '@/public/downn-banner.jpg'
 
 interface Prompt {
   id: number
@@ -50,6 +50,28 @@ const prompts: Prompt[] = [
         `,
     category: "Social"
   },
+  {
+    id: 5,
+    title: "Policy and Advocacy",
+    text: `
+      Collaborate with government, civil society
+      organisations (CSOs), and Non-Governmental Organisations (NGOs) to shape
+      policies that support climate-smart agriculture
+        `,
+    category: "Social"
+  },
+  {
+    id: 6,
+    title: "Policy and Advocacy",
+    text: `
+       Leverage emerging technologies such as cloud
+        computing, mobile technologies, AI and data analytics, IoT, satellite
+        technologies, additive manufacturing, drones, and robotics technology to
+        provide smallholder farmers with real-time data, precision farming solutions,
+        improve yield and output as well as support resource optimisation
+        `,
+    category: "Social"
+  },
 ]
 
 export default function ObjectivesComponents() {
@@ -61,11 +83,11 @@ export default function ObjectivesComponents() {
         backgroundPosition: 'center'
 
        }}
-    className="bg-black bg-fixed h-screen opacity-90 py-20 bg-blend-overlay bg-opacity-50">
-      <div className=" mx-auto px-4">
-        <h2 className="text-4xl md:text-4xl font-bold text-white mb-16 text-center">
+    className="bg-black bg-fixed py-20 bg-blend-darken bg-opacity-55">
+      <div className=" mx-auto px-4 w-full ">
+        {/* <h2 className="text-4xl md:text-4xl bg-black max-w-min px-3 font-bold text-white mb-16 text-center">
         Objectives
-       </h2>
+       </h2> */}
         <div className="grid grid-cols-1 md:grid-cols-4">
           {prompts.map((prompt) => (
             <PromptCard key={prompt.id} prompt={prompt} />
@@ -83,18 +105,18 @@ function PromptCard({ prompt }: { prompt: Prompt }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-50px' }}
       whileHover={{ scale: 1.02 }}
-      className="group relative overflow-hidden"
+      className={`group relative overflow-hidden ${(prompt.id == 5 || prompt.id == 6) && 'col-span-2'} `}
     >
       <motion.div
         className="bg-zinc-900/90 p-6 h-full border text-center border-zinc-800 cursor-pointer 
-                   transition-colors duration-300 hover:border-zinc-700"
+                   transition-colors duration-300 hover:border-zinc-500 hover:bg-black"
       >
         <div className="flex flex-col space-y-3 text-center items-start h-full">
           <h3 className='text-white font-poppins font-bold w-full text-lg '>
             {prompt.title}
           </h3>
           <div className="text-white w-full flex justify-between ">
-           <p className=' w-full text-sm'> {prompt.text}</p>
+           <p className=' w-full '> {prompt.text}</p>
           </div>
           <motion.div
             initial={{ opacity: 0.5 }}

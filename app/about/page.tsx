@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 import PublicBanners from '../components/PublicBanners'
 import PartnersScroll from '../components/PartnersScroll'
 import { CallToAction } from '../components/CallToAction'
-import ActivitiesComponent from '../components/home/ActivitiesComponent'
+import ActivitiesComponent from '../components/home/ObjectivesComponents'
 import AboutGrid from './_component/AboutGrid'
 
 export const metadata: Metadata = {

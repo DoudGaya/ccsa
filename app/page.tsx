@@ -3,7 +3,7 @@ import banner from '@/public/home-bannner.jpg';
 import HeroSection from "./components/home/HeroSection";
 import HomeShowCaseCarousel from "./components/home/HomeShowCaseCarousel";
 // import PromptGrid from "./components/home/ActivitiesComponent";
-import ObjectivesComponents from "./components/home/ActivitiesComponent";
+import ObjectivesComponents from "./components/home/ObjectivesComponents";
 import MissionAndVission from "./components/MissionAndVission";
 import PartnersScroll from "./components/PartnersScroll";
 import { CallToAction } from "./components/CallToAction";
