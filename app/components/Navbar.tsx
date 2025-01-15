@@ -6,6 +6,7 @@ import Link from 'next/link'
 import logo from '@/app/assets/img/ccsa-logo.png'
 import Image from 'next/image'
 import { NavMenu } from './NavigationMenu'
+import { MobileNavMenu } from './mobile-nav-menu'
 
 
 export default function Navbar() {
@@ -37,51 +38,11 @@ export default function Navbar() {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
           <Link href="/" className="text-white text-2xl font-bold">
-          {/* <span className=' text-white'>CCSA</span> */}
             <Image src={logo} alt='Cosmopolitan University Abuja' className=' h-12 px-0 object-left max-w-min  object-contain ' width={300} height={300} />
           </Link>
-          <div className="hidden text-white font-poppins md:flex space-x-8">
             <NavMenu />
-          </div>
-          <button 
-            className="md:hidden text-white"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
-          </button>
         </div>
       </div>
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
-            className="md:hidden absolute top-full left-0 right-0 px-6 py-4"
-          >
-            <div className="container mx-auto flex space-y-6 px-4 bg-[rgb(6,54,103)] py-10 rounded-xl flex-col">
-              <NavLink href="/" onClick={() => setIsMobileMenuOpen(false)}>Home</NavLink>
-              <NavLink href="/about-us" onClick={() => setIsMobileMenuOpen(false)}>About</NavLink>
-              <NavLink href="/news" onClick={() => setIsMobileMenuOpen(false)}>News</NavLink>
-              <NavLink href="/contact" onClick={() => setIsMobileMenuOpen(false)}>Contact</NavLink>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </motion.nav>
   )
 }
