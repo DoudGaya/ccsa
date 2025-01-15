@@ -7,8 +7,8 @@ import { activityType } from './activityType'
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
     authorType,
+    activityType,
     newsType,
     activity,
-    activityType,
   ],
 }

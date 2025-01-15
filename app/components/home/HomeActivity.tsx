@@ -160,7 +160,6 @@ export default function HomeActivity() {
                       >{ event.badge.toUpperCase()}</p>
                     <p className='text-xs'>{ event.date }</p>
                     <h3 className=' text-lg'>{ event.title }</h3>
-                    <p className=' line-clamp-2'>{ event.description }</p>
                   </div>
                   </Link>
                 ))}

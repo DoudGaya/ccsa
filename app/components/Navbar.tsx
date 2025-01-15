@@ -5,17 +5,7 @@ import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import logo from '@/app/assets/img/ccsa-logo.png'
 import Image from 'next/image'
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuIndicator,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-  NavigationMenuViewport,
-} from "@/components/ui/navigation-menu"
-
+import { NavMenu } from './NavigationMenu'
 
 
 export default function Navbar() {
@@ -50,15 +40,8 @@ export default function Navbar() {
           {/* <span className=' text-white'>CCSA</span> */}
             <Image src={logo} alt='Cosmopolitan University Abuja' className=' h-12 px-0 object-left max-w-min  object-contain ' width={300} height={300} />
           </Link>
-          <div className="hidden md:flex space-x-8">
-          {/* <NavigationMenu>
-            <NavigationMenuList className=''>
-            </NavigationMenuList>
-          </NavigationMenu> */}
-            <NavLink href="/">Home</NavLink>
-            <NavLink href="/about-us">About</NavLink>
-            <NavLink href="/news">News</NavLink>
-            <NavLink href="/contact">Contact</NavLink>
+          <div className="hidden text-white font-poppins md:flex space-x-8">
+            <NavMenu />
           </div>
           <button 
             className="md:hidden text-white"

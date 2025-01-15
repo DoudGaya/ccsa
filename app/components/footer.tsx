@@ -1,5 +1,7 @@
+'use client'
 import Link from 'next/link'
 import { Facebook, Twitter, LinkedinIcon as LinkedIn, Instagram } from 'lucide-react'
+import { ModeToggle } from './dark-button'
 
 export default function Footer() {
   return (
@@ -52,10 +54,12 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <div className="mt-8 pt-8 border-t border-green-800">
+        <div className="mt-8 pt-8 border-t flex justify-between border-green-800">
           <p className="text-center text-sm text-gray-300">
             © {new Date().getFullYear()} Centre for Climate-Smart Agriculture, Cosmopolitan University. All rights reserved.
           </p>
+
+          <ModeToggle />
         </div>
       </div>
     </footer>

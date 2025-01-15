@@ -12,10 +12,12 @@ export const activityType = defineType({
             type: 'string',
         }),
         defineField({
-            name: 'activity',
-            title: 'Activity Type',
-            type: 'reference',
-            to: [{ type: 'activity' }],
-        }),
+            name: 'slug',
+            type: 'slug',
+            options: {
+                source: 'name',
+                maxLength: 96,
+            },
+        })
     ],
 })

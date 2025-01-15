@@ -4,6 +4,7 @@ import type {
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/footer";
+import { ThemeProvider } from "./components/theme-provider";
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://ccsa.doudgaya.com'),
@@ -67,13 +68,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`antialiased`}
       >
+        <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
         <Navbar />
         {children}
         <Footer />
+      </ThemeProvider>
       </body>
     </html>
   );

@@ -12,7 +12,7 @@ import HomeActivity from "./components/home/HomeActivity";
 
 export default function Home() {
   return (
-    <main className=" flex flex-col">
+    <main className=" flex flex-col bg-gray-100 dark:bg-black">
       <HeroSection />
       <HomeShowCaseCarousel />
       <WhoWeAre />

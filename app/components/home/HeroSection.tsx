@@ -15,7 +15,7 @@ export default function HeroSection() {
   ]
   
     return (
-      <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <div className="relative min-h-screen flex bg-gray-100 dark:bg-black items-center justify-center overflow-hidden">
         <Image
           src={heroImage}
           alt="Hero Background"
