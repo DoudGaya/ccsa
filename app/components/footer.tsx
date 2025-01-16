@@ -1,9 +1,13 @@
 'use client'
 import Link from 'next/link'
 import { Facebook, Twitter, LinkedinIcon as LinkedIn, Instagram } from 'lucide-react'
+import useInvalidPathName from '@/lib/use-invalid-path'
 import { ModeToggle } from './dark-button'
 
 export default function Footer() {
+  const isInvalidPath = useInvalidPathName()
+  if (isInvalidPath) return <></>
+
   return (
     <footer className="bg-brand pt-20 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -13,7 +17,7 @@ export default function Footer() {
             <p className="text-sm text-gray-300">
               The Centre for Climate-Smart Agriculture (CCSA) at Cosmopolitan University, Abuja, 
               fosters resilience, sustainability, and innovation in agricultural systems to address 
-              climate change challenges.
+              climate change challenges. 
             </p>
           </div>
           <div>

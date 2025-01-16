@@ -4,12 +4,16 @@ import { useState, useEffect } from 'react'
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import logo from '@/app/assets/img/ccsa-logo.png'
+import useInvalidPathName from '@/lib/use-invalid-path'
 import Image from 'next/image'
 import { NavMenu } from './NavigationMenu'
 
 
 
 export default function Navbar() {
+  const isInvalidPath: boolean = useInvalidPathName()
+  if (isInvalidPath) return <></>
+  
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const { scrollY } = useScroll()
