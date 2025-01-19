@@ -105,7 +105,7 @@ function PromptCard({ prompt }: { prompt: Prompt }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-50px' }}
       whileHover={{ scale: 1.02 }}
-      className={`group relative overflow-hidden ${(prompt.id == 5 || prompt.id == 6) && 'col-span-2'} `}
+      className={`group relative overflow-hidden ${(prompt.id == 5 || prompt.id == 6) && 'md:col-span-2'} `}
     >
       <motion.div
         className="bg-zinc-900/90 p-6 h-full border text-center border-zinc-800 cursor-pointer 

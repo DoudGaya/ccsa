@@ -1,35 +1,27 @@
 import { StaticImageData } from 'next/image';
 import React from 'react'
 
-export const DynamicBanner = ( {
+export const DynamicBanner = ({
     bannerImage,
     title,
     description,
 }: {
-    bannerImage: StaticImageData | string;
+    bannerImage: string;
     title: string;
     description: string;
 }) => {
-
-    let image;
-
-    if (typeof bannerImage === 'string') {
-        image = bannerImage;
-    }
-    else {
-        image = bannerImage.src;
-    }
     
   return (
     <div
     style={{
-        backgroundImage: `url(${image})`,
+        backgroundImage: `url(${bannerImage})`,
         backgroundPosition: 'center',
         backgroundSize: 'cover',
     }}
-    
-    className='h-screen'>
-
+    className='h-screen w-full bg-cover bg-center bg-no-repeat bg-fixed bg-opacity-50'>
+            <p className=' dark:bg-black text-white text-4xl font-bold text-center'>{title}</p>
+            <p className=' dark:bg-black text-white text-4xl font-bold text-center'>{description}</p>
+              
     </div>
   )
 }

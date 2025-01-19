@@ -5,80 +5,15 @@ import { useEffect } from 'react'
 import Image, { StaticImageData } from 'next/image'
 import Link from 'next/link'
 import { Button } from "@/components/ui/button"
+import { SanityTypes } from '@/@types'
 
 
-interface Activity  {
-  title: string
-  description: string
-  heroImage: string
-  location: string
-  badge: string
-  slug?: string
-  date: string
-  images?: string[]
-}
 
-const activities: Activity[] = [
-  {
-    title: 'Agriculrural Development Workshop',
-    description: 'Agriculrural Development Workshop is a workshop that is aimed at training farmers on the best practices in agriculture',
-    heroImage: '/assets/img/agriculture.jpg',
-    location: 'Abuja, Nigeria',
-    date: '12th October, 2021',
-    badge: 'New',
-    images: [
-      '/assets/img/agriculture.jpg',
-      '/assets/img/agriculture.jpg',
-      '/assets/img/agriculture.jpg',
-      '/assets/img/agriculture.jpg',
-    ]
-  },
-  {
-    title: 'Agriculrural Development Workshop',
-    description: 'Agriculrural Development Workshop is a workshop that is aimed at training farmers on the best practices in agriculture',
-    heroImage: '/assets/img/agriculture.jpg',
-    location: 'Abuja, Nigeria',
-    date: '12th October, 2021',
-    badge: 'Event',
-    images: [
-      '/assets/img/agriculture.jpg',
-      '/assets/img/agriculture.jpg',
-      '/assets/img/agriculture.jpg',
-      '/assets/img/agriculture.jpg',
-    ]
-  },
-  {
-    title: 'Agriculrural Development Workshop',
-    description: 'Agriculrural Development Workshop is a workshop that is aimed at training farmers on the best practices in agriculture',
-    heroImage: '/assets/img/agriculture.jpg',
-    location: 'Abuja, Nigeria',
-    date: '12th October, 2021',
-    badge: 'Update',
-    images: [
-      '/assets/img/agriculture.jpg',
-      '/assets/img/agriculture.jpg',
-      '/assets/img/agriculture.jpg',
-      '/assets/img/agriculture.jpg',
-    ]
-  },
-  {
-    title: 'Agriculrural Development Workshop',
-    description: 'Agriculrural Development Workshop is a workshop that is aimed at training farmers on the best practices in agriculture',
-    heroImage: '/assets/img/agriculture.jpg',
-    location: 'Abuja, Nigeria',
-    date: '12th October, 2021',
-    badge: 'Announcement',
-    images: [
-      '/assets/img/agriculture.jpg',
-      '/assets/img/agriculture.jpg',
-      '/assets/img/agriculture.jpg',
-      '/assets/img/agriculture.jpg',
-    ]
-  }
-
-]
-
-export default function HomeActivity() {
+export default function HomeActivity( {
+  activities
+}: {
+  activities: SanityTypes.Activity[]
+}) {
   const controls = useAnimationControls()
 
   useEffect(() => {
@@ -139,26 +74,26 @@ export default function HomeActivity() {
                 {activities.map((event, index) => (
                   <Link
                     key={`${setIndex}-${index}`}
-                    href={event.slug || '#'}
+                    href={`/articles/${event.slug}`}
                     className="flex items-center flex-col cursor-pointer group group-hover:bg-gray-200 rounded-lg py-6 space-y-3 px-4 justify-center w-[300px] h-[400px]"
                   >
                   <div className=" overflow-hidden bg-[#202020] h-full w-full rounded-lg">
                   <Image
-                      src={event.heroImage}
+                      src={event.imageUrl}
                       alt={event.title}
-                      width={120}
-                      height={40}
+                      width={600}
+                      height={600}
                       className="opacity-70 group-hover:opacity-100 h-full w-full object-cover transition-opacity group-hover:grayscale-0"
                     />
                   </div>
                   <div className=" flex flex-col px-1 group-hover:opacity-100 items-start w-full">
                     <p className={
                       `text-xs px-4 py-0.5 rounded-xl 
-                      ${event.badge === 'Event' ? 'bg-green-500' :
-                        event.badge === 'Announcement' ? 'bg-yellow-500' :
-                        event.badge === 'Update' ? ' bg-purple-500' : ' bg-red-500'} `}
-                      >{ event.badge.toUpperCase()}</p>
-                    <p className='text-xs'>{ event.date }</p>
+                      ${event.activityType.slug === 'event' ? 'bg-green-500' :
+                        event.activityType.slug === 'announcement' ? 'bg-yellow-500' :
+                        event.activityType.slug === 'Update' ? ' bg-purple-500' : ' bg-red-500'} `}
+                      >{ event.activityType.name}</p>
+                    {/* <p className='text-xs'>{ event._createdAt.getDate() }</p> */}
                     <h3 className=' text-lg'>{ event.title }</h3>
                   </div>
                   </Link>

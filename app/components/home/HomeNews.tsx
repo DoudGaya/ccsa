@@ -5,80 +5,15 @@ import { useEffect } from 'react'
 import Image, { StaticImageData } from 'next/image'
 import Link from 'next/link'
 import { Button } from "@/components/ui/button"
+import { SanityTypes } from '@/@types'
+// import { homeActivities } from '@/lib/utils'
 
 
-interface Activity  {
-  title: string
-  description: string
-  heroImage: string
-  location: string
-  badge: string
-  slug?: string
-  date: string
-  images?: string[]
-}
-
-const activities: Activity[] = [
-  {
-    title: 'Agriculrural Development Workshop',
-    description: 'Agriculrural Development Workshop is a workshop that is aimed at training farmers on the best practices in agriculture',
-    heroImage: '/assets/img/agriculture.jpg',
-    location: 'Abuja, Nigeria',
-    date: '12th October, 2021',
-    badge: 'New',
-    images: [
-      '/assets/img/agriculture.jpg',
-      '/assets/img/agriculture.jpg',
-      '/assets/img/agriculture.jpg',
-      '/assets/img/agriculture.jpg',
-    ]
-  },
-  {
-    title: 'Agriculrural Development Workshop',
-    description: 'Agriculrural Development Workshop is a workshop that is aimed at training farmers on the best practices in agriculture',
-    heroImage: '/assets/img/agriculture.jpg',
-    location: 'Abuja, Nigeria',
-    date: '12th October, 2021',
-    badge: 'Event',
-    images: [
-      '/assets/img/agriculture.jpg',
-      '/assets/img/agriculture.jpg',
-      '/assets/img/agriculture.jpg',
-      '/assets/img/agriculture.jpg',
-    ]
-  },
-  {
-    title: 'Agriculrural Development Workshop',
-    description: 'Agriculrural Development Workshop is a workshop that is aimed at training farmers on the best practices in agriculture',
-    heroImage: '/assets/img/agriculture.jpg',
-    location: 'Abuja, Nigeria',
-    date: '12th October, 2021',
-    badge: 'Update',
-    images: [
-      '/assets/img/agriculture.jpg',
-      '/assets/img/agriculture.jpg',
-      '/assets/img/agriculture.jpg',
-      '/assets/img/agriculture.jpg',
-    ]
-  },
-  {
-    title: 'Agriculrural Development Workshop',
-    description: 'Agriculrural Development Workshop is a workshop that is aimed at training farmers on the best practices in agriculture',
-    heroImage: '/assets/img/agriculture.jpg',
-    location: 'Abuja, Nigeria',
-    date: '12th October, 2021',
-    badge: 'Announcement',
-    images: [
-      '/assets/img/agriculture.jpg',
-      '/assets/img/agriculture.jpg',
-      '/assets/img/agriculture.jpg',
-      '/assets/img/agriculture.jpg',
-    ]
-  }
-
-]
-
-export default function HomeNews() {
+export default function HomeNews( {
+  articles
+}: {
+  articles: SanityTypes.Article[]
+}) {
   const controls = useAnimationControls()
 
   useEffect(() => {
@@ -117,8 +52,8 @@ export default function HomeNews() {
 
       <div className="relative w-full overflow-hidden bg-gradient-to-r ">
         {/* Gradient Overlays */}
-        <div className="absolute left-0 top-0 w-32 h-full bg-gradient-to-r from-white dark:from-gray-900 to-transparent z-10" />
-        <div className="absolute right-0 top-0 w-32 h-full bg-gradient-to-l from-white dark:from-gray-900 to-transparent z-10" />
+        <div className="absolute left-0 top-0 w-32 h-full bg-gradient-to-r from-white dark:from-stone-900 to-transparent z-10" />
+        <div className="absolute right-0 top-0 w-32 h-full bg-gradient-to-l from-white dark:from-stone-900 to-transparent z-10" />
 
         {/* Scrolling Content */}
         <div 
@@ -136,30 +71,29 @@ export default function HomeNews() {
             {/* First Set of Logos */}
             {[...Array(2)].map((_, setIndex) => (
               <div key={setIndex} className="flex space-x-16 ">
-                {activities.map((event, index) => (
+                {articles.map((event, index) => (
                   <Link
                     key={`${setIndex}-${index}`}
-                    href={event.slug || '#'}
-                    className="flex items-center flex-col cursor-pointer group group-hover:bg-gray-200 rounded-lg py-6 space-y-3 px-4 justify-center w-[300px] h-[400px]"
+                    href={`/articles/${event.slug}`}
+                    className="flex items-center flex-col bg-gray-100 cursor-pointer group group-hover:bg-gray-200 rounded-lg py-6 space-y-3 px-4 justify-center w-[500px] h-[400px]"
                   >
                   <div className=" overflow-hidden bg-[#202020] h-full w-full rounded-lg">
                   <Image
-                      src={event.heroImage}
+                      src={event.imageUrl}
                       alt={event.title}
-                      width={120}
-                      height={40}
+                      width={600}
+                      height={600}
                       className="opacity-70 group-hover:opacity-100 h-full w-full object-cover transition-opacity group-hover:grayscale-0"
                     />
                   </div>
                   <div className=" flex flex-col space-y-2 px-1 group-hover:opacity-100 items-start w-full">
                     <p className={
                       `text-xs px-4 py-0.5 rounded-xl 
-                      ${event.badge === 'Event' ? 'bg-green-500' :
-                        event.badge === 'Announcement' ? 'bg-yellow-500 text-yellow-900' :
-                        event.badge === 'Update' ? ' bg-purple-500' : ' bg-red-500'} `}
-                      >{ event.badge.toUpperCase()}</p>
-                    <p className='text-xs'>{ event.date }</p>
-                    <h3 className=' text-lg'>{ event.title }</h3>
+                      ${event.type.slug === 'post' ? 'bg-green-200 text-green-900' :
+                        event.type.slug === 'update' ? ' bg-purple-500' : ' bg-gray-900 text-gray-400'} `}
+                      >{ event.type.name}</p>
+                    {/* <p className='text-xs'>{ event._createdAt }</p> */}
+                    <h3 className=' text-md w-full font-poppins'>{ event.title }</h3>
                   </div>
                   </Link>
                 ))}
@@ -172,7 +106,7 @@ export default function HomeNews() {
       <div className="flex justify-center mt-12">
         <Button asChild variant="outline" className=' dark:text-blue-400 font-semibold font-poppins' size="lg">
           <Link href="/activities">
-             Activities
+             More news 
           </Link>
         </Button>
       </div>

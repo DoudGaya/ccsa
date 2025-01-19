@@ -31,6 +31,24 @@ export const activity = defineType({
             type: 'datetime',
             validation: (Rule) => Rule.required(),
         },
+        defineField({
+            name: 'tags',
+            title: 'Tags',
+            type: 'array',
+            of: [{ type: 'string' }],
+        }),
+        defineField({
+            name: 'author',
+            title: 'Author',
+            type: 'reference',
+            to: [{ type: 'author' }],
+        }),
+        defineField({
+            name: 'activityType',
+            title: 'Activity Type',
+            type: 'reference',
+            to: [{ type: 'activityType' }],
+        }),
         {
             name: 'location',
             title: 'Location',
@@ -38,8 +56,8 @@ export const activity = defineType({
             validation: (Rule) => Rule.required(),
         },
         defineField({
-            name: 'heroImmage',
-            title: 'Hero Image',
+            name: 'imageUrl',
+            title: 'Image Url',
             type: 'image',
             options: { hotspot: true },
         }),
