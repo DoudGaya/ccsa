@@ -6,12 +6,13 @@ import ArticleContents from './_components/ArticleContents'
 
 const Page = async ({ params }: {
   params: {
-    slug: string
+    slug: Promise<any>
   }
 }) => {
-  const { slug } = params
+  const { slug } = await params 
 
   try {
+    // @ts-ignore
     const article = await getSingleArticle(slug) as SanityTypes.Article
     return (
       <div className='flex flex-col w-full'>
