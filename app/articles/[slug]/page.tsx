@@ -1,7 +1,7 @@
 import type { SanityTypes } from "@/@types"
 import { DynamicBanner } from "@/app/components/dynamics/DynamicBanner"
 import { getSingleArticle } from "@/sanity/lib/queries"
-import type React from "react"
+import React from "react"
 import ArticleContents from "./_components/ArticleContents"
 
 interface PageProps {
@@ -10,7 +10,7 @@ interface PageProps {
   }
 }
 
-const Page: React.FC<PageProps> = async ({ params }) => {
+export default async function Page({ params }: PageProps) {
   const { slug } = params
 
   try {
@@ -29,7 +29,40 @@ const Page: React.FC<PageProps> = async ({ params }) => {
   }
 }
 
-export default Page
+
+
+// import type { SanityTypes } from "@/@types"
+// import { DynamicBanner } from "@/app/components/dynamics/DynamicBanner"
+// import { getSingleArticle } from "@/sanity/lib/queries"
+// import type React from "react"
+// import ArticleContents from "./_components/ArticleContents"
+
+// interface PageProps {
+//   params: {
+//     slug: string
+//   }
+// }
+
+// const Page: React.FC<PageProps> = async ({ params }) => {
+//   const { slug } = params
+
+//   try {
+//     const article = (await getSingleArticle(slug)) as SanityTypes.Article
+//     return (
+//       <div className="flex flex-col w-full">
+//         <DynamicBanner title={article.title} bannerImage={article.imageUrl} description={article.overview} />
+//         <div className="py-6">
+//           <ArticleContents article={article} />
+//         </div>
+//       </div>
+//     )
+//   } catch (error) {
+//     console.error("Error fetching article:", error)
+//     throw error // Let Next.js error boundary handle this
+//   }
+// }
+
+// export default Page
 
 
 
