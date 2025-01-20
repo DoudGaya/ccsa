@@ -17,7 +17,6 @@ export default async function Home() {
 
   const articles = await getAllArticles() as SanityTypes.Article[];
 
-  console.log(activities)
 
   return (
     <main className=" flex flex-col bg-gray-100 dark:bg-black">

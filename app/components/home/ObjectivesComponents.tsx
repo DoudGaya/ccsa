@@ -23,15 +23,6 @@ const prompts: Prompt[] = [
     category: "Reasearch"
   },
   {
-    id: 2,
-    title: "Capacity Building",
-    text: `Develop innovative programs to increase the capacity of
-          students, farmers, policymakers, practitioners, and other stakeholders on
-          climate-resilient practices with clear focus on agriculture
- `,
-    category: "Social"
-  },
-  {
     id: 3,
     title: "Capacity Building",
     text: `Develop innovative programs to increase the capacity of
