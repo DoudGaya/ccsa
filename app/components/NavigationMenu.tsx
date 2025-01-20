@@ -72,7 +72,7 @@ const innovationItems: { title: string; href: string; description: string }[] = 
 
 export function NavMenu() {
   return (
-    <div className="flex items-center">
+    <div className="flex bg-black/40 rounded-md items-center">
       <MobileNavMenu />
       <NavigationMenu className="hidden md:flex">
         <NavigationMenuList className=" text-white active:text-white focus:text-white focus-within:text-white">

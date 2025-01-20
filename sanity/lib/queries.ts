@@ -64,10 +64,14 @@ export const getSingleArticle = (slug: string) => {
         title,
         overview,
         _createdAt,
+        body,
         author->{
             name,
             email,
+            designation,
             'slug': slug.current,
+            bio,
+            'imageUrl': image.asset->url,
         },
         'slug' : slug.current,
         'imageUrl': image.asset->url,
@@ -75,7 +79,7 @@ export const getSingleArticle = (slug: string) => {
             name,
             'slug': slug.current
         }
-    }
+    }[0]
     `
     return client.fetch(query, {slug})
 }
@@ -101,5 +105,7 @@ export const getSinggleActivity = (slug: string) => {
         'activityType': activityType->title
     }
     `
-    return client.fetch(query, {slug})
+    const data = client.fetch(query, {slug})
+
+    console.log('Data:', data)
 }

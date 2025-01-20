@@ -1,4 +1,4 @@
-import { SanityImageAssetDocument } from "next-sanity";
+import { PortableTextProps, SanityImageAssetDocument } from "next-sanity";
 
 export namespace SanityTypes {
     export interface Article {
@@ -8,7 +8,7 @@ export namespace SanityTypes {
         overview: string;
         title: string; 
         slug: string
-        body: any;
+        body: PortableTextProps;
         type: {
             name: string;
             slug: string
@@ -38,7 +38,9 @@ export namespace SanityTypes {
     export interface Author {
         _id: string;
         name: string;
+        designation: string;
         email: string;
+        imageUrl: string;
         slug: { current: string };
         bio: string;
     }

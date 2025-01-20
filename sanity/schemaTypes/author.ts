@@ -1,4 +1,4 @@
-import { defineType } from "sanity";
+import { defineField, defineType } from "sanity";
 
 export const authorType = defineType({
     name: 'author',
@@ -26,11 +26,21 @@ export const authorType = defineType({
             },
         },
         {
+            name: 'designation',
+            title: 'Designation',
+            type: 'string',
+        },
+        {
             name: 'bio',
             title: 'Bio',
             type: 'text',
             validation: (Rule) => Rule.required(),
         },
+        defineField({
+            name: 'image',
+            title: 'Image',
+            type: 'image',
+        })
         
     ],
 })

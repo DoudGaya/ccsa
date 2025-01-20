@@ -27,7 +27,7 @@ export default function HeroSection() {
         <div className="absolute inset-0 bg-black opacity-50 dark:opacity-80" />
         <div className="relative z-10 text-center text-white px-4 sm:px-6 lg:px-8">
         <div className=" flex items-center justify-center">
-                <Image src={logo} alt='Cosmopolitan University Abuja' className=' h-36 px-0 object-left max-w-min  object-contain ' width={120} height={120} />
+              <Image src={logo} alt='Cosmopolitan University Abuja' className=' h-36 px-0 object-left max-w-min  object-contain ' width={120} height={120} />
         </div>
           <AnimatedText 
             text="Centre for Climate-Smart Agriculture (CCSA) Cosmopolitan University Abuja" 
@@ -35,7 +35,7 @@ export default function HeroSection() {
           />
           <TextCarousel 
             texts={heroTexts} 
-            className="text-xl sm:text-2xl md:text-2xl lg:text-2xl break-words"
+            className="text-xl sm:text-2xl font-blog md:text-2xl lg:text-2xl break-words"
           />
           <div className=" w-full flex justify-center space-x-4 mt-8">
             <Link href={'/about'} className="px-6 space-x-3 group items-center py-3 flex  ease-in-out delay-150 duration-150 hover:bg-[rgb(0,58,103)] hover:text-white  bg-white text-black rounded-lg font-medium transition-all">

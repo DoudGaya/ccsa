@@ -13,7 +13,11 @@ export default {
   			poppins: [
   				'Poppins',
   				'sans-serif'
-  			]
+  			],
+			'blog': [
+				'PT Serif',
+				'sans-serif'
+			]
   		},
   		colors: {
   			background: 'hsl(var(--background))',
@@ -87,5 +91,7 @@ export default {
   		}
   	}
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"),
+	require('@tailwindcss/typography'),
+  ],
 } satisfies Config;

@@ -1,25 +1,18 @@
 import { SanityTypes } from '@/@types'
 import { DynamicBanner } from '@/app/components/dynamics/DynamicBanner'
 import { getSingleArticle } from '@/sanity/lib/queries'
-import { notFound } from 'next/navigation'
 import React from 'react'
+import ArticleContents from './_components/ArticleContents'
 
 const Page = async ({ params }: {
   params: {
     slug: string
   }
 }) => {
-  const { slug } = await params  
-
-  // if (!slug) {
-  //   notFound()
-  // }
+  const { slug } = params
 
   try {
     const article = await getSingleArticle(slug) as SanityTypes.Article
-    
-  
-
     return (
       <div className='flex flex-col w-full'>
         <DynamicBanner 
@@ -27,6 +20,9 @@ const Page = async ({ params }: {
           bannerImage={article.imageUrl} 
           description={article.overview} 
         />
+       <div className=" py-6">
+          <ArticleContents article={article} />
+       </div>
       </div>
     )
   } catch (error) {
