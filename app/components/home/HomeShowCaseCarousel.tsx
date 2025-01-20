@@ -87,7 +87,7 @@ export default function HomeShowCaseCarousel() {
                 <p className='text-lg max-w-4xl mx-auto text-center text-gray-600 dark:text-gray-400'>
                 To drive the transformation of agriculture in Sub-Saharan Africa by advancing
                 climate-smart practices through cutting-edge research, innovative education,
-                and collaborative partnerships, fostering resilience, enhancing capacity, and
+                collaborative partnerships, fostering resilience, enhancing capacity, and
                 ensuring sustainability in agricultural systems to mitigate the impacts of climate
                 change and promote food security, livelihoods, and environmental
                 conservation.
