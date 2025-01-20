@@ -6,10 +6,10 @@ import ArticleContents from './_components/ArticleContents'
 
 const Page = async ({ params }: {
   params: {
-    slug: Promise<any>
+    slug: string
   }
 }) => {
-  const { slug } = await params 
+  const { slug } = params 
 
   try {
     // @ts-ignore
