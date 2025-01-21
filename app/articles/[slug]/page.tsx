@@ -15,7 +15,7 @@ export default async function Page({
   params,
   searchParams,
 }: PageProps) {
-  const { slug } = params;
+  const { slug } = await params
 
   try {
     const article = (await getSingleArticle(slug)) as SanityTypes.Article;
