@@ -3,6 +3,8 @@
 import * as React from "react"
 import Link from "next/link"
 import { Menu } from 'lucide-react'
+import { corporateGovernance, mediaItems, publicationsItems, researchItems } from "./NavigationMenu"
+import { innovationItems } from "./NavigationMenu"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -24,17 +26,6 @@ const aboutItems = [
   { title: "Partnerships", href: "/about/partnerships" },
 ]
 
-const researchItems = [
-  { title: "Climate-Smart Technologies", href: "/research/climate-smart-tech" },
-  { title: "Sustainable Irrigation", href: "/research/sustainable-irrigation" },
-  { title: "Hybrid Crops", href: "/research/hybrid-crops" },
-]
-
-const innovationItems = [
-  { title: "Digital Platforms", href: "/innovation/digital-platforms" },
-  { title: "Agri-tech Tools", href: "/innovation/agri-tech-tools" },
-  { title: "Farmer Incubation", href: "/innovation/farmer-incubation" },
-]
 
 export function MobileNavMenu() {
   const [open, setOpen] = React.useState(false)
@@ -47,21 +38,35 @@ export function MobileNavMenu() {
           <span className="sr-only">Toggle Menu</span>
         </Button>
       </SheetTrigger>
-      <SheetContent side="left" className="pr-0 px-6">
-        <SheetTitle className="text-left">Navigation</SheetTitle>
+      <SheetContent side="left" className="pr-0 overflow-y-auto px-6">
+        {/* <SheetTitle className="text-left">Navigation</SheetTitle> */}
         <MobileLink href="/" className="flex items-center" onOpenChange={setOpen}>
           <span className="font-bold">CCSA</span>
         </MobileLink>
         <Accordion type="multiple" className="w-full">
           <AccordionItem value="about">
-            <AccordionTrigger>About CCSA</AccordionTrigger>
+            <AccordionTrigger>About</AccordionTrigger>
             <AccordionContent>
               <div className="flex flex-col space-y-4">
+
+              <div className=" flex flex-col">
+                <div className=" uppercase">Corporate Governance</div>
+                {corporateGovernance.map((item) => (
+                    <MobileLink key={item.href} href={item.href} className=" px-3 py-2" onOpenChange={setOpen}>
+                      {item.title}
+                    </MobileLink>
+                  ))}
+               </div>
+
+
+               <div className=" flex flex-col">
+                <div className=" uppercase">About CCSA</div>
                 {aboutItems.map((item) => (
-                  <MobileLink key={item.href} href={item.href} className=" py-2" onOpenChange={setOpen}>
-                    {item.title}
-                  </MobileLink>
-                ))}
+                    <MobileLink key={item.href} href={item.href} className=" px-3 py-2" onOpenChange={setOpen}>
+                      {item.title}
+                    </MobileLink>
+                  ))}
+               </div>
               </div>
             </AccordionContent>
           </AccordionItem>
@@ -70,8 +75,32 @@ export function MobileNavMenu() {
             <AccordionContent>
               <div className="flex flex-col space-y-2">
                 {researchItems.map((item) => (
-                  <MobileLink key={item.href} href={item.href} onOpenChange={setOpen}>
+                  <MobileLink key={item.href} className=" px-3 " href={item.href} onOpenChange={setOpen}>
                     {item.title}
+                  </MobileLink>
+                ))}
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+          <AccordionItem value="publications">
+            <AccordionTrigger>Publications</AccordionTrigger>
+            <AccordionContent>
+              <div className="flex flex-col space-y-2">
+                {publicationsItems.map((item) => (
+                  <MobileLink key={item} className=" px-3" href={`/publications/${item.toLowerCase().replace(/ /g, "-")}`} onOpenChange={setOpen}>
+                    {item}
+                  </MobileLink>
+                ))}
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+          <AccordionItem value="media">
+            <AccordionTrigger>Media</AccordionTrigger>
+            <AccordionContent>
+              <div className="flex flex-col space-y-2">
+                {mediaItems.map((item) => (
+                  <MobileLink key={item} className=" px-3" href={`/media/${item.toLowerCase().replace(/ /g, "-")}`} onOpenChange={setOpen}>
+                    {item}
                   </MobileLink>
                 ))}
               </div>
@@ -82,7 +111,7 @@ export function MobileNavMenu() {
             <AccordionContent>
               <div className="flex flex-col space-y-2">
                 {innovationItems.map((item) => (
-                  <MobileLink key={item.href} href={item.href} onOpenChange={setOpen}>
+                  <MobileLink key={item.href} className=" px-3" href={item.href} onOpenChange={setOpen}>
                     {item.title}
                   </MobileLink>
                 ))}
@@ -127,4 +156,3 @@ function MobileLink({
     </Link>
   )
 }
-

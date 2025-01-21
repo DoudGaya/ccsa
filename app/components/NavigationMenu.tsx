@@ -33,7 +33,17 @@ const aboutItems: { title: string; href: string; description: string }[] = [
   },
 ]
 
-const corporateGovernance = [
+export const publicationsItems = [
+  "Policy Brief",
+  "Project Report",
+  "Annual Report",
+  "Journal Article/ Book Chapter",
+  "Conference and Seminar Presentation",
+  "Case Study",
+  "Github Repository",
+]
+
+export const corporateGovernance = [
   {
     title: "Advistory Board",
     href: "/about/advisory-board",
@@ -66,25 +76,42 @@ const corporateGovernance = [
   }
 ]
 
-const researchItems: { title: string; href: string; description: string }[] = [
+export const researchItems: { title: string; href: string; description: string }[] = [
   {
-    title: "Climate-Smart Technologies",
-    href: "/research/climate-smart-tech",
-    description: "Developing and testing innovative agricultural technologies for improved resilience.",
+    title: "Climate-Smart Agriculture",
+    description:
+      "Sustainably Advance Climate-Smart Agricultural Practices for Enhanced Food and Nutrition Security.",
+    href: "/research/climate-smart-agriculture",
   },
   {
-    title: "Sustainable Irrigation",
-    href: "/research/sustainable-irrigation",
-    description: "Refining water management systems for optimal resource utilization.",
+    title: "Digital Agriculture",
+    description:
+      "Leverage CU emerging technologies at the maker space to promote digital and data analytics transformation in Agriculture.",
+    href: "/research/digital-agriculture",
   },
   {
-    title: "Hybrid Crops",
-    href: "/research/hybrid-crops",
-    description: "Breeding climate-resistant crop varieties to enhance food security.",
+    title: "Ag-Entrepreneurship",
+    description:
+      "Provide training and capacity-building programs for farmers, extension agents, and other stakeholders.",
+    href: "/research/ag-entrepreneurship",
+  },
+  {
+    title: "Policy and Advocacy",
+    description:
+      "Promote resilience and adaptation to environmental changes through policy, advocacy and stakeholder engagement.",
+    href: "/research/policy-advocacy",
+  },
+  {
+    title: "Partnerships",
+    description:
+      "Foster partnerships with national and international organizations to leverage resources and expertise.",
+    href: "/research/partnerships",
   },
 ]
 
-const innovationItems: { title: string; href: string; description: string }[] = [
+export const mediaItems = ["Photos", "Documentaries", "Interviews", "YouTube", "Webinar", "Activities", "Live TV", "News And Events"]
+
+export const innovationItems: { title: string; href: string; description: string }[] = [
   {
     title: "Digital Platforms",
     href: "/innovation/digital-platforms",
@@ -159,38 +186,7 @@ export function NavMenu() {
           <NavigationMenuTrigger>Research</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-              {[
-                {
-                  title: "Climate-Smart Agriculture",
-                  description:
-                    "Sustainably Advance Climate-Smart Agricultural Practices for Enhanced Food and Nutrition Security.",
-                  href: "/research/climate-smart-agriculture",
-                },
-                {
-                  title: "Digital Agriculture",
-                  description:
-                    "Leverage CU emerging technologies at the maker space to promote digital and data analytics transformation in Agriculture.",
-                  href: "/research/digital-agriculture",
-                },
-                {
-                  title: "Ag-Entrepreneurship",
-                  description:
-                    "Provide training and capacity-building programs for farmers, extension agents, and other stakeholders.",
-                  href: "/research/ag-entrepreneurship",
-                },
-                {
-                  title: "Policy and Advocacy",
-                  description:
-                    "Promote resilience and adaptation to environmental changes through policy, advocacy and stakeholder engagement.",
-                  href: "/research/policy-advocacy",
-                },
-                {
-                  title: "Partnerships",
-                  description:
-                    "Foster partnerships with national and international organizations to leverage resources and expertise.",
-                  href: "/research/partnerships",
-                },
-              ].map((item) => (
+              {researchItems.map((item) => (
                 <ListItem key={item.title} title={item.title} href={item.href}>
                   {item.description}
                 </ListItem>
@@ -202,15 +198,7 @@ export function NavMenu() {
           <NavigationMenuTrigger>Publications</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-              {[
-                "Policy Brief",
-                "Project Report",
-                "Annual Report",
-                "Journal Article/ Book Chapter",
-                "Conference and Seminar Presentation",
-                "Case Study",
-                "Github Repository",
-              ].map((item) => (
+              {publicationsItems.map((item) => (
                 <ListItem key={item} title={item} href={`/publications/${item.toLowerCase().replace(/ /g, "-")}`}>
                   {item}
                 </ListItem>
@@ -222,7 +210,7 @@ export function NavMenu() {
           <NavigationMenuTrigger>Media</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-3 lg:w-[600px]">
-              {["Photos", "Documentaries", "Interviews", "YouTube", "Webinar", "Activities", "Live TV", "News And Events"].map(
+              {mediaItems.map(
                 (item) => (
                   <ListItem key={item} title={item} href={`/media/${item.toLowerCase().replace(/ /g, "-")}`}>
                     {item}
@@ -242,18 +230,7 @@ export function NavMenu() {
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
-          {/* <NavigationMenuItem>
-            <NavigationMenuTrigger>Research</NavigationMenuTrigger>
-            <NavigationMenuContent>
-              <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                {researchItems.map((item) => (
-                  <ListItem key={item.title} title={item.title} href={item.href}>
-                    {item.description}
-                  </ListItem>
-                ))}
-              </ul>
-            </NavigationMenuContent>
-          </NavigationMenuItem> */}
+
           <NavigationMenuItem>
             <NavigationMenuTrigger>Innovation Hub</NavigationMenuTrigger>
             <NavigationMenuContent>
