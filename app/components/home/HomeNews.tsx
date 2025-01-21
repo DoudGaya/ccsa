@@ -75,7 +75,7 @@ export default function HomeNews( {
                   <Link
                     key={`${setIndex}-${index}`}
                     href={`/articles/${event.slug}`}
-                    className="flex items-center flex-col bg-gray-100 cursor-pointer group group-hover:bg-gray-200 rounded-lg py-6 space-y-3 px-4 justify-center w-[500px] h-[400px]"
+                    className="flex items-center flex-col bg-gray-100 dark:bg-gray-900 cursor-pointer group group-hover:bg-gray-200 rounded-lg py-6 space-y-3 px-4 justify-center w-[500px] h-[400px]"
                   >
                   <div className=" overflow-hidden bg-[#202020] h-full w-full rounded-lg">
                   <Image
@@ -89,8 +89,8 @@ export default function HomeNews( {
                   <div className=" flex flex-col space-y-2 px-1 group-hover:opacity-100 items-start w-full">
                     <p className={
                       `text-xs px-4 py-0.5 rounded-xl 
-                      ${event.type.slug === 'post' ? 'bg-green-200 text-green-900' :
-                        event.type.slug === 'update' ? ' bg-purple-500' : ' bg-gray-900 text-gray-400'} `}
+                      ${event.type.slug === 'post' ? 'bg-green-400/40 dark:text-green-50 text-green-900' :
+                        event.type.slug === 'update' ? ' bg-purple-500' : ' bg-gray-900 dark:bg-gray-700 text-gray-400'} `}
                       >{ event.type.name}</p>
                     {/* <p className='text-xs'>{ event._createdAt }</p> */}
                     <h3 className=' text-md w-full font-poppins'>{ event.title }</h3>
