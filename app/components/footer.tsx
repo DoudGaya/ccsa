@@ -29,7 +29,7 @@ export default function Footer() {
               <li><Link href="#" className="text-sm hover:text-green-400 transition-colors">Knowledge Repository</Link></li>
             </ul>
           </div>
-          <div>
+          {/* <div>
             <h3 className="text-lg font-semibold mb-4">Partners</h3>
             <ul className="space-y-2">
               <li><Link href="https://www.ifad.org/" className="text-sm hover:text-green-400 transition-colors">IFAD</Link></li>
@@ -37,7 +37,7 @@ export default function Footer() {
               <li><Link href="https://www.afdb.org/" className="text-sm hover:text-green-400 transition-colors">AfDB</Link></li>
               <li><Link href="http://www.fao.org/" className="text-sm hover:text-green-400 transition-colors">FAO</Link></li>
             </ul>
-          </div>
+          </div> */}
           <div>
             <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
             <p className="text-sm text-gray-300 mb-2">Cosmopolitan University, Abuja</p>
