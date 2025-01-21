@@ -6,16 +6,14 @@ import ArticleContents from "./_components/ArticleContents";
 
 interface PageProps {
   params: {
-    slug: string;
+    slug: Promise<string>;
   };
-  searchParams: { [key: string]: string | string[] | undefined };
 }
 
 export default async function Page({
-  params,
-  searchParams,
-}: PageProps) {
+  params }: any) {
   const { slug } = await params
+
 
   try {
     const article = (await getSingleArticle(slug)) as SanityTypes.Article;
