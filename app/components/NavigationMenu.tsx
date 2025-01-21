@@ -33,6 +33,39 @@ const aboutItems: { title: string; href: string; description: string }[] = [
   },
 ]
 
+const corporateGovernance = [
+  {
+    title: "Advistory Board",
+    href: "/about/advisory-board",
+    description: "Meet our advisory board members and their contributions.",
+  },
+  {
+    title: "Management Team",
+    href: "/about/management-team",
+    description: "Meet the team driving the Centre's research and innovation initiatives.",
+  },
+  {
+    title: "Research Fellows",
+    href: "/about/research-fellows",
+    description: "Meet our research fellows and learn about their areas of expertise.",
+  },
+  {
+    title: "Standings Committees",
+    href: "/about/standing-committees",
+    description: "Learn about the committees that oversee the Centre's operations and activities.",
+  },
+  {
+    title: "Research Ethics",
+    href: "/about/research-ethics",
+    description: "Our commitment to ethical research practices and data privacy.",
+  },
+  {
+    title: "Work Ethics",
+    href: "/about/work-ethics",
+    description: "Our commitment to fostering a safe and inclusive work environment.",
+  }
+]
+
 const researchItems: { title: string; href: string; description: string }[] = [
   {
     title: "Climate-Smart Technologies",
@@ -72,38 +105,144 @@ const innovationItems: { title: string; href: string; description: string }[] = 
 
 export function NavMenu() {
   return (
-    <div className="flex bg-black/40 rounded-md items-center">
-      <MobileNavMenu />
+    <div className="flex rounded-md items-center">
+      <MobileNavMenu  />
       <NavigationMenu className="hidden md:flex">
         <NavigationMenuList className=" text-white active:text-white focus:text-white focus-within:text-white">
-          <NavigationMenuItem>
-            <NavigationMenuTrigger>About CCSA</NavigationMenuTrigger>
-            <NavigationMenuContent>
-              <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[600px] lg:grid-cols-2">
-                <li className="row-span-3">
-                  <NavigationMenuLink asChild>
-                    <a
-                      className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                      href="/about"
+          <NavigationMenuItem dir="right">
+            <NavigationMenuTrigger>About</NavigationMenuTrigger>
+            <NavigationMenuContent dir="right">
+              <ul className="grid gap-3 p-6 md:w-[500px] lg:w-[800px] lg:grid-cols-3">
+                <div className="row-span-3 col-span-2 w-full">
+                  {/* <NavigationMenuLink asChild> */}
+                    <div
+                      className="flex p-2 w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted no-underline outline-none focus:shadow-md"
+                     
                     >
-                      <div className="mb-2 mt-4 text-lg font-medium">
-                        Centre for Climate-Smart Agriculture
-                      </div>
-                      <p className="text-sm leading-tight text-muted-foreground">
-                        Advancing sustainable and resilient agricultural practices through research, innovation, and collaboration.
-                      </p>
+                      <a href="/about" className="mb-2 text-lg font-medium">
+                        Corporate Governance
+                      </a>
+                      
+                      <ul className=" grid col-span-2 gap-4 grid-cols-2">
+                          {corporateGovernance.map((item) => (
+                          <ListItem key={item.title} className=" px-2" title={item.title} href={item.href}>
+                            {item.description}
+                          </ListItem>
+                        ))}
+                      </ul>
+                    </div>
+                  
+                  {/* </NavigationMenuLink> */}
+                </div>
+                <div className=" w-full ">
+                <div
+                      className="flex w-full select-none flex-col justify-end rounded-md px-4 py-6 no-underline outline-none focus:shadow-md"
+                     
+                    >
+                       <a href="/about" className="mb-2 text-lg font-medium">
+                          About CCSA
                     </a>
-                  </NavigationMenuLink>
-                </li>
-                {aboutItems.map((item) => (
-                  <ListItem key={item.title} title={item.title} href={item.href}>
-                    {item.description}
-                  </ListItem>
-                ))}
+               <ul className=" ">
+               
+                  {aboutItems.map((item) => (
+                      <ListItem key={item.title} className=" px-2" title={item.title} href={item.href}>
+                        {item.description}
+                      </ListItem>
+                    ))}
+               </ul>
+                </div>
+              </div>
               </ul>
             </NavigationMenuContent>
           </NavigationMenuItem>
           <NavigationMenuItem>
+          <NavigationMenuTrigger>Research</NavigationMenuTrigger>
+          <NavigationMenuContent>
+            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+              {[
+                {
+                  title: "Climate-Smart Agriculture",
+                  description:
+                    "Sustainably Advance Climate-Smart Agricultural Practices for Enhanced Food and Nutrition Security.",
+                  href: "/research/climate-smart-agriculture",
+                },
+                {
+                  title: "Digital Agriculture",
+                  description:
+                    "Leverage CU emerging technologies at the maker space to promote digital and data analytics transformation in Agriculture.",
+                  href: "/research/digital-agriculture",
+                },
+                {
+                  title: "Ag-Entrepreneurship",
+                  description:
+                    "Provide training and capacity-building programs for farmers, extension agents, and other stakeholders.",
+                  href: "/research/ag-entrepreneurship",
+                },
+                {
+                  title: "Policy and Advocacy",
+                  description:
+                    "Promote resilience and adaptation to environmental changes through policy, advocacy and stakeholder engagement.",
+                  href: "/research/policy-advocacy",
+                },
+                {
+                  title: "Partnerships",
+                  description:
+                    "Foster partnerships with national and international organizations to leverage resources and expertise.",
+                  href: "/research/partnerships",
+                },
+              ].map((item) => (
+                <ListItem key={item.title} title={item.title} href={item.href}>
+                  {item.description}
+                </ListItem>
+              ))}
+            </ul>
+          </NavigationMenuContent>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <NavigationMenuTrigger>Publications</NavigationMenuTrigger>
+          <NavigationMenuContent>
+            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+              {[
+                "Policy Brief",
+                "Project Report",
+                "Annual Report",
+                "Journal Article/ Book Chapter",
+                "Conference and Seminar Presentation",
+                "Case Study",
+                "Github Repository",
+              ].map((item) => (
+                <ListItem key={item} title={item} href={`/publications/${item.toLowerCase().replace(/ /g, "-")}`}>
+                  {item}
+                </ListItem>
+              ))}
+            </ul>
+          </NavigationMenuContent>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <NavigationMenuTrigger>Media</NavigationMenuTrigger>
+          <NavigationMenuContent>
+            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-3 lg:w-[600px]">
+              {["Photos", "Documentaries", "Interviews", "YouTube", "Webinar", "Activities", "Live TV", "News And Events"].map(
+                (item) => (
+                  <ListItem key={item} title={item} href={`/media/${item.toLowerCase().replace(/ /g, "-")}`}>
+                    {item}
+                  </ListItem>
+                ),
+              )}
+            </ul>
+          </NavigationMenuContent>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <NavigationMenuTrigger>Trainings</NavigationMenuTrigger>
+          <NavigationMenuContent>
+            <ul className="grid w-[400px] gap-3 p-4">
+              <ListItem title="Agribusiness Proficiency Course" href="/trainings/agribusiness-proficiency-course">
+                Comprehensive training for agricultural business management and entrepreneurship.
+              </ListItem>
+            </ul>
+          </NavigationMenuContent>
+        </NavigationMenuItem>
+          {/* <NavigationMenuItem>
             <NavigationMenuTrigger>Research</NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
@@ -114,7 +253,7 @@ export function NavMenu() {
                 ))}
               </ul>
             </NavigationMenuContent>
-          </NavigationMenuItem>
+          </NavigationMenuItem> */}
           <NavigationMenuItem>
             <NavigationMenuTrigger>Innovation Hub</NavigationMenuTrigger>
             <NavigationMenuContent>
@@ -127,20 +266,7 @@ export function NavMenu() {
               </ul>
             </NavigationMenuContent>
           </NavigationMenuItem>
-          <NavigationMenuItem>
-            <Link href="/news" legacyBehavior passHref>
-              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                 News
-              </NavigationMenuLink>
-            </Link>
-          </NavigationMenuItem>
-          <NavigationMenuItem>
-            <Link href="/knowledge-hub" legacyBehavior passHref>
-              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                Activities
-              </NavigationMenuLink>
-            </Link>
-          </NavigationMenuItem>
+         
           <NavigationMenuItem>
             <Link href="/contact" legacyBehavior passHref>
               <NavigationMenuLink className={navigationMenuTriggerStyle()}>

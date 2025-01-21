@@ -23,7 +23,7 @@ const prompts: Prompt[] = [
     category: "Reasearch"
   },
   {
-    id: 3,
+    id: 2,
     title: "Capacity Building",
     text: `Develop innovative programs to increase the capacity of
           students, farmers, policymakers, practitioners, and other stakeholders on
@@ -32,7 +32,7 @@ const prompts: Prompt[] = [
     category: "Social"
   },
   {
-    id: 4,
+    id: 3,
     title: "Public-private partnerships (PPPs)",
     text: `
        Implement impactful projects by
@@ -42,7 +42,7 @@ const prompts: Prompt[] = [
     category: "Social"
   },
   {
-    id: 5,
+    id: 4,
     title: "Policy and Advocacy",
     text: `
       Collaborate with government, civil society
@@ -52,8 +52,8 @@ const prompts: Prompt[] = [
     category: "Social"
   },
   {
-    id: 6,
-    title: "Policy and Advocacy",
+    id: 5,
+    title: "Digital Transformation",
     text: `
        Leverage emerging technologies such as cloud
         computing, mobile technologies, AI and data analytics, IoT, satellite
@@ -96,7 +96,7 @@ function PromptCard({ prompt }: { prompt: Prompt }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-50px' }}
       whileHover={{ scale: 1.02 }}
-      className={`group relative overflow-hidden ${(prompt.id == 5 || prompt.id == 6) && 'md:col-span-2'} `}
+      className={`group relative overflow-hidden ${prompt.id === 5 ? 'md:col-span-4' : ''}`}
     >
       <motion.div
         className="bg-zinc-900/90 p-6 h-full border text-center border-zinc-800 cursor-pointer 
