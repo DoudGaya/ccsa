@@ -1,7 +1,7 @@
 import { StaticImageData } from 'next/image';
 import React from 'react'
 
-export const DynamicBanner = ( {
+export const AboutBanner = ( {
     bannerImage,
     title,
 }: {
