@@ -4,9 +4,9 @@ import researchImage from '@/public/research-banner.jpg'
 
 const page = async ({
     params
-}: {params: { slug: string } }) => {
+}: {params: any }) => {
 
-    const { slug } = await params
+    const { slug }: {slug: string} = await params 
     const pageTitle = slug.replace(/-/g, ' ').replace(/^\w/, char => char.toUpperCase())
 
   return (
