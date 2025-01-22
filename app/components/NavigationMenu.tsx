@@ -78,19 +78,19 @@ export const corporateGovernance = [
 
 export const researchItems: { title: string; href: string; description: string }[] = [
   {
-    title: "Climate-Smart Agriculture",
+    title: "Sustainable Practice",
     description:
       "Sustainably Advance Climate-Smart Agricultural Practices for Enhanced Food and Nutrition Security.",
     href: "/research/climate-smart-agriculture",
   },
   {
-    title: "Digital Agriculture",
+    title: "Emerging Technologies",
     description:
       "Leverage CU emerging technologies at the maker space to promote digital and data analytics transformation in Agriculture.",
     href: "/research/digital-agriculture",
   },
   {
-    title: "Ag-Entrepreneurship",
+    title: "Agri-Entrepreneurship",
     description:
       "Provide training and capacity-building programs for farmers, extension agents, and other stakeholders.",
     href: "/research/ag-entrepreneurship",
@@ -212,9 +212,9 @@ export function NavMenu() {
             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-3 lg:w-[600px]">
               {mediaItems.map(
                 (item) => (
-                  <ListItem key={item} title={item} href={`/media/${item.toLowerCase().replace(/ /g, "-")}`}>
+                  <Link key={item} title={item} href={`/media/${item.toLowerCase().replace(/ /g, "-")}`}>
                     {item}
-                  </ListItem>
+                  </Link>
                 ),
               )}
             </ul>
