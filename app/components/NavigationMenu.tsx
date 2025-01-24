@@ -87,7 +87,7 @@ export const researchItems: { title: string; href: string; description: string }
     title: "Emerging Technologies",
     description:
       "Leverage CU emerging technologies at the maker space to promote digital and data analytics transformation in Agriculture.",
-    href: "/research/digital-agriculture",
+    href: "/research/emerging-technologies",
   },
   {
     title: "Agri-Entrepreneurship",
