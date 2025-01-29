@@ -244,6 +244,15 @@ export function NavMenu() {
             </NavigationMenuContent>
           </NavigationMenuItem>
          
+         
+
+          <NavigationMenuItem>
+            <Link href="/news-and-events" legacyBehavior passHref>
+              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                News and Events
+              </NavigationMenuLink>
+            </Link>
+          </NavigationMenuItem>
           <NavigationMenuItem>
             <Link href="/contact" legacyBehavior passHref>
               <NavigationMenuLink className={navigationMenuTriggerStyle()}>
