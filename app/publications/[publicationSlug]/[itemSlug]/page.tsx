@@ -6,7 +6,9 @@ type Params = {
   itemSlug: string
 }
 
-const page = async (params: Promise<any>) => {
+const page = async (
+  { params }: { params: Promise<any> }
+) => {
 
 
 
