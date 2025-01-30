@@ -2,14 +2,20 @@ import React from 'react'
 
 
 type Params = {
-  itemSlug : string
+  publicationSlug: string
+  itemSlug: string
 }
 
-const page = async (params: Promise<Params>) => {
+const page = async (params: Promise<any>) => {
 
-    const { itemSlug } = await params
+
+
+  console.log(params)
+  
+  const { publicationSlug } = await params
+  console.log(publicationSlug)
   return (
-    <div className=' text-2xl'> {itemSlug} </div>
+    <div className=' text-2xl'> {'ello world '} </div>
   )
 }
 
