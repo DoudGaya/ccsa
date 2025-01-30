@@ -3,11 +3,12 @@ import { InnovationBanner } from '../_components/InnovationBanner'
 import innovationBannerImmage from '@/public/innovation-banner.jpg'
 
 
+
 const pageData = {
-    title: "Digital Platforms",
+    title: "Farmer Incubation",
     description:
-      "We have state-of-the-art Digital Platforms",
-    href: "/media/interviews",
+      "We are incubating farmers to improve their farming practices",
+    href: "/media/farmer-incubation",
   }
 
 const page = () => {

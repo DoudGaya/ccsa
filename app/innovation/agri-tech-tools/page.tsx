@@ -4,9 +4,9 @@ import innovationBannerImmage from '@/public/innovation-banner.jpg'
 
 
 const pageData = {
-    title: "Digital Platforms",
+    title: "Agri-Tech Tools",
     description:
-      "We have state-of-the-art Digital Platforms",
+      "We are developing and leveraging Agri-Tech Tools to improve farming practices",
     href: "/media/interviews",
   }
 
@@ -17,6 +17,7 @@ const page = () => {
         bannerImage={innovationBannerImmage.src}
         description={pageData.description}
         title={pageData.title}
+
         />
     </div>
   )

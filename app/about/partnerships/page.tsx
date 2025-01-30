@@ -7,8 +7,8 @@ const page = () => {
     <div className=' flex flex-col items-center justify-center'>
       <AboutBanner 
         bannerImage={aboutBannerImage.src}
-        title='Research Ethics'
-        description='Learn about our research ethics in Centre for Climate-Smart Agriculture (Cosmopolitan University Abuja)'
+        title='Partnerships'
+        description='Learn about our strategic partnerships with other organizations'
       />
 
       <div className=" py-20 ">
