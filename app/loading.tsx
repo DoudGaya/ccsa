@@ -5,7 +5,7 @@ import Image from 'next/image'
 
 const loading = () => {
   return (
-    <div className='h-screen flex dark:bg-black items-center justify-center w-full bg-white'>
+    <div className='h-screen flex z-50 dark:bg-black items-center justify-center w-full bg-white'>
       <Image src={logo} alt='Cosmopolitan University Abuja' className=' h-12 px-0 object-left max-w-min  object-contain ' width={300} height={300} />
     </div>
   )

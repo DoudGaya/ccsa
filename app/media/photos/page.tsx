@@ -1,5 +1,6 @@
 import React from 'react'
 import { MediaBanner } from '../_componentss/MediaBanner'
+import mediaBannerImage from '@/public/media-banner.jpg'
 
 
 const bannerData =   {
@@ -14,7 +15,7 @@ const page = () => {
   return (
     <div className='flex flex-col items-center justify-center'>
         <MediaBanner 
-            bannerImage='/images/photos-banner.jpg'
+            bannerImage={mediaBannerImage.src}
             title={bannerData.title}
             description={bannerData.description}
         />

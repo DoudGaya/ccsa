@@ -4,10 +4,10 @@ import MediaBannnerIMG from '@/public/media-banner.jpg'
 
 
 const pageData = {
-    title: "Interviews",
+    title: "Activities",
     description:
-      "We currently have no interview",
-    href: "/media/interviews",
+      "We currently have no activities",
+    href: "/media/activities",
   }
 
 const page = () => {

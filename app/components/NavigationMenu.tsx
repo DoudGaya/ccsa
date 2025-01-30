@@ -34,13 +34,13 @@ const aboutItems: { title: string; href: string; description: string }[] = [
 ]
 
 export const publicationsItems = [
-  "Policy Brief",
-  "Project Report",
-  "Annual Report",
-  "Journal Article/ Book Chapter",
-  "Conference and Seminar Presentation",
-  "Case Study",
-  "Github Repository",
+  "Policy Briefs",
+  "Project Reports",
+  "Annual Reports",
+  "Journal Articles or Book Chapters",
+  "Conference and Seminar Presentations",
+  "Case Studies",
+  "Github Repositories",
 ]
 
 export const corporateGovernance = [
@@ -109,7 +109,7 @@ export const researchItems: { title: string; href: string; description: string }
   },
 ]
 
-export const mediaItems = ["Photos", "Documentaries", "Interviews", "YouTube", "Webinar", "Activities", "Live TV", "News And Events"]
+export const mediaItems = ["Photos", "Documentaries", "Interviews", "YouTube", "Webinar", "Activities", "Live TV"]
 
 export const innovationItems: { title: string; href: string; description: string }[] = [
   {

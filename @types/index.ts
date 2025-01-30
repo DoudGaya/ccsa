@@ -18,6 +18,28 @@ export namespace SanityTypes {
         author: Author;
     }
 
+    export interface PublicationType {
+        _id: string;
+        _createdAt: Date;
+        _updatedAt: Date;
+        title: string;
+        description: string;
+        slug: string;
+    }
+
+    export interface Publication {
+        _id: string;
+        _createdAt: Date;
+        _updatedAt: Date;
+        title: string;
+        description: string;
+        slug: string;
+        author: Author;
+        date: Date;
+        publicationType: PublicationType;
+        tags: string[];
+    }
+
     export interface Activity {
         _id: string;
         _createdAt: Date;
