@@ -27,6 +27,32 @@ export namespace SanityTypes {
         slug: string;
     }
 
+
+    export interface MemberType {
+        _id: string;
+        _createdAt: Date;
+        _updatedAt: Date;
+        title: string;
+        description: string;
+        slug: string;
+    }
+
+    export interface Member {
+        _id: string;
+        _createdAt: Date;
+        _updatedAt: Date;
+        name: string;
+        email: string;
+        slug: string;
+        role: string;
+        facebook: string;
+        twitter: string;
+        linkedin: string;
+        memberType: MemberType;
+        bio: string;
+        imageUrl: string;
+    }
+
     export interface Publication {
         _id: string;
         _createdAt: Date;

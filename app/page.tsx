@@ -25,7 +25,6 @@ export default async function Home() {
       <HomeNews articles={articles} />
       <ObjectivesComponents />
       <HomeActivity activities={activities} />
-      {/* <PartnersScroll /> */}
       <CallToAction />
     </main>
   );

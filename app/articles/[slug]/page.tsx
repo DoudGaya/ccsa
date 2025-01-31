@@ -5,14 +5,14 @@ import React from "react";
 import ArticleContents from "./_components/ArticleContents";
 
 interface PageProps {
-  params: {
-    slug: Promise<string>;
-  };
+  slug: string;
 }
 
 export default async function Page({
-  params }: any) {
+  params }: {params: Promise<PageProps>}) {
   const { slug } = await params
+  
+
 
 
   try {
