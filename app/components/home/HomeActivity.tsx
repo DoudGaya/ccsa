@@ -6,6 +6,7 @@ import Image, { StaticImageData } from 'next/image'
 import Link from 'next/link'
 import { Button } from "@/components/ui/button"
 import { SanityTypes } from '@/@types'
+import SingleActivity from '@/app/activities/_components/SingleActivity'
 
 
 
@@ -68,35 +69,10 @@ export default function HomeActivity( {
             }}
             className="flex gap-16 mx-4"
           >
-            {/* First Set of Logos */}
-            {[...Array(2)].map((_, setIndex) => (
+            {[...Array(4)].map((_, setIndex) => (
               <div key={setIndex} className="flex space-x-16 ">
                 {activities.map((event, index) => (
-                  <Link
-                    key={`${setIndex}-${index}`}
-                    href={`/articles/${event.slug}`}
-                    className="flex items-center flex-col cursor-pointer group group-hover:bg-gray-200 rounded-lg py-6 space-y-3 px-4 justify-center w-[300px] h-[400px]"
-                  >
-                  <div className=" overflow-hidden bg-[#202020] h-full w-full rounded-lg">
-                  <Image
-                      src={event.imageUrl}
-                      alt={event.title}
-                      width={600}
-                      height={600}
-                      className="opacity-70 group-hover:opacity-100 h-full w-full object-cover transition-opacity group-hover:grayscale-0"
-                    />
-                  </div>
-                  <div className=" flex flex-col px-1 group-hover:opacity-100 items-start w-full">
-                    <p className={
-                      `text-xs px-4 py-0.5 rounded-xl 
-                      ${event.activityType.slug === 'event' ? 'bg-green-500' :
-                        event.activityType.slug === 'announcement' ? 'bg-yellow-500' :
-                        event.activityType.slug === 'Update' ? ' bg-purple-500' : ' bg-red-500'} `}
-                      >{ event.activityType.name}</p>
-                    {/* <p className='text-xs'>{ event._createdAt.getDate() }</p> */}
-                    <h3 className=' text-lg'>{ event.title }</h3>
-                  </div>
-                  </Link>
+                  <SingleActivity key={`${setIndex}-${index}`} activity={event} />
                 ))}
               </div>
             ))}

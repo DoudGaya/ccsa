@@ -32,6 +32,8 @@ export const getAllActivities = () => {
 }
 
 
+// export const getSinggleActivity
+
 export const getAllArticles = () => {
     const query = groq`
     *[_type == "article"] | order(_createdAt desc) {
@@ -160,7 +162,7 @@ export const getSingleArticle = (slug: string) => {
 }
 
 
-export const getSinggleActivity = (slug: string) => {
+export const getSingleActivity = (slug: string) => {
     const query = groq`
     *[_type == "activity" && slug.current == $slug] {
         _id,
@@ -178,9 +180,7 @@ export const getSinggleActivity = (slug: string) => {
         'slug': slug.current,
         'imageUrl': image.asset->url,
         'activityType': activityType->title
-    }
+    }[0]
     `
-    const data = client.fetch(query, {slug})
-
-    console.log('Data:', data)
+return client.fetch(query, {slug})
 }

@@ -75,6 +75,7 @@ export namespace SanityTypes {
         images: SanityImageAssetDocument[];
         location: string;
         imageUrl: string;
+        author: Author;
         activityType: {
             name: string;
             slug:string

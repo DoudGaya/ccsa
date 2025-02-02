@@ -1,32 +1,44 @@
 import type { SanityTypes } from "@/@types";
 import { DynamicBanner } from "@/app/components/dynamics/DynamicBanner";
-import { getSingleArticle } from "@/sanity/lib/queries";
+import { getSingleActivity } from "@/sanity/lib/queries";
 import React from "react";
 import ActivityContents from "../_components/AcitivityContents";
 // import ArticleContents from "./_components/ArticleContents";
 
-interface PageProps {
+interface Params {
   slug: string;
 }
 
 export default async function Page({
-  params }: {params: Promise<PageProps>}) {
-  const { slug } = await params
-  
+  params }: {params: Promise<Params>}) {
 
 
+    const {slug}  = await params;
+    console.log(slug)
 
+    
+
+
+// consolw
+
+const activity = await getSingleActivity(slug) 
+console.log(activity)
+
+// const article = (await getAllActivities(slug)) as SanityTypes.Article;
   try {
-    const article = (await getSingleArticle(slug)) as SanityTypes.Article;
+
+
+
+    // console.log('Activity:', activity)
     return (
       <div className="flex flex-col w-full">
-        <DynamicBanner 
-          title={article.title} 
-          bannerImage={article.imageUrl} 
-          description={article.overview} 
-        />
+        {/* <DynamicBanner 
+          title={activity.title} 
+          bannerImage={activity.imageUrl} 
+          description={activity.description} 
+        /> */}
         <div className="py-6">
-          <ActivityContents article={article} />
+          {/* <ActivityContents activity={activity} /> */}
         </div>
       </div>
     );
