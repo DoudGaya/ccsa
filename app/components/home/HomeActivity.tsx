@@ -2,13 +2,10 @@
 
 import { motion, useAnimationControls } from 'framer-motion'
 import { useEffect } from 'react'
-import Image, { StaticImageData } from 'next/image'
 import Link from 'next/link'
 import { Button } from "@/components/ui/button"
 import { SanityTypes } from '@/@types'
 import SingleActivity from '@/app/activities/_components/SingleActivity'
-
-
 
 export default function HomeActivity( {
   activities
@@ -79,7 +76,6 @@ export default function HomeActivity( {
           </motion.div>
         </div>
       </div>
-
       <div className="flex justify-center mt-12">
         <Button asChild variant="outline" className=' dark:text-blue-400 font-semibold font-poppins' size="lg">
           <Link href="/activities">

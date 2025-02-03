@@ -1,7 +1,8 @@
 import React from 'react'
 import { PublicationsBannner } from '../_components/PublicationsBannner'
 import pubBanner from '@/public/publication-banner.jpg'
-import { getAllPublicationByType, getPublicationByType } from '@/sanity/lib/queries'
+// import { getAllPublicationByType, getPublicationByType } from '@/sanity/lib/queries'
+import { getAllPublicationByType, getPublicationByType } from '@/sanity/lib/quesries/publicationQueries'
 import { SanityTypes } from '@/@types'
 import PublicationContents from '../_components/PublicationContents'
 

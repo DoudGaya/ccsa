@@ -1,6 +1,7 @@
 import type { SanityTypes } from "@/@types";
 import { DynamicBanner } from "@/app/components/dynamics/DynamicBanner";
-import { getSingleArticle } from "@/sanity/lib/queries";
+// import { getSingleArticle } from "@/sanity/lib/queries";
+import { getSingleArticle } from "@/sanity/lib/quesries/articleQueries";
 import React from "react";
 import ArticleContents from "./_components/ArticleContents";
 

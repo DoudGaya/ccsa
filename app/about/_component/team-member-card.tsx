@@ -1,6 +1,7 @@
 import Image from "next/image"
 import { Facebook, Linkedin, Twitter } from "lucide-react"
 import { SanityTypes } from "@/@types"
+import Link from "next/link"
 import placeHolderImage from '@/public/placeholder-img.png'
 
 
@@ -21,7 +22,7 @@ export default function TeamMemberCard({ member }: TeamMemberCardProps) {
         />
       </div>
       <div className="p-6">
-        <h3 className="text-xl font-semibold mb-2">{member.name}</h3>
+        <Link href={`${member.memberType.slug}/${member.slug}`}  className="text-xl font-semibold mb-2">{member.name}</Link>
         <p className="text-gray-600 mb-4">{member.role}</p>
         <p className="text-gray-700 mb-4 line-clamp-3">{member.bio}</p>
         <div className="flex space-x-4">

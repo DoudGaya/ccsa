@@ -10,11 +10,9 @@ const page = () => {
         title='Work Ethics'
         description='Learn about our work ethics in Centre for Climate-Smart Agriculture (Cosmopolitan University Abuja)'
       />
-
       <div className=" py-20 ">
         <div className=" text-2xl"> {'Coming Soon...'} </div>
       </div>
-      
     </div>
   )
 }

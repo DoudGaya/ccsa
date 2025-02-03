@@ -11,6 +11,12 @@ export const activity = defineType({
             type: 'string',
             validation: (Rule) => Rule.required(),
         },
+        defineField({
+            name: 'contents',
+            title: 'Contents',
+            type: 'array',
+            of: [{ type: 'block' }],
+        }),
         {
             name: 'description',
             title: 'Description',

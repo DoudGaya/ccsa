@@ -2,7 +2,8 @@ import React from 'react'
 // import { NewsAndEventBanner } from './_components/NewsAndEventsBanner'
 import { ActivitiesBanner } from './_components/ActivitiesBanner'
 import NewsAndEventImage from '@/public/news-and-events.jpg'
-import { getAllActivities } from '@/sanity/lib/queries'
+// import { getAllActivities } from '@/sanity/lib/queries'
+import { getAllActivities } from '@/sanity/lib/quesries/activitiesQueries'
 import { SanityTypes } from '@/@types'
 import ActivityGrid from './_components/ActivityGrid'
 
@@ -23,11 +24,6 @@ const page = async () => {
 
 
     const activities = await getAllActivities() as SanityTypes.Activity[]
-
-    console.log(activities)
-
-  
-
 
 
   return (

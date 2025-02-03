@@ -8,6 +8,8 @@ import { Publication } from './publications'
 import { publicationType } from './PublicationType'
 import { member } from './member'
 import { memberType } from './memberType'
+import { ethics } from './ethics'
+import { ethicsTypes } from './ethicsType'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -17,6 +19,8 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     article,
     activity,
     memberType,
+    ethicsTypes,
+    ethics,
     member,
     Publication,
     publicationType

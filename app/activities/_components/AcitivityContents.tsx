@@ -31,7 +31,7 @@ const ActivityContents = ( {
        <article className=" prose lg:prose-lg dark:prose-invert font-blog text-lg space-y-6">
         <PortableText 
         // @ts-ignore
-        value={activity.body} />
+        value={activity.description} />
        </article>
     </div>
   )
