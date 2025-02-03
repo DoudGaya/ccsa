@@ -37,6 +37,29 @@ export namespace SanityTypes {
         slug: string;
     }
 
+    export interface MediaType {
+        _id: string;
+        _createdAt: Date;
+        _updatedAt: Date;
+        title: string;
+        description: string;
+        slug: string;
+       
+    }
+
+    export interface Media {
+        _id: string;
+        _createdAt: Date;
+        _updatedAt: Date;
+        title: string;
+        description: string;
+        slug: string;
+        mediaType: MediaType;
+        video: string;
+        images: SanityImageAssetDocument[];
+        tags: string[];
+    }
+
     export interface Member {
         _id: string;
         _createdAt: Date;
