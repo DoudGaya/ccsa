@@ -66,7 +66,7 @@ export default function HomeActivity( {
             }}
             className="flex gap-16 mx-4"
           >
-            {[...Array(4)].map((_, setIndex) => (
+            {[...Array(1)].map((_, setIndex) => (
               <div key={setIndex} className="flex space-x-16 ">
                 {activities.map((event, index) => (
                   <SingleActivity key={`${setIndex}-${index}`} activity={event} />

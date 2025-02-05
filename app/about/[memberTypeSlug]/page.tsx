@@ -6,7 +6,6 @@ import { console } from 'inspector'
 import { getAllMemberType, getSingleMemberType } from '@/sanity/lib/quesries/membersQuesries'
 import { SanityTypes } from '@/@types'
 import TeamMemberCard from '../_component/team-member-card'
-import Image from 'next/image'
 
 
 type Params = {

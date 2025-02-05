@@ -11,7 +11,7 @@ interface TeamMemberCardProps {
 
 export default function TeamMemberCard({ member }: TeamMemberCardProps) {
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 ease-in-out hover:scale-105">
+    <div className="bg-white dark:bg-black rounded-lg shadow-md overflow-hidden transition-transform duration-300 ease-in-out hover:scale-105">
       <div className="relative h-[300px] w-full">
         <Image
           src={member.imageUrl || placeHolderImage.src}
@@ -22,9 +22,12 @@ export default function TeamMemberCard({ member }: TeamMemberCardProps) {
         />
       </div>
       <div className="p-6">
-        <Link href={`${member.memberType.slug}/${member.slug}`}  className="text-xl font-semibold mb-2">{member.name}</Link>
-        <p className="text-gray-600 mb-4">{member.role}</p>
-        <p className="text-gray-700 mb-4 line-clamp-3">{member.bio}</p>
+       <Link href={`${member.memberType.slug}/${member.slug}`} >
+       <p  className="text-xl hover:underline font-semibold mb-2">{member.name}</p>
+        <p className="text-gray-600 hover:underline mb-4">{member.role}</p>
+        <p className="text-gray-700 mb-4 hover:underline line-clamp-3">{member.bio}</p>
+
+       </Link>
         <div className="flex space-x-4">
           {member.facebook && (
             <a

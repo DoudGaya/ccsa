@@ -65,7 +65,7 @@ const ContactPage = () => {
       <PublicBanners title='Contact Us' message='to be done...' />
       <div className="container mx-auto px-4 py-8">
       <h1 className="text-4xl font-bold mb-8 text-center">Contact Us</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         <div>
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             <div>
@@ -97,30 +97,28 @@ const ContactPage = () => {
               />
               {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message.message}</p>}
             </div>
-            <Button type="submit" disabled={isSubmitting} className="w-full">
+            <Button type="submit" disabled={isSubmitting} className="w-full bg-blue-900">
               {isSubmitting ? "Sending..." : "Send Message"}
             </Button>
           </form>
         </div>
-        <div className="space-y-8">
-          <div className="h-64 md:h-96 rounded-lg overflow-hidden">
-            {/* <Map /> */}
-          </div>
-          <div className="space-y-4">
-            <div className="flex items-center space-x-2">
-              <MapPin className="text-blue-500" />
-              <span>123 Main St, Abuja, Nigeria</span>
+        <div className="space-y-8 col-span-2 flex items-center justify-center">
+          <div className=" grid grid-cols-3 gap-6  items-center justify-center">
+            <div className=" text-center py-20 bg-white justify-center px-3 drop-shadow-md rounded-xl h-full items-center flex flex-col space-x-2">
+              <MapPin size={30} className="text-blue-500" />
+              <span className=' text-sm font-poppins'>Plot 432, Yakubu J. Pam Street, Opposite National Hospital, Central Business District, Abuja</span>
             </div>
-            <div className="flex items-center space-x-2">
-              <Phone className="text-blue-500" />
-              <span>+234 123 456 7890</span>
+            <div className=" text-center py-6 bg-white justify-center px-3 drop-shadow-md rounded-xl h-full items-center flex flex-col space-x-2">
+              <Phone size={30} className="text-blue-500" />
+              <span className=' text-sm font-poppins'>(+234) 803 550 2270</span>
             </div>
-            <div className="flex items-center space-x-2">
-              <Mail className="text-blue-500" />
-              <span>contact@example.com</span>
+            <div className=" text-center py-6 bg-white justify-center px-3 drop-shadow-md rounded-xl h-full items-center flex flex-col space-x-2">
+              <Mail size={30} className="text-blue-500" />
+              <span className=' text-sm font-poppins'>ccsa@cosmopolitan.edu.ng</span>
             </div>
           </div>
         </div>
+        
       </div>
     </div>
     </div>

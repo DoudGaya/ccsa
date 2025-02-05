@@ -3,8 +3,8 @@ import { PortableTextProps, SanityImageAssetDocument } from "next-sanity";
 export namespace SanityTypes {
     export interface Article {
         _id: string;
-        _createdAt: Date;
-        _updatedAt: Date;
+        _createdAt: string;
+        _updatedAt: string;
         overview: string;
         title: string; 
         slug: string

@@ -19,12 +19,32 @@ export const getAllMedia = async () => {
         description,
         slug,
         mediaType,
-        mediaUrl,
-        mediaFile,
+        images,
+        video,
         tags,
     }
     `
 
     const media = await client.fetch(query) as SanityTypes.Media[]
+    return media
+}
+
+
+export const getSingleMedia = async (slug: string) => {
+    const query = groq`
+    *[_type == "media" && slug.current == $slug] {
+        _id,
+        _createdAt,
+        _updatedAt,
+        title,
+        description,
+        slug,
+        mediaType,
+        images,
+        video,
+        tags,
+    }[0]
+    `
+    const media = await client.fetch(query, {slug}) as SanityTypes.Media
     return media
 }
