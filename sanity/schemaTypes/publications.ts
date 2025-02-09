@@ -48,7 +48,7 @@ export const Publication = defineType({
             title: 'File',
             type: 'file',
             options: {
-                accept: '.pdf',
+                accept: '.pdf,.dotx,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.csv,.txt,.rtf,.odt,.odp,.ods,.odg,.odf,.odc,.odb,.odm,.ott,.ots',
             },
         }),
         defineField({

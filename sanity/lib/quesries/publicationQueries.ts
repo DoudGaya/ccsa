@@ -22,7 +22,7 @@ export const getPublicationByType = (type: string) => {
 
 export const getAllPublicationByType = (type: string) => {
     const query = groq`
-    *[_type == "publication" && publicationType->slug.current == $type] | order(_createdAt desc) {
+       *[_type == "publication" && publicationType->slug.current == $type] | order(_createdAt desc) {
         _id,
         title,
         description,
@@ -34,6 +34,7 @@ export const getAllPublicationByType = (type: string) => {
             bio,
         },
         'fileUrl': file.asset->url,
+        url,
         publicationType->{
             title,
             description,
