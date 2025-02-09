@@ -21,6 +21,10 @@ export const mediaType = defineType({
             name: 'slug',
             title: 'Slug',
             type: 'slug',
+            options: {
+                source: 'title',
+                maxLength: 96,
+            },
         })
     ]
 })

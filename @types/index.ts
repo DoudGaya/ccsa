@@ -83,6 +83,8 @@ export namespace SanityTypes {
         title: string;
         description: string;
         slug: string;
+        url: string;
+        fileUrl: string;
         author: Author;
         date: Date;
         publicationType: PublicationType;

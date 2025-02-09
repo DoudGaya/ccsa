@@ -25,6 +25,12 @@ export const mediaSchema = defineType({
             of: [{ type: 'string' }],
         }),
         defineField({
+            name: 'type',
+            title: 'Type',
+            type: 'reference',
+            to: [{ type: 'mediaType' }],
+        }),
+        defineField({
             name: 'video',
             title: 'Video',
             type: 'url',    
