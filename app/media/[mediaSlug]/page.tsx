@@ -5,10 +5,12 @@ import pubBanner from '@/public/publication-banner.jpg'
 // import { getAllPublicationByType, getPublicationByType } from '@/sanity/lib/queries'
 import { getAllPublicationByType, getPublicationByType } from '@/sanity/lib/quesries/publicationQueries'
 import { SanityTypes } from '@/@types'
+import MediaShowcase from '../_componentss/MediaShowcase'
 import MediaContents from '../_componentss/MediaContents'
-import { getAllMedia, getMediaTypeBySlug } from '@/sanity/lib/quesries/mediaQueries'
+import { getAllMedia, getAllMediaByType, getMediaTypeBySlug } from '@/sanity/lib/quesries/mediaQueries'
 import { notFound } from 'next/navigation'
 // import PublicationContents from '../_components/PublicationContents'
+import MediaList from '../_componentss/MediaList'
 
 type Params = {
   mediaSlug: string
@@ -18,17 +20,19 @@ const page = async (
 ) => {
   const { mediaSlug } = await params
 
-  const allMedia = await getAllMedia() as SanityTypes.Media[]
+  // const allMedia = await getAllMedia() as SanityTypes.Media[]
 
 
+  // console.log(mediaSlug)
 
-  const mediaType = await getMediaTypeBySlug(mediaSlug) as SanityTypes.MediaType
+const allMedia = await getAllMediaByType(mediaSlug) as SanityTypes.Media[]
+const mediaType = await getMediaTypeBySlug(mediaSlug) as SanityTypes.MediaType
 
+const allTypes = await getAllMedia() as SanityTypes.MediaType[]
 
   if (!mediaType) {
     return notFound()
   }
-
 
   return (
 
@@ -38,7 +42,7 @@ const page = async (
         title={`${mediaType.title}`}
         description={mediaType.description} 
         />
-         { allMedia.length > 0 ? <MediaContents media={allMedia} /> 
+         { allMedia.length > 0 ?  <MediaList mediaItems={allMedia} />
         : 
         allMedia.length === 0 && (
           <div className=" flex flex-col items-center justify-center py-20 space-y-3">

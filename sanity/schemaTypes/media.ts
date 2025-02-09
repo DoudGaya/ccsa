@@ -12,6 +12,12 @@ export const mediaSchema = defineType({
             type: 'string',
             validation: (Rule) => Rule.required(),
         }),
+
+        defineField({
+            name: 'description',
+            title: 'Description',
+            type: 'text',
+        }),
         defineField({
             name: 'images',
             title: 'Images',
@@ -25,7 +31,7 @@ export const mediaSchema = defineType({
             of: [{ type: 'string' }],
         }),
         defineField({
-            name: 'type',
+            name: 'mediaType',
             title: 'Type',
             type: 'reference',
             to: [{ type: 'mediaType' }],
@@ -34,6 +40,14 @@ export const mediaSchema = defineType({
             name: 'video',
             title: 'Video',
             type: 'url',    
+        }),
+        defineField({
+            name: 'slug',
+            type: 'slug',
+            options: {
+                source: 'title',
+                maxLength: 96,
+            },
         })
     ]
 })
