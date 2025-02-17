@@ -42,7 +42,7 @@ export default function Navbar() {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
           <Link href="/" className="text-white text-2xl font-bold">
-            <Image src={logo} alt='Cosmopolitan University Abuja' className=' h-12 flex-none px-0 object-left max-w-min  object-contain ' width={300} height={300} />
+            <Image src={logo} alt='Cosmopolitan University Abuja' className=' h-16 flex-none px-0 object-left max-w-min  object-contain ' width={300} height={300} />
           </Link>
             <NavMenu />
         </div>
