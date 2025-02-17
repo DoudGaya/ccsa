@@ -1,5 +1,4 @@
 import React from 'react'
-// import { AboutBanner } from '../_component/AboutBanner'
 import { AboutBanner } from '../_component/AboutBanner'
 import AboutBannerImage from '@/public/about-banner.jpg'
 
@@ -9,7 +8,7 @@ const page = () => {
     <div>
     <AboutBanner 
         title="Advisory Board" 
-        description=''
+        description=''                                
         bannerImage={AboutBannerImage.src} />
     </div>
   )

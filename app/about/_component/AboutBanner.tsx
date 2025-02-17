@@ -1,6 +1,3 @@
-import { StaticImageData } from 'next/image';
-import React from 'react'
-
 export const AboutBanner = ({
     bannerImage,
     title,
@@ -9,9 +6,7 @@ export const AboutBanner = ({
     bannerImage: string;
     title: string;
     description: string;
-}) => {
-
-    
+}) => {    
   return (
     <div
     style={{
