@@ -1,18 +1,19 @@
 import type { SanityTypes } from "@/@types";
 import { DynamicBanner } from "@/app/components/dynamics/DynamicBanner";
-import { getSingleArticle } from "@/sanity/lib/queries";
+// import { getSingleArticle } from "@/sanity/lib/queries";
+import { getSingleArticle } from "@/sanity/lib/quesries/articleQueries";
 import React from "react";
 import ArticleContents from "./_components/ArticleContents";
 
 interface PageProps {
-  params: {
-    slug: Promise<string>;
-  };
+  slug: string;
 }
 
 export default async function Page({
-  params }: any) {
+  params }: {params: Promise<PageProps>}) {
   const { slug } = await params
+  
+
 
 
   try {

@@ -54,7 +54,7 @@ export default function PartnersScroll() {
         Our Strategic Partnerships
         </h2>
         <p className="text-xl text-gray-600 text-center">
-          Partnering with world-class companies to transform their businesses
+          Partnering with government, and world-class organizations to transform agribusiness.
         </p>
       </div>
 

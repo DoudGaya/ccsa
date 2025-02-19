@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-black">
       <PublicBanners title={'Our Story'} message={`
                 The Centre for Climate-Smart Agriculture (CCSA) at Cosmopolitan University, Abuja, 
                 was established to address the unprecedented challenges posed by climate change 
@@ -28,9 +28,9 @@ export default function AboutPage() {
       <main className=" mx-auto w-full py-20 px-4 lg:px-0">
 
         <section className="mb-16 max-w-7xl mx-auto flex text-center md:text-start items-center flex-col">
-          <h2 className="text-3xl font-bold mb-6 text-[rgb(6,54,103)]">Vision & Mission</h2>
+          <h2 className="text-3xl font-bold mb-6 dark:text-blue-500 text-[rgb(6,54,103)]">Vision & Mission</h2>
           <div className="grid md:grid-cols-2 gap-8">
-            <div className=" p-6  bg-white py-20 shadow-md">
+            <div className=" p-6  dark:bg-blue-950  bg-white py-20 shadow-md">
               <h3 className="text-xl font-semibold mb-4 flex  flex-col md:flex-row w-full text-center items-center">
                 <Leaf className="mr-2 text-[rgb(6,54,103)] h-14 w-14 md:h-8 md:w-8 text-lg" />
                 <p> Our Vision</p>
@@ -41,7 +41,7 @@ export default function AboutPage() {
                 education, research and practice.
               </p>
             </div>
-            <div className=" p-6  bg-white py-20 shadow-md">
+            <div className=" p-6 dark:bg-blue-950 bg-white py-20 shadow-md">
               <h3 className="text-xl font-semibold mb-4 flex  flex-col md:flex-row w-full text-center items-center">
                 <Globe className="mr-2 text-[rgb(6,54,103)] h-14 w-14 md:h-8 md:w-8 text-l" />
                 <p> Our Mission</p>

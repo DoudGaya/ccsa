@@ -3,8 +3,8 @@ import { PortableTextProps, SanityImageAssetDocument } from "next-sanity";
 export namespace SanityTypes {
     export interface Article {
         _id: string;
-        _createdAt: Date;
-        _updatedAt: Date;
+        _createdAt: string;
+        _updatedAt: string;
         overview: string;
         title: string; 
         slug: string
@@ -18,6 +18,79 @@ export namespace SanityTypes {
         author: Author;
     }
 
+    export interface PublicationType {
+        _id: string;
+        _createdAt: Date;
+        _updatedAt: Date;
+        title: string;
+        description: string;
+        slug: string;
+    }
+
+
+    export interface MemberType {
+        _id: string;
+        _createdAt: Date;
+        _updatedAt: Date;
+        title: string;
+        description: string;
+        slug: string;
+    }
+
+    export interface MediaType {
+        _id: string;
+        _createdAt: Date;
+        _updatedAt: Date;
+        title: string;
+        description: string;
+        slug: string;
+       
+    }
+
+    export interface Media {
+        _id: string;
+        _createdAt: Date;
+        _updatedAt: Date;
+        title: string;
+        description: string;
+        slug: string;
+        mediaType: MediaType;
+        video: string;
+        images: SanityImageAssetDocument[];
+        tags: string[];
+    }
+
+    export interface Member {
+        _id: string;
+        _createdAt: Date;
+        _updatedAt: Date;
+        name: string;
+        email: string;
+        slug: string;
+        role: string;
+        facebook: string;
+        twitter: string;
+        linkedin: string;
+        memberType: MemberType;
+        bio: string;
+        imageUrl: string;
+    }
+
+    export interface Publication {
+        _id: string;
+        _createdAt: Date;
+        _updatedAt: Date;
+        title: string;
+        description: string;
+        slug: string;
+        url: string;
+        fileUrl: string;
+        author: Author;
+        date: Date;
+        publicationType: PublicationType;
+        tags: string[];
+    }
+
     export interface Activity {
         _id: string;
         _createdAt: Date;
@@ -27,6 +100,7 @@ export namespace SanityTypes {
         images: SanityImageAssetDocument[];
         location: string;
         imageUrl: string;
+        author: Author;
         activityType: {
             name: string;
             slug:string

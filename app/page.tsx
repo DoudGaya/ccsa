@@ -6,8 +6,10 @@ import PartnersScroll from "./components/PartnersScroll";
 import { CallToAction } from "./components/CallToAction";
 import HomeActivity from "./components/home/HomeActivity";
 import HomeNews from "./components/home/HomeNews";
-import { getAllActivities } from "@/sanity/lib/queries";
-import { getAllArticles } from "@/sanity/lib/queries";
+// import { getAllActivities } from "@/sanity/lib/queries";
+import { getAllActivities } from "@/sanity/lib/quesries/activitiesQueries";
+import { getAllArticles } from "@/sanity/lib/quesries/articleQueries";
+// import { getAllArticles } from "@/sanity/lib/queries";
 import { SanityTypes } from "@/@types";
 
 
@@ -25,7 +27,6 @@ export default async function Home() {
       <HomeNews articles={articles} />
       <ObjectivesComponents />
       <HomeActivity activities={activities} />
-      {/* <PartnersScroll /> */}
       <CallToAction />
     </main>
   );
