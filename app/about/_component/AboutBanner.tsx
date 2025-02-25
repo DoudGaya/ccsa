@@ -11,6 +11,7 @@ export const AboutBanner = ({
     description: string;
 }) => {
 
+
     
   return (
     <div

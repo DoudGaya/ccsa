@@ -24,9 +24,6 @@ const page = async ( {params}: {params: Promise<Params>}) => {
 
   const user = await getSingleMember(member) as SanityTypes.Member
 
-  
-
-
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
     <TeamBanner
@@ -47,7 +44,7 @@ const page = async ( {params}: {params: Promise<Params>}) => {
                     // @ts-ignore
                     value={user.body} />
                    </article>
-              <p className="text-gray-600 whitespace-pre-wrap">{user.bio}</p>
+              <p className="text-gray-600 font-blog whitespace-pre-wrap">{user.bio}</p>
             {/* </CardContent> */}
          
         </div>

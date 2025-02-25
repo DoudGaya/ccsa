@@ -22,6 +22,11 @@ export const member = defineType({
             type: 'string',
         }),
         defineField({
+            name: 'priority',
+            title: 'Priority',
+            type: 'number',
+        }),
+        defineField({
             name: 'facebook',
             title: 'Facebook',
             type: 'string',
@@ -44,6 +49,14 @@ export const member = defineType({
                 maxLength: 96,
             },
         },
+        defineField({
+            name: 'roleSlug',
+            type: 'slug',
+            options: {
+                source: 'role',
+                maxLength: 96,
+            },
+        }),
         defineField({
             name: 'memberType',
             title: 'Type of Member',

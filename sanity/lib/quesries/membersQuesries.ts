@@ -20,6 +20,78 @@ export const getSingleMemberType = (type: string) => {
 }
 
 
+export const getPriorityBoardMembers = (type: string) => {
+    const query = groq`
+    *[_type == "member" && memberType->slug.current == $type  && priority == 1] | order(_createdAt desc) {
+        _id,
+        name,
+        email,
+        role,
+        facebook,
+        twitter,
+        linkedin,
+        'slug' : slug.current,
+        bio,
+        'imageUrl': image.asset->url,
+        memberType->{
+            title,
+            description,
+            'slug': slug.current
+        }
+    }
+    `
+    return client.fetch(query, {type})
+}
+
+
+export const getBoardMembersWithoutPriority = (type: string) => {
+    const query = groq`
+    *[_type == "member" && memberType->slug.current == $type  && priority != 1] | order(_createdAt desc) {
+        _id,
+        name,
+        email,
+        role,
+        facebook,
+        twitter,
+        linkedin,
+        'slug' : slug.current,
+        bio,
+        'imageUrl': image.asset->url,
+        memberType->{
+            title,
+            description,
+            'slug': slug.current
+        }
+    }
+    `
+    return client.fetch(query, {type})
+}
+
+
+// export const getPriorityBoardMembers = (type: string) => {
+//     const query = groq`
+//     *[_type == "member" && memberType->priority == 1 && slug.current == $type] | order(_createdAt desc) {
+//         _id,
+//         name,
+//         email,
+//         role,
+//         facebook,
+//         twitter,
+//         linkedin,
+//         bio,
+//         'slug' : slug.current,
+//         'imageUrl': image.asset->url,
+//         memberType->{
+//             title,
+//             description,
+//             'slug': slug.current
+//         }
+//     }
+//     `
+//     return client.fetch(query, {type})
+// }
+
+
 export const getSingleMember = (memberSlug: string) => {
     const query = groq`
     *[_type == "member" && slug.current == $memberSlug] {
