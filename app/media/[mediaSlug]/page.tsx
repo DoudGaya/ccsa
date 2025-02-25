@@ -23,8 +23,6 @@ const page = async (
   // const allMedia = await getAllMedia() as SanityTypes.Media[]
 
 
-  // console.log(mediaSlug)
-
 const allMedia = await getAllMediaByType(mediaSlug) as SanityTypes.Media[]
 const mediaType = await getMediaTypeBySlug(mediaSlug) as SanityTypes.MediaType
 
@@ -55,7 +53,6 @@ const allTypes = await getAllMedia() as SanityTypes.MediaType[]
           </div>
          )
         }
-         
     </div>
   )
 }
