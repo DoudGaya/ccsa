@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import imageHolder from '@/public/placeholder-img.png'
 
-const SingleActivity = ( {activity}: {activity: SanityTypes.Activity} ) => {
+const SingleActivity = ( {activity}: {activity: SanityTypes.Activity } ) => {
   return (
     <div className=' flex flex-col items-center justify-center'>
         <Link href={`/activities/${activity.slug}`} key={activity._id} className="group">

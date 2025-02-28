@@ -3,7 +3,7 @@ import SingleActivity from "./SingleActivity"
 // import type { Activity } from "../types/activity"
 
 interface ActivityGridProps {
-  activities: SanityTypes.Activity[]
+  activities: SanityTypes.Activity[] 
 }
 
 export default function ActivityGrid({ activities }: ActivityGridProps) {
