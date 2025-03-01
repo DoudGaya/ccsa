@@ -25,9 +25,6 @@ const page = async () => {
   const articles = await getAllArticles() as SanityTypes.Article[]
 
 
-  console.log(articles)
-
-
   return (
     <div className=' flex flex-col items-center justify-center'>
       <NewsAndEventBanner 

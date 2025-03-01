@@ -20,9 +20,7 @@ export function CallToAction() {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    // Here you would typically handle the form submission,
-    // e.g., sending the data to your backend
-    console.log("Form submitted")
+
     setIsOpen(false)
   }
 
