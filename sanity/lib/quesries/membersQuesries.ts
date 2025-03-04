@@ -22,12 +22,13 @@ export const getSingleMemberType = (type: string) => {
 
 export const getPriorityBoardMembers = (type: string) => {
     const query = groq`
-    *[_type == "member" && memberType->slug.current == $type  && priority == 1] | order(_createdAt desc) {
+    *[_type == "member" && memberType->slug.current == $type  && priority == 1] | order(_createdAt asc) {
         _id,
         name,
         email,
         role,
         facebook,
+        priority,
         twitter,
         linkedin,
         'slug' : slug.current,

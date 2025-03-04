@@ -24,21 +24,12 @@ export default function Footer() {
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li><Link href="#" className="text-sm hover:text-green-400 transition-colors">Research Labs</Link></li>
-              <li><Link href="#" className="text-sm hover:text-green-400 transition-colors">Digital Innovation Hub</Link></li>
+              <li><Link href="/innovation/agri-tech-tools" className="text-sm hover:text-green-400 transition-colors">Digital Innovation Hub</Link></li>
               <li><Link href="/contact" className="text-sm hover:text-green-400 transition-colors">Contact Us</Link></li>
-              <li><Link href="#" className="text-sm hover:text-green-400 transition-colors">Farmer Incubation Program</Link></li>
-              <li><Link href="#" className="text-sm hover:text-green-400 transition-colors">Knowledge Repository</Link></li>
+              <li><Link href="innovation/farmer-incubation" className="text-sm hover:text-green-400 transition-colors">Farmer Incubation Program</Link></li>
+              <li><Link href="/publications" className="text-sm hover:text-green-400 transition-colors">Knowledge Repository</Link></li>
             </ul>
           </div>
-          {/* <div>
-            <h3 className="text-lg font-semibold mb-4">Partners</h3>
-            <ul className="space-y-2">
-              <li><Link href="https://www.ifad.org/" className="text-sm hover:text-green-400 transition-colors">IFAD</Link></li>
-              <li><Link href="https://agra.org/" className="text-sm hover:text-green-400 transition-colors">AGRA</Link></li>
-              <li><Link href="https://www.afdb.org/" className="text-sm hover:text-green-400 transition-colors">AfDB</Link></li>
-              <li><Link href="http://www.fao.org/" className="text-sm hover:text-green-400 transition-colors">FAO</Link></li>
-            </ul>
-          </div> */}
           <div>
             <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
             <p className="text-sm text-gray-300 mb-2">Cosmopolitan University, Abuja</p>

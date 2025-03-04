@@ -70,6 +70,7 @@ export namespace SanityTypes {
         role: string;
         facebook: string;
         twitter: string;
+        priority: string;
         linkedin: string;
         memberType: MemberType;
         bio: string;

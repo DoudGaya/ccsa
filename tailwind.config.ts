@@ -1,5 +1,7 @@
 import type { Config } from "tailwindcss";
 
+
+
 export default {
     darkMode: ["class"],
     content: [
@@ -16,6 +18,11 @@ export default {
   			],
 			'blog': [
 				'PT Serif',
+				'sans-serif'
+			],
+			'main': [
+				"Comic Neue", 
+				'cursive',
 				'sans-serif'
 			]
   		},
