@@ -1,8 +1,8 @@
 import { defineField, defineType } from "sanity";
 
-export const events = defineType({
-    name: 'events',
-    title: 'Events',
+export const trainings = defineType({
+    name: 'trainings',
+    title: 'Trainings',
     type: 'document',
     fields: [
         {
@@ -43,12 +43,6 @@ export const events = defineType({
             type: 'array',
             of: [{ type: 'string' }],
         }),
-        // defineField({
-        //     name: 'author',
-        //     title: 'Author',
-        //     type: 'reference',
-        //     to: [{ type: 'author' }],
-        // }),
         {
             name: 'location',
             title: 'Location',

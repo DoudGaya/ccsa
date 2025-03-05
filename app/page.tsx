@@ -11,6 +11,7 @@ import { getAllActivities } from "@/sanity/lib/quesries/activitiesQueries";
 import { getAllArticles } from "@/sanity/lib/quesries/articleQueries";
 // import { getAllArticles } from "@/sanity/lib/queries";
 import { SanityTypes } from "@/@types";
+import UpcomingEvents from "./components/home/UpcomingEvents";
 
 
 export default async function Home() {
@@ -18,6 +19,7 @@ export default async function Home() {
   const activities = await getAllActivities() as SanityTypes.Activity[];
 
   const articles = await getAllArticles() as SanityTypes.Article[];
+  
 
 
   return (
@@ -27,6 +29,7 @@ export default async function Home() {
       <HomeNews articles={articles} />
       <ObjectivesComponents />
       <HomeActivity activities={activities} />
+      <UpcomingEvents />
       <CallToAction />
     </main>
   );
