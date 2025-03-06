@@ -21,7 +21,7 @@ export default function Navbar() {
   const backgroundColor = useTransform(
     scrollY,
     [0, 100],
-    ['rgba(59, 130, 246, 0)', 'rgba(6,54,100)']
+    ['rgba(59, 130, 246, 0)', 'rgb(6,54,103)']
   )
 
   useEffect(() => {

@@ -32,18 +32,6 @@ export const trainings = defineType({
             validation: (Rule) => Rule.required(),
         },
         {
-            name: 'endDate',
-            title: 'End Date',
-            type: 'datetime',
-            validation: (Rule) => Rule.required(),
-        },
-        defineField({
-            name: 'tags',
-            title: 'Tags',
-            type: 'array',
-            of: [{ type: 'string' }],
-        }),
-        {
             name: 'location',
             title: 'Location',
             type: 'string',

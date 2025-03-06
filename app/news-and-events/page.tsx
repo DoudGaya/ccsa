@@ -4,6 +4,8 @@ import NewsAndEventImage from '@/public/news-and-events.jpg'
 import { getAllArticles } from '@/sanity/lib/quesries/articleQueries'
 import { SanityTypes } from '@/@types'
 import { ArticlesList } from './_components/ArticlesList'
+import { EventList } from '@/components/home/event-list'
+import { getAllEvents } from '@/sanity/lib/quesries/eventQueries'
 
 
 
@@ -24,6 +26,11 @@ const page = async () => {
 
   const articles = await getAllArticles() as SanityTypes.Article[]
 
+  const events = await getAllEvents() as SanityTypes.Events[]
+
+
+  // const events
+
 
   return (
     <div className=' flex flex-col items-center justify-center'>
@@ -34,17 +41,21 @@ const page = async () => {
       />
 
       <div className=" py-20">
-
-
-        {
+        {/* {
           articles.length < 1 ? 
           <div className=" text-2xl"> {'No news or Event Available'} </div>
           : 
            <div className="container mx-auto px-4 py-8">
-            <h1 className="text-3xl font-bold mb-8">Articles</h1>
+            <h1 className="text-3xl font-bold mb-8">News</h1>
             <ArticlesList articles={articles} />
           </div>
-        }
+        } */}
+
+      <div className=" max-w-7xl flex flex-col space-y-6 mx-auto px-4 py-8 w-full ">
+
+        <div className=" text-6xl font-main font-bold ">Events</div>
+      <EventList events={events} />
+      </div>
 
       </div>
 
