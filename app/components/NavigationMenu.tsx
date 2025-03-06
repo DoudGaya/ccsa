@@ -76,6 +76,45 @@ export const corporateGovernance = [
   }
 ]
 
+export const courses = [
+  {
+    id: 0,
+    url: "/courses/agribusiness-proficiency",
+    title: "Agribusiness Proficiency Course",
+    subtitle: "Master the fundamentals of agricultural business management and operations"
+  },
+  {
+    id: 1,
+    url: "/courses/caicsa",
+    title: "Certificate in Artificial Intelligence for Climate-Smart Agriculture (CAICSA)",
+    subtitle: "Learn how to apply AI technologies to enhance climate-smart agricultural practices"
+  },
+  {
+    id: 2,
+    url: "/courses/craai",
+    title: "Certificate in Climate-Resilient Agriculture with Artificial Intelligence (CRAAI)",
+    subtitle: "Develop skills to build resilient agricultural systems using AI-driven solutions"
+  },
+  {
+    id: 3,
+    url: "/courses/capcsas",
+    title: "Certificate in AI-Powered Climate-Smart Agriculture and Sustainability (CAPCSAS)",
+    subtitle: "Explore sustainable agricultural practices enhanced by artificial intelligence"
+  },
+  {
+    id: 4,
+    url: "/courses/mlaicsa",
+    title: "Certificate in Machine Learning and Artificial Intelligence for Climate-Smart Agriculture (MLAICSA)",
+    subtitle: "Master machine learning techniques specifically tailored for agricultural applications"
+  },
+  {
+    id: 5,
+    url: "/courses/csa-aimlds",
+    title: "Certificate in Climate-Smart Agriculture with AI, Machine Learning, and Data Science (CSA-AIMLDS)",
+    subtitle: "Comprehensive training in data science and AI methods for climate-smart agriculture"
+  }
+]
+
 export const researchItems: { title: string; href: string; description: string }[] = [
   {
     title: "Sustainable Practice",
@@ -222,13 +261,20 @@ export function NavMenu() {
         </NavigationMenuItem>
         <NavigationMenuItem>
           <NavigationMenuTrigger>Trainings</NavigationMenuTrigger>
+
           <NavigationMenuContent>
-            <ul className="grid w-[400px] gap-3 p-4">
-              <ListItem title="Agribusiness Proficiency Course" href="/trainings/agribusiness-proficiency-course">
-                Comprehensive training for agricultural business management and entrepreneurship.
-              </ListItem>
-            </ul>
-          </NavigationMenuContent>
+            <ul className="grid grid-cols-2 w-[800px] gap-3 p-4">
+          { courses.map((course) => {
+            return (
+                <ListItem key={course.id} title={course.title} href={course.url}>
+                 {course.subtitle}
+                </ListItem>
+            )
+          }
+        )}
+        </ul>
+        </NavigationMenuContent>
+         
         </NavigationMenuItem>
 
           <NavigationMenuItem>
@@ -243,9 +289,6 @@ export function NavMenu() {
               </ul>
             </NavigationMenuContent>
           </NavigationMenuItem>
-         
-         
-
           <NavigationMenuItem>
             <Link href="/news-and-events" legacyBehavior passHref>
               <NavigationMenuLink className={navigationMenuTriggerStyle()}>
@@ -254,9 +297,9 @@ export function NavMenu() {
             </Link>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <Link href="/contact" legacyBehavior passHref>
+            <Link href="/activities" legacyBehavior passHref>
               <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                Contact
+                Activities
               </NavigationMenuLink>
             </Link>
           </NavigationMenuItem>

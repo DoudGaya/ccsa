@@ -5,8 +5,7 @@ import SinglePublication from './SinglePublication'
 const PublicationContents = ({
   allPublicationsByType
 }: {allPublicationsByType: SanityTypes.Publication[]}) => {
-
-  console.log(allPublicationsByType)
+  
   return (
     <div className=' py-20 max-w-7xl flex flex-col space-y-6 mx-auto w-full'>
          <div className=" py-3 w-full">

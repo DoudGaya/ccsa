@@ -21,7 +21,7 @@ export default function Navbar() {
   const backgroundColor = useTransform(
     scrollY,
     [0, 100],
-    ['rgba(59, 130, 246, 0)', 'rgba(6,54,100)']
+    ['rgba(59, 130, 246, 0)', 'rgb(6,54,103)']
   )
 
   useEffect(() => {
@@ -42,7 +42,7 @@ export default function Navbar() {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
           <Link href="/" className="text-white flex-none text-2xl font-bold">
-            <Image src={logo} alt='Cosmopolitan University Abuja' className=' h-[3.6rem] flex-none px-0 object-left max-w-min  object-contain ' width={300} height={300} />
+            <Image src={logo} alt='Cosmopolitan University Abuja' className=' h-12 flex-none px-0 object-left max-w-min  object-contain ' width={300} height={300} />
           </Link>
             <NavMenu />
         </div>

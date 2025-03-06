@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import imageHolder from '@/public/placeholder-img.png'
 
-const SingleActivity = ( {activity}: {activity: SanityTypes.Activity} ) => {
+const SingleActivity = ( {activity}: {activity: SanityTypes.Activity } ) => {
   return (
     <div className=' flex flex-col items-center justify-center'>
         <Link href={`/activities/${activity.slug}`} key={activity._id} className="group">
@@ -17,14 +17,14 @@ const SingleActivity = ( {activity}: {activity: SanityTypes.Activity} ) => {
                 objectFit="cover"
               />
               <div className="absolute top-2 left-2 bg-primary text-white px-2 py-1 rounded-full text-sm">
-                {activity.activityType.name}
+                {activity?.activityType?.name}
               </div>
             </div>
             <div className="p-4">
-              <h3 className="text-lg font-semibold mb-2 line-clamp-2">{activity.title}</h3>
+              <h3 className="text-lg font-semibold mb-2  line-clamp-1">{activity.title}</h3>
               <p className="text-gray-600 text-sm mb-2 line-clamp-3">{activity.description}</p>
               <div className="flex items-center justify-between text-sm text-gray-500">
-                <span>{activity.location}</span>
+                <span className=' line-clamp-1 '>{activity.location}</span>
                 <span>{new Date(activity._createdAt).toLocaleDateString()}</span>
               </div>
               <div className="mt-2 flex flex-wrap gap-2">

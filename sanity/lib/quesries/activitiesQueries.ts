@@ -1,8 +1,10 @@
 import { groq } from "next-sanity"
 import { client } from "../client";
-import { revalidate } from "../queries";
+// import { revalidate } from "../queries";
 
-revalidate
+// revalidate
+
+export const revalidate = 10
 
 export const getSingleActivity = (slug: string) => {
     const query = groq`

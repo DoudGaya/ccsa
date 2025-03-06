@@ -70,14 +70,14 @@ export default function HomeActivity({
           </>
         )}
 
-        <div className="flex overflow-hidden py-8" onMouseEnter={handleHover} onMouseLeave={handleHoverEnd}>
+        <div className="flex overflow-hidden px-0  py-8" onMouseEnter={handleHover} onMouseLeave={handleHoverEnd}>
           <motion.div
             animate={controls}
             initial={{ x: 0 }}
             className={`flex ${isMobile ? "flex-col" : "flex-row"} gap-16 mx-4`}
           >
             {activities.map((event, index) => (
-              <div key={index} className={isMobile ? "w-full" : "w-64"}>
+              <div key={index} className={isMobile ? "w-full" : "w-[350px]"}>
                 <SingleActivity activity={event} />
               </div>
             ))}

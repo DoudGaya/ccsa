@@ -7,7 +7,6 @@ const MediaContents = ({
   media
 }: {media: SanityTypes.Media[]}) => {
 
-  console.log(media)
   return (
     <div className=' py-20 max-w-7xl flex flex-col space-y-6 mx-auto w-full'>
          <div className=" py-3 w-full">

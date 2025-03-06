@@ -11,8 +11,6 @@ const page = async (
 ) => {
   
   const { publicationSlug } = await params
-
-  console.log(publicationSlug)
   return (
     <div className=' text-2xl'> {'ello world '} </div>
   )

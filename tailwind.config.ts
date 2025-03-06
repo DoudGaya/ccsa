@@ -1,5 +1,7 @@
 import type { Config } from "tailwindcss";
 
+
+
 export default {
     darkMode: ["class"],
     content: [
@@ -17,12 +19,18 @@ export default {
 			'blog': [
 				'PT Serif',
 				'sans-serif'
+			],
+			'main': [
+				"Comic Neue", 
+				'cursive',
+				'sans-serif'
 			]
   		},
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			brand: 'rgb(6,54,103)',
+  			// brand: '#437526',
   			card: {
   				DEFAULT: 'hsl(var(--card))',
   				foreground: 'hsl(var(--card-foreground))'

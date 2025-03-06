@@ -47,6 +47,22 @@ export namespace SanityTypes {
        
     }
 
+    export interface Events {
+        _id: string;
+        _createdAt: Date;
+        _updatedAt: Date;
+        title: string;
+        description: string;
+        slug: {
+            current: string;
+        };
+        startDate: Date;
+        endDate: Date;
+        location: string;
+        venue: string;
+        tags: string[];
+    }
+
     export interface Media {
         _id: string;
         _createdAt: Date;
@@ -70,6 +86,7 @@ export namespace SanityTypes {
         role: string;
         facebook: string;
         twitter: string;
+        priority: string;
         linkedin: string;
         memberType: MemberType;
         bio: string;
