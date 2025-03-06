@@ -17,11 +17,11 @@ const page = () => {
   return (
     <div>
         <PublicBanners title={pageData.title} message={pageData.description} /> 
-         <article className=" prose lg:prose-lg dark:prose-invert font-blog text-lg space-y-6">
+         {/* <article className=" prose lg:prose-lg dark:prose-invert font-blog text-lg space-y-6">
                 <PortableText 
                 // @ts-ignore
                 value={article.body} />
-               </article>
+               </article> */}
     </div>
   )
 }
