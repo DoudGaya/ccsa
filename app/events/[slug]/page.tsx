@@ -12,14 +12,12 @@ import { getAllEvents, getSingleEvents } from "@/sanity/lib/quesries/eventQuerie
 import PublicBanners from "@/app/components/PublicBanners"
 
 
-interface EventPageProps {
-  params: {
-    slug: string
-  }
+type EventPageProps = {
+  slug: string
 }
 
 
-export default async function EventPage({ params }: EventPageProps) {
+export default async function EventPage({ params }: {params: Promise<EventPageProps>}) {
 
     const { slug } = await params
     const event = await getSingleEvents(slug) as SanityTypes.Events
