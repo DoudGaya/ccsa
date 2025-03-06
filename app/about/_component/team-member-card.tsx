@@ -22,7 +22,7 @@ export default function TeamMemberCard({ member }: TeamMemberCardProps) {
       alt={member.name}
       height={500}
       width={500}
-      className={`transition-opacity ${member.priority ? 'w-[200px] h-[200px]' : 'w-[180px] h-[180px] '}  object-cover rounded-full object-[50%_25%] border-2 border-blue-950 duration-300 ease-in-out group-hover:opacity-75`}
+      className={`transition-opacity ${member.priority ? 'w-[200px] h-[200px]' : 'w-[200px] h-[200px] '}  object-cover rounded-full object-[50%_25%] border-2 border-blue-950 duration-300 ease-in-out group-hover:opacity-75`}
     />
     <div className=" flex flex-col text-center space-y-0"  >
         <Link href={`${member.memberType.slug}/${member.slug}`} className="text-gray-600 font-poppins text-sm hover:underline">{member.role}</Link>
