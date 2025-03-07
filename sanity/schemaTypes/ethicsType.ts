@@ -12,12 +12,12 @@ export const ethicsTypes = defineType( {
             type: 'string',
             validation: (Rule) => Rule.required(),
         },
-       defineField({
-        name: 'contents ',
-        title: 'Contents',
-        type: 'array',
-        of: [{type: 'string'}],
-       }),
+        defineField({
+            name: 'contents',
+            title: 'Contents',
+            type: 'array',
+            of: [{ type: 'block' }],
+        }),
         {
             name: 'slug',
             type: 'slug',
