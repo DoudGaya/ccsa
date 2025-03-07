@@ -76,40 +76,40 @@ export const corporateGovernance = [
   }
 ]
 
-export const courses = [
+export const trainings = [
   {
     id: 0,
-    url: "/courses/agribusiness-proficiency",
+    url: "/trainings/agribusiness-proficiency",
     title: "Agribusiness Proficiency Course",
     subtitle: "Master the fundamentals of agricultural business management and operations"
   },
   {
     id: 1,
-    url: "/courses/caicsa",
+    url: "/trainings/caicsa",
     title: "Certificate in Artificial Intelligence for Climate-Smart Agriculture (CAICSA)",
     subtitle: "Learn how to apply AI technologies to enhance climate-smart agricultural practices"
   },
   {
     id: 2,
-    url: "/courses/craai",
+    url: "/trainings/craai",
     title: "Certificate in Climate-Resilient Agriculture with Artificial Intelligence (CRAAI)",
     subtitle: "Develop skills to build resilient agricultural systems using AI-driven solutions"
   },
   {
     id: 3,
-    url: "/courses/capcsas",
+    url: "/trainings/capcsas",
     title: "Certificate in AI-Powered Climate-Smart Agriculture and Sustainability (CAPCSAS)",
     subtitle: "Explore sustainable agricultural practices enhanced by artificial intelligence"
   },
   {
     id: 4,
-    url: "/courses/mlaicsa",
+    url: "/trainings/mlaicsa",
     title: "Certificate in Machine Learning and Artificial Intelligence for Climate-Smart Agriculture (MLAICSA)",
     subtitle: "Master machine learning techniques specifically tailored for agricultural applications"
   },
   {
     id: 5,
-    url: "/courses/csa-aimlds",
+    url: "/trainings/csa-aimlds",
     title: "Certificate in Climate-Smart Agriculture with AI, Machine Learning, and Data Science (CSA-AIMLDS)",
     subtitle: "Comprehensive training in data science and AI methods for climate-smart agriculture"
   }
@@ -264,7 +264,7 @@ export function NavMenu() {
 
           <NavigationMenuContent>
             <ul className="grid grid-cols-2 w-[800px] gap-3 p-4">
-          { courses.map((course) => {
+          { trainings.map((course) => {
             return (
                 <ListItem key={course.id} title={course.title} href={course.url}>
                  {course.subtitle}
