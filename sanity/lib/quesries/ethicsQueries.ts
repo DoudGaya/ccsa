@@ -5,3 +5,17 @@ import { revalidate } from "../queries";
 
 revalidate
 
+
+
+
+
+export const getWorkEthics = async (slug: string) => {
+  const query = groq`*[_type == "ethics" && typeSlug.current == 'work-ethics'] | order(publishedAt desc) {
+    _id,
+    title,
+    slug,
+    body
+  }`;
+   return client.fetch(query, {slug})
+};
+

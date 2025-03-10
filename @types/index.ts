@@ -27,6 +27,31 @@ export namespace SanityTypes {
         slug: string;
     }
 
+    export interface EthicsType {
+        _id: string;
+        _createdAt: Date;
+        _updatedAt: Date;
+        title: string;
+        description: string;
+        slug: {
+            current: string;
+        }
+    }
+
+    export interface Ethics {
+        _id: string;
+        _createdAt: Date;
+        _updatedAt: Date;
+        title: string;
+        description: string;
+        slug: {
+            current: string;
+        }
+        body: PortableTextProps;
+        ethicsType: EthicsType;
+        tags: string[];
+    }
+
 
     export interface MemberType {
         _id: string;
