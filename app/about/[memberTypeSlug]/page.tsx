@@ -9,6 +9,7 @@ import Image from 'next/image'
 import { getAllMemberType, getBoardMembersWithoutPriority, getManagementMembers, getPriorityBoardMembers, getSingleMemberType } from '@/sanity/lib/quesries/membersQuesries'
 import { SanityTypes } from '@/@types'
 import TeamMemberCard from '../_component/team-member-card'
+import { notFound } from 'next/navigation'
 
 
 type Params = {
@@ -16,7 +17,12 @@ type Params = {
 }
 
 const MemberSlug = async ({params}: {params: Promise<Params>} ) => {
-    const {memberTypeSlug} = await params
+  
+  if (!(await params).memberTypeSlug) {
+    return notFound()
+  }
+  const {memberTypeSlug} = await params
+
     const memberType = await getSingleMemberType(memberTypeSlug) as SanityTypes.MemberType
     const members = await getAllMemberType(memberTypeSlug) as SanityTypes.Member[]
 

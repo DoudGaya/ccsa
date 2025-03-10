@@ -15,7 +15,7 @@ export const getWorkEthics = async (slug: string) => {
     title,
     slug,
     body
-  }`;
+  }[0]`;
    return client.fetch(query, {slug})
 };
 

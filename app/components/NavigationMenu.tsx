@@ -66,12 +66,12 @@ export const corporateGovernance = [
   },
   {
     title: "Research Ethics",
-    href: "/about/research-ethics",
+    href: "/about/ethics/research-ethics",
     description: "Our commitment to ethical research practices and data privacy.",
   },
   {
     title: "Work Ethics",
-    href: "/about/work-ethics",
+    href: "/about/ethics/work-ethics",
     description: "Our commitment to fostering a safe and inclusive work environment.",
   }
 ]
