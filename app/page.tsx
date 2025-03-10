@@ -31,7 +31,7 @@ export default async function Home() {
       <HomeShowCaseCarousel />
       <HomeNews articles={articles} />
       <ObjectivesComponents />
-      {/* <HomeActivity activities={activities} /> */}
+      <HomeActivity activities={activities} />
      <div className=" max-w-7xl mx-auto px-4 py-8 w-full ">
     
      </div>

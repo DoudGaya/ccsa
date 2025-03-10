@@ -13,6 +13,8 @@ type Params = {
 const page = async ( {params}: { params:  Promise<Params> }) => {
 
     const { ethics } = await params
+
+    // console.log(ethics)
   const ethicsType  = await getWorkEthics(ethics) as SanityTypes.Ethics;
 
 

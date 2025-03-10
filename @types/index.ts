@@ -147,7 +147,7 @@ export namespace SanityTypes {
         _createdAt: Date;
         _updatedAt: Date;
         title: string;
-        description: string;
+        contents: string;
         images: SanityImageAssetDocument[];
         location: string;
         imageUrl: string;

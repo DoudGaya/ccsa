@@ -11,7 +11,7 @@ export const getSingleActivity = (slug: string) => {
     *[_type == "activity" && slug.current == $slug] {
         _id,
         title,
-        description,
+        contents,
         _createdAt,
         images,
         author->{
