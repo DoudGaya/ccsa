@@ -8,8 +8,8 @@ const SingleActivity = ( {activity}: {activity: SanityTypes.Activity } ) => {
   return (
     <div className=' flex flex-col items-center justify-center'>
         <Link href={`/activities/${activity.slug}`} key={activity._id} className="group">
-          <div className="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 ease-in-out group-hover:scale-105">
-            <div className="relative h-48">
+          <div className="bg-black text-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 ease-in-out group-hover:scale-105">
+            <div className="relative h-[300px]">
               <Image
                 src={activity.imageUrl || imageHolder.src}
                 alt={activity.title}
@@ -20,7 +20,7 @@ const SingleActivity = ( {activity}: {activity: SanityTypes.Activity } ) => {
                 {activity?.activityType?.name}
               </div> */}
             </div>
-            <div className="p-4">
+            <div className="px-4 py-6">
               <h3 className="text-lg font-semibold mb-2  line-clamp-2">{activity.title}</h3>
               {/* <p className="text-gray-600 text-sm mb-2 line-clamp-3">{activity.description}</p> */}
               <div className="flex items-center justify-between text-sm text-gray-500">

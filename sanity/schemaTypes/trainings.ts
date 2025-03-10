@@ -11,12 +11,18 @@ export const trainings = defineType({
             type: 'string',
             validation: (Rule) => Rule.required(),
         },
-        {
-            name: 'description',
-            title: 'Description',
-            type: 'text',
-            validation: (Rule) => Rule.required(),
-        },
+           defineField({
+                    name: 'description',
+                    title: 'Description',
+                    type: 'array',
+                    of: [{ type: 'block' }],
+                }),
+        // {
+        //     name: 'description',
+        //     title: 'Description',
+        //     type: 'text',
+        //     validation: (Rule) => Rule.required(),
+        // },
         defineField({
             name: 'slug',
             type: 'slug',

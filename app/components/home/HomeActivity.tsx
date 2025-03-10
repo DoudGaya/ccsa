@@ -6,6 +6,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import type { SanityTypes } from "@/@types"
 import SingleActivity from "@/app/activities/_components/SingleActivity"
+import womanFarmer from '@/public/woman-farmer.jpg'
 
 export default function HomeActivity({
   activities,
@@ -57,7 +58,13 @@ export default function HomeActivity({
   }
 
   return (
-    <section className="bg-white dark:bg-black text-brand py-20">
+    <section 
+    style={{
+      backgroundImage: `url(${womanFarmer.src})`,
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+    }}
+    className="bg-white bg-fixed dark:bg-black text-brand py-20">
       <div className="container mx-auto px-4 mb-12">
         <h2 className="text-3xl md:text-4xl text-gray-400 font-bold text-center mb-4">Events and Activities</h2>
       </div>

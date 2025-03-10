@@ -79,42 +79,42 @@ export const corporateGovernance = [
 export const trainings = [
   {
     id: 0,
-    url: "/trainings/agribusiness-proficiency",
+    url: "/trainings/agribusiness-proficiency-course",
     title: "Agribusiness Proficiency Course",
     subtitle: "Master the fundamentals of agricultural business management and operations"
   },
 
   {
     id: 1,
-    url: "/trainings/caicsa",
+    url: "/trainings/certificate-in-artificial-intelligence-for-climate-smart-agriculture-caicsa",
     title: "Certificate in Artificial Intelligence for Climate-Smart Agriculture (CAICSA)",
     subtitle: "Learn how to apply AI technologies to enhance climate-smart agricultural practices"
   },
 
   {
     id: 2,
-    url: "/trainings/craai",
+    url: "/trainings/certificate-in-climate-resilient-agriculture-with-artificial-intelligence-craai",
     title: "Certificate in Climate-Resilient Agriculture with Artificial Intelligence (CRAAI)",
     subtitle: "Develop skills to build resilient agricultural systems using AI-driven solutions"
   },
 
   {
     id: 3,
-    url: "/trainings/capcsas",
+    url: "/trainings/certificate-in-ai-powered-climate-smart-agriculture-and-sustainability-capcsas",
     title: "Certificate in AI-Powered Climate-Smart Agriculture and Sustainability (CAPCSAS)",
     subtitle: "Explore sustainable agricultural practices enhanced by artificial intelligence"
   },
 
   {
     id: 4,
-    url: "/trainings/mlaicsa",
+    url: "/trainings/certificate-in-machine-learning-and-artificial-intelligence-for-climate-smart-agriculture",
     title: "Certificate in Machine Learning and Artificial Intelligence for Climate-Smart Agriculture (MLAICSA)",
     subtitle: "Master machine learning techniques specifically tailored for agricultural applications"
   },
 
   {
     id: 5,
-    url: "/trainings/csa-aimlds",
+    url: "/trainings/certificate-in-climate-smart-agriculture-with-ai-machine-learning-and-data-science-csa-aimlds",
     title: "Certificate in Climate-Smart Agriculture with AI, Machine Learning, and Data Science (CSA-AIMLDS)",
     subtitle: "Comprehensive training in data science and AI methods for climate-smart agriculture"
   }

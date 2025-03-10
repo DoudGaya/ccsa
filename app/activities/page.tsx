@@ -35,10 +35,10 @@ const page = async () => {
       />
       <div className=" py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        {/* { activities.length < 1 ?
+        { activities.length < 1 ?
         <div className=" text-2xl"> {'No news or Event Available'} </div>
         : <ActivityGrid activities={activities} />
-        } */}
+        }
       </div>
     </div>
   )
