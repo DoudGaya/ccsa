@@ -13,9 +13,10 @@ export const ethics = defineType({
             validation: (Rule) => Rule.required(),
         },
         defineField({
-            name: 'description',
-            title: 'Description',
-            type: 'text',
+            name: 'body',
+            title: 'Body',
+            type: 'array',
+            of: [{ type: 'block' }],
         }),
         defineField({
             name: 'ethicsType',

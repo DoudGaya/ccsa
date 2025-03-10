@@ -43,12 +43,6 @@ export const events = defineType({
             type: 'array',
             of: [{ type: 'string' }],
         }),
-        // defineField({
-        //     name: 'author',
-        //     title: 'Author',
-        //     type: 'reference',
-        //     to: [{ type: 'author' }],
-        // }),
         {
             name: 'location',
             title: 'Location',
