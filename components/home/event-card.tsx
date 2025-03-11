@@ -76,13 +76,9 @@ export function EventCard({ event }: EventCardProps) {
       </CardContent>
       <CardFooter className="flex justify-end items-end border-t pt-3">
         {/* <BookingModal /> */}
-        <Link href={`/events/${event.slug.current}`} className="text-sm bg-primary text-white px-3 py-2 rounded-md font-medium text-primary">
+        <Link href={`/events/${event.slug.current}`} className="text-sm bg-brand text-white px-3 py-2 rounded-md font-medium text-primary">
           Learn More
         </Link>
-
-        {/* <Button className=" bg-blue-900" onClick={() => bookingModal.onOpen(event)} size="sm">
-          Book a Spot
-        </Button> */}
       </CardFooter>
     </Card>
   )

@@ -5,9 +5,15 @@ import { revalidate } from "../queries";
 import { SanityTypes } from "@/@types";
 
 
+revalidate
+
 export const getAllStandingCommittee = async () => {
     const query = groq`
-        *[_type == "standingCommittee"] | order(_createdAt asc)
+        *[_type == "standingCommittee"] {
+            title,
+            description,
+            'slug': slug.current
+        } | order(_createdAt asc)
     `
     const media = await client.fetch(query) as SanityTypes.StandingCommitteeType[]
     return media

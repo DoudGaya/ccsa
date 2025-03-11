@@ -16,6 +16,9 @@ import { events } from './events'
 import { trainings } from './trainings'
 import { standingCommitteeType } from './standingCommitteeType'
 
+
+
+
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
     authorType,
@@ -33,6 +36,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     events,
     member,
     Publication,
-    publicationType
+    publicationType,
   ],
 }

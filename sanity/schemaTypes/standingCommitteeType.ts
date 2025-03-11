@@ -3,7 +3,7 @@ import { defineType, defineField } from "sanity";
 
 export const standingCommitteeType = defineType({
     name: 'standingCommitteeType',
-    title: 'Type of Member',
+    title: 'Standing Committee Type',
     type: 'document',
     fields: [
         {

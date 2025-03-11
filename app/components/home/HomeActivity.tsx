@@ -64,7 +64,7 @@ export default function HomeActivity({
       backgroundSize: "cover",
       backgroundPosition: "center",
     }}
-    className="bg-white bg-fixed dark:bg-black text-brand py-20">
+    className="bg-fixed bg-blend-overlay bg-brand  text-brand py-20">
       <div className="container mx-auto px-4 mb-12">
         <h2 className="text-3xl md:text-4xl text-gray-400 font-bold text-center mb-4">Events and Activities</h2>
       </div>

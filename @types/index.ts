@@ -18,6 +18,13 @@ export namespace SanityTypes {
         author: Author;
     }
 
+
+    export interface StandingCommitteeType {
+        title: string
+        description: string
+        slug: string
+    }
+
     export interface Trainings {
         _id: string;
         _createdAt: Date;
