@@ -1,6 +1,7 @@
 import React from 'react'
 import { InnovationBanner } from '../_components/InnovationBanner'
 import innovationBannerImmage from '@/public/innovation-banner.jpg'
+import makersLab from '@/public/makers-lab.jpg'
 import Image from "next/image"
 import Link from "next/link"
 import {
@@ -32,7 +33,7 @@ const page = () => {
 
         />
 
-<div className="container mx-auto px-4 py-8 max-w-5xl">
+<div className="container mx-auto px-4 py-8 max-w-5xl font-main">
       <h1 className="text-3xl font-bold mb-8 text-center">Agri-Tech Tools</h1>
       <h2 className="text-2xl font-semibold mb-6 text-center text-green-700">
         Driving Innovation in Climate-Smart Agriculture
@@ -58,10 +59,10 @@ const page = () => {
 
       {/* Maker Space */}
       <section className="mb-12">
-        <div className="bg-gradient-to-r from-green-50 to-blue-50 p-6 rounded-lg border border-gray-200">
-          <h2 className="text-2xl font-semibold mb-4">Maker Space: A Hub for Agri-Tech Innovation</h2>
+        <div className="bg-gradient-to-r from-green-50 dark:from-gray-950 dark:to-slate-950 to-blue-50 p-6 rounded-lg border dark:border-green-800 border-gray-200">
           <div className="flex flex-col md:flex-row gap-6 items-center">
             <div className="md:w-1/2">
+          <h2 className="text-2xl font-semibold mb-4">Maker Space: A Hub for Agri-Tech Innovation</h2>
               <p className="mb-4">
                 Located at the Cosmopolitan University City Campus, CBD, our Maker Space is a dynamic and innovative
                 space for agricultural technology development, prototyping, and testing. It provides state-of-the-art
@@ -71,7 +72,7 @@ const page = () => {
             </div>
             <div className="md:w-1/2">
               <Image
-                src="/images/maker-space.jpg"
+                src={makersLab.src}
                 alt="CCSA Maker Space"
                 width={500}
                 height={300}
@@ -88,7 +89,7 @@ const page = () => {
 
         <div className="grid md:grid-cols-2 gap-6">
           {/* Drone Technologies Lab */}
-          <div className="bg-white p-6 rounded-lg shadow-sm border hover:shadow-md transition-shadow">
+          <div className="bg-white dark:bg-slate-950 p-6 rounded-lg shadow-sm border hover:shadow-md transition-shadow">
             <div className="flex items-center mb-4">
               <div className="bg-blue-100 p-3 rounded-full mr-4">
                 <Drone className="h-8 w-8 text-blue-600" />
@@ -102,7 +103,7 @@ const page = () => {
           </div>
 
           {/* Virtual Reality Suite */}
-          <div className="bg-white p-6 rounded-lg shadow-sm border hover:shadow-md transition-shadow">
+          <div className="bg-white dark:bg-slate-950 p-6 rounded-lg shadow-sm border hover:shadow-md transition-shadow">
             <div className="flex items-center mb-4">
               <div className="bg-purple-100 p-3 rounded-full mr-4">
                 <VrHeadset className="h-8 w-8 text-purple-600" />
@@ -115,7 +116,7 @@ const page = () => {
           </div>
 
           {/* Robotics & IoT Section */}
-          <div className="bg-white p-6 rounded-lg shadow-sm border hover:shadow-md transition-shadow">
+          <div className="bg-white dark:bg-slate-950 p-6 rounded-lg shadow-sm border hover:shadow-md transition-shadow">
             <div className="flex items-center mb-4">
               <div className="bg-teal-100 p-3 rounded-full mr-4">
                 <Robot className="h-8 w-8 text-teal-600" />
@@ -129,7 +130,7 @@ const page = () => {
           </div>
 
           {/* Large-Scale 3D Printing */}
-          <div className="bg-white p-6 rounded-lg shadow-sm border hover:shadow-md transition-shadow">
+          <div className="bg-white dark:bg-slate-950 p-6 rounded-lg shadow-sm border hover:shadow-md transition-shadow">
             <div className="flex items-center mb-4">
               <div className="bg-orange-100 p-3 rounded-full mr-4">
                 <Printer3d className="h-8 w-8 text-orange-600" />
@@ -143,7 +144,7 @@ const page = () => {
           </div>
 
           {/* AI Corner */}
-          <div className="bg-white p-6 rounded-lg shadow-sm border hover:shadow-md transition-shadow">
+          <div className="bg-white dark:bg-slate-950 p-6 rounded-lg shadow-sm border hover:shadow-md transition-shadow">
             <div className="flex items-center mb-4">
               <div className="bg-indigo-100 p-3 rounded-full mr-4">
                 <Brain className="h-8 w-8 text-indigo-600" />
@@ -157,7 +158,7 @@ const page = () => {
           </div>
 
           {/* Electrical & Power Machines Section */}
-          <div className="bg-white p-6 rounded-lg shadow-sm border hover:shadow-md transition-shadow">
+          <div className="bg-white dark:bg-slate-950 p-6 rounded-lg shadow-sm border hover:shadow-md transition-shadow">
             <div className="flex items-center mb-4">
               <div className="bg-yellow-100 p-3 rounded-full mr-4">
                 <Zap className="h-8 w-8 text-yellow-600" />
@@ -176,7 +177,7 @@ const page = () => {
       <section className="mb-12">
         <h2 className="text-2xl font-semibold mb-6 border-b pb-2">Collaborations & Capacity Building</h2>
 
-        <div className="bg-gray-50 p-6 rounded-lg mb-8">
+        <div className="bg-gray-50 dark:bg-gray-900 p-6 rounded-lg mb-8">
           <div className="flex items-start mb-4">
             <div className="bg-green-100 p-3 rounded-full mr-4 mt-1">
               <Users className="h-8 w-8 text-green-600" />
@@ -192,7 +193,7 @@ const page = () => {
 
         <div className="space-y-6">
           {/* AI Policy and Practice Lab Project */}
-          <div className="bg-white p-6 rounded-lg shadow-sm border">
+          <div className="bg-white dark:bg-slate-950 p-6 rounded-lg shadow-sm border">
             <h3 className="text-xl font-semibold mb-3">AI Policy and Practice Lab Project</h3>
             <p className="mb-3">
               A collaboration with the World Bank, Young Innovators of Nigeria, and the Federal Ministry of Education,
@@ -236,7 +237,7 @@ const page = () => {
           </div>
 
           {/* Centre for Collaborative AI */}
-          <div className="bg-white p-6 rounded-lg shadow-sm border">
+          <div className="bg-white dark:bg-slate-950 p-6 rounded-lg shadow-sm border">
             <h3 className="text-xl font-semibold mb-3">Centre for Collaborative AI</h3>
             <p className="mb-3">
               A research centre focused on precision farming, climate risk assessment, and data-driven agricultural
@@ -255,18 +256,18 @@ const page = () => {
       </section>
 
       {/* Conclusion */}
-      <section className="bg-gradient-to-r from-green-50 to-blue-50 p-6 rounded-lg">
+      <section className="bg-gradient-to-r from-green-50 dark:from-gray-900 dark:to-slate-900 to-blue-50 p-6 rounded-lg">
         <p className="mb-4">
           At CCSA, we continuously expand our digital platforms, explore new technologies, and engage with diverse
           stakeholders to drive innovation in sustainable agriculture. Through our Maker Space and Agri-Tech Tools, we
           aim to bridge the gap between research and real-world applications, ensuring farmers and agripreneurs can
           access the best tools, knowledge, and resources to thrive in an evolving agricultural landscape.
         </p>
-        <div className="flex justify-center mt-6">
+        {/* <div className="flex justify-center mt-6">
           <button className="bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-6 rounded-md transition duration-300">
             Schedule a Visit to Our Maker Space
           </button>
-        </div>
+        </div> */}
       </section>
     </div>
     </div>
