@@ -23,7 +23,7 @@ const page = async ( {params}: { params:  Promise<Params> }) => {
     <div className=' flex flex-col items-center justify-center'>
       <AboutBanner 
         bannerImage={aboutBannerImage.src}
-        title='Work Ethics'
+        title={ethics}
         description='Learn about our work ethics in Centre for Climate-Smart Agriculture (Cosmopolitan University Abuja)'
       />
        <div className=" flex items-start px-6 w-full max-w-7xl">

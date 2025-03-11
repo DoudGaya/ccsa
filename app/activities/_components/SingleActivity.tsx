@@ -9,7 +9,7 @@ const SingleActivity = ( {activity}: {activity: SanityTypes.Activity } ) => {
     <div className=' flex flex-col items-center justify-center'>
         <Link href={`/activities/${activity.slug}`} key={activity._id} className="group">
           <div className="bg-black text-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 ease-in-out group-hover:scale-105">
-            <div className="relative h-[300px]">
+            <div className="relative h-[400px]">
               <Image
                 src={activity.imageUrl || imageHolder.src}
                 alt={activity.title}
