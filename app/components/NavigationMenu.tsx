@@ -154,7 +154,8 @@ export const researchItems: { title: string; href: string; description: string }
   },
 ]
 
-export const mediaItems = ["Photos", "Documentaries", "Interviews", "YouTube", "Webinar", "Activities", "Live TV"]
+export const mediaItems = ["Agri-Universities", "Documentaries", "Interviews", "YouTube", "Live TV"]
+// export const mediaItems = ["Photos", "Documentaries", "Interviews", "YouTube", "Webinar", "Activities", "Live TV"]
 
 export const innovationItems: { title: string; href: string; description: string }[] = [
   {
@@ -252,12 +253,12 @@ export function NavMenu() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Media</NavigationMenuTrigger>
+          <NavigationMenuTrigger>Resources</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-3 lg:w-[600px]">
               {mediaItems.map(
                 (item) => (
-                  <Link key={item} title={item} href={`/media/${item.toLowerCase().replace(/ /g, "-")}`}>
+                  <Link key={item} title={item} href={`/resources/${item.toLowerCase().replace(/ /g, "-")}`}>
                     {item}
                   </Link>
                 ),
@@ -267,7 +268,6 @@ export function NavMenu() {
         </NavigationMenuItem>
         <NavigationMenuItem>
           <NavigationMenuTrigger>Trainings</NavigationMenuTrigger>
-
           <NavigationMenuContent>
             <ul className="grid grid-cols-2 w-[800px] gap-3 p-4">
           { trainings.map((course) => {
