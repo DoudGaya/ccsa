@@ -125,6 +125,9 @@ export function MobileNavMenu() {
           <MobileLink href="/contact" onOpenChange={setOpen}>
             Contact
           </MobileLink>
+          <MobileLink href="/activities" onOpenChange={setOpen}>
+            Activities 
+          </MobileLink>
         </div>
       </SheetContent>
     </Sheet>

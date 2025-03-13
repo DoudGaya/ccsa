@@ -72,8 +72,8 @@ export default function HomeActivity({
       <div className="relative w-full overflow-hidden bg-gradient-to-r">
         {!isMobile && (
           <>
-            <div className="absolute left-0 top-0 w-32 h-full bg-gradient-to-r from-white dark:from-gray-900 to-transparent z-10" />
-            <div className="absolute right-0 top-0 w-32 h-full bg-gradient-to-l from-white dark:from-gray-900 to-transparent z-10" />
+            <div className="absolute left-0 top-0 w-32 h-full bg-gradient-to-r from-black dark:from-gray-900 to-transparent z-10" />
+            <div className="absolute right-0 top-0 w-32 h-full bg-gradient-to-l from-black dark:from-gray-900 to-transparent z-10" />
           </>
         )}
 

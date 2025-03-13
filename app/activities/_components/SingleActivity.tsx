@@ -8,7 +8,7 @@ const SingleActivity = ( {activity}: {activity: SanityTypes.Activity } ) => {
   return (
     <div className=' flex flex-col items-center justify-center'>
         <Link href={`/activities/${activity.slug}`} key={activity._id} className="group">
-          <div className="bg-black text-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 ease-in-out group-hover:scale-105">
+          <div className="bg-brand text-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 ease-in-out group-hover:scale-105">
             <div className="relative h-[400px]">
               <Image
                 src={activity.imageUrl || imageHolder.src}
@@ -29,7 +29,7 @@ const SingleActivity = ( {activity}: {activity: SanityTypes.Activity } ) => {
               </div>
               <div className="mt-2 flex flex-wrap gap-2">
                 {activity.tags.slice(0, 3).map((tag) => (
-                  <span key={tag} className="bg-gray-200 text-gray-700 px-2 py-1 rounded-full text-xs">
+                  <span key={tag} className="bg-green-300 text-gray-700 px-2 py-0.5 rounded-full text-xs">
                     {tag}
                   </span>
                 ))}
