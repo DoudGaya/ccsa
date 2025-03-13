@@ -88,8 +88,8 @@ export function MobileNavMenu() {
               </div>
             </AccordionContent>
           </AccordionItem>
-          <AccordionItem value="media">
-            <AccordionTrigger>Media</AccordionTrigger>
+          <AccordionItem value="resources">
+            <AccordionTrigger>Reources</AccordionTrigger>
             <AccordionContent>
               <div className="flex flex-col space-y-2">
                 {mediaItems.map((item) => (
