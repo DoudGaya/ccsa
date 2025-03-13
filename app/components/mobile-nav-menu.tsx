@@ -96,7 +96,7 @@ export function MobileNavMenu() {
                   <MobileLink
                     key={item}
                     className="px-3"
-                    href={`/media/${item.toLowerCase().replace(/ /g, "-")}`}
+                    href={`/resources/${item.toLowerCase().replace(/ /g, "-")}`}
                     onOpenChange={setOpen}
                   >
                     {item}
