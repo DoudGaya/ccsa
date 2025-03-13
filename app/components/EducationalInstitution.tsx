@@ -57,7 +57,9 @@ export default function EducationalInstitutions() {
     }
   }, [searchTerm, selectedType, selectedCategory, institutions]);
 
+  // @ts-ignore
   const uniqueTypes = ['All', ...new Set(institutions.map(institution => institution.type))];
+  //@ts-ignore
   const uniqueCategories = ['All', ...new Set(institutions.map(institution => institution.category))];
 
   return (
