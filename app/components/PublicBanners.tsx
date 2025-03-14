@@ -3,7 +3,7 @@ import banner from '@/public/banner.jpg'
 
 const PublicBanners = ( {
   title,
-  message
+  message,
 }: {
   title: string;
   message: string;

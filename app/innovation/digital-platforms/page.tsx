@@ -27,9 +27,6 @@ const page = () => {
       <h2 className="text-xl font-medium mb-8 text-center text-blue-600">
         Transforming Agriculture Through Technologies
       </h2>
-
-
-
       {/* Introduction */}
       <section className="mb-12">
         <div className="bg-gradient-to-r from-blue-50 to-green-50 p-6 rounded-lg border border-blue-100">

@@ -267,7 +267,9 @@ export function NavMenu() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
+          <Link href={'/trainings'} passHref>
           <NavigationMenuTrigger>Trainings</NavigationMenuTrigger>
+          </Link>
           <NavigationMenuContent>
             <ul className="grid grid-cols-2 w-[800px] gap-3 p-4">
           { trainings.map((course) => {
@@ -280,9 +282,7 @@ export function NavMenu() {
         )}
         </ul>
         </NavigationMenuContent>
-         
         </NavigationMenuItem>
-
           <NavigationMenuItem>
             <NavigationMenuTrigger>Innovation Hub</NavigationMenuTrigger>
             <NavigationMenuContent>
