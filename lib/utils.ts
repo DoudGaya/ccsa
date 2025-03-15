@@ -33,6 +33,7 @@ export function formatDate(dateString: string): string {
 
 
 
+
 export const homeActivities: Activity[] = [
   {
     title: 'Agriculrural Development Workshop',
