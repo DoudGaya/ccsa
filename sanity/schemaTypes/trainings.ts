@@ -12,17 +12,39 @@ export const trainings = defineType({
             validation: (Rule) => Rule.required(),
         },
            defineField({
-                    name: 'description',
-                    title: 'Description',
-                    type: 'array',
-                    of: [{ type: 'block' }],
+                    name: 'mandate',
+                    title: 'Mandate',
+                    type: 'string',
                 }),
-        // {
-        //     name: 'description',
-        //     title: 'Description',
-        //     type: 'text',
-        //     validation: (Rule) => Rule.required(),
-        // },
+                defineField({
+                    name: 'overview',
+                    title: 'Overview',
+                    type: 'text',
+                }),
+                defineField({
+                    name: 'learningOutcomes',
+                    title: 'Learning Outcomes',
+                    type: 'array',
+                    of: [{ type: 'string' }],
+                }),
+                defineField({
+                    name: 'curriculum',
+                    title: 'Curriculum',
+                    type: 'array',
+                    of: [{ type: 'string' }],
+                }),
+                defineField({
+                    name: 'Pedalogy',
+                    title: 'pedagogy',
+                    type: 'array',
+                    of: [{ type: 'string' }],
+                }),
+                defineField({
+                    name: 'targetAudience',
+                    title: 'Target Audience',
+                    type: 'array',
+                    of: [{ type: 'string' }],
+                }),
         defineField({
             name: 'slug',
             type: 'slug',
@@ -31,12 +53,6 @@ export const trainings = defineType({
                 maxLength: 96,
             },
         }),
-        {
-            name: 'startDate',
-            title: 'Start Date',
-            type: 'datetime',
-            validation: (Rule) => Rule.required(),
-        },
         {
             name: 'location',
             title: 'Location',

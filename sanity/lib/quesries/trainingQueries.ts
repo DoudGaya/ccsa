@@ -6,19 +6,23 @@ export const revalidate = 10
 
 
 
-const getAllTrainings = () => {
+export const getAllTrainings = () => {
     const query = groq`
     *[_type == "trainings"] | order(_createdAt desc) {
+        _type,
         _id,
         title,
-        description,
+        overview,
         'slug': slug.current,
-        startDate,
-        location,
-        venue,
+        'pedagogy': Pedagogy[],
+        'learningOutcomes': learningOutcomes[],
+        'curriculum': curriculum[],
+        'targetAudience': targetAudience[],
+        'imageUrl': images[0].asset->url,
         _createdAt,
-        images,
-        'imageUrl': imageUrl.asset->url,
+        mandate,
+        venue,
+        location,
     }
     `
     return client.fetch(query)
@@ -26,20 +30,23 @@ const getAllTrainings = () => {
 
 
 
-
 export const getSingleTraining = (slug: string) => {
     const query = groq`
     *[_type == "trainings" && slug.current == $slug] {
+        _type,
         _id,
         title,
-        description,
+        overview,
         'slug': slug.current,
-        startDate,
-        location,
-        venue,
+        'pedagogy': Pedalogy[],
+        'learningOutcomes': learningOutcomes[],
+        'curriculum': curriculum[],
+        'targetAudience': targetAudience[],
+        'imageUrl': images[0].asset->url,
         _createdAt,
-        images,
-        'imageUrl': imageUrl.asset->url,
+        mandate,
+        venue,
+        location,
     }[0]
     `
 return client.fetch(query, {slug})

@@ -30,12 +30,17 @@ export namespace SanityTypes {
         _createdAt: Date;
         _updatedAt: Date;
         title: string;
-        description: string;
+        overview: string;
+        mandate: string;
+        learningOutcomes: string[];
+        curriculum: string[];
+        pedagogy: string[];
+        targetAudience: string[];
         slug: string;
-        startDate: Date;
         location: string;
         venue: string;
         imageUrl: string;
+
     }
 
     export interface StandingCommitteeType {

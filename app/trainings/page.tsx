@@ -2,67 +2,14 @@ import Image from "next/image"
 import Link from "next/link"
 import { Leaf, Cpu, Briefcase, FileText, Handshake, ArrowRight, GraduationCap } from "lucide-react"
 import PublicBanners from "../components/PublicBanners"
+import { getAllTrainings } from "@/sanity/lib/quesries/trainingQueries"
+import { SanityTypes } from "@/@types"
 
-// Training programs data
-const trainingPrograms = [
-  {
-    id: "csap",
-    title: "Certificate in Sustainable Agricultural Practices (CSAP)",
-    mandate: "Sustainable Practice",
-    mandateIcon: <Leaf className="h-5 w-5 text-green-600" />,
-    mandateColor: "bg-green-100",
-    textColor: "text-green-700",
-    description:
-      "Equip participants with knowledge and skills to implement sustainable agricultural practices across various platforms, including livestock, crops, poultry, and fishing.",
-    image: "/images/sustainable-agriculture-training.jpg",
-  },
-  {
-    id: "etcra",
-    title: "Certificate in Emerging Technologies for Climate-Resilient Agriculture (ETCRA)",
-    mandate: "Emerging Technologies",
-    mandateIcon: <Cpu className="h-5 w-5 text-blue-600" />,
-    mandateColor: "bg-blue-100",
-    textColor: "text-blue-700",
-    description:
-      "Explore the application of emerging technologies, including artificial intelligence (AI), machine learning (ML) and the Internet of Things (IoT), to enhance climate resilience in agriculture.",
-    image: "/images/agritech-training.jpg",
-  },
-  {
-    id: "apc",
-    title: "Agribusiness Proficiency Course",
-    mandate: "Agri-Entrepreneurship",
-    mandateIcon: <Briefcase className="h-5 w-5 text-amber-600" />,
-    mandateColor: "bg-amber-100",
-    textColor: "text-amber-700",
-    description:
-      "Equip participants with essential skills to establish and manage profitable agribusiness ventures, with a strong focus on farm management.",
-    image: "/images/agribusiness-training.jpg",
-  },
-  {
-    id: "csapa",
-    title: "Certificate in Climate-Smart Agriculture Policy and Advocacy (CSAPA)",
-    mandate: "Policy and Advocacy",
-    mandateIcon: <FileText className="h-5 w-5 text-purple-600" />,
-    mandateColor: "bg-purple-100",
-    textColor: "text-purple-700",
-    description:
-      "Explore the intersection of policy, sustainability, and climate-smart agriculture to drive policy change and advocate for sustainable practices.",
-    image: "/images/policy-advocacy-training.jpg",
-  },
-  {
-    id: "csap-partnerships",
-    title: "Certificate in Climate-Smart Agriculture Partnerships (CSAP)",
-    mandate: "Partnerships",
-    mandateIcon: <Handshake className="h-5 w-5 text-teal-600" />,
-    mandateColor: "bg-teal-100",
-    textColor: "text-teal-700",
-    description:
-      "Foster collaboration between agricultural experts, policymakers, and private-sector stakeholders to develop partnerships for climate-resilient agriculture.",
-    image: "/images/partnerships-training.jpg",
-  },
-]
 
-export default function TrainingPrograms() {
+
+export default async function TrainingPrograms() {
+
+  const trainings = await getAllTrainings() as SanityTypes.Trainings[]
   return (
     <div className="  font-main">
       <PublicBanners title="Training Programmes" message={"Aligned with CCSA Mandates" } />
@@ -178,21 +125,22 @@ export default function TrainingPrograms() {
         </h2>
 
         <div className="space-y-8">
-          {trainingPrograms.map((program) => (
-            <div key={program.id} className="bg-white py-6 rounded-lg shadow-md overflow-hidden border border-gray-200">
+          {trainings.map((program) => (
+            <div key={program._id} className="bg-white py-6 rounded-lg shadow-md overflow-hidden border border-gray-200">
               <div className="md:flex">
                 <div className="md:w-1/3 relative h-60 md:h-auto">
-                  <Image src={program.image || "/placeholder.svg"} alt={program.title} fill className="object-cover" />
+                  <Image src={program?.imageUrl || "/placeholder.svg"} alt={program.title} fill className="object-cover" />
                 </div>
                 <div className="md:w-2/3 p-6">
-                  <div className={`inline-flex items-center ${program.mandateColor} px-3 py-1 rounded-full mb-3`}>
-                    {program.mandateIcon}
-                    <span className={`ml-2 text-sm font-medium ${program.textColor}`}>{program.mandate}</span>
+                  <div className={`inline-flex items-center bg-green-400 px-3 py-1 rounded-full mb-3`}>
+                    {/* {program.mandateIcon} */}
+                    <Leaf className="h-4 w-4 text-white" />
+                    <span className={`ml-2 text-sm font-medium `}>{program.mandate}</span>
                   </div>
                   <h3 className="text-xl font-semibold mb-3">{program.title}</h3>
-                  <p className="mb-4">{program.description}</p>
+                  <p className="mb-4">{program.overview}</p>
                   <Link
-                    href={`/training/${program.id}`}
+                    href={`/trainings/${program.slug}`}
                     className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium"
                   >
                     View Programme Details <ArrowRight className="ml-2 h-4 w-4" />
