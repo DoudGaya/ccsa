@@ -37,7 +37,7 @@ export default async function TrainingProgramPage({ params }: { params: Promise<
       <div className="container mx-auto px-4 py-8 text-center">
         <h1 className="text-3xl font-bold mb-6">Training Program Not Found</h1>
         <p className="mb-6">The training program you're looking for doesn't exist.</p>
-        <Link href="/training" className="text-blue-600 hover:text-blue-800 font-medium">
+        <Link href="/trainings" className="text-blue-600 hover:text-blue-800 font-medium">
           Return to Training Programs
         </Link>
       </div>

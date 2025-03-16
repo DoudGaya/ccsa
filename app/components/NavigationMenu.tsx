@@ -266,7 +266,8 @@ export function NavMenu() {
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
-        <NavigationMenuItem>
+       
+        {/* <NavigationMenuItem>
           <Link href={'/trainings'} passHref>
           <NavigationMenuTrigger>Trainings</NavigationMenuTrigger>
           </Link>
@@ -282,7 +283,7 @@ export function NavMenu() {
         )}
         </ul>
         </NavigationMenuContent>
-        </NavigationMenuItem>
+        </NavigationMenuItem> */}
           <NavigationMenuItem>
             <NavigationMenuTrigger>Innovation Hub</NavigationMenuTrigger>
             <NavigationMenuContent>
@@ -295,6 +296,13 @@ export function NavMenu() {
               </ul>
             </NavigationMenuContent>
           </NavigationMenuItem>
+          <NavigationMenuItem>
+          <Link href="/trainings" legacyBehavior passHref>
+            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+              Trainings
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
           <NavigationMenuItem>
             <Link href="/news-and-events" legacyBehavior passHref>
               <NavigationMenuLink className={navigationMenuTriggerStyle()}>
