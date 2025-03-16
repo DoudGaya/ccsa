@@ -90,7 +90,7 @@ export default async function TrainingProgramPage({ params }: { params: Promise<
           <CheckCircle2 className="h-6 w-6 mr-2 text-gray-700" />
           Learning Outcomes
         </h2>
-        <div className="bg-white p-6 rounded-lg shadow-sm border">
+        <div className="bg-white p-6 rounded-lg shadow-sm border border-green-200">
           <p className="mb-4">Upon completing the programme, participants will:</p>
           <ul className="space-y-2">
             {training.learningOutcomes.map((outcome, index) => (
@@ -109,7 +109,7 @@ export default async function TrainingProgramPage({ params }: { params: Promise<
           <BookOpen className="h-6 w-6 mr-2 text-gray-700" />
           Curriculum
         </h2>
-        <div className="bg-white p-6 rounded-lg shadow-sm border">
+        <div className="bg-white p-6 rounded-lg shadow-sm border border-green-200">
           <ol className="list-decimal pl-5 space-y-2">
             {training.curriculum.map((item, index) => (
               <li key={index} className="pl-2">
@@ -126,7 +126,7 @@ export default async function TrainingProgramPage({ params }: { params: Promise<
           <Presentation className="h-6 w-6 mr-2 text-gray-700" />
           Pedagogy
         </h2>
-        <div className="bg-white p-6 rounded-lg shadow-sm border">
+        <div className="bg-white p-6 rounded-lg shadow-sm border border-green-200">
           <ul className="list-disc pl-5 space-y-2">
             {training.pedagogy.map((item, index) => (
               <li key={index} className="pl-2">
@@ -143,7 +143,7 @@ export default async function TrainingProgramPage({ params }: { params: Promise<
           <Users className="h-6 w-6 mr-2 text-gray-700" />
           Target Audience
         </h2>
-        <div className="bg-white p-6 rounded-lg shadow-sm border">
+        <div className="bg-white p-6 rounded-lg shadow-sm border border-green-200">
           <ul className="list-disc pl-5 space-y-2">
             {training.targetAudience.map((item, index) => (
               <li key={index} className="pl-2">
@@ -155,23 +155,23 @@ export default async function TrainingProgramPage({ params }: { params: Promise<
       </section>
 
       {/* Application */}
-      <section className={` bg-green-400  p-6 rounded-lg mb-8`}>
-        <h2 className={`text-xl font-semibold mb-4 bg-green-400`}>Ready to Apply?</h2>
+      <section className={`  p-6 rounded-lg mb-8`}>
+        <h2 className={`text-xl font-semibold mb-4`}>Ready to Apply?</h2>
         <p className="mb-6">
           Join our {training.title} programme to gain the knowledge and skills needed to implement climate-smart
           agricultural practices and drive sustainable change.
         </p>
         <div className="flex flex-col sm:flex-row gap-4">
           <button
-            className={`bg-red-400 hover:bg-opacity-90 text-white font-medium py-2 px-6 rounded-md transition duration-300`}
+            className={`bg-brand hover:bg-opacity-90 text-white font-medium py-2 px-6 rounded-md transition duration-300`}
           >
             Apply Now
           </button>
-          <button
+          {/* <button
             className={`bg-white border border-yellow-300 hover:bg-opacity-90 font-medium py-2 px-6 rounded-md transition duration-300`}
           >
             Download Brochure
-          </button>
+          </button> */}
         </div>
       </section>
 
@@ -188,7 +188,7 @@ export default async function TrainingProgramPage({ params }: { params: Promise<
             .map((relatedtraining) => (
               <div
                 key={relatedtraining._id}
-                className="bg-white rounded-lg shadow-sm overflow-hidden border border-gray-200"
+                className="bg-white rounded-lg shadow-sm overflow-hidden border border-green-200"
               >
                 <div className="h-40 relative">
                   <Image
