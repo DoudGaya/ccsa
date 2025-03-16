@@ -15,6 +15,7 @@ import {
 import { getAllTrainings, getSingleTraining } from "@/sanity/lib/quesries/trainingQueries"
 import { SanityTypes } from "@/@types"
 import PublicBanners from "@/app/components/PublicBanners"
+import placeHolder from '@/public/placeholder-img.png'
 
 
 
@@ -67,7 +68,7 @@ export default async function TrainingProgramPage({ params }: { params: Promise<
       {/* Hero Image */}
       <div className="mb-8">
         <Image
-          src={training.imageUrl || "/placeholder.svg"}
+          src={training.imageUrl || placeHolder}
           alt={training.title}
           width={1000}
           height={500}
@@ -192,7 +193,7 @@ export default async function TrainingProgramPage({ params }: { params: Promise<
               >
                 <div className="h-40 relative">
                   <Image
-                    src={relatedtraining.imageUrl || "/placeholder.svg"}
+                    src={relatedtraining.imageUrl || placeHolder}
                     alt={relatedtraining.title}
                     fill
                     className="object-cover"

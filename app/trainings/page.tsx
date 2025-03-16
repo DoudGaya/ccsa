@@ -4,7 +4,7 @@ import { Leaf, Cpu, Briefcase, FileText, Handshake, ArrowRight, GraduationCap } 
 import PublicBanners from "../components/PublicBanners"
 import { getAllTrainings } from "@/sanity/lib/quesries/trainingQueries"
 import { SanityTypes } from "@/@types"
-
+import placeHolder from '@/public/placeholder-img.png'
 
 
 export default async function TrainingPrograms() {
@@ -129,7 +129,7 @@ export default async function TrainingPrograms() {
             <div key={program._id} className="bg-white py-6 rounded-lg shadow-md overflow-hidden border border-gray-200">
               <div className="md:flex">
                 <div className="md:w-1/3 relative h-60 md:h-auto">
-                  <Image src={program?.imageUrl || "/placeholder.svg"} alt={program.title} fill className="object-cover" />
+                  <Image src={program?.imageUrl || placeHolder} alt={program.title} fill className="object-cover" />
                 </div>
                 <div className="md:w-2/3 p-6">
                   <div className={`inline-flex items-center bg-green-400 px-3 py-1 rounded-full mb-3`}>
