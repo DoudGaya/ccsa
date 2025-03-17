@@ -200,8 +200,10 @@ const page = () => {
               providing training in AI, emerging digital technologies, policy development, advanced software
               engineering, and creative skills tailored for agricultural innovation.
             </p>
-            <div className="flex flex-wrap gap-3 mt-4">
-              <Link
+            <div className="flex flex-col gap-3 mt-4">
+             <div className=" flex space-x-3">
+              <span className='font-semibold'>IDEAS Project </span>
+             <Link
                 href="https://ideas.cosmopolitan.edu.ng"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -209,7 +211,10 @@ const page = () => {
               >
                 ideas.cosmopolitan.edu.ng <ExternalLink className="h-3 w-3 ml-1" />
               </Link>
-              <Link
+             </div>
+             <div className=" flex space-x-3">
+             <span className='font-semibold'>World Bank</span>
+             <Link
                 href="https://projects.worldbank.org/en/projects-operations/project-detail/P166239"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -217,7 +222,10 @@ const page = () => {
               >
                 World Bank Project <ExternalLink className="h-3 w-3 ml-1" />
               </Link>
-              <Link
+             </div>
+             <div className=" flex space-x-3">
+              <span>Young Innovators of Nigeria</span>
+             <Link
                 href="https://yinigeria.com.ng"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -225,6 +233,7 @@ const page = () => {
               >
                 Young Innovators of Nigeria <ExternalLink className="h-3 w-3 ml-1" />
               </Link>
+             </div>
               <Link
                 href="https://ideasproject.gov.ng"
                 target="_blank"
@@ -263,11 +272,6 @@ const page = () => {
           aim to bridge the gap between research and real-world applications, ensuring farmers and agripreneurs can
           access the best tools, knowledge, and resources to thrive in an evolving agricultural landscape.
         </p>
-        {/* <div className="flex justify-center mt-6">
-          <button className="bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-6 rounded-md transition duration-300">
-            Schedule a Visit to Our Maker Space
-          </button>
-        </div> */}
       </section>
     </div>
     </div>

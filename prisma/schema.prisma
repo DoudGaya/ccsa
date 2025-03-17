@@ -1,4 +1,52 @@
 
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model TrainingApplications {
+  id                Int      @id @default(autoincrement())
+  name              String
+  email             String
+  phone             String
+  organization      String
+  gender            Gender
+  age               Int
+  role              String
+  training          String
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+model Contact {
+  id                Int      @id @default(autoincrement())
+  name              String
+  email             String
+  message           String
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+enum Gender {
+  Male
+  Female
+}
+
+model User {
+  id                Int      @id @default(autoincrement())
+  name              String
+  email             String
+  password          String
+  role              String
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
 
 // generator client {
 //   provider = "prisma-client-js"
@@ -61,51 +109,51 @@
 //   directUrl = env("DIRECT_URL")
 // }
 
-generator client {
-  provider = "prisma-client-js"
-}
+// generator client {
+//   provider = "prisma-client-js"
+// }
 
-datasource db {
-  provider  = "postgresql"
-  url       = env("DATABASE_URL")
-  directUrl = env("DIRECT_URL")
-}
+// datasource db {
+//   provider  = "postgresql"
+//   url       = env("DATABASE_URL")
+//   directUrl = env("DIRECT_URL")
+// }
 
-model TrainingApplications {
-  id                Int      @id @default(autoincrement())
-  name              String
-  email             String
-  phone             String
-  organization      String
-  gender            Gender
-  age               Int
-  role              String
-  training          String
-  createdAt         DateTime @default(now())
-  updatedAt         DateTime @updatedAt
-  @@map("rsvp")
-}
+// model TrainingApplications {
+//   id                Int      @id @default(autoincrement())
+//   name              String
+//   email             String
+//   phone             String
+//   organization      String
+//   gender            Gender
+//   age               Int
+//   role              String
+//   training          String
+//   createdAt         DateTime @default(now())
+//   updatedAt         DateTime @updatedAt
+//   @@map("rsvp")
+// }
 
-model Contact {
-  id                Int      @id @default(autoincrement())
-  name              String
-  email             String
-  message           String
-  createdAt         DateTime @default(now())
-  updatedAt         DateTime @updatedAt
-}
+// model Contact {
+//   id                Int      @id @default(autoincrement())
+//   name              String
+//   email             String
+//   message           String
+//   createdAt         DateTime @default(now())
+//   updatedAt         DateTime @updatedAt
+// }
 
-enum Gender {
-  Male
-  Female
-}
+// enum Gender {
+//   Male
+//   Female
+// }
 
-model User {
-  id                Int      @id @default(autoincrement())
-  name              String
-  email             String
-  password          String
-  role              String
-  createdAt         DateTime @default(now())
-  updatedAt         DateTime @updatedAt
-}
+// model User {
+//   id                Int      @id @default(autoincrement())
+//   name              String
+//   email             String
+//   password          String
+//   role              String
+//   createdAt         DateTime @default(now())
+//   updatedAt         DateTime @updatedAt
+// }
