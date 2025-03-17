@@ -21,18 +21,19 @@ export const createApplication = async (values: z.infer<typeof applicationSchema
         training,
      } = fieldValidation.data
 
-     const application = await db.rsvp.create({
-       data: {
-        email,
-        training,
-        age : parseInt(age),
-        name,
-        organization,
-        phone,
-        role,
-        gender,
-       }
-     })
+     const application = ''
+     // const application = await db.rsvp.create({
+     //   data: {
+     //    email,
+     //    training,
+     //    age : parseInt(age),
+     //    name,
+     //    organization,
+     //    phone,
+     //    role,
+     //    gender,
+     //   }
+     // })
 
 
      return { success: "Application has been Submitted", application: application}
