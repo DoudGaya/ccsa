@@ -203,48 +203,103 @@ const page = () => {
             <div className="flex flex-col gap-3 mt-4">
              <div className=" flex space-x-3">
               <div className=" flex flex-col">
-              <span className='font-semibold'> AI Policy and Practice Lab Project </span>
-              <span>(A collaboration with the World Bank group)</span>
+              {/* <span className='font-semibold'> AI Policy and Practice Lab Project </span> */}
+              {/* <span>(A collaboration with the World Bank group)</span> */}
+              <div className="">
+
+AI Policy and Practice Lab Project 
+<Link
+    href="https://ideas.cosmopolitan.edu.ng"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="inline-flex items-center text-sm text-blue-600 hover:text-blue-800"
+  >
+   (ideas.cosmopolitan.edu.ng) <ExternalLink className="h-3 w-3 ml-1" />
+  </Link>
+
+ – A collaboration with the
+ 
+  <Link
+    href="https://projects.worldbank.org/en/projects-operations/project-detail/P166239"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="inline-flex mx-2 items-center text-sm text-blue-600 hover:text-blue-800"
+  >
+     ( World Bank  ) <ExternalLink className="h-3 w-3 ml-1" />
+  </Link>, Young Innovators of Nigeria  <Link
+    href="https://yinigeria.com.ng"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="inline-flex items-center text-sm text-blue-600 hover:text-blue-800"
+  >
+    Young Innovators of Nigeria <ExternalLink className="h-3 w-3 ml-1" />
+  </Link>, and the Federal Ministry of Education 
+  
+  <Link
+    href="https://ideasproject.gov.ng"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="inline-flex items-center text-sm text-blue-600 hover:text-blue-800"
+  >
+    (https://ideasproject.gov.ng ) <ExternalLink className="h-3 w-3 ml-1" />
+  </Link>
+
+  
+  , providing training in AI, emerging digital technologies, policy development, advanced software engineering, and creative skills tailored for agricultural innovation.
+Centre for Collaborative AI 
+
+<Link
+  href="https://cosmopolitan.edu.ng/collaborative-centre-for-ai"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="inline-flex items-center text-sm text-blue-600 hover:text-blue-800"
+>
+  (cosmopolitan.edu.ng/collaborative-centre-for-ai) <ExternalLink className="h-3 w-3 ml-1" />
+</Link>
+
+
+ – A research centre focused on precision farming, climate risk assessment, and data-driven agricultural policy.
+</div>
               </div>
-             <Link
-                href="https://ideas.cosmopolitan.edu.ng"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center text-sm text-blue-600 hover:text-blue-800"
-              >
-                ideas.cosmopolitan.edu.ng <ExternalLink className="h-3 w-3 ml-1" />
-              </Link>
+                  {/* <Link
+                    href="https://ideas.cosmopolitan.edu.ng"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center text-sm text-blue-600 hover:text-blue-800"
+                  >
+                    ideas.cosmopolitan.edu.ng <ExternalLink className="h-3 w-3 ml-1" />
+                  </Link> */}
              </div>
-             <div className=" flex space-x-3">
-             <span className='font-semibold'>World Bank</span>
-             <Link
-                href="https://projects.worldbank.org/en/projects-operations/project-detail/P166239"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center text-sm text-blue-600 hover:text-blue-800"
-              >
-                World Bank Project <ExternalLink className="h-3 w-3 ml-1" />
-              </Link>
-             </div>
-             <div className=" flex space-x-3">
-              <span>Young Innovators of Nigeria</span>
-             <Link
-                href="https://yinigeria.com.ng"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center text-sm text-blue-600 hover:text-blue-800"
-              >
-                Young Innovators of Nigeria <ExternalLink className="h-3 w-3 ml-1" />
-              </Link>
-             </div>
-              <Link
+             {/* <div className=" flex space-x-3">
+                <span className='font-semibold'>World Bank</span>
+                <Link
+                    href="https://projects.worldbank.org/en/projects-operations/project-detail/P166239"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center text-sm text-blue-600 hover:text-blue-800"
+                  >
+                    World Bank Project <ExternalLink className="h-3 w-3 ml-1" />
+                </Link>
+             </div> */}
+                  {/* <div className=" flex space-x-3">
+                      <span>Young Innovators of Nigeria</span>
+                      <Link
+                          href="https://yinigeria.com.ng"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center text-sm text-blue-600 hover:text-blue-800"
+                        >
+                          Young Innovators of Nigeria <ExternalLink className="h-3 w-3 ml-1" />
+                      </Link>
+                  </div> */}
+              {/* <Link
                 href="https://ideasproject.gov.ng"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center text-sm text-blue-600 hover:text-blue-800"
               >
                 IDEAS Project <ExternalLink className="h-3 w-3 ml-1" />
-              </Link>
+              </Link> */}
             </div>
           </div>
 

@@ -45,7 +45,7 @@ export function TrainingApplicationForm({ onSubmit, onClose, trainings }: Submit
       phone: '',
       organization: '',
       age: '',
-      gender: undefined,
+      // gender: undefined,
       role: '',
       training: '',
     },
@@ -171,7 +171,7 @@ export function TrainingApplicationForm({ onSubmit, onClose, trainings }: Submit
 
 
      <div className=" grid grid-cols-2 gap-4">
-      <FormField
+      {/* <FormField
             control={form.control}
             name="gender"
             render={({ field }) => (
@@ -191,7 +191,7 @@ export function TrainingApplicationForm({ onSubmit, onClose, trainings }: Submit
                 <FormMessage />
               </FormItem>
             )}
-          />
+          /> */}
 
         <FormField
             control={form.control}

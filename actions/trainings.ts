@@ -13,7 +13,7 @@ export const createApplication = async (values: z.infer<typeof applicationSchema
     const { 
         name,
         email,
-        gender,
+     //    gender,
         age,
         organization,
         phone,

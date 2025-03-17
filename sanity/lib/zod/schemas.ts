@@ -1,4 +1,4 @@
-import { Gender } from '@prisma/client'
+// import { Gender } from '@prisma/client'
 import * as z from 'zod'
 
 export const applicationSchema = z.object({
@@ -14,7 +14,7 @@ export const applicationSchema = z.object({
     organization: z.string().min(2, {
         message: "Organization must be at least 2 characters",
     }),
-    gender: z.enum([Gender.Female, Gender.Male]),
+    // gender: z.enum([Gender.Female, Gender.Male]),
     role: z.string().min(2, {
         message: "Role must be at least 2 characters",
     }),
