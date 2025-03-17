@@ -202,7 +202,10 @@ const page = () => {
             </p>
             <div className="flex flex-col gap-3 mt-4">
              <div className=" flex space-x-3">
-              <span className='font-semibold'>IDEAS Project </span>
+              <div className=" flex flex-col">
+              <span className='font-semibold'> AI Policy and Practice Lab Project </span>
+              <span>(A collaboration with the World Bank group)</span>
+              </div>
              <Link
                 href="https://ideas.cosmopolitan.edu.ng"
                 target="_blank"

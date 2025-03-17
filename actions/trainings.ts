@@ -1,5 +1,4 @@
 'use server'
-import { contactSchema } from "@/lib/schema"
 import { db } from "@/lib/prisma"
 import * as z from 'zod'
 import { applicationSchema } from "@/sanity/lib/zod/schemas";
@@ -22,7 +21,7 @@ export const createApplication = async (values: z.infer<typeof applicationSchema
         training,
      } = fieldValidation.data
 
-     const application = await db.trainingApplications.create({
+     const application = await db.rsvp.create({
        data: {
         email,
         training,

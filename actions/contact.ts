@@ -12,7 +12,6 @@ export async function submitContactForm(formData: FormData) {
     message: formData.get("message"),
   })
 
-  console.log(validatedFields)
 
   if (!validatedFields.success) {
     return { success: false, errors: validatedFields.error.flatten().fieldErrors }

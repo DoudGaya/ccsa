@@ -9,7 +9,7 @@ datasource db {
   directUrl = env("DIRECT_URL")
 }
 
-model TrainingApplications {
+model Rsvp {
   id                Int      @id @default(autoincrement())
   name              String
   email             String
@@ -21,6 +21,7 @@ model TrainingApplications {
   training          String
   createdAt         DateTime @default(now())
   updatedAt         DateTime @updatedAt
+  @@map("rsvp")
 }
 
 model Contact {
