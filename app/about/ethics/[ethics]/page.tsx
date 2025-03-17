@@ -18,12 +18,14 @@ const page = async ( {params}: { params:  Promise<Params> }) => {
   const ethicsType  = await getWorkEthics(ethics) as SanityTypes.Ethics;
 
 
+  const pageTitle = ethicsType.title
+
 
   return (
     <div className=' flex flex-col items-center justify-center'>
       <AboutBanner 
         bannerImage={aboutBannerImage.src}
-        title={ethics}
+        title={pageTitle}
         description='Learn about our work ethics in Centre for Climate-Smart Agriculture (Cosmopolitan University Abuja)'
       />
        <div className=" flex items-start px-6 w-full max-w-7xl">
