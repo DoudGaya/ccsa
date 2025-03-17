@@ -119,6 +119,10 @@ export function MobileNavMenu() {
           </AccordionItem>
         </Accordion>
         <div className="flex flex-col space-y-2 mt-4">
+         
+          <MobileLink href="/trainings" onOpenChange={setOpen}>
+            Trainings 
+          </MobileLink>
           <MobileLink href="/knowledge-hub" onOpenChange={setOpen}>
             Knowledge Hub
           </MobileLink>

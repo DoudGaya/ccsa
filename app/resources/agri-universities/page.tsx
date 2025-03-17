@@ -8,8 +8,8 @@ const page = () => {
     <div>
     <MediaBanner 
         bannerImage={pubBanner.src}
-        title={`Agri-Universities`}
-        description={`List of Nigerian Universities offering Agriculture`} 
+        title={`Agri-Instutions`}
+        description={`List of Nigerian Instutions offering Agriculture`} 
         />
         <EducationalInstitutions />
     </div>

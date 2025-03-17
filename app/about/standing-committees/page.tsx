@@ -31,8 +31,8 @@ const MemberSlug = async ( ) => {
     <div className=' flex flex-col items-center justify-center'>
       <AboutBanner 
         bannerImage={aboutBannerImage.src}
-        title={'Standard Committee'}
-        description={'Our Standard Committee is made up of a group of individuals who are responsible for the day-to-day operations of the organization.'}
+        title={'Standing Committee'}
+        description={'Our Standing Committee is made up of a group of individuals who are responsible for the day-to-day operations of the organization.'}
       />
 
 <div className="container mx-auto px-4 py-8 max-w-5xl font-main font-semibold">

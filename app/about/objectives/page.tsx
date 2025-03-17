@@ -3,7 +3,7 @@ import { ArrowRight, Leaf, Cpu, Briefcase, FileText, Handshake } from "lucide-re
 import { AboutBanner } from "../_component/AboutBanner"
 import Link from "next/link"
 import Image from "next/image"
-import { researchItems } from "@/lib/items"
+import { objectives, researchItems } from "@/lib/items"
 
 
 const ObjectivesPage = () => {
@@ -60,7 +60,7 @@ const ObjectivesPage = () => {
 
         {/* Objectives Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {researchItems.map((item, index) => (
+          {objectives.map((item, index) => (
             <div
               key={index}
               className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 border border-gray-100 flex flex-col"
@@ -83,12 +83,7 @@ const ObjectivesPage = () => {
               </div>
 
               <div className="px-6 pb-6">
-                <Link
-                  href={item.href}
-                  className={`inline-flex items-center ${item.textColor} hover:underline font-medium`}
-                >
-                  Explore Initiative <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
+              
               </div>
             </div>
           ))}

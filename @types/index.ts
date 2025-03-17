@@ -195,3 +195,21 @@ export namespace SanityTypes {
         bio: string;
     }
 }
+
+
+export interface TrainingApplication {
+    id: number;
+    name: string;
+    email: string;
+    phone: string;
+    organization: string;
+    gender: string;
+    role: string;
+    training: string;
+}
+
+
+export interface Training {
+
+}
+
