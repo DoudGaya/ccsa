@@ -22,7 +22,7 @@ export const createApplication = async (values: z.infer<typeof applicationSchema
      } = fieldValidation.data
 
      // const application = ''
-     const application = await db.rsvp.create({
+     const application = await db.rSVP.create({
        data: {
         email,
         training,
