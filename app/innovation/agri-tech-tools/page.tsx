@@ -195,11 +195,11 @@ const page = () => {
           {/* AI Policy and Practice Lab Project */}
           <div className="bg-white dark:bg-slate-950 p-6 rounded-lg shadow-sm border">
             <h3 className="text-xl font-semibold mb-3">AI Policy and Practice Lab Project</h3>
-            <p className="mb-3">
+            {/* <p className="mb-3">
               A collaboration with the World Bank, Young Innovators of Nigeria, and the Federal Ministry of Education,
               providing training in AI, emerging digital technologies, policy development, advanced software
               engineering, and creative skills tailored for agricultural innovation.
-            </p>
+            </p> */}
             <div className="flex flex-col gap-3 mt-4">
              <div className=" flex space-x-3">
               <div className=" flex flex-col">

@@ -23,7 +23,7 @@ import { useToast } from '@/hooks/use-toast'
 // import { createHomeAction } from '@/actions/homes'
 import { createApplication } from '@/actions/trainings'
 import { SanityTypes, TrainingApplication } from '@/@types'
-import { Gender } from '@prisma/client'
+// import { Gender } from '@prisma/client'
 
 interface SubmitApplicationProps {
   onSubmit: (data: TrainingApplication) => void
@@ -56,7 +56,7 @@ export function TrainingApplicationForm({ onSubmit, onClose, trainings }: Submit
     try {
       let formDataToSubmit: any = { ...values };
       const data = await createApplication(formDataToSubmit)
-      onSubmit(data.application as TrainingApplication)
+      // onSubmit(data.application as TrainingApplication)
       form.reset()
       onClose()
       toast({
@@ -183,8 +183,8 @@ export function TrainingApplicationForm({ onSubmit, onClose, trainings }: Submit
                         <SelectValue placeholder="Select Home Status" />
                       </SelectTrigger>
                       <SelectContent>
-                            <SelectItem value={Gender.Male}>Male</SelectItem>
-                            <SelectItem value={Gender.Female}>Female</SelectItem>
+                            <SelectItem value={'Gender.Male'}>Male</SelectItem>
+                            <SelectItem value={'Gender.Female'}>Female</SelectItem>
                       </SelectContent>
                     </Select>
                 </FormControl>
