@@ -13,6 +13,7 @@ import {
   Smartphone,
   Cloud,
   BrickWall,
+  Leaf,
   MapPin,
   ChartArea,
   ChartCandlestick,
@@ -24,8 +25,6 @@ import {
   MapIcon,
   TabletSmartphone,
 } from "lucide-react"
-
-// import { Database, Users, BookOpen, ShoppingCart, BarChart3, ArrowRight, Smartphone, Cloud, Server } from "lucide-react"
 
 
 const pageData = {
@@ -336,13 +335,7 @@ const page = () => {
               
               <div className="flex">
                 <div className="bg-indigo-100 p-2 rounded-full h-10 w-10 flex items-center justify-center mr-4 flex-shrink-0">
-                  <Image 
-                    src="/placeholder.svg?height=20&width=20" 
-                    alt="Soil Analysis" 
-                    width={20} 
-                    height={20} 
-                    className="text-indigo-600"
-                  />
+                <Dice4Icon className=' h-6 w-6 mr-3 text-purple-600' />
                 </div>
                 <div>
                   <h4 className="font-semibold mb-2">Soil Analysis & Crop Recommendation</h4>
@@ -352,13 +345,7 @@ const page = () => {
               
               <div className="flex">
                 <div className="bg-indigo-100 p-2 rounded-full h-10 w-10 flex items-center justify-center mr-4 flex-shrink-0">
-                  <Image 
-                    src="/placeholder.svg?height=20&width=20" 
-                    alt="Irrigation Planning" 
-                    width={20} 
-                    height={20} 
-                    className="text-indigo-600"
-                  />
+                 <MapPin className=' h-6 w-6 mr-3 text-purple-600' />
                 </div>
                 <div>
                   <h4 className="font-semibold mb-2">Precision Irrigation Planning</h4>
@@ -368,13 +355,7 @@ const page = () => {
               
               <div className="flex">
                 <div className="bg-indigo-100 p-2 rounded-full h-10 w-10 flex items-center justify-center mr-4 flex-shrink-0">
-                  <Image 
-                    src="/placeholder.svg?height=20&width=20" 
-                    alt="Fertilizer Recommendations" 
-                    width={20} 
-                    height={20} 
-                    className="text-indigo-600"
-                  />
+                  <ChartArea className=' h-6 w-6 mr-3 text-purple-600' />
                 </div>
                 <div>
                   <h4 className="font-semibold mb-2">Fertilizer Recommendations</h4>
@@ -384,13 +365,7 @@ const page = () => {
               
               <div className="flex md:col-span-2">
                 <div className="bg-indigo-100 p-2 rounded-full h-10 w-10 flex items-center justify-center mr-4 flex-shrink-0">
-                  <Image 
-                    src="/placeholder.svg?height=20&width=20" 
-                    alt="Disease Detection" 
-                    width={20} 
-                    height={20} 
-                    className="text-indigo-600"
-                  />
+                  <Leaf className=' h-6 w-6 mr-3 text-purple-600' />
                 </div>
                 <div>
                   <h4 className="font-semibold mb-2">Plant Disease & Pest Detection</h4>
