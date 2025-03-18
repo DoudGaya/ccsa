@@ -2,6 +2,8 @@
 import aboutBannerImage from '@/public/about-banner.jpg'
 import { AboutBanner } from '../_component/AboutBanner'
 import rislan from '@/public/rislan.png'
+import partnerships from '@/public/partnership.jpg'
+
 
 import Image from "next/image"
 import Link from "next/link"
@@ -29,49 +31,49 @@ const PartnershipPage = () => {
       icon: <FileText className="h-8 w-8 text-blue-600" />,
       color: "bg-blue-100",
       description:
-        "Collaborations with research institutions, universities, and other organizations to conduct research, develop new technologies, and promote innovation in climate-smart agriculture.",
+        "Collaborations with research institutions, universities and other organizations to conduct research, develop new technologies and promote innovation in climate-smart agriculture.",
     },
     {
       title: "Implementation and Scaling",
       icon: <Target className="h-8 w-8 text-green-600" />,
       color: "bg-green-100",
       description:
-        "Collaborations with NGOs, community-based organizations, private sector companies, and government agencies to implement projects and scale up successful interventions.",
+        "Collaborations with NGOs, community-based organizations, private sector companies and government agencies to implement projects and scale up successful interventions.",
     },
     {
       title: "Advocacy and Policy",
       icon: <FileText className="h-8 w-8 text-purple-600" />,
       color: "bg-purple-100",
       description:
-        "Collaborations with civil society organizations, government agencies, and international organizations to advocate for policy changes and influence decision-making processes.",
+        "Collaborations with civil society organizations, government agencies and international organizations to advocate for policy changes and influence decision-making processes.",
     },
     {
       title: "Capacity Building and Training",
       icon: <GraduationCap className="h-8 w-8 text-amber-600" />,
       color: "bg-amber-100",
       description:
-        "Collaborations with training institutions and universities to build capacity of farmers, extension agents, and other stakeholders in climate-smart agriculture practices.",
+        "Collaborations with training institutions and universities to build capacity of farmers, extension agents and other stakeholders in climate-smart agriculture practices.",
     },
     {
       title: "Private Sector",
       icon: <Briefcase className="h-8 w-8 text-indigo-600" />,
       color: "bg-indigo-100",
       description:
-        "Collaborations with private sector companies to promote climate-smart agriculture practices, develop new markets, and improve access to finance and technology.",
+        "Collaborations with private sector companies to promote climate-smart agriculture practices, develop new markets and improve access to finance and technology.",
     },
     {
       title: "Community-Based",
       icon: <Home className="h-8 w-8 text-orange-600" />,
       color: "bg-orange-100",
       description:
-        "Collaborations with community-based organizations, cooperatives, and self-help groups to promote climate-smart agriculture practices and improve livelihoods.",
+        "Collaborations with community-based organizations, cooperatives and self-help groups to promote climate-smart agriculture practices and improve livelihoods.",
     },
     {
       title: "International",
       icon: <Globe className="h-8 w-8 text-teal-600" />,
       color: "bg-teal-100",
       description:
-        "Collaborations with international organizations, research institutions, and NGOs to promote climate-smart agriculture practices and share knowledge globally.",
+        "Collaborations with international organizations, research institutions and NGOs to promote climate-smart agriculture practices and share knowledge globally.",
     },
   ]
 
@@ -84,13 +86,13 @@ const PartnershipPage = () => {
     {
       title: "Transparency",
       description:
-        "CCSA will ensure transparency in all partnership agreements, including clear roles, responsibilities, and expectations.",
+        "CCSA will ensure transparency in all partnership agreements, including clear roles, responsibilities and expectations.",
     },
     {
       title: "Accountability",
       description: "CCSA will hold itself and its partners accountable for their actions and outcomes.",
     },
-    { title: "Respect", description: "CCSA will respect the autonomy, values, and cultures of its partners." },
+    { title: "Respect", description: "CCSA will respect the autonomy, values and cultures of its partners." },
     {
       title: "Equity",
       description:
@@ -103,7 +105,7 @@ const PartnershipPage = () => {
     {
       title: "Identification",
       description:
-        "CCSA will identify potential partners based on their expertise, experience, and alignment with CCSA's mission and objectives.",
+        "CCSA will identify potential partners based on their expertise, experience and alignment with CCSA's mission and objectives.",
     },
     {
       title: "Initial Contact",
@@ -113,7 +115,7 @@ const PartnershipPage = () => {
     {
       title: "Proposal Development",
       description:
-        "CCSA will develop a partnership proposal outlining the terms of the partnership, including roles, responsibilities, and expectations.",
+        "CCSA will develop a partnership proposal outlining the terms of the partnership, including roles, responsibilities and expectations.",
     },
     {
       title: "Agreement Negotiation",
@@ -131,7 +133,7 @@ const PartnershipPage = () => {
    <div className="">
      <AboutBanner 
     bannerImage={aboutBannerImage.src}
-    title='Our'
+    title='Our Partnerships Policies'
     description='Learn about our strategic partnerships with other organizations'
   />
     <div className="container mx-auto px-4 py-8 max-w-6xl">
@@ -143,7 +145,7 @@ const PartnershipPage = () => {
 
         {/* Hero Image */}
         <div className="relative h-80 rounded-xl overflow-hidden mb-8">
-          <Image src="/images/partnership-hero.jpg" alt="CCSA Partnerships" fill className="object-cover" />
+          <Image src={partnerships} alt="CCSA Partnerships" fill className="object-cover" />
           <div className="absolute inset-0 bg-gradient-to-r from-teal-900/70 to-transparent flex items-center">
             <div className="text-white p-8 max-w-lg">
               <h2 className="text-3xl font-bold mb-4">Building Stronger Together</h2>
@@ -167,8 +169,8 @@ const PartnershipPage = () => {
               <p className="mb-4">
                 The Centre for Climate Smart Agriculture (CCSA) at Cosmopolitan University Abuja (CUA) recognizes the
                 importance of partnerships in achieving its mission to promote sustainable agricultural practices,
-                enhance farmer resilience, and improve agricultural productivity in Nigeria. This partnership policy
-                outlines the principles, procedures, and guidelines for establishing and maintaining partnerships with
+                enhance farmer resilience and improve agricultural productivity in Nigeria. This partnership policy
+                outlines the principles, procedures and guidelines for establishing and maintaining partnerships with
                 various stakeholders.
               </p>
             </div>
@@ -197,7 +199,7 @@ const PartnershipPage = () => {
               <span className="bg-teal-100 text-teal-700 font-bold rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">
                 2
               </span>
-              <span>Ensure that partnerships align with CCSA's mission, vision, and objectives.</span>
+              <span>Ensure that partnerships align with CCSA's mission, vision and objectives.</span>
             </li>
             <li className="flex items-start">
               <span className="bg-teal-100 text-teal-700 font-bold rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">
@@ -209,7 +211,7 @@ const PartnershipPage = () => {
               <span className="bg-teal-100 text-teal-700 font-bold rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">
                 4
               </span>
-              <span>Promote transparency, accountability, and mutual benefit in all partnerships.</span>
+              <span>Promote transparency, accountability and mutual benefit in all partnerships.</span>
             </li>
           </ol>
         </div>
@@ -264,7 +266,7 @@ const PartnershipPage = () => {
         <div className="mt-6 bg-gray-50 p-4 rounded-lg">
           <p>
             These partnerships will be guided by the principles of mutual benefit, transparency, accountability,
-            respect, and equity. CCSA will work to ensure that all partnerships are aligned with its mission, vision,
+            respect and equity. CCSA will work to ensure that all partnerships are aligned with its mission, vision,
             and objectives and that they contribute to the achievement of its strategic goals.
           </p>
         </div>
@@ -392,7 +394,7 @@ const PartnershipPage = () => {
           </p>
           <p>
             <strong>Acknowledgement:</strong> By partnering with CCSA, partner organizations acknowledge that they have
-            read, understood, and agreed to abide by this partnership policy.
+            read, understood and agreed to abide by this partnership policy.
           </p>
         </div>
       </section>
@@ -404,21 +406,15 @@ const PartnershipPage = () => {
           Contact Information
         </h2>
 
-        <div className="bg-white p-6 rounded-lg shadow-md border border-teal-100">
+        <div className="bg-white text-center flex p-6 rounded-lg shadow-md border border-teal-100">
           <p className="mb-4">For further information or clarification on this policy, please contact:</p>
 
-          <div className="flex flex-col md:flex-row md:items-center">
-            <div className="md:w-1/3 mb-4 md:mb-0">
-              <Image
-                src={rislan}
-                alt="Dr. Rislan Abdulazeez Kanya"
-                width={200}
-                height={200}
-                className="rounded-lg mx-auto"
-              />
-            </div>
+          <div className="flex flex-col text-center md:flex-col md:items-center">
+            {/* <div className="md:w-1/3 mb-4 md:mb-0">
+            
+            </div> */}
 
-            <div className="md:w-2/3 md:pl-6">
+            <div className=" md:pl-6">
               <h3 className="text-xl font-semibold mb-2">Dr. Rislan Abdulazeez Kanya</h3>
               <p className="mb-1">
                 <strong>Position:</strong> Founder/CEO
@@ -432,21 +428,21 @@ const PartnershipPage = () => {
               <p className="mb-1">
                 <strong>Address:</strong> Abuja, Central Business District, Opposite National Hospital, Abuja, Nigeria
               </p>
-              <p className="mb-1">
+              {/* <p className="mb-1">
                 <strong>Mobile:</strong> +2348035502270
-              </p>
+              </p> */}
               <p className="mb-1">
-                <strong>Email:</strong> rislan@cosmopolitan.edu.ng
+                <strong>Email:</strong> ccsa@cosmopolitan.edu.ng
               </p>
               <p>
                 <strong>Website:</strong>{" "}
                 <a
-                  href="https://cosmopolitan.edu.ng"
+                  href="https://ccsa.cosmopolitan.edu.ng"
                   className="text-teal-600 hover:underline"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  https://cosmopolitan.edu.ng
+                  https://ccsa.cosmopolitan.edu.ng
                 </a>
               </p>
             </div>
@@ -458,7 +454,7 @@ const PartnershipPage = () => {
       <section className="bg-gradient-to-r from-teal-50 to-blue-50 p-8 rounded-lg text-center">
         <h2 className="text-2xl font-semibold mb-4">Partner With Us</h2>
         <p className="mb-6 max-w-2xl mx-auto">
-          Join us in our mission to promote sustainable agricultural practices, enhance farmer resilience, and improve
+          Join us in our mission to promote sustainable agricultural practices, enhance farmer resilience and improve
           agricultural productivity in Nigeria and beyond.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -469,10 +465,10 @@ const PartnershipPage = () => {
             Become a Partner
           </Link>
           <Link
-            href="/research"
+            href="/trainings"
             className="bg-white border border-teal-600 hover:bg-teal-50 text-teal-600 font-medium py-2 px-6 rounded-md transition duration-300"
           >
-            Explore Our Research
+            Explore Our Trainings 
           </Link>
         </div>
       </section>

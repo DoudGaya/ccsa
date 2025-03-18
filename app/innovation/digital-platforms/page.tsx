@@ -3,7 +3,29 @@ import { InnovationBanner } from '../_components/InnovationBanner'
 import innovationBannerImmage from '@/public/innovation-banner.jpg'
 import Image from "next/image"
 import Link from "next/link"
-import { Database, Users, BookOpen, ShoppingCart, BarChart3, ArrowRight, Smartphone, Cloud, Server } from "lucide-react"
+import {
+  Database,
+  Users,
+  BookOpen,
+  ShoppingCart,
+  BarChart3,
+  ArrowRight,
+  Smartphone,
+  Cloud,
+  BrickWall,
+  MapPin,
+  ChartArea,
+  ChartCandlestick,
+  Dice4Icon,
+  FileVolume,
+  Globe,
+  Server,
+  Cpu,
+  MapIcon,
+  TabletSmartphone,
+} from "lucide-react"
+
+// import { Database, Users, BookOpen, ShoppingCart, BarChart3, ArrowRight, Smartphone, Cloud, Server } from "lucide-react"
 
 
 const pageData = {
@@ -76,13 +98,7 @@ const page = () => {
 
               <div className="flex">
                 <div className="bg-blue-100 p-2 rounded-full h-10 w-10 flex items-center justify-center mr-4 flex-shrink-0">
-                  <Image
-                    src="/placeholder.svg?height=20&width=20"
-                    alt="GIS Mapping"
-                    width={20}
-                    height={20}
-                    className="text-blue-600"
-                  />
+                 <MapIcon className="h-5 w-5 text-blue-600" />
                 </div>
                 <div>
                   <h4 className="font-semibold mb-2">GIS Mapping for Precision Agriculture</h4>
@@ -157,13 +173,7 @@ const page = () => {
 
               <div className="flex">
                 <div className="bg-green-100 p-2 rounded-full h-10 w-10 flex items-center justify-center mr-4 flex-shrink-0">
-                  <Image
-                    src="/placeholder.svg?height=20&width=20"
-                    alt="Mechanisation"
-                    width={20}
-                    height={20}
-                    className="text-green-600"
-                  />
+                 <BrickWall className="h-5 w-5 text-green-600" />
                 </div>
                 <div>
                   <h4 className="font-semibold mb-2">Mechanisation & Value Chain Management</h4>
@@ -176,13 +186,8 @@ const page = () => {
 
               <div className="flex">
                 <div className="bg-green-100 p-2 rounded-full h-10 w-10 flex items-center justify-center mr-4 flex-shrink-0">
-                  <Image
-                    src="/placeholder.svg?height=20&width=20"
-                    alt="Audio-Visual"
-                    width={20}
-                    height={20}
-                    className="text-green-600"
-                  />
+                  <FileVolume className="h-5 w-5 text-green-600" />
+                 
                 </div>
                 <div>
                   <h4 className="font-semibold mb-2">Audio-Visual Content Production</h4>
@@ -239,13 +244,7 @@ const page = () => {
 
               <div className="flex">
                 <div className="bg-amber-100 p-2 rounded-full h-10 w-10 flex items-center justify-center mr-4 flex-shrink-0">
-                  <Image
-                    src="/placeholder.svg?height=20&width=20"
-                    alt="Commodity Exchange"
-                    width={20}
-                    height={20}
-                    className="text-amber-600"
-                  />
+                 <ChartCandlestick className="h-5 w-5 text-amber-600" />
                 </div>
                 <div>
                   <h4 className="font-semibold mb-2">Commodity Exchange Platform</h4>
@@ -270,13 +269,14 @@ const page = () => {
             <div className="grid md:grid-cols-2 gap-6">
               <div className="flex">
                 <div className="bg-purple-100 p-2 rounded-full h-10 w-10 flex items-center justify-center mr-4 flex-shrink-0">
-                  <Image
+                  {/* <Image
                     src="/placeholder.svg?height=20&width=20"
                     alt="Smart Farm"
                     width={20}
                     height={20}
                     className="text-purple-600"
-                  />
+                  /> */}
+                  <TabletSmartphone className="h-5 w-5 text-purple-600" />
                 </div>
                 <div>
                   <h4 className="font-semibold mb-2">Smart Farm Management Tools</h4>
@@ -314,6 +314,102 @@ const page = () => {
           </div>
         </div>
       </section>
+
+       {/* Platform 5 */}
+       <div className="mb-12 bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
+          <div className="bg-indigo-600 text-white p-4 flex items-center">
+            <Cpu className="h-5 w-5 text-purple-600 mr-3" />
+            <h3 className="text-xl font-semibold">5. AI Farming Assistant</h3>
+          </div>
+          
+          <div className="p-6">
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="flex">
+                <div className="bg-indigo-100 p-2 rounded-full h-10 w-10 flex items-center justify-center mr-4 flex-shrink-0">
+                 <Globe className=' h-6 w-6 mr-3 text-purple-600' />
+                </div>
+                <div>
+                  <h4 className="font-semibold mb-2">Multilingual Support</h4>
+                  <p className="text-sm">Advanced AI assistant that understands and responds in Nigerian local languages, making agricultural knowledge accessible to all farmers regardless of language barriers.</p>
+                </div>
+              </div>
+              
+              <div className="flex">
+                <div className="bg-indigo-100 p-2 rounded-full h-10 w-10 flex items-center justify-center mr-4 flex-shrink-0">
+                 <Dice4Icon className='text-purple-600 h-6 w-6 mr-3' />
+                </div>
+                <div>
+                  <h4 className="font-semibold mb-2">Soil Analysis & Crop Recommendation</h4>
+                  <p className="text-sm">Analyzes soil samples to determine nutrient content, pH levels, and other properties, then recommends optimal crops for specific land conditions.</p>
+                </div>
+              </div>
+              
+              <div className="flex">
+                <div className="bg-indigo-100 p-2 rounded-full h-10 w-10 flex items-center justify-center mr-4 flex-shrink-0">
+                  <Image 
+                    src="/placeholder.svg?height=20&width=20" 
+                    alt="Irrigation Planning" 
+                    width={20} 
+                    height={20} 
+                    className="text-indigo-600"
+                  />
+                </div>
+                <div>
+                  <h4 className="font-semibold mb-2">Precision Irrigation Planning</h4>
+                  <p className="text-sm">Provides customized watering schedules based on crop type, soil conditions, weather forecasts, and local climate patterns to optimize water usage.</p>
+                </div>
+              </div>
+              
+              <div className="flex">
+                <div className="bg-indigo-100 p-2 rounded-full h-10 w-10 flex items-center justify-center mr-4 flex-shrink-0">
+                  <Image 
+                    src="/placeholder.svg?height=20&width=20" 
+                    alt="Fertilizer Recommendations" 
+                    width={20} 
+                    height={20} 
+                    className="text-indigo-600"
+                  />
+                </div>
+                <div>
+                  <h4 className="font-semibold mb-2">Fertilizer Recommendations</h4>
+                  <p className="text-sm">Delivers precise fertilizer recommendations including type, quantity, and application timing based on soil needs and crop requirements.</p>
+                </div>
+              </div>
+              
+              <div className="flex md:col-span-2">
+                <div className="bg-indigo-100 p-2 rounded-full h-10 w-10 flex items-center justify-center mr-4 flex-shrink-0">
+                  <Image 
+                    src="/placeholder.svg?height=20&width=20" 
+                    alt="Disease Detection" 
+                    width={20} 
+                    height={20} 
+                    className="text-indigo-600"
+                  />
+                </div>
+                <div>
+                  <h4 className="font-semibold mb-2">Plant Disease & Pest Detection</h4>
+                  <p className="text-sm">Utilizes computer vision and machine learning to analyze plant images, identify diseases, pests, or nutrient deficiencies, and recommend appropriate treatment options with over 90% accuracy.</p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="mt-8 bg-indigo-50 p-4 rounded-lg">
+              <h4 className="font-semibold mb-2 text-indigo-700">How It Works</h4>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="bg-white p-3 rounded-lg border border-indigo-100 text-center">
+                  <p className="text-sm"><span className="font-medium">Input:</span> Farmers interact via voice, text, or images through mobile app or USSD</p>
+                </div>
+                <div className="bg-white p-3 rounded-lg border border-indigo-100 text-center">
+                  <p className="text-sm"><span className="font-medium">Processing:</span> AI analyzes data using trained models specific to Nigerian agriculture</p>
+                </div>
+                <div className="bg-white p-3 rounded-lg border border-indigo-100 text-center">
+                  <p className="text-sm"><span className="font-medium">Output:</span> Personalized recommendations in the farmer's preferred language</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
 
       {/* Driving Innovation */}
       <section className="mb-12">

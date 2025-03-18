@@ -239,7 +239,7 @@ AI Policy and Practice Lab Project
     href="https://ideasproject.gov.ng"
     target="_blank"
     rel="noopener noreferrer"
-    className="inline-flex items-center text-sm text-blue-600 hover:text-blue-800"
+    className="inline-flex items-center mx-2 text-sm text-blue-600 hover:text-blue-800"
   >
     (https://ideasproject.gov.ng ) <ExternalLink className="h-3 w-3 ml-1" />
   </Link>
@@ -252,7 +252,7 @@ Centre for Collaborative AI
   href="https://cosmopolitan.edu.ng/collaborative-centre-for-ai"
   target="_blank"
   rel="noopener noreferrer"
-  className="inline-flex items-center text-sm text-blue-600 hover:text-blue-800"
+  className="inline-flex items-center mx-2 text-sm text-blue-600 hover:text-blue-800"
 >
   (cosmopolitan.edu.ng/collaborative-centre-for-ai) <ExternalLink className="h-3 w-3 ml-1" />
 </Link>
