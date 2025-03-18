@@ -406,7 +406,7 @@ const PartnershipPage = () => {
           Contact Information
         </h2>
 
-        <div className="bg-white text-center flex p-6 rounded-lg shadow-md border border-teal-100">
+        <div className="bg-white text-center flex flex-col items-center p-6 rounded-lg shadow-md border border-teal-100">
           <p className="mb-4">For further information or clarification on this policy, please contact:</p>
 
           <div className="flex flex-col text-center md:flex-col md:items-center">
