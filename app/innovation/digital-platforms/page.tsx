@@ -2,6 +2,7 @@ import React from 'react'
 import { InnovationBanner } from '../_components/InnovationBanner'
 import innovationBannerImmage from '@/public/innovation-banner.jpg'
 import Image from "next/image"
+import aiImage from '@/public/AI.png'
 import Link from "next/link"
 import {
   Database,
@@ -460,16 +461,16 @@ const page = () => {
       </section>
 
       {/* Call to Action */}
-      {/* <section className="text-center bg-blue-50 p-8 rounded-lg">
+      <section className="text-center bg-blue-50 p-8 rounded-lg">
         <h2 className="text-2xl font-semibold mb-4">Partner With Us</h2>
         <p className="mb-6 max-w-2xl mx-auto">
           Are you a technology provider, agricultural expert, or organization interested in advancing digital
           agriculture? Join us in developing innovative solutions for climate-smart agriculture.
         </p>
-        <button className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-md transition duration-300">
-          Contact Our Digital Platforms Team
+        <button className="bg-brand hover:bg-green-700 text-white font-medium py-2 px-6 rounded-md transition duration-300">
+          Contact Us to learn more
         </button>
-      </section> */}
+      </section>
     </div>
     </div>
   )

@@ -6,9 +6,10 @@ import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 
-import image1 from '@/public/third.jpg'
-import image2 from '@/public/research-and-development.jpg'
+import image1 from '@/public/farmer-support.jpg'
+import image2 from '@/public/research-banner.jpg'
 // import image3 from '@/public/second-carousel-3.jpg'
+import digital from '@/public/publication-banner.jpg'
 import image4 from '@/public/policy.jpg'
 import Image, { StaticImageData } from 'next/image'
 
@@ -26,7 +27,7 @@ const products: Product[] = [
     title: "Digital Transformation",
     description: "Leveraging AI, IoT, and satellite tech for precision farming.",
     gradient: "from-green-500 via-emerald-500 to-tilt-500",
-    image: image1
+    image: digital
   },
   {
     id: 2,

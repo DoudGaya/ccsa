@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import AnimatedText from './AnimatedText'
 import TextCarousel from './TextCarousel'
-import heroImage from '@/public/home-bannner.jpg'
+import heroImage from '@/public/news-and-events.jpg'
 import Link from 'next/link'
 import logo from '@/app/assets/img/cosmopolitan-logo.png'
 
