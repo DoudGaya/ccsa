@@ -268,13 +268,6 @@ const page = () => {
             <div className="grid md:grid-cols-2 gap-6">
               <div className="flex">
                 <div className="bg-purple-100 p-2 rounded-full h-10 w-10 flex items-center justify-center mr-4 flex-shrink-0">
-                  {/* <Image
-                    src="/placeholder.svg?height=20&width=20"
-                    alt="Smart Farm"
-                    width={20}
-                    height={20}
-                    className="text-purple-600"
-                  /> */}
                   <TabletSmartphone className="h-5 w-5 text-purple-600" />
                 </div>
                 <div>
@@ -298,9 +291,11 @@ const page = () => {
               </div>
 
               <div className="flex md:col-span-2">
-                <div className="bg-purple-100 p-2 rounded-full h-10 w-10 flex items-center justify-center mr-4 flex-shrink-0">
+               <div className=" flex">
+               <div className="bg-purple-100 p-2 rounded-full h-10 w-10 flex items-center justify-center mr-4 flex-shrink-0">
                   <BarChart3 className="h-5 w-5 text-purple-600" />
                 </div>
+               </div>
                 <div>
                   <h4 className="font-semibold mb-2">Monitoring & Evaluation (M&E) for Agriculture</h4>
                   <p className="text-sm">
@@ -317,16 +312,17 @@ const page = () => {
        {/* Platform 5 */}
        <div className="mb-12 bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
           <div className="bg-indigo-600 text-white p-4 flex items-center">
-            <Cpu className="h-6 w-6 mr-3" />
+            <Cpu className="h-5 w-5 mr-3" />
             <h3 className="text-xl font-semibold">5. AI Farming Assistant</h3>
           </div>
           
           <div className="p-6">
             <div className="grid md:grid-cols-2 gap-6">
               <div className="flex">
-                <div className="bg-indigo-100 p-2 rounded-full h-10 w-10 flex items-center justify-center mr-4 flex-shrink-0">
-                 <Globe className=' h-6 w-6 mr-3 text-purple-600' />
+              <div className="bg-purple-100 p-2 rounded-full h-10 w-10 flex items-center justify-center mr-4 flex-shrink-0">
+                  <Globe className="h-5 w-5 text-purple-600" />
                 </div>
+    
                 <div>
                   <h4 className="font-semibold mb-2">Multilingual Support</h4>
                   <p className="text-sm">Advanced AI assistant that understands and responds in Nigerian local languages, making agricultural knowledge accessible to all farmers regardless of language barriers.</p>
@@ -334,9 +330,10 @@ const page = () => {
               </div>
               
               <div className="flex">
-                <div className="bg-indigo-100 p-2 rounded-full h-10 w-10 flex items-center justify-center mr-4 flex-shrink-0">
-                <Dice4Icon className=' h-6 w-6 mr-3 text-purple-600' />
+                <div className="bg-purple-100 p-2 rounded-full h-10 w-10 flex items-center justify-center mr-4 flex-shrink-0">
+                  <Dice4Icon className="h-5 w-5 text-purple-600" />
                 </div>
+                
                 <div>
                   <h4 className="font-semibold mb-2">Soil Analysis & Crop Recommendation</h4>
                   <p className="text-sm">Analyzes soil samples to determine nutrient content, pH levels, and other properties, then recommends optimal crops for specific land conditions.</p>
@@ -344,9 +341,11 @@ const page = () => {
               </div>
               
               <div className="flex">
-                <div className="bg-indigo-100 p-2 rounded-full h-10 w-10 flex items-center justify-center mr-4 flex-shrink-0">
-                 <MapPin className=' h-6 w-6 mr-3 text-purple-600' />
+
+                <div className="bg-purple-100 p-2 rounded-full h-10 w-10 flex items-center justify-center mr-4 flex-shrink-0">
+                  <MapPin className="h-5 w-5 text-purple-600" />
                 </div>
+
                 <div>
                   <h4 className="font-semibold mb-2">Precision Irrigation Planning</h4>
                   <p className="text-sm">Provides customized watering schedules based on crop type, soil conditions, weather forecasts, and local climate patterns to optimize water usage.</p>
@@ -354,9 +353,10 @@ const page = () => {
               </div>
               
               <div className="flex">
-                <div className="bg-indigo-100 p-2 rounded-full h-10 w-10 flex items-center justify-center mr-4 flex-shrink-0">
-                  <ChartArea className=' h-6 w-6 mr-3 text-purple-600' />
+              <div className="bg-purple-100 p-2 rounded-full h-10 w-10 flex items-center justify-center mr-4 flex-shrink-0">
+                  <ChartArea className="h-5 w-5 text-purple-600" />
                 </div>
+               
                 <div>
                   <h4 className="font-semibold mb-2">Fertilizer Recommendations</h4>
                   <p className="text-sm">Delivers precise fertilizer recommendations including type, quantity, and application timing based on soil needs and crop requirements.</p>
@@ -364,9 +364,10 @@ const page = () => {
               </div>
               
               <div className="flex md:col-span-2">
-                <div className="bg-indigo-100 p-2 rounded-full h-10 w-10 flex items-center justify-center mr-4 flex-shrink-0">
-                  <Leaf className=' h-6 w-6 mr-3 text-purple-600' />
+              <div className="bg-purple-100 p-2 rounded-full h-10 w-10 flex items-center justify-center mr-4 flex-shrink-0">
+                  <Leaf className="h-5 w-5 text-purple-600" />
                 </div>
+               
                 <div>
                   <h4 className="font-semibold mb-2">Plant Disease & Pest Detection</h4>
                   <p className="text-sm">Utilizes computer vision and machine learning to analyze plant images, identify diseases, pests, or nutrient deficiencies, and recommend appropriate treatment options with over 90% accuracy.</p>
