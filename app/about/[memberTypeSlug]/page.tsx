@@ -49,14 +49,14 @@ const MemberSlug = async ({params}: {params: Promise<Params>} ) => {
           <h2 className="text-3xl font-bold text-center mb-12">{ memberType.title  }</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
     
-            <div className=" col-span-4 grid grid-cols-2 max-w-5xl gap-4 w-full mx-auto">
+            <div className=" col-span-4 grid grid-cols-1 md:grid-cols-2 max-w-5xl gap-4 w-full mx-auto">
             {
               priority && priority.map((member) => (
                 <TeamMemberCard key={member._id} member={member} />
               ))
             }
             </div>
-            <div className=" col-span-4 grid grid-cols-3 max-w-7xl gap-4 w-full mx-auto">
+            <div className=" col-span-4 grid grid-cols-1 md:grid-cols-3 max-w-7xl gap-4 w-full mx-auto">
             {noPriority.map((member) => (
               <TeamMemberCard key={member._id} member={member} />
             ))}
@@ -76,7 +76,7 @@ const MemberSlug = async ({params}: {params: Promise<Params>} ) => {
             />
           <div className="container mx-auto px-4 py-16">
             <h2 className="text-3xl font-bold text-center mb-12">{ memberType.title  }</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="flex flex-col">
               <div className="col-span-3">
                 {
                     <div className=" max-w-2xl flex items-center justify-center mx-auto">
@@ -138,11 +138,13 @@ const MemberSlug = async ({params}: {params: Promise<Params>} ) => {
                 }
               </div>
       
-              {
+             <div className=" grid grid-cols-1 md:grid-cols-3">
+             {
                 managementMembers && managementMembers.slice(1, managementMembers.length).map((member) => (
                   <TeamMemberCard key={member._id} member={member} />
                 ))
               }
+             </div>
             </div>
           </div>
             
