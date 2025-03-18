@@ -318,7 +318,7 @@ const page = () => {
        {/* Platform 5 */}
        <div className="mb-12 bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
           <div className="bg-indigo-600 text-white p-4 flex items-center">
-            <Cpu className="h-5 w-5 text-purple-600 mr-3" />
+            <Cpu className="h-6 w-6 mr-3" />
             <h3 className="text-xl font-semibold">5. AI Farming Assistant</h3>
           </div>
           
@@ -336,7 +336,13 @@ const page = () => {
               
               <div className="flex">
                 <div className="bg-indigo-100 p-2 rounded-full h-10 w-10 flex items-center justify-center mr-4 flex-shrink-0">
-                 <Dice4Icon className='text-purple-600 h-6 w-6 mr-3' />
+                  <Image 
+                    src="/placeholder.svg?height=20&width=20" 
+                    alt="Soil Analysis" 
+                    width={20} 
+                    height={20} 
+                    className="text-indigo-600"
+                  />
                 </div>
                 <div>
                   <h4 className="font-semibold mb-2">Soil Analysis & Crop Recommendation</h4>

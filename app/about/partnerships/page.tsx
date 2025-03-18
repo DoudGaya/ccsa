@@ -31,21 +31,21 @@ const PartnershipPage = () => {
       icon: <FileText className="h-8 w-8 text-blue-600" />,
       color: "bg-blue-100",
       description:
-        "Collaborations with research institutions, universities and other organizations to conduct research, develop new technologies and promote innovation in climate-smart agriculture.",
+        "Collaborations with research institutions, universities and other organisations to conduct research, develop new technologies and promote innovation in climate-smart agriculture.",
     },
     {
       title: "Implementation and Scaling",
       icon: <Target className="h-8 w-8 text-green-600" />,
       color: "bg-green-100",
       description:
-        "Collaborations with NGOs, community-based organizations, private sector companies and government agencies to implement projects and scale up successful interventions.",
+        "Collaborations with NGOs, community-based organisations, private sector companies and government agencies to implement projects and scale up successful interventions.",
     },
     {
       title: "Advocacy and Policy",
       icon: <FileText className="h-8 w-8 text-purple-600" />,
       color: "bg-purple-100",
       description:
-        "Collaborations with civil society organizations, government agencies and international organizations to advocate for policy changes and influence decision-making processes.",
+        "Collaborations with civil society organisations, government agencies and international organisations to advocate for policy changes and influence decision-making processes.",
     },
     {
       title: "Capacity Building and Training",
@@ -66,14 +66,14 @@ const PartnershipPage = () => {
       icon: <Home className="h-8 w-8 text-orange-600" />,
       color: "bg-orange-100",
       description:
-        "Collaborations with community-based organizations, cooperatives and self-help groups to promote climate-smart agriculture practices and improve livelihoods.",
+        "Collaborations with community-based organisations, cooperatives and self-help groups to promote climate-smart agriculture practices and improve livelihoods.",
     },
     {
       title: "International",
       icon: <Globe className="h-8 w-8 text-teal-600" />,
       color: "bg-teal-100",
       description:
-        "Collaborations with international organizations, research institutions and NGOs to promote climate-smart agriculture practices and share knowledge globally.",
+        "Collaborations with international organisations, research institutions and NGOs to promote climate-smart agriculture practices and share knowledge globally.",
     },
   ]
 
@@ -120,7 +120,7 @@ const PartnershipPage = () => {
     {
       title: "Agreement Negotiation",
       description:
-        "CCSA will negotiate a partnership agreement with the partner organization, ensuring alignment with CCSA's policies.",
+        "CCSA will negotiate a partnership agreement with the partner organisation, ensuring alignment with CCSA's policies.",
     },
     {
       title: "Implementation & Monitoring",
@@ -133,8 +133,8 @@ const PartnershipPage = () => {
    <div className="">
      <AboutBanner 
     bannerImage={aboutBannerImage.src}
-    title='Our Partnerships Policies'
-    description='Learn about our strategic partnerships with other organizations'
+    title='Our Partnerships Policy'
+    description='Learn about our strategic partnerships with other organisations'
   />
     <div className="container mx-auto px-4 py-8 max-w-6xl">
       <div className="mb-12">
@@ -369,7 +369,7 @@ const PartnershipPage = () => {
             <li className="flex items-start">
               <CheckCircle2 className="h-5 w-5 mr-3 text-red-500 mt-0.5 flex-shrink-0" />
               <span>
-                <strong>Partnership agreement is not being upheld:</strong> The partner organization is not upholding
+                <strong>Partnership agreement is not being upheld:</strong> The partner organisation is not upholding
                 its responsibilities and obligations as outlined in the partnership agreement.
               </span>
             </li>
@@ -393,7 +393,7 @@ const PartnershipPage = () => {
             with changes approved by the CCSA Management Team.
           </p>
           <p>
-            <strong>Acknowledgement:</strong> By partnering with CCSA, partner organizations acknowledge that they have
+            <strong>Acknowledgement:</strong> By partnering with CCSA, partner organisations acknowledge that they have
             read, understood and agreed to abide by this partnership policy.
           </p>
         </div>
@@ -420,7 +420,7 @@ const PartnershipPage = () => {
                 <strong>Position:</strong> Founder/CEO
               </p>
               <p className="mb-1">
-                <strong>Organization:</strong> Centre for Climate-Smart Agriculture
+                <strong>organisation:</strong> Centre for Climate-Smart Agriculture
               </p>
               <p className="mb-1">
                 <strong>Institution:</strong> Cosmopolitan University

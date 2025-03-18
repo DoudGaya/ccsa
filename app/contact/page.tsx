@@ -129,7 +129,7 @@ const ContactPage = () => {
             <div>
               <h3 className="font-semibold text-lg mb-2">How can I collaborate with CCSA?</h3>
               <p className="text-gray-700">
-                We welcome collaborations with researchers, organizations, and institutions. Please reach out to us
+                We welcome collaborations with researchers, organisations, and institutions. Please reach out to us
                 through the contact form with details about your proposed collaboration.
               </p>
             </div>
