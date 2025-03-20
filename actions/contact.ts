@@ -17,6 +17,16 @@ export async function submitContactForm(formData: FormData) {
     return { success: false, errors: validatedFields.error.flatten().fieldErrors }
   }
 
+  const { name, email, subject, message } = validatedFields.data
+
+  const form = await db.contact.create({
+    data: {
+      name,
+      email,
+      message,
+    },
+  })
+
   await new Promise((resolve) => setTimeout(resolve, 1000))
 
   return { success: true, message: "Thank you for your message. We'll get back to you soon!" }

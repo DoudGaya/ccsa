@@ -24,11 +24,22 @@ model TrainingApplication {
   @@map("rsvp")
 }
 
-model Contact {
+
+model CustomCourse {
   id                Int      @id @default(autoincrement())
   name              String
   email             String
-  message           String
+  phone             String
+  organization      String
+  course            String
+}
+
+model Contact {
+  id                Int      @id @default(autoincrement())
+  name              String?
+  email             String?
+  subject           String?
+  message           String?
   createdAt         DateTime @default(now())
   updatedAt         DateTime @updatedAt
 }
