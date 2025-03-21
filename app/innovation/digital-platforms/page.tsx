@@ -3,6 +3,8 @@ import { InnovationBanner } from '../_components/InnovationBanner'
 import innovationBannerImmage from '@/public/innovation-banner.jpg'
 import Image from "next/image"
 import aiImage from '@/public/AI.png'
+import analytics from '@/public/analytics.jpg'
+import marketPlace from '@/public/market-place.jpg'
 import Link from "next/link"
 import {
   Database,
@@ -422,8 +424,8 @@ const page = () => {
 
         <div className="grid md:grid-cols-3 gap-6">
           <div className="bg-white rounded-lg shadow-sm overflow-hidden border border-gray-200">
-            <div className="h-48 bg-gray-200 relative">
-              <Image src="/images/mobile-farm-app.jpg" alt="Mobile farm application" fill className="object-cover" />
+            <div className="h-48 relative p-3 overflow-hidden">
+              <Image src={aiImage} alt="Mobile farm application" fill className="object-cover p-2" />
             </div>
             <div className="p-4">
               <h3 className="font-semibold mb-2">Mobile Applications</h3>
@@ -435,7 +437,7 @@ const page = () => {
 
           <div className="bg-white rounded-lg shadow-sm overflow-hidden border border-gray-200">
             <div className="h-48 bg-gray-200 relative">
-              <Image src="/images/data-analytics.jpg" alt="Agricultural data analytics" fill className="object-cover" />
+              <Image src={analytics} alt="Agricultural data analytics" fill className="object-cover" />
             </div>
             <div className="p-4">
               <h3 className="font-semibold mb-2">Data Analytics</h3>
@@ -446,7 +448,7 @@ const page = () => {
           <div className="bg-white rounded-lg shadow-sm overflow-hidden border border-gray-200">
             <div className="h-48 bg-gray-200 relative">
               <Image
-                src="/images/digital-marketplace.jpg"
+                src={marketPlace}
                 alt="Digital agricultural marketplace"
                 fill
                 className="object-cover"
