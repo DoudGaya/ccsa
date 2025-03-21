@@ -3,6 +3,8 @@
 import React, { useState } from 'react'
 
 import { Button } from "@/components/ui/button"
+import { toast } from "sonner"
+
 import {
   Dialog,
   DialogContent,
@@ -11,7 +13,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { TrainingApplicationForm } from './TrainingApplicationForm'
-import { useToast } from "@/hooks/use-toast"
+
 import { SanityTypes, TrainingApplication } from '@/@types'
 
 export function TrainingActionArea({
@@ -21,15 +23,13 @@ export function TrainingActionArea({
 }) {
   const [homesItems, setHomeItems] = useState<(SanityTypes.Trainings)[]>([...trainings])
   const [isDialogOpen, setIsDialogOpen] = useState(false)
-  const { toast } = useToast()
 
- 
+
 
 
     const HandleHomeAdd = () => {
       setIsDialogOpen(false)
-      toast({
-        title: "Application Submitted",
+      toast( "Application Submitted", {
         description: "Your application has been submitted successfully.",
       })
     }

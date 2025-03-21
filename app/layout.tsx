@@ -5,6 +5,10 @@ import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/footer";
 import { ThemeProvider } from "./components/theme-provider";
+// import { Toaster } from "@/components/ui/sonner"
+import { Toaster } from "sonner";
+ 
+
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://ccsa.doudgaya.com'),
@@ -80,6 +84,7 @@ export default function RootLayout({
           > */}
         <Navbar />
         {children}
+        <Toaster />
         <Footer />
       {/* </ThemeProvider> */}
       </body>

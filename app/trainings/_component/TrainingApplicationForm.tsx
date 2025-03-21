@@ -23,7 +23,7 @@ import { useToast } from '@/hooks/use-toast'
 // import { createHomeAction } from '@/actions/homes'
 import { createApplication } from '@/actions/trainings'
 import { SanityTypes, TrainingApplication } from '@/@types'
-// import { Gender } from '@prisma/client'
+import { Gender } from '@prisma/client'
 
 interface SubmitApplicationProps {
   onSubmit: (data: TrainingApplication) => void
@@ -44,6 +44,7 @@ export function TrainingApplicationForm({ onSubmit, onClose, trainings }: Submit
       email: '',
       phone: '',
       organization: '',
+      gender: undefined,
       age: '',
       // gender: undefined,
       role: '',
@@ -171,7 +172,7 @@ export function TrainingApplicationForm({ onSubmit, onClose, trainings }: Submit
 
 
      <div className=" grid grid-cols-2 gap-4">
-      {/* <FormField
+      <FormField
             control={form.control}
             name="gender"
             render={({ field }) => (
@@ -183,15 +184,15 @@ export function TrainingApplicationForm({ onSubmit, onClose, trainings }: Submit
                         <SelectValue placeholder="Select Home Status" />
                       </SelectTrigger>
                       <SelectContent>
-                            <SelectItem value={'Gender.Male'}>Male</SelectItem>
-                            <SelectItem value={'Gender.Female'}>Female</SelectItem>
+                            <SelectItem value={Gender.Male}>Male</SelectItem>
+                            <SelectItem value={Gender.Female}>Female</SelectItem>
                       </SelectContent>
                     </Select>
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
-          /> */}
+          />
 
         <FormField
             control={form.control}
