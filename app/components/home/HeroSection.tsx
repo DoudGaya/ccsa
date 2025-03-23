@@ -33,7 +33,7 @@ export default function HeroSection() {
             text="Centre for Climate-Smart Agriculture (CCSA)" 
             className="text-3xl tracking-wider sm:text-3xl  md:text-5xl lg:text-6xl xl:text-5xl font-blog font-bold  break-words"
           />
-          <p className=' text-3xl font-semibold font-blog'>Cosmopolitan University Abuja</p>
+          <p className=' text-2xl font-semibold font-blog'>Cosmopolitan University Abuja</p>
           <TextCarousel 
             texts={heroTexts} 
             className="text-xl sm:text-2xl font-blog md:text-2xl lg:text-2xl break-words"

@@ -11,7 +11,7 @@ import { Toaster } from "sonner";
 
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://ccsa.doudgaya.com'),
+  metadataBase: new URL('https://ccsa.cosmopolitan.edu.ng'),
   title: {
     default: 'CCSA - Cosmopolitan University Abuja',
     template: '%s | CCSA - Cosmopolitan University Abuja',
@@ -35,13 +35,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://ccsa.doudgaya.xyz',
+    url: 'https://ccsa.cosmopolitan.edu.ng',
     siteName: 'CCSA - Cosmopolitan University Abuja',
     title: 'CCSA - Cosmopolitan University Abuja',
     description: 'Centre for Climate-Smart Agriculture (CCSA) - Cosmopolitan University Abuja',
     images: [
       {
-        url: 'https://ccsa.doudgaya.com/og-image.jpg',
+        url: 'https://ccsa.cosmopolitan.edu.ng/og-image.jpg',
         width: 1200,
         height: 630,
         alt: 'Centre for Climate-Smart Agriculture (CCSA) - Cosmopolitan University Abuja',
