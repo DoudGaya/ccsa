@@ -28,6 +28,7 @@ import {
   MapIcon,
   TabletSmartphone,
 } from "lucide-react"
+import PublicBanners from '@/app/components/PublicBanners'
 
 
 const pageData = {
@@ -40,11 +41,12 @@ const pageData = {
 const page = () => {
   return (
     <div>
-        <InnovationBanner 
+      <PublicBanners title={pageData.title} message={pageData.description} />
+        {/* <InnovationBanner 
         bannerImage={innovationBannerImmage.src}
         description={pageData.description}
         title={pageData.title}
-        />
+        /> */}
 
 <div className="container mx-auto px-4 py-8 max-w-5xl">
       <h1 className="text-3xl font-bold mb-2 text-center">CCSA Digital Platforms</h1>

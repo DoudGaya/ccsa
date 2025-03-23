@@ -154,7 +154,7 @@ export const researchItems: { title: string; href: string; description: string }
   },
 ]
 
-export const mediaItems = ["Agri-Universities", "Documentaries", "Interviews", "YouTube", "Live TV"]
+export const mediaItems = ["Agri-institutions", "Documentaries", "Interviews", "YouTube", "Live TV"]
 // export const mediaItems = ["Photos", "Documentaries", "Interviews", "YouTube", "Webinar", "Activities", "Live TV"]
 
 export const innovationItems: { title: string; href: string; description: string }[] = [

@@ -29,14 +29,7 @@ const page = async ( {params}: {params: Promise<Params>}) => {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
       <PublicBanners title={user.name} message={user.role} />
-    {/* <TeamBanner
-      title={user.name}
-      description={user.role}
-      bannerImage={
-        aboutBannerImage.src
-      }
-      userImage={user.imageUrl}
-    /> */}
+
     <div className="max-w-7xl -mt-[100px]  flex flex-col mx-auto px-4 sm:px-6 lg:px-8">
       <div className="">
           <Image

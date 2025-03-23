@@ -22,6 +22,7 @@ import {
   AlertCircle,
   Mail,
 } from "lucide-react"
+import PublicBanners from '@/app/components/PublicBanners'
 
 const PartnershipPage = () => {
   // Types of partnerships with icons and descriptions
@@ -131,11 +132,14 @@ const PartnershipPage = () => {
 
   return (
    <div className="">
-     <AboutBanner 
+     {/* <AboutBanner 
     bannerImage={aboutBannerImage.src}
     title='Our Partnerships Policy'
     description='Learn about our strategic partnerships with other organisations'
-  />
+  /> */}
+
+  <PublicBanners title='Our Partnerships Policy' message='Learn about our strategic partnerships with other organisations' />
+  
     <div className="container mx-auto px-4 py-8 max-w-6xl">
       <div className="mb-12">
         <h1 className="text-3xl font-bold mb-2 text-center">Partnership Policy</h1>

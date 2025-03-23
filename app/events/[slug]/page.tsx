@@ -10,6 +10,7 @@ import BookingClientWrapper from "@/components/home/BookingClientWrapper"
 import { SanityTypes } from "@/@types"
 import { getAllEvents, getSingleEvents } from "@/sanity/lib/quesries/eventQueries"
 import PublicBanners from "@/app/components/PublicBanners"
+import { EventActionArea } from "../_component/EventActionArea"
 
 
 type EventPageProps = {
@@ -92,7 +93,8 @@ export default async function EventPage({ params }: {params: Promise<EventPagePr
           <BookingClientWrapper events={events} eventId={event._id} />
         </div>
       </div>
-      <BookingModal />
+      {/* <BookingModal /> */}
+      <EventActionArea event={event} />
     </div>
    </div>
   )

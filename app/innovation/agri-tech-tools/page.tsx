@@ -14,6 +14,7 @@ import {
   Users,
   ExternalLink,
 } from "lucide-react"
+import PublicBanners from '@/app/components/PublicBanners'
 
 
 const pageData = {
@@ -26,12 +27,14 @@ const pageData = {
 const page = () => {
   return (
     <div>
-        <InnovationBanner 
+
+      <PublicBanners title={pageData.title} message={pageData.description} />
+        {/* <InnovationBanner 
         bannerImage={innovationBannerImmage.src}
         description={pageData.description}
         title={pageData.title}
 
-        />
+        /> */}
 
 <div className="container mx-auto px-4 py-8 max-w-5xl font-main">
       <h1 className="text-3xl font-bold mb-8 text-center">Agri-Tech Tools</h1>

@@ -162,9 +162,6 @@ export default async function TrainingPrograms() {
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <TrainingActionArea trainings={trainings} />
-          {/* <button className="">
-            Apply for a Programme
-          </button> */}
           <button className="bg-white border border-green-600 hover:bg-green-50 text-green-600 font-medium py-2 px-6 rounded-md transition duration-300">
             Request Custom Training
           </button>

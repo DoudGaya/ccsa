@@ -26,8 +26,9 @@ export default function Footer() {
               <li><Link href="#" className="text-sm hover:text-green-400 transition-colors">Research Labs</Link></li>
               <li><Link href="/innovation/agri-tech-tools" className="text-sm hover:text-green-400 transition-colors">Digital Innovation Hub</Link></li>
               <li><Link href="/contact" className="text-sm hover:text-green-400 transition-colors">Contact Us</Link></li>
-              <li><Link href="innovation/farmer-incubation" className="text-sm hover:text-green-400 transition-colors">Farmer Incubation Program</Link></li>
-              <li><Link href="/knowledge-hub" className="text-sm hover:text-green-400 transition-colors">Knowledge Hub</Link></li>
+              <li><Link href="/innovation/farmer-incubation" className="text-sm hover:text-green-400 transition-colors">Farmer Incubation Program</Link></li>
+              {/* <li><Link href="/knowledge-hub" className="text-sm hover:text-green-400 transition-colors">Knowledge Hub</Link></li> */}
+              <li><Link href="/resources/agri-institutions" className="text-sm hover:text-green-400 transition-colors">Agri- Institutions</Link></li>
             </ul>
           </div>
           <div>

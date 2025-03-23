@@ -3,15 +3,14 @@ import aboutBannerImage from '@/public/about-banner.jpg'
 import { ArrowRight, Leaf, Users, BookOpen, Zap, Globe } from 'lucide-react'
 import { AboutBanner } from '../_component/AboutBanner'
 import AboutGrid from '../_component/AboutGrid'
+import PublicBanners from '@/app/components/PublicBanners'
 
 const page = () => {
   return (
     <div className=' flex flex-col items-center justify-center'>
-      <AboutBanner 
-        bannerImage={aboutBannerImage.src}
-        title='Mission and Vission'
-        description='Climatesmart Technologies'
-      />
+
+
+      <PublicBanners title='Mission and Vission' message='Climatesmart Technologies' />
 
 <section className="mb-16 py-20 max-w-7xl mx-auto flex text-center md:text-start items-center flex-col">
           <h2 className="text-3xl font-bold mb-6 text-[rgb(6,54,103)] dark:text-blue-500">Vision & Mission</h2>
