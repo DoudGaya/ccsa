@@ -6,6 +6,7 @@ import { getAllTrainings } from "@/sanity/lib/quesries/trainingQueries"
 import { SanityTypes } from "@/@types"
 import placeHolder from '@/public/placeholder-img.png'
 import { TrainingActionArea } from "./_component/TrainingActionArea"
+import { CustomTrainingAction } from "./_component/CustomTrainingAction"
 
 
 export default async function TrainingPrograms() {
@@ -162,9 +163,7 @@ export default async function TrainingPrograms() {
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <TrainingActionArea trainings={trainings} />
-          <button className="bg-white border border-green-600 hover:bg-green-50 text-green-600 font-medium py-2 px-6 rounded-md transition duration-300">
-            Request Custom Training
-          </button>
+          <CustomTrainingAction />
         </div>
       </section>
     </div>

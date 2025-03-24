@@ -208,6 +208,15 @@ export interface TrainingApplication {
     training: string;
 }
 
+export interface customCourse {
+    id: number;
+    name: string;
+    email: string;
+    phone: string;
+    organization: string;
+    course: string;
+}
+
 
 export interface Training {
 
