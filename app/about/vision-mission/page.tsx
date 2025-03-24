@@ -10,7 +10,7 @@ const page = () => {
     <div className=' flex flex-col items-center justify-center'>
 
 
-      <PublicBanners title='Mission and Vission' message='Climatesmart Technologies' />
+      <PublicBanners title='Mission and Vision' message='' />
 
 <section className="mb-16 py-20 max-w-7xl mx-auto flex text-center md:text-start items-center flex-col">
           <h2 className="text-3xl font-bold mb-6 text-[rgb(6,54,103)] dark:text-blue-500">Vision & Mission</h2>
