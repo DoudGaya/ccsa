@@ -13,6 +13,7 @@ import { notFound } from 'next/navigation'
 import MediaList from '../_componentss/MediaList'
 import ActivityGrid from '@/app/activities/_components/ActivityGrid'
 import { getAllActivities } from '@/sanity/lib/quesries/activitiesQueries'
+import PublicBanners from '@/app/components/PublicBanners'
 
 type Params = {
   mediaSlug: string
@@ -40,11 +41,15 @@ const allTypes = await getAllMedia() as SanityTypes.MediaType[]
   if (mediaType.slug == 'activities') {
     return (
       <div className=' flex flex-col'>
-        <MediaBanner 
+        <PublicBanners
+          title={mediaType.title}
+          message={mediaType.description}
+        />
+        {/* <MediaBanner 
         bannerImage={pubBanner.src}
         title={`${mediaType.title}`}
         description={mediaType.description} 
-        />
+        /> */}
         {
           allMedia.length > 0 ? <ActivityGrid activities={activities} />
           : <div className=" flex flex-col items-center justify-center py-20 space-y-3">

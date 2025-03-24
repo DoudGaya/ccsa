@@ -6,6 +6,7 @@ import { getAllPublicationByType, getPublicationByType } from '@/sanity/lib/ques
 import { SanityTypes } from '@/@types'
 import PublicationContents from '../_components/PublicationContents'
 import { notFound } from 'next/navigation'
+import PublicBanners from '@/app/components/PublicBanners'
 
 type Params = {
   publicationSlug: string
@@ -28,10 +29,15 @@ const page = async (
   return (
 
     <div className=' flex flex-col'>
-        <PublicationsBannner 
+        {/* <PublicationsBannner 
         bannerImage={pubBanner.src}
         title={`${pubType.title}`}
         description={pubType.description} 
+        /> */}
+
+        <PublicBanners
+          title={pubType.title}
+          message={pubType.description}
         />
          { allPublicationByType.length > 0 ? <PublicationContents allPublicationsByType={allPublicationByType} /> 
         : 

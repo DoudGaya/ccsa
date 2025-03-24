@@ -5,8 +5,9 @@ import { applicationSchema } from "@/sanity/lib/zod/schemas";
 
 
 
-export const createApplication = async (values: z.infer<typeof applicationSchema >) => {
+export const createApplication = async (values: z.infer<typeof applicationSchema>) => {
     const fieldValidation = applicationSchema.safeParse(values);
+
     if (!fieldValidation.success) {
          return { error: "field Validation failed " }
     }
@@ -20,8 +21,6 @@ export const createApplication = async (values: z.infer<typeof applicationSchema
         role,
         training,
      } = fieldValidation.data
-
- 
      const application = await db.trainingApplication.create({
        data: {
         email,
@@ -34,9 +33,5 @@ export const createApplication = async (values: z.infer<typeof applicationSchema
         gender,
        }
      })
-
-
-  return {success: 'Application created'}
-     return { success: "Application has been Submitted", application: application}
-
+  return {success: 'Application Successfully', application}
 }

@@ -2,6 +2,7 @@ import React from 'react'
 import { ResearchBanner } from '../_components/ReasearchBanner'
 import researchImage from '@/public/research-banner.jpg'
 import ResearchPageComponent from '../_components/ResearchPageComponent'
+import PublicBanners from '@/app/components/PublicBanners'
 
 const page = async () => {
 
@@ -56,10 +57,15 @@ const page = async () => {
 
   return (
     <div>
-        <ResearchBanner 
+        {/* <ResearchBanner 
             title={pageData.title} 
             bannerImage={researchImage.src}
-            description={pageData.description} /> 
+            description={pageData.description} />  */}
+
+            <PublicBanners
+            title={bannerData.title}
+            message={bannerData.description}
+          />
             <ResearchPageComponent pageData={pageData} />
     </div>
   )
