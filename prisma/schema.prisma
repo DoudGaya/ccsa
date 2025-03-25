@@ -61,6 +61,21 @@ model Contact {
   updatedAt         DateTime @updatedAt
 }
 
+model Volunteers {
+  id                        Int      @id @default(autoincrement())
+  name                      String
+  email                     String
+  phone                     String?
+  state                     String?
+  gender                    Gender?
+  localGovernment           String?
+  organization              String?
+  statementOfInterest       String?
+  createdAt                 DateTime @default(now())
+  updatedAt                 DateTime @updatedAt
+  yearsOfFarmingExperience  Int?
+}
+
 enum Gender {
   Male
   Female

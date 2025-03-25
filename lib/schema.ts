@@ -18,6 +18,19 @@ export const customTrainingSchema = z.object({
 })
 
 
+export const VolunteerApplicationSchema = z.object({
+  name: z.string().min(1, "Name is required"),
+  email: z.string().email("Invalid email address"),
+  phone: z.string().min(1, "Phone is required"),
+  organization: z.string().min(1, "Organization is required"),
+  state: z.string().min(1, "State is required"),
+  localGovernment: z.string().min(1, "Local Government is required"),
+  statementOfInterest: z.string().min(100, "Statement of Interest must be atleast 100 characters required"),
+  yearsOfFarmingExperience: z.string().min(1, "Years of farming experience is required"),
+  gender: z.enum([Gender.Female, Gender.Male]).optional(),
+})
+
+
 
 export const eventBookingSchema = z.object({
   name: z.string().min(1, "Name is required"),

@@ -27,7 +27,6 @@ export const createEventBooking = async (data: z.infer<typeof eventBookingSchema
            data: {
             email,
             event,
-
             age : parseInt(age),
             name,
             organization,
@@ -36,8 +35,7 @@ export const createEventBooking = async (data: z.infer<typeof eventBookingSchema
             gender,
            }
          })
-    
-    
+   
       return {success: 'Application Successfully', application}
     
 

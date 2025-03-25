@@ -218,7 +218,14 @@ export interface customCourse {
 }
 
 
-export interface Training {
-
+export interface VolunteersApplication {
+    name: string;
+    email: string;
+    phone: string;
+    organization: string;
+    state: string;
+    localGovernment: string;
+    statementOfInterest: string;
+    yearsOfFarmingExperience: string;
 }
 

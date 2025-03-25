@@ -3,25 +3,18 @@ import Image from "next/image"
 import { MapPin, Phone, Mail, Clock, Send, CheckCircle2, Contact } from "lucide-react"
 import contactBanner from '@/public/contact-us.jpg'
 import ContactForm from "./_component/ContactForm"
+import PublicBanners from "../components/PublicBanners"
 
 const ContactPage = () => {
   
   
   return (
     <div>
+      <PublicBanners 
+        title='Contact Us'
+        message='Reach out to the Centre for Climate-Smart Agriculture for inquiries, collaborations, or more information.'
+        />
     
-      {/* Hero Banner */}
-      <div className="relative h-[60vh] w-full">
-        <Image src={contactBanner} alt="Contact CCSA" fill className="object-cover object-top" priority />
-        <div className="absolute inset-0 bg-gradient-to-r from-green-900/70 to-transparent flex items-center">
-          <div className="container mx-auto px-4">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Contact Us</h1>
-            <p className="text-white text-lg md:text-xl max-w-2xl">
-              Reach out to the Centre for Climate-Smart Agriculture for inquiries, collaborations, or more information.
-            </p>
-          </div>
-        </div>
-      </div>
 
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
