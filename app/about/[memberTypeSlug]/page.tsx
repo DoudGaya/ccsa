@@ -66,11 +66,13 @@ const MemberSlug = async ({params}: {params: Promise<Params>} ) => {
     } else if (memberType.slug == 'management-team') {
         return (
           <div className=' flex flex-col items-center justify-center'>
-            <AboutBanner 
+            {/* <AboutBanner 
               bannerImage={aboutBannerImage.src}
               title={memberType.title}
               description={memberType.description}
-            />
+            /> */}
+
+            <PublicBanners title={memberType.title} message={memberType.description} />
           <div className="container mx-auto px-4 py-16">
             <h2 className="text-3xl font-bold text-center mb-12">{ memberType.title  }</h2>
             <div className="flex flex-col">
@@ -151,11 +153,12 @@ const MemberSlug = async ({params}: {params: Promise<Params>} ) => {
       
   return (
     <div className=' flex flex-col items-center justify-center'>
-      <AboutBanner 
+      {/* <AboutBanner 
         bannerImage={aboutBannerImage.src}
         title={memberType.title}
         description={memberType.description}
-      />
+      /> */}
+      <PublicBanners title={memberType.title} message={memberType.description} />
     <div className="container mx-auto px-4 py-16">
       <h2 className="text-3xl font-bold text-center mb-12">{ memberType.title  }</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
