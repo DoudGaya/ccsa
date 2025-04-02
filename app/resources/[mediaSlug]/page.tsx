@@ -68,10 +68,15 @@ const allTypes = await getAllMedia() as SanityTypes.MediaType[]
   return (
 
     <div className=' flex flex-col'>
-        <MediaBanner 
+        {/* <MediaBanner 
         bannerImage={pubBanner.src}
         title={`${mediaType.title}`}
         description={mediaType.description} 
+        /> */}
+
+        <PublicBanners
+          title={mediaType.title}
+          message={mediaType.description}
         />
          { allMedia.length > 0 ?  <MediaList mediaItems={allMedia} />
         : 

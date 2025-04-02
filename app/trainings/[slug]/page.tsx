@@ -16,6 +16,8 @@ import { getAllTrainings, getSingleTraining } from "@/sanity/lib/quesries/traini
 import { SanityTypes } from "@/@types"
 import PublicBanners from "@/app/components/PublicBanners"
 import placeHolder from '@/public/placeholder-img.png'
+import { TrainingActionArea } from "../_component/TrainingActionArea"
+import { SingleTrainingActionArea } from "./_components/SingleTrainingActionArea"
 
 
 
@@ -163,11 +165,13 @@ export default async function TrainingProgramPage({ params }: { params: Promise<
           agricultural practices and drive sustainable change.
         </p>
         <div className="flex flex-col sm:flex-row gap-4">
-          <button
+          {/* <button
             className={`bg-brand hover:bg-opacity-90 text-white font-medium py-2 px-6 rounded-md transition duration-300`}
           >
             Apply Now
-          </button>
+          </button> */}
+          {/* <TrainingActionArea training={training} /> */}
+          <SingleTrainingActionArea training={training} />
           {/* <button
             className={`bg-white border border-yellow-300 hover:bg-opacity-90 font-medium py-2 px-6 rounded-md transition duration-300`}
           >
