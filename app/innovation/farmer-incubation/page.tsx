@@ -94,7 +94,7 @@ const page = () => {
               <Users className="h-8 w-8 text-amber-600" />
             </div>
             <div>
-              <h3 className="text-lg font-semibold mb-1">6,000 Smallholder Farmers</h3>
+              <h3 className="text-lg font-semibold mb-1">12,000 Smallholder Farmers</h3>
               <p>Across 12 states of Nigeria, particularly women and youth</p>
             </div>
           </div>
