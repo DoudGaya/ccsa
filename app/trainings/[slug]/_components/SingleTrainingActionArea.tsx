@@ -27,7 +27,7 @@ export function SingleTrainingActionArea({
     const HandleHomeAdd = () => {
       setIsDialogOpen(false)
       toast( "Application Submitted", {
-        description: "Your application has been submitted successfully.",
+        description: "Your application has been submitted successfully",
       })
     }
   return (
