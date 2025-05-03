@@ -25,7 +25,6 @@ export default async function Home() {
 
   const e = await getAllEvents() as SanityTypes.Events[];
 
-
   return (
     <main className=" flex flex-col bg-gray-100 dark:bg-black">
       <HeroSection />

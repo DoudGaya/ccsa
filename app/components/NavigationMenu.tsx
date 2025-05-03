@@ -173,6 +173,21 @@ export const innovationItems: { title: string; href: string; description: string
     href: "/innovation/farmer-incubation",
     description: "Supporting entrepreneurial ventures in climate-smart agriculture.",
   },
+  {
+    title: "Value-Added Agriculture",
+    href: "/innovation/investment-opportunities",
+    description: "Investment opportunities in Value-Added Agriculture.",
+  },
+  {
+    title: "Data Analytics",
+    href: "/innovation/data-analytics",
+    description: "Harnessing data for improved agricultural practices and decision-making.",
+  },
+  {
+    title: "Sustainable Practices",
+    href: "/innovation/sustainable-practices",
+    description: "Promoting sustainable agricultural practices for long-term viability.",
+  }
 ]
 
 
