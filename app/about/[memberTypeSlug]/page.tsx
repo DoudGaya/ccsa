@@ -9,6 +9,8 @@ import Image from 'next/image'
 import { getAllMemberType, getBoardMembersWithoutPriority, getManagementMembers, getPriorityBoardMembers, getSingleMemberType } from '@/sanity/lib/quesries/membersQuesries'
 import { SanityTypes } from '@/@types'
 import TeamMemberCard from '../_component/team-member-card'
+import { notFound } from 'next/navigation'
+import PublicBanners from '@/app/components/PublicBanners'
 
 
 type Params = {
@@ -16,7 +18,12 @@ type Params = {
 }
 
 const MemberSlug = async ({params}: {params: Promise<Params>} ) => {
-    const {memberTypeSlug} = await params
+  
+  if (!(await params).memberTypeSlug) {
+    return notFound()
+  }
+  const {memberTypeSlug} = await params
+
     const memberType = await getSingleMemberType(memberTypeSlug) as SanityTypes.MemberType
     const members = await getAllMemberType(memberTypeSlug) as SanityTypes.Member[]
 
@@ -34,23 +41,19 @@ const MemberSlug = async ({params}: {params: Promise<Params>} ) => {
     if (memberType.slug == 'advisory-board') {
       return (
         <div className=' flex flex-col items-center justify-center'>
-          <AboutBanner 
-            bannerImage={aboutBannerImage.src}
-            title={memberType.title}
-            description={memberType.description}
-          />
+          <PublicBanners title={memberType.title} message={memberType.description} />
         <div className="container mx-auto px-4 py-16">
           <h2 className="text-3xl font-bold text-center mb-12">{ memberType.title  }</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
     
-            <div className=" col-span-4 grid grid-cols-2 max-w-5xl gap-4 w-full mx-auto">
+            <div className=" col-span-4 grid grid-cols-1 md:grid-cols-2 max-w-5xl gap-4 w-full mx-auto">
             {
               priority && priority.map((member) => (
                 <TeamMemberCard key={member._id} member={member} />
               ))
             }
             </div>
-            <div className=" col-span-4 grid grid-cols-3 max-w-7xl gap-4 w-full mx-auto">
+            <div className=" col-span-4 grid grid-cols-1 md:grid-cols-3 max-w-7xl gap-4 w-full mx-auto">
             {noPriority.map((member) => (
               <TeamMemberCard key={member._id} member={member} />
             ))}
@@ -63,14 +66,16 @@ const MemberSlug = async ({params}: {params: Promise<Params>} ) => {
     } else if (memberType.slug == 'management-team') {
         return (
           <div className=' flex flex-col items-center justify-center'>
-            <AboutBanner 
+            {/* <AboutBanner 
               bannerImage={aboutBannerImage.src}
               title={memberType.title}
               description={memberType.description}
-            />
+            /> */}
+
+            <PublicBanners title={memberType.title} message={memberType.description} />
           <div className="container mx-auto px-4 py-16">
             <h2 className="text-3xl font-bold text-center mb-12">{ memberType.title  }</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="flex flex-col">
               <div className="col-span-3">
                 {
                     <div className=" max-w-2xl flex items-center justify-center mx-auto">
@@ -132,11 +137,13 @@ const MemberSlug = async ({params}: {params: Promise<Params>} ) => {
                 }
               </div>
       
-              {
+             <div className=" grid grid-cols-1 md:grid-cols-3">
+             {
                 managementMembers && managementMembers.slice(1, managementMembers.length).map((member) => (
                   <TeamMemberCard key={member._id} member={member} />
                 ))
               }
+             </div>
             </div>
           </div>
             
@@ -146,11 +153,12 @@ const MemberSlug = async ({params}: {params: Promise<Params>} ) => {
       
   return (
     <div className=' flex flex-col items-center justify-center'>
-      <AboutBanner 
+      {/* <AboutBanner 
         bannerImage={aboutBannerImage.src}
         title={memberType.title}
         description={memberType.description}
-      />
+      /> */}
+      <PublicBanners title={memberType.title} message={memberType.description} />
     <div className="container mx-auto px-4 py-16">
       <h2 className="text-3xl font-bold text-center mb-12">{ memberType.title  }</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

@@ -88,15 +88,15 @@ export function MobileNavMenu() {
               </div>
             </AccordionContent>
           </AccordionItem>
-          <AccordionItem value="media">
-            <AccordionTrigger>Media</AccordionTrigger>
+          <AccordionItem value="resources">
+            <AccordionTrigger>Resources</AccordionTrigger>
             <AccordionContent>
               <div className="flex flex-col space-y-2">
                 {mediaItems.map((item) => (
                   <MobileLink
                     key={item}
                     className="px-3"
-                    href={`/media/${item.toLowerCase().replace(/ /g, "-")}`}
+                    href={`/resources/${item.toLowerCase().replace(/ /g, "-")}`}
                     onOpenChange={setOpen}
                   >
                     {item}
@@ -119,11 +119,18 @@ export function MobileNavMenu() {
           </AccordionItem>
         </Accordion>
         <div className="flex flex-col space-y-2 mt-4">
+         
+          <MobileLink href="/trainings" onOpenChange={setOpen}>
+            Trainings 
+          </MobileLink>
           <MobileLink href="/knowledge-hub" onOpenChange={setOpen}>
             Knowledge Hub
           </MobileLink>
           <MobileLink href="/contact" onOpenChange={setOpen}>
             Contact
+          </MobileLink>
+          <MobileLink href="/activities" onOpenChange={setOpen}>
+            Activities 
           </MobileLink>
         </div>
       </SheetContent>

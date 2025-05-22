@@ -1,8 +1,6 @@
 import { groq } from "next-sanity"
 import { client } from "../client";
-// import { revalidate } from "../queries";
 
-// revalidate
 
 export const revalidate = 10
 
@@ -11,7 +9,7 @@ export const getSingleActivity = (slug: string) => {
     *[_type == "activity" && slug.current == $slug] {
         _id,
         title,
-        description,
+        contents,
         _createdAt,
         images,
         author->{

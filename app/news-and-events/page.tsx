@@ -6,13 +6,14 @@ import { SanityTypes } from '@/@types'
 import { ArticlesList } from './_components/ArticlesList'
 import { EventList } from '@/components/home/event-list'
 import { getAllEvents } from '@/sanity/lib/quesries/eventQueries'
+import PublicBanners from '../components/PublicBanners'
 
 
 
 const pageData = {
     title: "News and Events",
     description:
-      "We currently have no news or events",
+      "Stay up to date with the latest news and events happening in the world of agriculture",
     href: "/news-and-events",
   }
 
@@ -34,11 +35,12 @@ const page = async () => {
 
   return (
     <div className=' flex flex-col items-center justify-center'>
-      <NewsAndEventBanner 
+      {/* <NewsAndEventBanner 
       bannerImage={NewsAndEventImage.src}
       description={pageData.description}
       title={pageData.title}  
-      />
+      /> */}
+      <PublicBanners message={pageData.description} title={pageData.title} />
 
       <div className=" py-20">
         {/* {

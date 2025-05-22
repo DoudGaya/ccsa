@@ -1,0 +1,203 @@
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+
+
+model eventBooking {
+  id                Int      @id @default(autoincrement())
+  name              String
+  email             String
+  phone             String
+  organization      String
+  event             String
+  gender            Gender 
+  age               Int
+  role              String
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+
+model TrainingApplication {
+  id                Int      @id @default(autoincrement())
+  name              String
+  email             String
+  phone             String
+  organization      String
+  gender            Gender
+  age               Int
+  role              String
+  training          String
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  @@map("rsvp")
+}
+
+
+model CustomCourse {
+  id                Int      @id @default(autoincrement())
+  name              String
+  email             String
+  phone             String
+  organization      String
+  course            String
+}
+
+model Contact {
+  id                Int      @id @default(autoincrement())
+  name              String?
+  email             String?
+  subject           String?
+  message           String?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+model Volunteers {
+  id                        Int      @id @default(autoincrement())
+  name                      String
+  email                     String
+  phone                     String?
+  state                     String?
+  gender                    Gender?
+  localGovernment           String?
+  organization              String?
+  statementOfInterest       String?
+  createdAt                 DateTime @default(now())
+  updatedAt                 DateTime @updatedAt
+  yearsOfFarmingExperience  Int?
+}
+
+enum Gender {
+  Male
+  Female
+}
+
+model User {
+  id                Int      @id @default(autoincrement())
+  name              String
+  email             String
+  password          String
+  role              String
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+
+// generator client {
+//   provider = "prisma-client-js"
+// }
+
+// datasource db {
+//   provider = "mysql"
+//   url      = env("DATABASE_URL")
+// }
+
+
+
+// model TrainingApplications {
+//   id                Int      @id @default(autoincrement())
+//   name              String
+//   email             String
+//   phone             String
+//   organization      String
+//   gender            Gender
+//   age               Int
+//   role              String
+//   training          String
+//   createdAt         DateTime @default(now())
+//   updatedAt         DateTime @updatedAt
+// }
+
+// model Contact {
+//   id                Int      @id @default(autoincrement())
+//   name              String
+//   email             String
+//   message           String
+//   createdAt         DateTime @default(now())
+//   updatedAt         DateTime @updatedAt
+// }
+
+
+// enum Gender {
+//   Male
+//   Female
+// }
+
+
+// model User {
+//   id                Int      @id @default(autoincrement())
+//   name              String
+//   email             String
+//   password          String
+//   role              String
+//   createdAt         DateTime @default(now())
+//   updatedAt         DateTime @updatedAt
+// }
+
+// generator client {
+//   provider = "prisma-client-js"
+// }
+
+// datasource db {
+//   provider = "postgresql"
+//   url      = env("DATABASE_URL")
+//   directUrl = env("DIRECT_URL")
+// }
+
+// generator client {
+//   provider = "prisma-client-js"
+// }
+
+// datasource db {
+//   provider  = "postgresql"
+//   url       = env("DATABASE_URL")
+//   directUrl = env("DIRECT_URL")
+// }
+
+// model TrainingApplications {
+//   id                Int      @id @default(autoincrement())
+//   name              String
+//   email             String
+//   phone             String
+//   organization      String
+//   gender            Gender
+//   age               Int
+//   role              String
+//   training          String
+//   createdAt         DateTime @default(now())
+//   updatedAt         DateTime @updatedAt
+//   @@map("rsvp")
+// }
+
+// model Contact {
+//   id                Int      @id @default(autoincrement())
+//   name              String
+//   email             String
+//   message           String
+//   createdAt         DateTime @default(now())
+//   updatedAt         DateTime @updatedAt
+// }
+
+// enum Gender {
+//   Male
+//   Female
+// }
+
+// model User {
+//   id                Int      @id @default(autoincrement())
+//   name              String
+//   email             String
+//   password          String
+//   role              String
+//   createdAt         DateTime @default(now())
+//   updatedAt         DateTime @updatedAt
+// }

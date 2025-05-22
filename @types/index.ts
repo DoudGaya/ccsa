@@ -18,6 +18,40 @@ export namespace SanityTypes {
         author: Author;
     }
 
+
+    export interface StandingCommitteeType {
+        title: string
+        description: string
+        slug: string
+    }
+
+    export interface Trainings {
+        _id: string;
+        _createdAt: Date;
+        _updatedAt: Date;
+        title: string;
+        overview: string;
+        mandate: string;
+        learningOutcomes: string[];
+        curriculum: string[];
+        pedagogy: string[];
+        targetAudience: string[];
+        slug: string;
+        location: string;
+        venue: string;
+        imageUrl: string;
+
+    }
+
+    export interface StandingCommitteeType {
+        _id: string;
+        _createdAt: Date;
+        _updatedAt: Date;
+        title: string;
+        description: string;
+        slug: string;
+    }
+
     export interface PublicationType {
         _id: string;
         _createdAt: Date;
@@ -25,6 +59,31 @@ export namespace SanityTypes {
         title: string;
         description: string;
         slug: string;
+    }
+
+    export interface EthicsType {
+        _id: string;
+        _createdAt: Date;
+        _updatedAt: Date;
+        title: string;
+        description: string;
+        slug: {
+            current: string;
+        }
+    }
+
+    export interface Ethics {
+        _id: string;
+        _createdAt: Date;
+        _updatedAt: Date;
+        title: string;
+        description: string;
+        slug: {
+            current: string;
+        }
+        body: PortableTextProps;
+        ethicsType: EthicsType;
+        tags: string[];
     }
 
 
@@ -113,7 +172,7 @@ export namespace SanityTypes {
         _createdAt: Date;
         _updatedAt: Date;
         title: string;
-        description: string;
+        contents: string;
         images: SanityImageAssetDocument[];
         location: string;
         imageUrl: string;
@@ -136,3 +195,37 @@ export namespace SanityTypes {
         bio: string;
     }
 }
+
+
+export interface TrainingApplication {
+    id: number;
+    name: string;
+    email: string;
+    phone: string;
+    organization: string;
+    gender: string;
+    role: string;
+    training: string;
+}
+
+export interface customCourse {
+    id: number;
+    name: string;
+    email: string;
+    phone: string;
+    organization: string;
+    course: string;
+}
+
+
+export interface VolunteersApplication {
+    name: string;
+    email: string;
+    phone: string;
+    organization: string;
+    state: string;
+    localGovernment: string;
+    statementOfInterest: string;
+    yearsOfFarmingExperience: string;
+}
+

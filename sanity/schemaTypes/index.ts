@@ -14,6 +14,10 @@ import { mediaType } from './mediaType'
 import { mediaSchema } from './media'
 import { events } from './events'
 import { trainings } from './trainings'
+import { standingCommitteeType } from './standingCommitteeType'
+
+
+
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -24,6 +28,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     activity,
     memberType,
     ethicsTypes,
+    standingCommitteeType,
     ethics,
     trainings,
     mediaType,
@@ -31,6 +36,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     events,
     member,
     Publication,
-    publicationType
+    publicationType,
   ],
 }

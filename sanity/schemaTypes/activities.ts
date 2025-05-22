@@ -17,12 +17,12 @@ export const activity = defineType({
             type: 'array',
             of: [{ type: 'block' }],
         }),
-        {
-            name: 'description',
-            title: 'Description',
-            type: 'text',
-            validation: (Rule) => Rule.required(),
-        },
+        // {
+        //     name: 'description',
+        //     title: 'Description',
+        //     type: 'text',
+        //     validation: (Rule) => Rule.required(),
+        // },
         defineField({
             name: 'slug',
             type: 'slug',
@@ -31,30 +31,30 @@ export const activity = defineType({
                 maxLength: 96,
             },
         }),
-        {
-            name: 'date',
-            title: 'Date',
-            type: 'datetime',
-            validation: (Rule) => Rule.required(),
-        },
+        // {
+        //     name: 'date',
+        //     title: 'Date',
+        //     type: 'datetime',
+        //     validation: (Rule) => Rule.required(),
+        // },
         defineField({
             name: 'tags',
             title: 'Tags',
             type: 'array',
             of: [{ type: 'string' }],
         }),
-        defineField({
-            name: 'author',
-            title: 'Author',
-            type: 'reference',
-            to: [{ type: 'author' }],
-        }),
-        defineField({
-            name: 'activityType',
-            title: 'Activity Type',
-            type: 'reference',
-            to: [{ type: 'activityType' }],
-        }),
+        // defineField({
+        //     name: 'author',
+        //     title: 'Author',
+        //     type: 'reference',
+        //     to: [{ type: 'author' }],
+        // }),
+        // defineField({
+        //     name: 'activityType',
+        //     title: 'Activity Type',
+        //     type: 'reference',
+        //     to: [{ type: 'activityType' }],
+        // }),
         {
             name: 'location',
             title: 'Location',
@@ -67,11 +67,11 @@ export const activity = defineType({
             type: 'image',
             options: { hotspot: true },
         }),
-        {
-            name: 'images',
-            title: 'Images',
-            type: 'array',
-            of: [{ type: 'image' }],
-        }
+        // {
+        //     name: 'images',
+        //     title: 'Images',
+        //     type: 'array',
+        //     of: [{ type: 'image' }],
+        // }
     ],
 })

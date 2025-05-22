@@ -29,7 +29,7 @@ export default {
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
-  			brand: 'rgb(6,54,103)',
+  			brand: 'rgb(8,44,60)',
   			// brand: '#437526',
   			card: {
   				DEFAULT: 'hsl(var(--card))',

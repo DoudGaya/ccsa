@@ -10,6 +10,7 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/componen
 // import { useBookingModal } from "@/hooks/use-booking-modal"
 import { useBookingModal } from "@/hooks/use-booking-modal"
 import { SanityTypes } from "@/@types"
+import { BookingModal } from "./booking-modal"
 // import type { Events } from "@/types"
 
 interface EventCardProps {
@@ -73,13 +74,11 @@ export function EventCard({ event }: EventCardProps) {
           ))}
         </div>
       </CardContent>
-      <CardFooter className="flex justify-between border-t pt-4">
-        <Link href={`/events/${event.slug.current}`} className="text-sm font-medium text-primary">
+      <CardFooter className="flex justify-end items-end border-t pt-3">
+        {/* <BookingModal /> */}
+        <Link href={`/events/${event.slug.current}`} className="text-sm bg-brand text-white px-3 py-2 rounded-md font-medium text-primary">
           Learn More
         </Link>
-        <Button className=" bg-blue-900" onClick={() => bookingModal.onOpen(event)} size="sm">
-          Book a Spot
-        </Button>
       </CardFooter>
     </Card>
   )

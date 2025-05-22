@@ -18,6 +18,7 @@ export const ResearchBanner = ({
         backgroundImage: `url(${bannerImage})`,
         backgroundPosition: 'center',
         backgroundSize: 'cover',
+        objectFit: 'cover'
     }}
     className='h-[70vh] w-full flex bg-gradient-to-b bg-black/60 bg-blend-overlay relative bg-cover bg-center bg-no-repeat text-blue-50 bg-fixed'>
     <div className="bg-gradient-to-b flex-col from-transparent justify-center  w-full flex ">

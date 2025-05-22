@@ -5,6 +5,7 @@ import { getSingleMember } from '@/sanity/lib/quesries/membersQuesries'
 
 import { SanityTypes } from '@/@types'
 // import { Card, } from '@/components/Card'#
+import Image from 'next/image'
 import aboutBannerImage from '@/public/about-banner.jpg'
 import { Facebook, Linkedin, Twitter } from "lucide-react"
 import { PortableText } from 'next-sanity'
@@ -13,6 +14,7 @@ import { Badge } from '@/components/ui/badge'
 import { Card, CardContent, CardHeader, CardTitle  } from '@/components/ui/card'
 
 import { TeamBanner } from '../../_component/TeamBanner'
+import PublicBanners from '@/app/components/PublicBanners'
 
 type Params = {
   member: string
@@ -26,24 +28,26 @@ const page = async ( {params}: {params: Promise<Params>}) => {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
-    <TeamBanner
-      title={user.name}
-      description={user.role}
-      bannerImage={
-        aboutBannerImage.src
-      }
-      userImage={user.imageUrl}
-    />
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <PublicBanners title={user.name} message={user.role} />
+
+    <div className="max-w-7xl -mt-[100px]  flex flex-col mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="">
+          <Image
+            src={user.imageUrl}
+            alt={user.name}
+            width={200}
+            height={200}
+            className="rounded-full border-primary border-2 bg-white object-cover object-center overflow-hidden h-[200px] w-[200px]"
+          />
+      </div>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2">
-     
             {/* <CardContent> */}
-                   <article className=" lg:prose-lg dark:prose-invert font-blog text-lg space-y-6">
+                   {/* <article className=" lg:prose-lg dark:prose-invert font-blog text-lg space-y-6">
                     <PortableText 
                     // @ts-ignore
                     value={user.body} />
-                   </article>
+                   </article> */}
               <p className="text-gray-600 font-blog whitespace-pre-wrap">{user.bio}</p>
             {/* </CardContent> */}
          

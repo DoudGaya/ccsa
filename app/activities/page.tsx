@@ -6,6 +6,7 @@ import NewsAndEventImage from '@/public/news-and-events.jpg'
 import { getAllActivities } from '@/sanity/lib/quesries/activitiesQueries'
 import { SanityTypes } from '@/@types'
 import ActivityGrid from './_components/ActivityGrid'
+import PublicBanners from '../components/PublicBanners'
 
 
 
@@ -28,17 +29,19 @@ const page = async () => {
 
   return (
     <div className=' flex flex-col items-center justify-center'>
-      <ActivitiesBanner 
+      {/* <ActivitiesBanner 
       bannerImage={NewsAndEventImage.src}
       description={pageData.description}
       title={pageData.title}  
-      />
+      /> */}
+      <PublicBanners title={pageData.title} message={pageData.description} />
+      
       <div className=" py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        {/* { activities.length < 1 ?
+        { activities.length < 1 ?
         <div className=" text-2xl"> {'No news or Event Available'} </div>
         : <ActivityGrid activities={activities} />
-        } */}
+        }
       </div>
     </div>
   )

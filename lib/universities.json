@@ -1,0 +1,177 @@
+[
+    {
+      "type": "University",
+      "category": "Federal",
+      "name": "Federal University of Agriculture, Abeokuta",
+      "shortName": "FUNAAB",
+      "url": "https://funaab.edu.ng"
+    },
+    {
+      "type": "University",
+      "category": "Federal",
+      "name": "Federal University of Agriculture, Makurdi",
+      "shortName": "FUAM",
+      "url": "https://uam.edu.ng"
+    },
+    {
+      "type": "University",
+      "category": "Federal",
+      "name": "Michael Okpara University of Agriculture, Umudike",
+      "shortName": "MOUAU",
+      "url": "https://mouau.edu.ng"
+    },
+    {
+      "type": "University",
+      "category": "State",
+      "name": "Abia State University",
+      "shortName": "ABSU",
+      "url": "https://absu.edu.ng"
+    },
+    {
+      "type": "University",
+      "category": "State",
+      "name": "Adamawa State University",
+      "shortName": "ADSU",
+      "url": "https://adsu.edu.ng"
+    },
+    {
+      "type": "University",
+      "category": "State",
+      "name": "Akwa Ibom State University",
+      "shortName": "AKSU",
+      "url": "https://aksu.edu.ng"
+    },
+    {
+      "type": "University",
+      "category": "State",
+      "name": "Ambrose Alli University",
+      "shortName": "AAU",
+      "url": "https://aauekpoma.edu.ng"
+    },
+    {
+      "type": "University",
+      "category": "Federal",
+      "name": "Bayero University Kano",
+      "shortName": "BUK",
+      "url": "https://buk.edu.ng"
+    },
+    {
+      "type": "University",
+      "category": "State",
+      "name": "Delta State University",
+      "shortName": "DELSU",
+      "url": "https://delsu.edu.ng"
+    },
+    {
+      "type": "University",
+      "category": "State",
+      "name": "Ebonyi State University",
+      "shortName": "EBSU",
+      "url": "https://ebsu.edu.ng"
+    },
+    {
+      "type": "University",
+      "category": "Private",
+      "name": "Afe Babalola University",
+      "shortName": "ABUAD",
+      "url": "https://abuad.edu.ng"
+    },
+    {
+      "type": "University",
+      "category": "Private",
+      "name": "Babcock University",
+      "shortName": "BABCOCK",
+      "url": "https://babcock.edu.ng"
+    },
+    {
+      "type": "University",
+      "category": "Private",
+      "name": "Covenant University",
+      "shortName": "CU",
+      "url": "https://covenantuniversity.edu.ng"
+    },
+    {
+      "type": "College of Education",
+      "category": "Federal",
+      "name": "Federal College of Education, Abeokuta",
+      "shortName": "FCE Abeokuta",
+      "url": "https://fce.edu.ng"
+    },
+    {
+      "type": "College of Education",
+      "category": "Federal",
+      "name": "Federal College of Education, Kano",
+      "shortName": "FCE Kano",
+      "url": "https://fcekano.edu.ng"
+    },
+    {
+      "type": "College of Education",
+      "category": "State",
+      "name": "Abia State College of Education, Arochukwu",
+      "shortName": "ASCETA",
+      "url": "https://asceta.edu.ng"
+    },
+    {
+      "type": "College of Education",
+      "category": "State",
+      "name": "Adamawa State College of Education, Hong",
+      "shortName": "COE Hong",
+      "url": "https://adscoe.edu.ng"
+    },
+    {
+      "type": "Polytechnic",
+      "category": "Federal",
+      "name": "Federal Polytechnic, Ado-Ekiti",
+      "shortName": "Fed Poly Ado",
+      "url": "https://fedpolyado.edu.ng"
+    },
+    {
+      "type": "Polytechnic",
+      "category": "Federal",
+      "name": "Federal Polytechnic, Bauchi",
+      "shortName": "Fed Poly Bauchi",
+      "url": "https://fptb.edu.ng"
+    },
+    {
+      "type": "Polytechnic",
+      "category": "Federal",
+      "name": "Federal Polytechnic, Ilaro",
+      "shortName": "Fed Poly Ilaro",
+      "url": "https://federalpolyilaro.edu.ng"
+    },
+    {
+      "type": "Polytechnic",
+      "category": "State",
+      "name": "Abia State Polytechnic, Aba",
+      "shortName": "Abia Poly",
+      "url": "https://abiapoly.edu.ng"
+    },
+    {
+      "type": "Polytechnic",
+      "category": "State",
+      "name": "Adamawa State Polytechnic, Yola",
+      "shortName": "Adamawa Poly",
+      "url": "https://adamawastatepoly.edu.ng"
+    },
+    {
+      "type": "College of Agriculture",
+      "category": "State",
+      "name": "Adamawa State College of Agriculture, Mubi",
+      "shortName": "ADSCOA Mubi",
+      "url": "https://adscoa.edu.ng"
+    },
+    {
+      "type": "College of Agriculture",
+      "category": "State",
+      "name": "Akwa Ibom State College of Agriculture, Obio Akpa",
+      "shortName": "AKSCOA",
+      "url": "https://akscoa.edu.ng"
+    },
+    {
+      "type": "College of Agriculture",
+      "category": "Federal",
+      "name": "College of Agriculture, Kabba",
+      "shortName": "FCAKB",
+      "url": "https://collegeofagriculturekabba.edu.ng"
+    }
+  ]

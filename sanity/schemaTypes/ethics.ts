@@ -13,15 +13,26 @@ export const ethics = defineType({
             validation: (Rule) => Rule.required(),
         },
         defineField({
-            name: 'description',
-            title: 'Description',
-            type: 'text',
+            name: 'body',
+            title: 'Body',
+            type: 'array',
+            of: [{ type: 'block' }],
         }),
         defineField({
             name: 'ethicsType',
             title: 'Ethics Type',
-            type: 'reference',
-            to: [{ type: 'ethicsType' }],
+            type: 'string',
+            // to: [{ type: 'ethicsType' }],
+            validation: (Rule) => Rule.required(),
+        }),
+
+        defineField({
+            name: 'typeSlug',
+            type: 'slug',
+            options: {
+                source: 'ethicsType',
+                maxLength: 96,
+            },
         }),
         {
             name: 'slug',

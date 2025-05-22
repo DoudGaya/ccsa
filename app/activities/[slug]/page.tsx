@@ -22,7 +22,7 @@ const activity = await getSingleActivity(slug) as SanityTypes.Activity;
         <DynamicBanner 
           title={activity.title} 
           bannerImage={activity.imageUrl} 
-          description={activity.description} 
+          description={''} 
         />
         <div className="py-6">
           <ActivityContents activity={activity} />

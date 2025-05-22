@@ -1,6 +1,6 @@
 import { SanityTypes } from "@/@types"
 import { create } from "zustand"
-// import type { Events } from "@/types"
+
 
 interface BookingModalStore {
   isOpen: boolean
