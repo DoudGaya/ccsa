@@ -19,6 +19,18 @@ interface DashboardStats {
   totalUsers: number
 }
 
+interface MonthlyDataItem {
+  name: string
+  applications: number
+  contacts: number
+  volunteers: number
+}
+
+interface ProgramDataItem {
+  name: string
+  value: number
+}
+
 export default function DashboardPage() {
   const [stats, setStats] = useState<DashboardStats>({
     totalApplications: 0,
@@ -29,9 +41,10 @@ export default function DashboardPage() {
     totalCustomCourses: 0,
     totalUsers: 0,
   })
-  const [monthlyData, setMonthlyData] = useState([])
-  const [programData, setProgramData] = useState([])
+  const [monthlyData, setMonthlyData] = useState<MonthlyDataItem[]>([])
+  const [programData, setProgramData] = useState<ProgramDataItem[]>([])
   const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     async function fetchData() {
@@ -43,10 +56,12 @@ export default function DashboardPage() {
         ])
 
         setStats(statsData)
-        setMonthlyData(monthlyChartData)
-        setProgramData(programChartData)
+        setMonthlyData(monthlyChartData as MonthlyDataItem[])
+        setProgramData(programChartData as ProgramDataItem[])
+        setError(null)
       } catch (error) {
         console.error("Error fetching dashboard data:", error)
+        setError("Failed to load dashboard data. Please try again later.")
       } finally {
         setIsLoading(false)
       }
@@ -59,6 +74,20 @@ export default function DashboardPage() {
     return (
       <div className="flex items-center justify-center min-h-[400px]">
         <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600"></div>
+      </div>
+    )
+  }
+
+  if (error) {
+    return (
+      <div className="flex items-center justify-center min-h-[400px] flex-col">
+        <div className="text-red-500 mb-4">⚠️ {error}</div>
+        <button
+          onClick={() => window.location.reload()}
+          className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+        >
+          Try Again
+        </button>
       </div>
     )
   }
@@ -176,25 +205,31 @@ export default function DashboardPage() {
             <CardTitle>Program Distribution</CardTitle>
           </CardHeader>
           <CardContent>
-            <ResponsiveContainer width="100%" height={300}>
-              <PieChart>
-                <Pie
-                  data={programData}
-                  cx="50%"
-                  cy="50%"
-                  labelLine={false}
-                  label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
-                  outerRadius={80}
-                  fill="#8884d8"
-                  dataKey="value"
-                >
-                  {programData.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                  ))}
-                </Pie>
-                <Tooltip />
-              </PieChart>
-            </ResponsiveContainer>
+            {programData.length > 0 ? (
+              <ResponsiveContainer width="100%" height={300}>
+                <PieChart>
+                  <Pie
+                    data={programData}
+                    cx="50%"
+                    cy="50%"
+                    labelLine={false}
+                    label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+                    outerRadius={80}
+                    fill="#8884d8"
+                    dataKey="value"
+                  >
+                    {programData.map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                    ))}
+                  </Pie>
+                  <Tooltip />
+                </PieChart>
+              </ResponsiveContainer>
+            ) : (
+              <div className="flex items-center justify-center h-[300px] text-gray-500">
+                No program data available
+              </div>
+            )}
           </CardContent>
         </Card>
       </div>
