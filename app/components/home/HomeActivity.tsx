@@ -5,7 +5,7 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import type { SanityTypes } from "@/@types"
-import SingleActivity from "@/app/activities/_components/SingleActivity"
+import SingleActivity from "@/app/(public)/activities/_components/SingleActivity"
 import womanFarmer from '@/public/woman-farmer.jpg'
 
 export default function HomeActivity({

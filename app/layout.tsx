@@ -2,8 +2,6 @@ import type {
    Metadata 
 } from "next";
 import "./globals.css";
-import Navbar from "./components/Navbar";
-import Footer from "./components/footer";
 import { ThemeProvider } from "./components/theme-provider";
 // import { Toaster } from "@/components/ui/sonner"
 import { Toaster } from "sonner";
@@ -82,10 +80,10 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           > */}
-        <Navbar />
+        {/* <Navbar /> */}
         {children}
         <Toaster />
-        <Footer />
+        {/* <Footer /> */}
       {/* </ThemeProvider> */}
       </body>
     </html>
