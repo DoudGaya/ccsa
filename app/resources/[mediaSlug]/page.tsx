@@ -23,9 +23,6 @@ const page = async (
 ) => {
   const { mediaSlug } = await params
 
-  // const allMedia = await getAllMedia() as SanityTypes.Media[]
-
-
 const allMedia = await getAllMediaByType(mediaSlug) as SanityTypes.Media[]
 const mediaType = await getMediaTypeBySlug(mediaSlug) as SanityTypes.MediaType
 
@@ -45,11 +42,6 @@ const allTypes = await getAllMedia() as SanityTypes.MediaType[]
           title={mediaType.title}
           message={mediaType.description}
         />
-        {/* <MediaBanner 
-        bannerImage={pubBanner.src}
-        title={`${mediaType.title}`}
-        description={mediaType.description} 
-        /> */}
         {
           allMedia.length > 0 ? <ActivityGrid activities={activities} />
           : <div className=" flex flex-col items-center justify-center py-20 space-y-3">
@@ -68,12 +60,6 @@ const allTypes = await getAllMedia() as SanityTypes.MediaType[]
   return (
 
     <div className=' flex flex-col'>
-        {/* <MediaBanner 
-        bannerImage={pubBanner.src}
-        title={`${mediaType.title}`}
-        description={mediaType.description} 
-        /> */}
-
         <PublicBanners
           title={mediaType.title}
           message={mediaType.description}
