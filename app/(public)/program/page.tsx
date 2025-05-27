@@ -13,8 +13,8 @@ import PublicBanners from "@/app/components/PublicBanners"
 import programBanner from '@/public/student.jpg'
 
 const pageData = {
-  title: "Professional Development Programs",
-  description: "Advanced training programs in emerging technologies and international capacity development",
+  title: "International Capacity Development Program in China",
+  description: "September – December 2025",
 }
 
 const programs = [
@@ -103,6 +103,8 @@ const importantDates = [
   { event: "Departure to China", date: "August 15–28, 2025" },
 ]
 
+
+
 export default function ProgramsPage() {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
@@ -113,7 +115,7 @@ export default function ProgramsPage() {
       <div className="container mx-auto px-4 py-12 max-w-6xl">
         {/* Hero Section */}
         <section className="mb-16">
-          <div className="text-center mb-12">
+          {/* <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-gray-800 to-gray-500 dark:from-gray-200 dark:to-gray-400 bg-clip-text text-transparent">
               Professional Development Programs
             </h1>
@@ -121,9 +123,9 @@ export default function ProgramsPage() {
               Join our cutting-edge training programs designed to equip you with the skills needed for the future of
               technology and innovation, including international opportunities in China.
             </p>
-          </div>
+          </div> */}
 
-          <div className="relative h-[400px] w-full rounded-xl overflow-hidden mb-12">
+          {/* <div className="relative h-[400px] w-full rounded-xl overflow-hidden mb-12">
             <Image
               src={programBanner.src}
               alt="Professional Development Programs"
@@ -148,7 +150,7 @@ export default function ProgramsPage() {
               </div>
             </div>
             
-          </div>
+          </div> */}
         </section>
 
         {/* Program Overview */}
@@ -160,9 +162,9 @@ export default function ProgramsPage() {
               <div className="bg-blue-100 dark:bg-blue-900/30 p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
                 <GraduationCap className="h-8 w-8 text-blue-600 dark:text-blue-400" />
               </div>
-              <h3 className="text-xl font-semibold mb-2">Expert Instructors</h3>
+              <h3 className="text-xl font-semibold mb-2">International Experience</h3>
               <p className="text-gray-600 dark:text-gray-400">
-                Learn from industry experts and experienced professionals
+               Gain international work experience and technical expertise.
               </p>
             </div>
 
@@ -170,8 +172,8 @@ export default function ProgramsPage() {
               <div className="bg-green-100 dark:bg-green-900/30 p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
                 <Globe className="h-8 w-8 text-green-600 dark:text-green-400" />
               </div>
-              <h3 className="text-xl font-semibold mb-2">Global Opportunities</h3>
-              <p className="text-gray-600 dark:text-gray-400">International programs and cultural exchange</p>
+              <h3 className="text-xl font-semibold mb-2">Global Networking</h3>
+              <p className="text-gray-600 dark:text-gray-400">Expand your global professional network.</p>
             </div>
 
             <div className="text-center">
@@ -263,6 +265,14 @@ export default function ProgramsPage() {
             ))}
           </div>
         </section>
+
+        {/* Contact Sections */}
+        
+        <div className=" flex flex-col items-center justify-center bg-green-100 dark:bg-gray-900 p-8 rounded-xl mb-16">
+          <h2 className="text-3xl font-bold mb-4">Contact Us for More Information</h2>
+          <p className=" font-semibold text-lg text-green-950">Contact: ccsa@cosmopolitan.edu.ng</p>
+        </div>
+
 
       
       </div>

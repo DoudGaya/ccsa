@@ -25,7 +25,7 @@ export function ArticlesList({ articles }: ArticlesListProps) {
           <CardContent className="flex-grow p-4">
             <Badge className="mb-2">{article.type.name}</Badge>
             <h3 className="text-lg font-semibold mb-2">
-              <Link href={`/articles/${article.slug}`} className="hover:underline">
+              <Link href={`/${article.type.slug}/${article.slug}`} className="hover:underline">
                 {article.title}
               </Link>
             </h3>
@@ -34,7 +34,7 @@ export function ArticlesList({ articles }: ArticlesListProps) {
           <CardFooter className="p-4 border-t">
             <div className="flex items-center space-x-4">
               <Avatar>
-                <AvatarImage src={`${article.author.slug}`} />
+                <AvatarImage src={`${article.author.imageUrl}`} className=" w-full h-full" />
                 <AvatarFallback>{article.author.name.charAt(0)}</AvatarFallback>
               </Avatar>
               <div className="flex-grow">

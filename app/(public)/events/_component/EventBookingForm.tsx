@@ -24,6 +24,7 @@ import { useToast } from '@/hooks/use-toast'
 import { createApplication } from '@/actions/trainings'
 import { SanityTypes, TrainingApplication } from '@/@types'
 import { Gender } from '@prisma/client'
+// import { trainings } from '@/sanity/schemaTypes/trainings'
 
 interface SubmitApplicationProps {
   onSubmit: (data: TrainingApplication) => void
@@ -201,18 +202,20 @@ export function EventBookingForm({ onSubmit, onClose, event }: SubmitApplication
               <FormItem>
                 <FormLabel className=' text-primary'>Program</FormLabel>
                 <FormControl>
-                  <Select disabled={isPending} onValueChange={field.onChange} defaultValue={field.value}>
+                  {/* <Input disabled={isPending} value={event.slug.current} className=' dark:border-gray-700 border-gray-200  dark:bg-dark' {...field} placeholder='Enter the program you are applying for' /> */}
+
+                  {/* <Select disabled={isPending} onValueChange={field.onChange} defaultValue={field.value}>
                       <SelectTrigger className=' dark:border-gray-700 border-gray-200  dark:bg-dark text-primary active:border-primary'>
                         <SelectValue placeholder="Select Prefered Training" />
                       </SelectTrigger>
-                      {/* <SelectContent>
+                      <SelectContent>
                             {
                               trainings.map((training) => (
                                 <SelectItem key={training._id} value={training.title}>{training.title}</SelectItem>
                               ))
                             }
-                      </SelectContent> */}
-                    </Select>
+                      </SelectContent>
+                    </Select> */}
                 </FormControl>
                 <FormMessage />
               </FormItem>

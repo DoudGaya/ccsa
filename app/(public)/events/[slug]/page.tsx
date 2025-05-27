@@ -90,11 +90,11 @@ export default async function EventPage({ params }: {params: Promise<EventPagePr
         <div className="bg-muted/30 rounded-lg py-6 mb-8">
           <h2 className="text-2xl font-semibold mb-4">Interested in attending?</h2>
           <p className="mb-4">Secure your spot for this event by filling out our booking form.</p>
-          <BookingClientWrapper events={events} eventId={event._id} />
+          {/* <BookingClientWrapper events={events} eventId={event._id} /> */}
+      <EventActionArea event={event} />
         </div>
       </div>
       {/* <BookingModal /> */}
-      <EventActionArea event={event} />
     </div>
    </div>
   )

@@ -40,6 +40,13 @@ export default function ApplicationModal({ isOpen, onClose }: ApplicationModalPr
     resolver: zodResolver(programApplicationSchema),
   })
 
+  const highestQualificationOptions = [
+    { value: "Secondary School", label: "Secondary School Certificate" },
+    { value: "undergraduate", label: "Undergraduate Degree" },
+    { value: "postgraduate", label: "Postgraduate Degree" },
+    { value: "phd", label: "PhD" },
+  ]
+
 
   const undergradCourses = [
   { id: "accounting", name: "Accounting", level: "undergraduate" },
@@ -155,14 +162,36 @@ export default function ApplicationModal({ isOpen, onClose }: ApplicationModalPr
 
               <div>
                 <Label htmlFor="highestQualification">Highest Qualification *</Label>
-                <Input
+                {
+                    highestQualificationOptions.length > 0 ? (
+                  <Select onValueChange={(value) => setValue("highestQualification", value)}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select qualification" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {highestQualificationOptions.map((option) => (
+                        <SelectItem key={option.value} value={option.value}>
+                          {option.label}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                    ) : ( 
+                  <Input
+                    id="highestQualification"
+                    {...register("highestQualification")}
+                    className={errors.highestQualification ? "border-red-500" : ""}
+                  />
+                    ) 
+                }
+                {/* <Input
                   id="highestQualification"
                   {...register("highestQualification")}
                   className={errors.highestQualification ? "border-red-500" : ""}
                 />
                 {errors.highestQualification && (
                   <p className="text-red-500 text-sm mt-1">{errors.highestQualification.message}</p>
-                )}
+                )} */}
               </div>
             </div>
 
