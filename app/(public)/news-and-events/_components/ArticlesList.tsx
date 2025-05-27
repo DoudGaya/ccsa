@@ -25,7 +25,7 @@ export function ArticlesList({ articles }: ArticlesListProps) {
           <CardContent className="flex-grow p-4">
             <Badge className="mb-2">{article.type.name}</Badge>
             <h3 className="text-lg font-semibold mb-2">
-              <Link href={`/${article.type.slug}/${article.slug}`} className="hover:underline">
+              <Link href={`/articles/${article.slug}`} className="hover:underline">
                 {article.title}
               </Link>
             </h3>

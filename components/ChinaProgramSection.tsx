@@ -8,7 +8,7 @@ import student from '@/public/student.jpg'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import ApplicationModal from "@/components/ApplicationModal"
+// import ApplicationModal from "@/components/ApplicationModal"
 import Link from "next/link"
 
 export default function ChinaProgramSection() {
@@ -65,7 +65,7 @@ export default function ChinaProgramSection() {
             International Opportunity
           </div>
           <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-green-600 to-brand bg-clip-text text-transparent">
-            Study in China Program
+           Unlock Global Opportunities!
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto mb-8">
             Join our International Capacity Development Program in collaboration with top Chinese institutions. Gain
@@ -101,14 +101,14 @@ export default function ChinaProgramSection() {
                 Intensive capacity development program for technical, digital, and cultural skills
               </p>
               <div className=" grid grid-cols-2 gap-4">
-                <Button
+                {/* <Button
                 onClick={() => setIsModalOpen(true)}
                 size="lg"
                 className="bg-brand text-white hover:bg-brand/90 font-semibold"
               >
                 Apply Now
                 <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
+              </Button> */}
               <Button size={'lg'} className="  bg-white border-brand border py-1 text-brand hover:bg-brand/10 font-semibold">
               <Link href={'/program'} className="flex items-center justify-center h-full w-full  ">
                   Learn More
@@ -121,7 +121,7 @@ export default function ChinaProgramSection() {
         </div>
 
         {/* Program Highlights */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+        {/* <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
           {highlights.map((highlight, index) => (
             <Card key={index} className="text-center border-0 shadow-lg hover:shadow-xl transition-all duration-300">
               <CardContent className="pt-8 pb-6">
@@ -133,10 +133,10 @@ export default function ChinaProgramSection() {
               </CardContent>
             </Card>
           ))}
-        </div>
+        </div> */}
 
         {/* Partner Institutions */}
-        <div className="mb-16">
+        {/* <div className="mb-16">
           <h3 className="text-3xl font-bold text-center mb-12">Partner Institutions in China</h3>
           <div className="grid md:grid-cols-3 gap-8">
             {institutions.map((institution, index) => (
@@ -154,10 +154,10 @@ export default function ChinaProgramSection() {
               </Card>
             ))}
           </div>
-        </div>
+        </div> */}
 
         {/* Important Dates */}
-        <div className="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-lg mb-16">
+        {/* <div className="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-lg mb-16">
           <h3 className="text-2xl font-bold text-center mb-8">Important Dates</h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="text-center">
@@ -189,7 +189,7 @@ export default function ChinaProgramSection() {
               <p className="text-sm text-gray-600 dark:text-gray-400">September 1, 2025</p>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* Call to Action */}
         {/* <div className="text-center bg-gradient-to-r from-green-600 to-brand-600 text-brand p-12 rounded-2xl shadow-2xl">
@@ -222,7 +222,7 @@ export default function ChinaProgramSection() {
         </div> */}
       </div>
 
-      <ApplicationModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      {/* <ApplicationModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} /> */}
     </section>
   )
 }

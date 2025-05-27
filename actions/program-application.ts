@@ -2,8 +2,7 @@
 
 import { db } from "@/lib/prisma"
 import type * as z from "zod"
-import { programApplicationSchema } from "@/lib/schema"
-// import { programApplicationSchema } from "@/lib/schemas"
+import { programApplicationSchema } from "@/lib/schema" // Add this import
 
 export const createProgramApplication = async (values: z.infer<typeof programApplicationSchema>) => {
   const fieldValidation = programApplicationSchema.safeParse(values)
@@ -21,6 +20,7 @@ export const createProgramApplication = async (values: z.infer<typeof programApp
     phoneNumber,
     address,
     passportNumber,
+    duration,
     passportDateOfIssue,
     passportExpiryDate,
     passportCountryOfIssue,
@@ -46,6 +46,7 @@ export const createProgramApplication = async (values: z.infer<typeof programApp
         passportCountryOfIssue,
         highestQualification,
         isCosmopolitanStudent,
+        duration,
         course,
         program,
       },
