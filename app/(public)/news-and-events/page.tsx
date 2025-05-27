@@ -27,10 +27,14 @@ const page = async () => {
 
   const articles = await getAllArticles() as SanityTypes.Article[]
 
+  const news = articles.filter(article => article.type?.slug === 'news')
+
   const events = await getAllEvents() as SanityTypes.Events[]
 
 
   // const events
+
+  console.log("news", news)
 
 
   return (
@@ -43,21 +47,21 @@ const page = async () => {
       <PublicBanners message={pageData.description} title={pageData.title} />
 
       <div className=" py-20">
-        {/* {
-          articles.length < 1 ? 
-          <div className=" text-2xl"> {'No news or Event Available'} </div>
-          : 
-           <div className="container mx-auto px-4 py-8">
-            <h1 className="text-3xl font-bold mb-8">News</h1>
-            <ArticlesList articles={articles} />
-          </div>
-        } */}
-
+       
       <div className=" max-w-7xl flex flex-col space-y-6 mx-auto px-4 py-8 w-full ">
 
-        <div className=" text-6xl font-main font-bold ">Events</div>
-      <EventList events={events} />
-      </div>
+           {
+            news.length > 0 && (
+              <div className=" text-6xl font-main font-bold ">
+                  <div className=" text-6xl font-main font-bold ">News</div>
+                  <ArticlesList articles={news} />
+              </div>
+            )
+           }
+
+          <div className=" text-6xl font-main font-bold ">Events</div>
+            <EventList events={events} />
+          </div>
 
       </div>
 

@@ -1,4 +1,4 @@
-'#use client'
+'use client'
 import DataTable from "@/components/DataTable"
 
 const columns = [
@@ -8,7 +8,8 @@ const columns = [
   {
     key: "message",
     label: "Message",
-    render: (value: string) => (
+    // Move this rendering logic to the client side
+    renderCell: (value: string) => (
       <div className="max-w-xs truncate" title={value}>
         {value || "-"}
       </div>

@@ -11,13 +11,14 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 // import { getPaginatedData } from "@/actions/admin"]
 import { getPaginatedData } from "@/actions/admin"
 
+// Update your type definition
 interface DataTableProps {
   model: string
   title: string
   columns: Array<{
     key: string
     label: string
-    render?: (value: any, row: any) => React.ReactNode
+    renderCell?: (value: any, row: any) => React.ReactNode
   }>
 }
 
@@ -128,7 +129,7 @@ useEffect(() => {
                         >
                           {columns.map((column) => (
                             <td key={column.key} className="py-3 px-4 text-gray-700 dark:text-gray-300">
-                              {column.render ? column.render(row[column.key], row) : formatValue(row[column.key])}
+                              {column.renderCell ? column.renderCell(row[column.key], row) : formatValue(row[column.key])}
                             </td>
                           ))}
                         </tr>
