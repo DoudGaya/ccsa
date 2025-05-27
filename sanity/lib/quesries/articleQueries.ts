@@ -31,7 +31,7 @@ export const getAllArticles = () => {
     return client.fetch(query)
 }
 
-
+ 
 export const getSingleArticle = (slug: string) => {
     
     const query = groq`
