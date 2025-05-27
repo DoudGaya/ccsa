@@ -40,6 +40,26 @@ export default function ApplicationModal({ isOpen, onClose }: ApplicationModalPr
     resolver: zodResolver(programApplicationSchema),
   })
 
+
+  const undergradCourses = [
+  { id: "accounting", name: "Accounting", level: "undergraduate" },
+  { id: "business_admin", name: "Business Administration", level: "undergraduate" },
+  { id: "computer_engineering", name: "Computer Engineering", level: "undergraduate" },
+  { id: "computer_science", name: "Computer Science", level: "undergraduate" },
+  { id: "criminology", name: "Criminology and Security Studies", level: "undergraduate" },
+  { id: "cyber_security", name: "Cyber Security", level: "undergraduate" },
+  { id: "economics", name: "Economics", level: "undergraduate" },
+  { id: "electrical_engineering", name: "Electrical and Electronics Engineering", level: "undergraduate" },
+  { id: "entrepreneurship", name: "Entrepreneurship", level: "undergraduate" },
+  { id: "health_info_management", name: "Health Information Management", level: "undergraduate" },
+  { id: "information_system", name: "Information System", level: "undergraduate" },
+  { id: "international_relations", name: "International Relations", level: "undergraduate" },
+  { id: "nursing_sciences", name: "Nursing Sciences", level: "undergraduate" },
+  { id: "public_health", name: "Public Health", level: "undergraduate" },
+  { id: "software_engineering", name: "Software Engineering", level: "undergraduate" },
+  { id: "telecommunications", name: "Telecommunications Engineering", level: "undergraduate" },
+];
+
   const isCosmopolitanStudent = watch("isCosmopolitanStudent")
 
   const onSubmit = async (data: FormData) => {
@@ -240,10 +260,20 @@ export default function ApplicationModal({ isOpen, onClose }: ApplicationModalPr
                       <SelectValue placeholder="Select a program" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="AGRIC_TECH">Agricultural Technology</SelectItem>
+                      {
+                        undergradCourses.map((course) => (
+                          <SelectItem key={course.id} value={course.id}>
+                            {course.name}
+                          </SelectItem>
+                        ))
+                      }
+                      {/* Add more courses as needed */}
+                      {/* <SelectItem value="AGRICULTURE">Agriculture</SelectItem>
+                      }
+                      {/* <SelectItem value="AGRIC_TECH">Agricultural Technology</SelectItem>
                       <SelectItem value="HEALTH_TECH">Health Technology</SelectItem>
                       <SelectItem value="ROBOTICS_INDUSTRIAL_AUTOMATION">Robotics & Industrial Automation</SelectItem>
-                      <SelectItem value="AI_DATA_SCIENCE_ROBOTICS">AI, Data Science & Robotics</SelectItem>
+                      <SelectItem value="AI_DATA_SCIENCE_ROBOTICS">AI, Data Science & Robotics</SelectItem> */}
                     </SelectContent>
                   </Select>
                 </div>
