@@ -26,13 +26,13 @@ const ObjectivesPage = () => {
               className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 border border-gray-100 flex flex-col"
             >
               <div className="relative h-48">
-                <Image
+                {/* <Image
                   src={item.image || "/placeholder.svg?height=200&width=400"}
                   alt={item.title}
                   fill
                   className="object-cover"
-                />
-                <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+                /> */}
+                <div className="absolute inset-0 bg-brand/30 flex items-center justify-center">
                   <div className={`${item.color} p-4 rounded-full`}>{item.icon}</div>
                 </div>
               </div>
@@ -56,13 +56,13 @@ const ObjectivesPage = () => {
             We invite researchers, farmers, policymakers, and industry partners to collaborate with us in advancing
             climate-smart agricultural practices for a more sustainable future.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/research"
+          <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
+            {/* <Link
+              href="/"
               className="bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-6 rounded-md transition duration-300"
             >
               Explore Our Research
-            </Link>
+            </Link> */}
             <Link
               href="/contact"
               className="bg-white border border-green-600 hover:bg-green-50 text-green-600 font-medium py-2 px-6 rounded-md transition duration-300"
