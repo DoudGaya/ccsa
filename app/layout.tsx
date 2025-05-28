@@ -5,6 +5,8 @@ import "./globals.css";
 import { ThemeProvider } from "./components/theme-provider";
 // import { Toaster } from "@/components/ui/sonner"
 import { Toaster } from "sonner";
+import { Toaster as SonnerToaster } from "sonner"
+import AuthProvider from "@/components/providers/AuthProvider";
  
 
 
@@ -74,17 +76,11 @@ export default function RootLayout({
       <body
         className={`antialiased font-main`}
       >
-        {/* <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          > */}
-        {/* <Navbar /> */}
-        {children}
-        <Toaster />
-        {/* <Footer /> */}
-      {/* </ThemeProvider> */}
+        <AuthProvider>
+          {children}
+          <Toaster />
+          <SonnerToaster />
+        </AuthProvider>
       </body>
     </html>
   );
