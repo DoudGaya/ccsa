@@ -101,7 +101,7 @@ export default function DashboardPage() {
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        <Card>
+        <Card className=" border-brand/30">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Program Applications</CardTitle>
             <FileText className="h-4 w-4 text-muted-foreground" />
@@ -112,7 +112,7 @@ export default function DashboardPage() {
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className=" border-brand/30">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Training Applications</CardTitle>
             <GraduationCap className="h-4 w-4 text-muted-foreground" />
@@ -123,7 +123,7 @@ export default function DashboardPage() {
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className=" border-brand/30">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Event Bookings</CardTitle>
             <Calendar className="h-4 w-4 text-muted-foreground" />
@@ -134,7 +134,7 @@ export default function DashboardPage() {
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className=" border-brand/30">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Contact Messages</CardTitle>
             <MessageSquare className="h-4 w-4 text-muted-foreground" />
@@ -145,7 +145,7 @@ export default function DashboardPage() {
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className=" border-brand/30">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Custom Courses</CardTitle>
             <BookOpen className="h-4 w-4 text-muted-foreground" />
@@ -156,7 +156,7 @@ export default function DashboardPage() {
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className=" border-brand/30">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Volunteers</CardTitle>
             <Users className="h-4 w-4 text-muted-foreground" />
@@ -167,7 +167,7 @@ export default function DashboardPage() {
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className=" border-brand/30">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Total Users</CardTitle>
             <UserCheck className="h-4 w-4 text-muted-foreground" />
@@ -181,7 +181,7 @@ export default function DashboardPage() {
 
       {/* Charts */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-        <Card>
+        <Card className=" border-brand/30">
           <CardHeader>
             <CardTitle>Monthly Activity</CardTitle>
           </CardHeader>
@@ -200,7 +200,7 @@ export default function DashboardPage() {
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className=" border-brand/30">
           <CardHeader>
             <CardTitle>Program Distribution</CardTitle>
           </CardHeader>
