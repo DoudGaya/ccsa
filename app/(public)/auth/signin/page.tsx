@@ -14,7 +14,8 @@ import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 // import { signInSchema } from "@/lib/schemas"
 import { signInSchema } from "@/lib/schema"
-import { toast } from "@/hooks/use-toast"
+// import { toast } from "@/hooks/use-toast"
+import { toast } from "sonner"
 import ForgotPasswordModal from "@/components/ForgotPasswordModal"
 
 type FormData = z.infer<typeof signInSchema>
@@ -66,23 +67,18 @@ export default function SignInPage() {
       })
 
       if (result?.error) {
-        toast({
-          title: "Error",
-          description: "Invalid credentials",
-          variant: "destructive",
-        })
+        toast( "Error", {
+          description: "Invalid credentials" }
+        )
       } else {
-        toast({
-          title: "Success",
+        toast("Success", {
           description: "Signed in successfully",
         })
         router.push("/dashboard")
       }
     } catch (error) {
-      toast({
-        title: "Error",
+      toast("Error", {
         description: "An unexpected error occurred",
-        variant: "destructive",
       })
     } finally {
       setIsLoading(false)
