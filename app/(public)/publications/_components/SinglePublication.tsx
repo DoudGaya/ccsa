@@ -12,10 +12,10 @@ const SinglePublication = ( {publication}: {publication: SanityTypes.Publication
   return (
     <Card className="w-full max-w-md">
     <CardHeader>
-      <CardTitle className="text-xl font-blog font-semibold">{publication.title}</CardTitle>
+      <CardTitle className="text-xl font-main font-semibold">{publication.title}</CardTitle>
     </CardHeader>
     <CardContent>
-      <p className="text-sm font-blog text-justify text-muted-foreground mb-4">{publication.description}</p>
+      <p className="text-sm font-main text-justify text-muted-foreground mb-4">{publication.description}</p>
       <div className="text-sm">
         <Link href={`/authors/${publication.author.slug}`} className="text-primary rounded-xl hover:underline">
         <span>Published by: </span>

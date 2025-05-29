@@ -43,12 +43,12 @@ const page = async ( {params}: {params: Promise<Params>}) => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2">
             {/* <CardContent> */}
-                   {/* <article className=" lg:prose-lg dark:prose-invert font-blog text-lg space-y-6">
+                   {/* <article className=" lg:prose-lg dark:prose-invert font-main text-lg space-y-6">
                     <PortableText 
                     // @ts-ignore
                     value={user.body} />
                    </article> */}
-              <p className="text-gray-600 font-blog whitespace-pre-wrap">{user.bio}</p>
+              <p className="text-gray-600 font-main whitespace-pre-wrap">{user.bio}</p>
             {/* </CardContent> */}
          
         </div>

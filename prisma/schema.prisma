@@ -32,6 +32,7 @@ model TrainingApplication {
   age               Int
   role              String
   training          String
+  status            ApplicationStatus @default(PENDING)
   createdAt         DateTime @default(now())
   updatedAt         DateTime @updatedAt
   @@map("rsvp")
@@ -91,8 +92,26 @@ model ProgramApplication {
   isCosmopolitanStudent   Boolean  @default(false)
   course                  String?
   program                 String
+  status                  ApplicationStatus @default(PENDING)
   createdAt               DateTime @default(now())
   updatedAt               DateTime @updatedAt
+}
+
+model Comment {
+  id        Int      @id @default(autoincrement())
+  articleSlug String
+  name      String
+  email     String
+  content   String
+  approved  Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum ApplicationStatus {
+  PENDING
+  APPROVED
+  REJECTED
 }
 
 model User {
@@ -153,9 +172,3 @@ enum UserRole {
   ADMIN
   USER
 }
-
-// enum ProgramType {
-//   CHINA_CLIMATE_SMART_AGRICULTURE
-//   CHINA_ADVANCED_TECHNOLOGIES
-//   CHINA_HEALTH_SCIENCES
-// }

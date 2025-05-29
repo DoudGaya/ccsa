@@ -18,7 +18,7 @@ const page = () => {
             <div className=" p-6  bg-white dark:bg-blue-950 rounded-lg text-blue-950 dark:text-blue-50 py-20 shadow-md">
               <h3 className="text-xl font-semibold mb-4 flex  flex-col md:flex-row w-full text-center items-center">
                 <Leaf className="mr-2 text-[rgb(6,54,103)] dark:text-blue-500 h-14 w-14 md:h-8 md:w-8 text-lg" />
-                <p className=' font-blog text-2xl '>Our Vision</p>
+                <p className=' font-main text-2xl '>Our Vision</p>
               </h3>
               <p>
                 To foster climate-resilient agricultural systems that promote food security, 
@@ -29,7 +29,7 @@ const page = () => {
             <div className=" p-6  bg-white dark:bg-blue-950 rounded-lg text-blue-950 dark:text-blue-50 py-20 shadow-md">
               <h3 className="text-xl font-semibold mb-4 flex  flex-col md:flex-row w-full text-center items-center">
                 <Globe className="mr-2 text-[rgb(6,54,103)] dark:text-blue-500 h-14 w-14 md:h-8 md:w-8 text-l" />
-                <p className=' font-blog text-2xl '> Our Mission</p>
+                <p className=' font-main text-2xl '> Our Mission</p>
               </h3>
               <p>
                 To drive the transformation of agriculture in Sub-Saharan Africa by advancing 

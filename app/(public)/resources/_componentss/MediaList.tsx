@@ -37,8 +37,8 @@ export default function MediaList({ mediaItems }: { mediaItems: SanityTypes.Medi
       {mediaItems.map((item) => (
         <div key={item._id} className="flex flex-col lg:flex-row mb-12 gap-8">
           <div className="lg:w-1/2">
-            <h2 className="text-2xl font-blog font-bold mb-4">{item.title}</h2>
-            <p className="text-gray-600 font-blog mb-4">{item.description}</p>
+            <h2 className="text-2xl font-main font-bold mb-4">{item.title}</h2>
+            <p className="text-gray-600 font-main mb-4">{item.description}</p>
             {item.tags && (
               <div className="flex flex-wrap gap-2 mb-4">
                 {item.tags.map((tag) => (

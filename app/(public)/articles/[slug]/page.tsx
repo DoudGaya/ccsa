@@ -30,6 +30,6 @@ export default async function Page({
     );
   } catch (error) {
     console.error("Error fetching article:", error);
-    throw error; // Let Next.js error boundary handle this
+    throw error; 
   }
 }
