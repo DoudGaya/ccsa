@@ -18,6 +18,16 @@ export const article = defineType({
             validation: (Rule) => Rule.required(),
         },
         defineField({
+            name: 'dateCreated',
+            title: 'Date Created',
+            type: 'datetime',
+            readOnly: true,
+            options: {
+                dateFormat: 'YYYY-MM-DD',
+                timeFormat: 'HH:mm:ss',
+            },
+        }),
+        defineField({
             name: 'author',
             title: 'Author',
             type: 'reference',

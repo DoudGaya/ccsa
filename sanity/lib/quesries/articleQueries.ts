@@ -15,6 +15,7 @@ export const getAllArticles = () => {
         title,
         overview,
         _createdAt,
+
         author->{
             name,
             email,
@@ -40,7 +41,9 @@ export const getSingleArticle = (slug: string) => {
         title,
         overview,
         _createdAt,
+        dateCreated,
         body,
+        tags,
         author->{
             name,
             email,
