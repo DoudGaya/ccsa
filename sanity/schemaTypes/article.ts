@@ -21,7 +21,6 @@ export const article = defineType({
             name: 'dateCreated',
             title: 'Date Created',
             type: 'datetime',
-            readOnly: true,
             options: {
                 dateFormat: 'YYYY-MM-DD',
                 timeFormat: 'HH:mm:ss',
