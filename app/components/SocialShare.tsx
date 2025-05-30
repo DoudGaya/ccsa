@@ -4,7 +4,8 @@ import { useState } from "react"
 import { Share2, Facebook, Twitter, Linkedin, Link, Copy } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { toast } from "@/hooks/use-toast"
+// import { toast } from "@/hooks/use-toast"
+import { toast } from "sonner"
 
 interface SocialShareProps {
   title: string
@@ -30,16 +31,15 @@ export default function SocialShare({ title, url, description }: SocialShareProp
     try {
       await navigator.clipboard.writeText(shareUrl)
       setCopied(true)
-      toast({
-        title: "Link copied!",
+      toast( "Link copied!",{
+        icon: "✅",
         description: "Article link has been copied to clipboard.",
       })
       setTimeout(() => setCopied(false), 2000)
     } catch (error) {
-      toast({
-        title: "Error",
+      toast( "Error", {
+        icon: "❌",
         description: "Failed to copy link to clipboard.",
-        variant: "destructive",
       })
     }
   }
@@ -62,9 +62,9 @@ export default function SocialShare({ title, url, description }: SocialShareProp
             variant="outline"
             size="sm"
             onClick={() => openShareWindow(shareLinks.facebook)}
-            className="flex items-center gap-2"
+            className="flex items-center border-blue-600 gap-2"
           >
-            <Facebook className="h-4 w-4" />
+            <Facebook className="h-4 stroke-blue-500 w-4" />
             Facebook
           </Button>
 
@@ -72,9 +72,9 @@ export default function SocialShare({ title, url, description }: SocialShareProp
             variant="outline"
             size="sm"
             onClick={() => openShareWindow(shareLinks.twitter)}
-            className="flex items-center gap-2"
+            className="flex items-center border-blue-400 gap-2"
           >
-            <Twitter className="h-4 w-4" />
+            <Twitter className="h-4 stroke-blue-500 w-4" />
             Twitter
           </Button>
 
@@ -82,14 +82,14 @@ export default function SocialShare({ title, url, description }: SocialShareProp
             variant="outline"
             size="sm"
             onClick={() => openShareWindow(shareLinks.linkedin)}
-            className="flex items-center gap-2"
+            className="flex border-blue-500 items-center gap-2"
           >
-            <Linkedin className="h-4 w-4" />
+            <Linkedin className="h-4 stroke-blue-500 w-4" />
             LinkedIn
           </Button>
 
-          <Button variant="outline" size="sm" onClick={copyToClipboard} className="flex items-center gap-2">
-            {copied ? <Copy className="h-4 w-4" /> : <Link className="h-4 w-4" />}
+          <Button variant="outline" size="sm" onClick={copyToClipboard} className="flex bg-gray-100 items-center gap-2">
+            {copied ? <Copy className="h-4 stroke-blue-500 w-4" /> : <Link className="h-4 stroke-blue-500 w-4" />}
             {copied ? "Copied!" : "Copy Link"}
           </Button>
         </div>

@@ -103,7 +103,7 @@ model Comment {
   name      String
   email     String
   content   String
-  approved  Boolean  @default(false)
+  approved  Boolean  @default(true)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
@@ -171,4 +171,14 @@ enum Gender {
 enum UserRole {
   ADMIN
   USER
+}
+
+model ArticleView {
+  id          Int      @id @default(autoincrement())
+  articleSlug String
+  ipAddress   String?
+  userAgent   String?
+  createdAt   DateTime @default(now())
+
+  @@unique([articleSlug, ipAddress])
 }
