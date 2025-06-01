@@ -1,12 +1,5 @@
-
-
-
 import { groq } from "next-sanity"
 import { client } from "../client";
-import { revalidate } from "../queries";
-
-revalidate
-
 
 export const getAllArticles = () => {
     const query = groq`
@@ -29,12 +22,15 @@ export const getAllArticles = () => {
         }
     } 
     `
-    return client.fetch(query)
+    return client.fetch(query, {}, { 
+        next: { 
+            revalidate: 60, // Revalidate every 60 seconds
+            tags: ['articles'] // Add cache tags
+        } 
+    })
 }
 
- 
 export const getSingleArticle = (slug: string) => {
-    
     const query = groq`
     *[_type == "article" && slug.current == $slug] {
         _id,
@@ -60,5 +56,10 @@ export const getSingleArticle = (slug: string) => {
         }
     }[0]
     `
-    return client.fetch(query, {slug})
+    return client.fetch(query, { slug }, { 
+        next: { 
+            revalidate: 30, // Revalidate every 30 seconds for individual articles
+            tags: ['article', `article-${slug}`] // Add specific cache tags
+        } 
+    })
 }

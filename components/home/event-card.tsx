@@ -27,18 +27,21 @@ export function EventCard({ event }: EventCardProps) {
   const sameDay = formattedStartDate === formattedEndDate
 
   return (
-    <Card className="h-full flex flex-col">
-      <CardHeader>
-        <CardTitle className="line-clamp-2">{event.title}</CardTitle>
-      </CardHeader>
-      <CardContent className="flex-1">
-        <div className="space-y-3 mb-4">
-          <div className="flex items-center text-sm">
-            <CalendarIcon className="mr-2 h-4 w-4 text-muted-foreground" />
+    <Link href={`/events/${event.slug.current}`} className="h-full hover:bg-gray-100 rounded-lg p-3 flex flex-row items-center">
+      <div className=" flex flex-col rounded-lg w-[100px] h-[100px] p-4 flex-none bg-brand/10">
+       <CalendarIcon className="mr-2 h-16 w-16 text-brand" />
+        <p className=" text-base text-center">{formattedStartDate}</p>
+      </div>
+      <div className=" hover:underline flex flex-col flex-1 px-4 py-2 space-y-2">
+        <h2 className=" font-semibold "> {event.title} </h2>
+        <div className="">
+          <div className="items-center hidden md:flex text-sm">
+            <CalendarIcon className="mr-2 h-4 w-4" />
             {sameDay ? (
               <span>{formattedStartDate}</span>
             ) : (
-            <div className=" flex flex-col space-y-2">
+              
+              <div className=" flex space-y-2">
                 <span>
                 {formattedStartDate} - {formattedEndDate}
               </span>
@@ -57,30 +60,17 @@ export function EventCard({ event }: EventCardProps) {
             </div>
             )}
           </div>
-          <div className="flex items-center text-sm">
+          <div className=" flex items-center text-sm">
             <MapPinIcon className="mr-2 h-4 w-4 text-muted-foreground" />
             <span className=" line-clamp-1">
-              {/* {event.venue}, */}    
-               {event.location} | Hybrid
+               {event.location}
             </span>
           </div>
         </div>
-        <p className="text-sm text-muted-foreground line-clamp-3 mb-4">{event.description}</p>
-        <div className="flex flex-wrap gap-2">
-          {event.tags.map((tag) => (
-            <Badge key={tag} variant="secondary">
-              {tag}
-            </Badge>
-          ))}
-        </div>
-      </CardContent>
-      <CardFooter className="flex justify-end items-end border-t pt-3">
-        {/* <BookingModal /> */}
-        <Link href={`/events/${event.slug.current}`} className="text-sm bg-brand text-white px-3 py-2 rounded-md font-medium text-primary">
-          Learn More
-        </Link>
-      </CardFooter>
-    </Card>
+
+      </div>
+
+    </Link>
   )
 }
 
