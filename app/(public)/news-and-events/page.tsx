@@ -32,9 +32,6 @@ const page = async () => {
   const events = await getAllEvents() as SanityTypes.Events[]
 
 
-  // console.log("news", news)
-
-
   return (
     <div className=' flex flex-col items-center justify-center'>
       <PublicBanners message={pageData.description} title={pageData.title} />

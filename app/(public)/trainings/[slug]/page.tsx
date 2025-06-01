@@ -31,7 +31,6 @@ export default async function TrainingProgramPage({ params }: { params: Promise<
 
   const training = await getSingleTraining(slug) as SanityTypes.Trainings
 
-
   const allTrainings = await getAllTrainings() as SanityTypes.Trainings[]
 
   if (!training) {
