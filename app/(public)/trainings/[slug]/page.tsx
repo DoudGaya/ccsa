@@ -52,7 +52,7 @@ export default async function TrainingProgramPage({ params }: { params: Promise<
     <div className=" grid  container mx-auto grid-cols-1 md:grid-cols-4 gap-4">
       <div className=" col-span-3">
       <div className="container mx-auto px-4 py-8 max-w-5xl">
-      <Link href="/training" className="inline-flex items-center text-blue-600 hover:text-blue-800 mb-6">
+      <Link href="/trainings" className="inline-flex items-center text-blue-600 hover:text-blue-800 mb-6">
         <ArrowLeft className="mr-2 h-4 w-4" /> Back to All Training Programs
       </Link>
 
