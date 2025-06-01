@@ -148,8 +148,8 @@ export default function EnhancedCommentsSection({ articleSlug }: EnhancedComment
   }
 
 
-  console.log("Comments:", comments)
-    console.log("Views:", views)
+  // console.log("Comments:", comments)
+  //   console.log("Views:", views)
   return (
     <div className="space-y-8">
       {/* Article Stats */}

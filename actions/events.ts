@@ -8,7 +8,7 @@ export const createEventBooking = async (data: z.infer<typeof eventBookingSchema
     const fieldValidation = eventBookingSchema.safeParse(data);
     
     if (!fieldValidation.success) {
-      console.log("Validation errors:", fieldValidation.error.errors)
+      // console.log("Validation errors:", fieldValidation.error.errors)
       return { error: "Field validation failed", details: fieldValidation.error.errors }
     }
     

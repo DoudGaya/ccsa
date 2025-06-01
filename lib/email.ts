@@ -17,9 +17,9 @@ export async function sendEmail({
 }) {
   try {
     // Mock email sending - replace with actual email service
-    console.log("Sending email to:", to)
-    console.log("Subject:", subject)
-    console.log("HTML:", html)
+    // console.log("Sending email to:", to)
+    // console.log("Subject:", subject)
+    // console.log("HTML:", html)
 
     // Simulate email sending delay
     await new Promise((resolve) => setTimeout(resolve, 1000))

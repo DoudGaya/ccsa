@@ -13,6 +13,7 @@ export const getAllArticles = () => {
             name,
             email,
             'slug': slug.current,
+            'imageUrl': image.asset->url,
         },
         'slug' : slug.current,
         'imageUrl': image.asset->url,

@@ -32,6 +32,9 @@ const page = async () => {
   const events = await getAllEvents() as SanityTypes.Events[]
 
 
+  // console.log("news", news)
+
+
   return (
     <div className=' flex flex-col items-center justify-center'>
       <PublicBanners message={pageData.description} title={pageData.title} />
@@ -40,12 +43,13 @@ const page = async () => {
 
            {
             news.length > 0 && (
-              <div className=" text-6xl font-main font-bold ">
+              <div className=" text-6xl font-main font-bold flex flex-col space-y-6 mx-auto px-4 py-8 w-full ">
                   <div className=" text-6xl font-main font-bold ">News</div>
                   <ArticlesList articles={news} />
               </div>
             )
            }
+
 
           <div className=" text-6xl font-main font-bold ">Events</div>
             <EventList events={events} />

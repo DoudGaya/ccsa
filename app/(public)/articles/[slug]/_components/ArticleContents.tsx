@@ -5,6 +5,7 @@ import SocialShare from "@/app/components/SocialShare"
 // import SocialShare from "@/components/SocialShare"
 import EnhancedCommentsSection from "@/app/components/EnhancedCommentsSection"
 import { PortableText } from "next-sanity"
+import Image from "next/image"
 // import EnhancedCommentsSection from "@/components/EnhancedCommentsSection"
 
 interface ArticleContentsProps {
@@ -19,6 +20,9 @@ export default function ArticleContents({ article }: ArticleContentsProps) {
         <div className="mb-8">
           <h1 className="text-4xl font-bold mb-4">{article.title}</h1>
           {article.overview && <p className="text-xl text-gray-600 dark:text-gray-400 mb-6">{article.overview}</p>}
+          <div className="">
+            <Image src={article.imageUrl || "/placeholder.svg"} alt={article.title} width={800} height={450} className="rounded-lg mb-2" />
+          </div>
           <div className="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400 mb-8">
             {article.author?.name && <span>By {article.author.name}</span>}
             {article._createdAt && <span>{new Date(article._createdAt).toLocaleDateString()}</span>}

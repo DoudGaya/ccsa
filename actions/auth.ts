@@ -73,7 +73,7 @@ export const requestPasswordReset = async (values: z.infer<typeof resetPasswordS
 
     // For now, we'll just return success
     // TODO: Implement actual email sending
-    console.log(`Password reset requested for: ${email}`)
+    // console.log(`Password reset requested for: ${email}`)
 
     return { success: "If an account with that email exists, we've sent a password reset link." }
   } catch (error) {

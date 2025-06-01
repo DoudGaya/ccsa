@@ -29,7 +29,7 @@ export async function POST(request: NextRequest) {
       revalidateTag('articles')
       revalidateTag('article')
 
-      console.log(`Revalidated article: ${slug?.current || 'unknown'}`)
+      // console.log(`Revalidated article: ${slug?.current || 'unknown'}`)
     }
 
     return NextResponse.json({ 

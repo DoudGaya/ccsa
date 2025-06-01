@@ -16,25 +16,25 @@ export function ArticlesList({ articles }: ArticlesListProps) {
   return (
     <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {articles.map((article) => (
-        <Card key={article._id} className="flex flex-col overflow-hidden">
-          <CardHeader className="p-0">
-            <div className="relative h-48 w-full">
+        <div key={article._id} className="flex flex-col py-0 overflow-hidden">
+          <div className="">
+            <div className="relative h-52 w-full">
               <Image src={article.imageUrl || "/placeholder.svg"} alt={article.title} layout="fill" objectFit="cover" />
             </div>
-          </CardHeader>
-          <CardContent className="flex-grow p-4">
-            <Badge className="mb-2">{article.type.name}</Badge>
+          </div>
+          <div className=" py-2 border-gray-400 w-full">
+            <Badge className="mb-2 bg-red-500 rounded-none">{article.type.name}</Badge>
             <h3 className="text-lg font-semibold mb-2">
               <Link href={`/articles/${article.slug}`} className="hover:underline">
                 {article.title}
               </Link>
             </h3>
-            <p className="text-sm text-gray-600 line-clamp-3">{article.overview}</p>
-          </CardContent>
-          <CardFooter className="p-4 border-t">
+            <p className="text-sm font-medium italic line-clamp-3">{article.overview}</p>
+          </div>
+          <CardFooter className="p-4 border-y">
             <div className="flex items-center space-x-4">
               <Avatar>
-                <AvatarImage src={`${article.author.imageUrl}`} className=" w-full h-full" />
+                <AvatarImage src={article.author.imageUrl} className=" w-full object-contain h-full" />
                 <AvatarFallback>{article.author.name.charAt(0)}</AvatarFallback>
               </Avatar>
               <div className="flex-grow">
@@ -43,7 +43,7 @@ export function ArticlesList({ articles }: ArticlesListProps) {
               </div>
             </div>
           </CardFooter>
-        </Card>
+        </div>
       ))}
     </div>
   )
