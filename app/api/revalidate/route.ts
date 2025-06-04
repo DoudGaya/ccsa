@@ -29,7 +29,23 @@ export async function POST(request: NextRequest) {
       revalidateTag('articles')
       revalidateTag('article')
 
-      // console.log(`Revalidated article: ${slug?.current || 'unknown'}`)
+      console.log(`Revalidated article: ${slug?.current || 'unknown'}`)
+    }
+    
+    // Add training revalidation
+    else if (_type === 'trainings') {
+      // Revalidate specific training page
+      if (slug?.current) {
+        revalidatePath(`/trainings/${slug.current}`)
+        revalidateTag(`training-${slug.current}`)
+      }
+      
+      // Revalidate trainings list
+      revalidatePath('/trainings')
+      revalidateTag('trainings')
+      revalidateTag('training')
+
+      console.log(`Revalidated training: ${slug?.current || 'unknown'}`)
     }
 
     return NextResponse.json({ 
