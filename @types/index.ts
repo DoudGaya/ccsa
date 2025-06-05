@@ -7,6 +7,7 @@ export namespace SanityTypes {
         _updatedAt: string;
         overview: string;
         title: string; 
+        dateCreated: string;
         slug: string
         body: PortableTextProps;
         type: {

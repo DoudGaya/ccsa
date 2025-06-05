@@ -39,7 +39,7 @@ export function ArticlesList({ articles }: ArticlesListProps) {
               </Avatar>
               <div className="flex-grow">
                 <p className="text-sm font-medium">{article.author.name}</p>
-                <p className="text-xs text-gray-500">{formatDate(article._createdAt)}</p>
+                <p className="text-xs text-gray-500">{formatDate(article.dateCreated)}</p>
               </div>
             </div>
           </CardFooter>

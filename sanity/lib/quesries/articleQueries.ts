@@ -8,7 +8,7 @@ export const getAllArticles = () => {
         title,
         overview,
         _createdAt,
-
+        dateCreated,
         author->{
             name,
             email,
