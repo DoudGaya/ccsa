@@ -129,13 +129,17 @@ export default async function TrainingProgramPage({ params }: { params: Promise<
           Pedagogy
         </h2>
         <div className="bg-white p-6 rounded-lg shadow-sm border border-green-200">
-          <ul className="list-disc pl-5 space-y-2">
-            {training.pedagogy.map((item, index) => (
-              <li key={index} className="pl-2">
-                {item}
-              </li>
-            ))}
-          </ul>
+          {training.pedagogy && training.pedagogy.length > 0 ? (
+            <ul className="list-disc pl-5 space-y-2">
+              {training.pedagogy.map((item, index) => (
+                <li key={index} className="pl-2">
+                  {item}
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="text-gray-500">No pedagogy information available.</p>
+          )}
         </div>
       </section>
 

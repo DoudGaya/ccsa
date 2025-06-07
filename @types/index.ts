@@ -19,6 +19,7 @@ export namespace SanityTypes {
         author: Author;
     }
 
+    
 
     export interface StandingCommitteeType {
         title: string
