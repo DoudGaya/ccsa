@@ -109,7 +109,7 @@ export default async function TrainingProgramPage({ params }: { params: Promise<
       <section className="mb-8">
         <h2 className="text-2xl font-semibold mb-4 flex items-center">
           <BookOpen className="h-6 w-6 mr-2 text-gray-700" />
-          Curriculum
+          Curriculum & Pedagogy
         </h2>
         <div className="bg-white p-6 rounded-lg shadow-sm border border-green-200">
           <ol className="list-decimal pl-5 space-y-2">
@@ -121,14 +121,7 @@ export default async function TrainingProgramPage({ params }: { params: Promise<
           </ol>
         </div>
       </section>
-
-      {/* Pedagogy */}
-      <section className="mb-8">
-        <h2 className="text-2xl font-semibold mb-4 flex items-center">
-          <Presentation className="h-6 w-6 mr-2 text-gray-700" />
-          Pedagogy
-        </h2>
-        <div className="bg-white p-6 rounded-lg shadow-sm border border-green-200">
+        {/* <div className="bg-white p-6 rounded-lg shadow-sm border border-green-200">
           {training.pedagogy && training.pedagogy.length > 0 ? (
             <ul className="list-disc pl-5 space-y-2">
               {training.pedagogy.map((item, index) => (
@@ -140,8 +133,16 @@ export default async function TrainingProgramPage({ params }: { params: Promise<
           ) : (
             <p className="text-gray-500">No pedagogy information available.</p>
           )}
-        </div>
-      </section>
+        </div> */}
+
+      {/* Pedagogy */}
+      {/* <section className="mb-8">
+        <h2 className="text-2xl font-semibold mb-4 flex items-center">
+          <Presentation className="h-6 w-6 mr-2 text-gray-700" />
+          Pedagogy
+        </h2>
+      
+      </section> */}
 
       {/* Target Audience */}
       <section className="mb-8">

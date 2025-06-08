@@ -40,7 +40,9 @@ export function TrainingApplicationForm({ onSubmit, onClose, trainings }: Submit
   const form = useForm<z.infer<typeof applicationSchema>>({
     resolver: zodResolver(applicationSchema),
     defaultValues: {
-      name: '',
+      firstName: '',
+      middleName: '',
+      lastName: '',
       email: '',
       phone: '',
       organization: '',
@@ -84,10 +86,38 @@ export function TrainingApplicationForm({ onSubmit, onClose, trainings }: Submit
         <div className="grid grid-cols-1 gap-4">
           <FormField
             control={form.control}
-            name="name"
+            name="firstName"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className=' text-primary'>Full Name</FormLabel>
+                <FormLabel className=' text-primary'>First Name</FormLabel>
+                <FormControl>
+                  <Input disabled={isPending} className=' dark:border-gray-700 border-gray-200  dark:bg-dark' {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+            <FormField
+            control={form.control}
+            name="middleName"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className=' text-primary'>Middle Name</FormLabel>
+                <FormControl>
+                  <Input disabled={isPending} className=' dark:border-gray-700 border-gray-200  dark:bg-dark' {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+            <FormField
+            control={form.control}
+            name="lastName"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className=' text-primary'>LastName</FormLabel>
                 <FormControl>
                   <Input disabled={isPending} className=' dark:border-gray-700 border-gray-200  dark:bg-dark' {...field} />
                 </FormControl>

@@ -2,7 +2,13 @@ import { Gender } from '@prisma/client'
 import * as z from 'zod'
 
 export const applicationSchema = z.object({
-    name: z.string().min(2, {
+    firstName: z.string().min(2, {
+      message: "Title must be at least 2 characters",
+    }),
+      middleName: z.string().min(2, {
+      message: "Title must be at least 2 characters",
+    }),
+      lastName: z.string().min(2, {
       message: "Title must be at least 2 characters",
     }),
     email: z.string().email({

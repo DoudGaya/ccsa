@@ -4,14 +4,16 @@ import { Badge } from "@/components/ui/badge"
 import { deleteRecord } from "@/actions/crud-operations"
 
 const columns = [
-  { key: "name", label: "Name" },
+  { key: "firstName", label: "First Name" },
+  { key: "middleName", label: "Middle Name" },
+  { key: "lastName", label: "Last Name" },
   { key: "email", label: "Email" },
   { key: "phone", label: "Phone" },
   { key: "organization", label: "Organization" },
   {
     key: "gender",
     label: "Gender",
-    renderCell: (value: string) => <Badge variant="outline">{value}</Badge>, // ✅ Changed from 'render' to 'renderCell'
+    renderCell: (value: string) => <Badge variant="outline">{value}</Badge>, 
   },
   { key: "age", label: "Age" },
   { key: "role", label: "Role" },

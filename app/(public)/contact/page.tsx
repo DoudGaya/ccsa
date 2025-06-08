@@ -4,6 +4,34 @@ import { MapPin, Phone, Mail, Clock, Send, CheckCircle2, Contact } from "lucide-
 import contactBanner from '@/public/contact-us.jpg'
 import ContactForm from "./_component/ContactForm"
 import PublicBanners from "../../components/PublicBanners"
+import { FaFacebookF } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+import { FaInstagram } from "react-icons/fa";
+import { FaLinkedinIn } from "react-icons/fa6";
+
+
+const socialLinks = [
+  {
+    name: 'Facebook',
+    url: 'https://www.facebook.com/ccsa.cosmopolitan',
+    icon: <FaFacebookF className="h-6  w-6 text-blue-600" />
+  },
+  {
+    name: 'Twitter',
+    url: 'https://x.com/cosmouniversity',
+    icon: <FaXTwitter className="h-6  w-6 text-gray-900" />
+  },
+  {
+    name: 'Instagram',
+    url: 'https://www.instagram.com/cosmo_university/',
+    icon: <FaInstagram className="h-6  w-6 text-purple-600" />
+  },
+  {
+    name: 'LinkedIn',
+    url: 'https://www.linkedin.com/company/cosmopolitan-university',
+    icon: <FaLinkedinIn className="h-6  w-6 text-blue-500" />
+  },
+]
 
 const ContactPage = () => {
   
@@ -31,21 +59,10 @@ const ContactPage = () => {
                 <div>
                   <h3 className="font-semibold mb-1">Our Location</h3>
                   <p className="text-gray-700">
-                    Plot 432, Yakubu J. Pam Street, Opposite National Hospital, Central Business District, Abuja
+                    No. 1 Masarki Close, Parakou street, Wuse II Abuja
                   </p>
                 </div>
               </div>
-
-              {/* <div className="flex items-start">
-                <div className="bg-green-100 p-3 rounded-full mr-4 flex-shrink-0">
-                  <Phone className="h-6 w-6 text-green-600" />
-                </div>
-                <div>
-                  <h3 className="font-semibold mb-1">Phone Number</h3>
-                  <p className="text-gray-700">(+234) 803 550 2270</p>
-                </div>
-              </div> */}
-
               <div className="flex items-start">
                 <div className="bg-green-100 p-3 rounded-full mr-4 flex-shrink-0">
                   <Mail className="h-6 w-6 text-green-600" />
@@ -66,6 +83,23 @@ const ContactPage = () => {
                   <p className="text-gray-700">Saturday: 9:00 AM - 1:00 PM</p>
                   <p className="text-gray-700">Sunday: Closed</p>
                 </div>
+              </div>
+
+              <div className=" grid grid-cols-4 w-1/2 justify-center gap-4">
+                  {
+                    socialLinks.map((link) => (
+                      <a
+                        key={link.name}
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center text-blue-600 hover:text-blue-800 mb-2"
+                      >
+                        <span className="mr-2">{link.icon}</span>
+                        {/* {link.name} */}
+                      </a>
+                    ))
+                  }
               </div>
             </div>
 
@@ -100,6 +134,7 @@ const ContactPage = () => {
         {/* Map Section */}
         <div className="bg-white rounded-xl shadow-md p-6 md:p-8 mb-12">
           <h2 className="text-2xl font-bold mb-6 text-green-700">Our Location</h2>
+          {/* <p></p> */}
           <div className="h-[400px] w-full rounded-lg overflow-hidden">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.1768075533196!2d7.4899!3d9.0476!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x104e0ba5c5936d27%3A0x5e8f35e0ac16c59!2sCentral%20Business%20District%2C%20Abuja!5e0!3m2!1sen!2sng!4v1616661080000!5m2!1sen!2sng"

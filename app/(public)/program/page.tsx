@@ -121,7 +121,7 @@ export default function ProgramsPage() {
         <Tabs defaultValue="program-info" className="w-full">
           <TabsList className="grid w-full grid-cols-2 mb-8">
             <TabsTrigger value="program-info">Program Information</TabsTrigger>
-            <TabsTrigger value="application">Apply Now</TabsTrigger>
+            <TabsTrigger className=" bg-brand text-white font-semibold" value="application">Apply Now</TabsTrigger>
           </TabsList>
 
           <TabsContent value="program-info" className="space-y-16">

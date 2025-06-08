@@ -169,7 +169,9 @@ export async function getPaginatedData(
           break
         case "trainingApplication":
           whereClause.OR = [
-            { name: { contains: search, mode: "insensitive" } },
+            { firstName: { contains: search, mode: "insensitive" } },
+            { lastName: { contains: search, mode: "insensitive" } },
+            { middleName: { contains: search, mode: "insensitive" } },
             { email: { contains: search, mode: "insensitive" } },
             { organization: { contains: search, mode: "insensitive" } },
           ]

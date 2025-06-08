@@ -24,17 +24,19 @@ model eventBooking {
 
 model TrainingApplication {
   id                Int      @id @default(autoincrement())
-  name              String
-  email             String
-  phone             String
-  organization      String
-  gender            Gender
-  age               Int
-  role              String
-  training          String
-  status            ApplicationStatus @default(PENDING)
-  createdAt         DateTime @default(now())
-  updatedAt         DateTime @updatedAt
+  firstName               String
+  middleName              String
+  lastName                String
+  email                   String
+  phone                   String
+  organization            String
+  gender                  Gender
+  age                     Int
+  role                    String
+  training                String
+  status                  ApplicationStatus @default(PENDING)
+  createdAt               DateTime @default(now())
+  updatedAt               DateTime @updatedAt
   @@map("rsvp")
 }
 

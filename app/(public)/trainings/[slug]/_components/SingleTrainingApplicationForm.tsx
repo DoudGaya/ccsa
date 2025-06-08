@@ -40,7 +40,9 @@ export function SingleTrainingApplicationForm({ onSubmit, onClose, training }: S
   const form = useForm<z.infer<typeof applicationSchema>>({
     resolver: zodResolver(applicationSchema),
     defaultValues: {
-      name: '',
+      firstName: '',
+      lastName: '',
+      middleName: '',
       email: '',
       phone: '',
       organization: '',
@@ -82,12 +84,26 @@ export function SingleTrainingApplicationForm({ onSubmit, onClose, training }: S
     <Form {...form} >
       <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8 dark:text-orange-200">
         <div className="grid grid-cols-1 gap-4">
-          <FormField
+         <div className=" grid grid-cols-2 gap-4">
+           <FormField
             control={form.control}
-            name="name"
+            name="firstName"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className=' text-primary'>Full Name</FormLabel>
+                <FormLabel className=' text-primary'>First Name</FormLabel>
+                <FormControl>
+                  <Input disabled={isPending} className=' dark:border-gray-700 border-gray-200  dark:bg-dark' {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="middleName"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className=' text-primary'>Middle Name</FormLabel>
                 <FormControl>
                   <Input disabled={isPending} className=' dark:border-gray-700 border-gray-200  dark:bg-dark' {...field} />
                 </FormControl>
@@ -96,7 +112,10 @@ export function SingleTrainingApplicationForm({ onSubmit, onClose, training }: S
             )}
           />
          
-          <FormField
+         </div>
+
+         <div className=" grid grid-cols-2 gap-4">
+             <FormField
             control={form.control}
             name="email"
             render={({ field }) => (
@@ -109,6 +128,20 @@ export function SingleTrainingApplicationForm({ onSubmit, onClose, training }: S
               </FormItem>
             )}
           />
+           <FormField
+            control={form.control}
+            name="lastName"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className=' text-primary'>Last Name</FormLabel>
+                <FormControl>
+                  <Input disabled={isPending} className=' dark:border-gray-700 border-gray-200  dark:bg-dark' {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+         </div>
 
 
           <div className=" grid grid-cols-2 gap-4">
