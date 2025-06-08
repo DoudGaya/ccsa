@@ -33,7 +33,7 @@ export async function approveApplication(id: number, type: "program" | "training
       await sendEmail({
         to: application.email,
         subject: "Training Application Approved - CCSA",
-        html: await generateApprovalEmail(application.name, application.training),
+        html: await generateApprovalEmail(application.firstName, application.training),
       })
 
       revalidatePath("/dashboard/training-applications")
@@ -74,7 +74,7 @@ export async function rejectApplication(id: number, type: "program" | "training"
       await sendEmail({
         to: application.email,
         subject: "Training Application Status Update - CCSA",
-        html: await generateRejectionEmail(application.name, application.training, reason),
+        html: await generateRejectionEmail(application.firstName, application.training, reason),
       })
 
       revalidatePath("/dashboard/training-applications")
