@@ -43,6 +43,11 @@ export default function Footer() {
               fosters resilience, sustainability, and innovation in agricultural systems to address 
               climate change challenges. 
             </p>
+             <div className=" my-3">
+              <p className="">
+              No. 1 Masarki Close, Parakou street, Wuse II Abuja
+            </p>
+             </div>
           </div>
           <div>
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
@@ -60,9 +65,7 @@ export default function Footer() {
             <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
             <p className="text-sm text-gray-300 mb-2">Cosmopolitan University, Abuja</p>
             <p className="text-sm text-gray-300 mb-4">Email: ccsa@cosmopolitan.edu.ng</p>
-            <p className="text-gray-700">
-              No. 1 Masarki Close, Parakou street, Wuse II Abuja
-            </p>
+           
             <div className="flex space-x-4">
               {
                 socialLinks.map((link) => (
