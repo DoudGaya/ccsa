@@ -27,8 +27,8 @@ export default function ChinaProgramSection() {
     },
     {
       icon: Award,
-      title: "Recognized Certification",
-      description: "Earn internationally recognized certificates",
+      title: "Recognised Certification",
+      description: "Earn internationally recognised certificates",
     },
     {
       icon: MapPin,

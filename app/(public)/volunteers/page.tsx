@@ -84,7 +84,7 @@ export default function VolunteerFarmers() {
                 />
               </div>
               <h4 className="font-medium text-blue-700">AI-Powered Advisory</h4>
-              <p className="text-sm mt-2">Personalized recommendations based on farm data and climate conditions</p>
+              <p className="text-sm mt-2">Personalised recommendations based on farm data and climate conditions</p>
             </div>
 
             <div className="bg-green-50 p-4 rounded-lg text-center">
