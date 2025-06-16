@@ -140,7 +140,7 @@ export default function ProgramsPage() {
 
             {/* Specialized Learning Institutions */}
             <section>
-              <h2 className="text-2xl font-bold mb-8 text-center border-b pb-4">specialised Learning Institutions:</h2>
+              <h2 className="text-2xl font-bold mb-8 text-center border-b pb-4">Specialised Learning Institutions:</h2>
               <div className="space-y-6">
                 {specializedInstitutions.map((institution, index) => (
                   <Card key={index} className="p-6">
