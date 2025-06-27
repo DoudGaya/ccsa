@@ -21,7 +21,7 @@ const page = () => {
                 <p className=' font-main text-2xl '>Our Vision</p>
               </h3>
               <p>
-                To foster climate-resilient agricultural systems that promote food security, 
+                To foster climate-smart agricultural systems that promote food security, 
                 enhance livelihoods, and sustain the environment through innovation, 
                 education, research and practice.
               </p>

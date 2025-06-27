@@ -36,7 +36,7 @@ export default function AboutPage() {
                 <p> Our Vision</p>
               </h3>
               <p>
-                To foster climate-resilient agricultural systems that promote food security, 
+                To foster climate-smart agricultural systems that promote food security, 
                 enhance livelihoods, and sustain the environment through innovation, 
                 education, research and practice.
               </p>

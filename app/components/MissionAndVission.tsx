@@ -7,7 +7,7 @@ const MissionAndVission = () => {
             <div className=' flex flex-col gap-4'>
                 <h2 className='text-4xl font-bold border-b '>Vision</h2>
                 <p className='text-lg text-gray-600'>
-                To foster climate-resilient agricultural systems that promote food security,
+                To foster climate-smart agricultural systems that promote food security,
                 enhance livelihoods, and sustain the environment through innovation,
                 education, research and practice.
                 </p>

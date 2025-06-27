@@ -141,7 +141,18 @@ export async function getPaginatedData(
   try {
     const skip = (page - 1) * limit
 
-    const whereClause: any = { ...filters }
+    // Extract sorting and filtering options
+    const { sortBy, sortOrder, filterGender, filterStatus, ...otherFilters } = filters
+    
+    const whereClause: any = { ...otherFilters }
+
+    // Add specific filters
+    if (filterGender) {
+      whereClause.gender = filterGender
+    }
+    if (filterStatus) {
+      whereClause.status = filterStatus
+    }
 
     // Add search functionality based on model
     if (search) {
@@ -214,12 +225,22 @@ export async function getPaginatedData(
       throw new Error(`Invalid model: ${model}`)
     }
 
+    // Build orderBy clause
+    let orderBy: any = { createdAt: "desc" } // default
+    if (sortBy && (model === "trainingApplication" || model === "programApplication")) {
+      // Only allow sorting for specific fields
+      const allowedSortFields = ["age", "gender", "status", "createdAt"]
+      if (allowedSortFields.includes(sortBy)) {
+        orderBy = { [sortBy]: sortOrder === "desc" ? "desc" : "asc" }
+      }
+    }
+
     const [data, total] = await Promise.all([
       dbModel.findMany({
         where: whereClause,
         skip,
         take: limit,
-        orderBy: { createdAt: "desc" },
+        orderBy,
       }),
       dbModel.count({ where: whereClause }),
     ])

@@ -27,7 +27,7 @@ model TrainingApplication {
   firstName               String
   middleName              String
   lastName                String
-  email                   String
+  email                   String @unique
   phone                   String
   organization            String
   gender                  Gender

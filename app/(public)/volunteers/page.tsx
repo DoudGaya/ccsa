@@ -141,7 +141,7 @@ export default function VolunteerFarmers() {
 
             <div className="flex items-start">
               <CheckCircle2 className="h-5 w-5 mr-3 text-green-600 mt-0.5 flex-shrink-0" />
-              <p>Test and evaluate new climate-resilient crop varieties and agricultural practices</p>
+              <p>Test and evaluate new climate-smart crop varieties and agricultural practices</p>
             </div>
 
             <div className="flex items-start">

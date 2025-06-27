@@ -16,6 +16,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { getRecord, updateRecord } from "@/actions/crud-operations"
 import { toast } from "@/hooks/use-toast"
+import { ProgramApplication } from "@/@types"
 
 const editSchema = z.object({
   firstName: z.string().min(1, "First name is required"),
@@ -73,7 +74,7 @@ export default function EditProgramApplicationPage({ params }: PageProps) {
     try {
       const result = await getRecord("programApplication", applicationId)
       if (result.data) {
-        const app = result.data
+        const app = result.data as ProgramApplication
         reset({
           firstName: app.firstName,
           middleName: app.middleName || "",
@@ -252,7 +253,7 @@ export default function EditProgramApplicationPage({ params }: PageProps) {
           <CardContent>
             <div>
               <Label htmlFor="status">Status</Label>
-              <Select onValueChange={(value) => setValue("status", value as any)} defaultValue={watch("status")}>
+              <Select value={watch("status")} onValueChange={(value) => setValue("status", value as "PENDING" | "APPROVED" | "REJECTED")}>
                 <SelectTrigger>
                   <SelectValue placeholder="Select status" />
                 </SelectTrigger>

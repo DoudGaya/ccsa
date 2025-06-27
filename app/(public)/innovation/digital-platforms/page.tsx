@@ -66,7 +66,7 @@ const page = () => {
             These platforms are designed to reduce input costs such as water, fertilisers and chemicals for plant and
             animal disease management while improving yield, productivity and resilience. By leveraging advanced
             technologies, we aim to accelerate agroecology and regenerative agricultural practices, ensuring a
-            sustainable and climate-resilient food system.
+            sustainable and climate-smart food system.
           </p>
           <p>
             As part of our mission, we continue to develop, test and evaluate cutting-edge digital solutions, ensuring

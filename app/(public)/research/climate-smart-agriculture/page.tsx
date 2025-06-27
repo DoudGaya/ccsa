@@ -26,7 +26,7 @@ const page = async () => {
             title: "Our Approach",
             cards: [
               {
-                title: "Developing and implementing climate-resilient crop varieties",
+                title: "Developing and implementing climate-smart crop varieties",
                 description: "Promote the adoption of crop varieties that are resilient to climate variability and extreme weather events."
               },
               {

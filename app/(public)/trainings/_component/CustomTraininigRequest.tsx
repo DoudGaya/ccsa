@@ -10,13 +10,13 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { useRouter } from 'next/navigation'
 
 import {  customTrainingAction } from '@/actions/trainings'
-import { CustomCourse, Gender } from '@prisma/client'
+import { Gender } from '@prisma/client'
 import { customTrainingSchema } from '@/lib/schema'
 import { toast } from "sonner"
-import { customCourse } from '@/@types'
+import { CustomCourse } from '@/@types'
 
 interface SubmitApplicationProps {
-  onSubmit: (data: customCourse) => void
+  onSubmit: (data: CustomCourse) => void
   onClose: () => void
 }
 

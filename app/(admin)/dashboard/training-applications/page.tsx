@@ -58,6 +58,8 @@ export default function TrainingApplicationsPage() {
       columns={columns}
       basePath="/dashboard/training-applications"
       onDelete={handleDelete}
+      showQuickActions={true}
+      actionType="training"
     />
   )
 }

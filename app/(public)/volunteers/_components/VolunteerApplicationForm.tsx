@@ -10,10 +10,10 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { useRouter } from 'next/navigation'
 
 import {  customTrainingAction, volunteerApplicationAction } from '@/actions/trainings'
-import { CustomCourse, Gender } from '@prisma/client'
+import { Gender } from '@prisma/client'
 import { customTrainingSchema, VolunteerApplicationSchema } from '@/lib/schema'
 import { toast } from "sonner"
-import { customCourse, VolunteersApplication } from '@/@types'
+import { CustomCourse, VolunteersApplication } from '@/@types'
 import { Textarea } from '@/components/ui/textarea'
 
 interface SubmitApplicationProps {

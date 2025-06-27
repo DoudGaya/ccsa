@@ -116,3 +116,36 @@ export async function getApplicationDetails(id: number, type: "program" | "train
     return { error: "Failed to fetch application details" }
   }
 }
+
+export async function updateTrainingApplication(id: number, data: any) {
+  try {
+    const application = await db.trainingApplication.update({
+      where: { id },
+      data: {
+        firstName: data.firstName,
+        middleName: data.middleName,
+        lastName: data.lastName,
+        email: data.email,
+        phone: data.phone,
+        organization: data.organization,
+        gender: data.gender,
+        age: parseInt(data.age),
+        role: data.role,
+        training: data.training,
+        status: data.status,
+      },
+    })
+
+    revalidatePath("/dashboard/training-applications")
+    return { success: "Training application updated successfully", data: application }
+  } catch (error: any) {
+    console.error("Error updating training application:", error)
+
+    // Handle unique constraint violation for email
+    if (error.code === "P2002" && error.meta?.target?.includes("email")) {
+      return { error: "This email address is already registered for another training application" }
+    }
+
+    return { error: "Failed to update training application" }
+  }
+}

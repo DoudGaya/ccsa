@@ -32,7 +32,7 @@ const products: Product[] = [
   {
     id: 2,
     title: "Research & Development",
-    description: "Developing climate-resilient crops and irrigation systems.",
+    description: "Developing climate-smart crops and irrigation systems.",
     gradient: "from-blue-500 via-teal-500 to-green-500",
     image: image2
   },

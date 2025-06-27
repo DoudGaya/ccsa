@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { getRecord } from "@/actions/crud-operations"
+import { ProgramApplication } from "@/@types"
 
 interface PageProps {
   params: Promise<{ id: string }>
@@ -19,7 +20,7 @@ export default async function ProgramApplicationDetailPage({ params }: PageProps
     notFound()
   }
 
-  const application = result.data
+  const application = result.data as ProgramApplication
 
   const getStatusBadge = (status: string) => {
     switch (status) {
@@ -149,7 +150,7 @@ export default async function ProgramApplicationDetailPage({ params }: PageProps
             <div>
               <label className="text-sm font-medium text-gray-500 dark:text-gray-400">Program</label>
               <p className="text-gray-900 dark:text-gray-100">
-                {programNames[application.program] || application.program || "Not specified"}
+                {application.program ? programNames[application.program] || application.program : "Not specified"}
               </p>
             </div>
             <div>

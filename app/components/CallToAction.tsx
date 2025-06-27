@@ -35,7 +35,7 @@ export function CallToAction() {
     className=" h-[70vh] flex items-center py-20 bg-brand bg-blend-overlay opacity-76 text-white">
       <div className="container mx-auto text-center">
         <h2 className="text-3xl font-bold mb-4 text-r">Ready to Transform Agriculture?</h2>
-        <p className="text-xl mb-8 text-r">Join us in our mission to create climate-resilient farming solutions.</p>
+        <p className="text-xl mb-8 text-r">Join us in our mission to create climate-smart farming solutions.</p>
 
 
         <Link href="/contact" className="inline-flex items-center bg-green-600 hover:bg-green-700 text-white font-medium py-4 px-6 rounded-md transition duration-300">

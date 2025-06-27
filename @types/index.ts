@@ -19,14 +19,6 @@ export namespace SanityTypes {
         author: Author;
     }
 
-    
-
-    export interface StandingCommitteeType {
-        title: string
-        description: string
-        slug: string
-    }
-
     export interface Trainings {
         _id: string;
         _createdAt: Date;
@@ -201,33 +193,118 @@ export namespace SanityTypes {
 
 export interface TrainingApplication {
     id: number;
+    firstName: string;
+    middleName: string;
+    lastName: string;
+    email: string;
+    phone: string;
+    organization: string;
+    gender: "Male" | "Female";
+    age: number;
+    role: string;
+    training: string;
+    status: "PENDING" | "APPROVED" | "REJECTED";
+    createdAt: Date | string;
+    updatedAt: Date | string;
+}
+
+export interface VolunteersApplication {
+    id: number;
+    name: string;
+    email: string;
+    phone?: string;
+    organization?: string;
+    state?: string;
+    localGovernment?: string;
+    statementOfInterest?: string;
+    yearsOfFarmingExperience?: number;
+    gender?: "Male" | "Female";
+    createdAt: string;
+    updatedAt: string;
+}
+
+export interface ProgramApplication {
+    id: number;
+    firstName: string;
+    middleName?: string;
+    surname: string;
+    dateOfBirth: string;
+    email: string;
+    phoneNumber: string;
+    address: string;
+    passportNumber: string;
+    duration?: string;
+    passportDateOfIssue: string;
+    passportExpiryDate: string;
+    passportCountryOfIssue: string;
+    highestQualification: string;
+    isCosmopolitanStudent: boolean;
+    course?: string;
+    program?: string;
+    status: "PENDING" | "APPROVED" | "REJECTED";
+    createdAt: string;
+    updatedAt: string;
+}
+
+export interface Contact {
+    id: number;
+    name?: string;
+    email?: string;
+    subject?: string;
+    message?: string;
+    createdAt: string;
+    updatedAt: string;
+}
+
+export interface Volunteer {
+    id: number;
+    name: string;
+    email: string;
+    phone?: string;
+    state?: string;
+    gender?: "Male" | "Female";
+    localGovernment?: string;
+    organization?: string;
+    statementOfInterest?: string;
+    createdAt: string;
+    updatedAt: string;
+    yearsOfFarmingExperience?: number;
+}
+
+export interface EventBooking {
+    id: number;
     name: string;
     email: string;
     phone: string;
     organization: string;
-    gender: string;
+    event: string;
+    gender: "Male" | "Female";
+    age: number;
     role: string;
-    training: string;
+    createdAt: string;
+    updatedAt: string;
 }
 
-export interface customCourse {
+export interface CustomCourse {
     id: number;
     name: string;
     email: string;
     phone: string;
     organization: string;
     course: string;
+    createdAt: string;
+    updatedAt: string;
 }
 
-
-export interface VolunteersApplication {
-    name: string;
+export interface User {
+    id: string;
+    name?: string;
     email: string;
-    phone: string;
-    organization: string;
-    state: string;
-    localGovernment: string;
-    statementOfInterest: string;
-    yearsOfFarmingExperience: string;
+    emailVerified?: string;
+    image?: string;
+    password?: string;
+    role: "ADMIN" | "USER";
+    createdAt: string;
+    updatedAt: string;
 }
 

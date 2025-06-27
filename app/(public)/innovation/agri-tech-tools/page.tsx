@@ -51,7 +51,7 @@ const page = () => {
         <ul className="list-disc pl-8 mb-6 space-y-2">
           <li>Reduce resource inputs such as water, fertilisers, and pesticides</li>
           <li>Improve crop yield and productivity</li>
-          <li>Advancing sustainable and climate-resilient farming practices</li>
+          <li>Advancing sustainable and climate-smart farming practices</li>
         </ul>
       </section>
 
