@@ -3,17 +3,18 @@ import { db } from "@/lib/prisma"
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const id = parseInt(params.id)
+    const { id } = await params
+    const applicationId = parseInt(id)
     
-    if (isNaN(id)) {
+    if (isNaN(applicationId)) {
       return NextResponse.json({ error: "Invalid ID" }, { status: 400 })
     }
 
     const application = await db.trainingApplication.findUnique({
-      where: { id },
+      where: { id: applicationId },
     })
 
     if (!application) {

@@ -1,8 +1,8 @@
 "use client"
 
 import type React from "react"
-import { useState, useEffect } from "react"
-import { Search, ChevronLeft, ChevronRight, Eye, Edit, Trash2, MoreHorizontal, Check, X, ArrowUpDown } from "lucide-react"
+import { useState, useEffect, useCallback, useRef } from "react"
+import { Search, Eye, Edit, Trash2, MoreHorizontal, Check, X, ArrowUpDown, Loader2 } from "lucide-react"
 import { useRouter } from "next/navigation"
 
 import { Button } from "@/components/ui/button"
@@ -40,11 +40,12 @@ export default function UniversalDataTable({
   showQuickActions = false,
   actionType
 }: UniversalDataTableProps) {
-  const [data, setData] = useState([])
+  const [data, setData] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
+  const [loadingMore, setLoadingMore] = useState(false)
+  const [hasNextPage, setHasNextPage] = useState(true)
   const [search, setSearch] = useState("")
   const [page, setPage] = useState(1)
-  const [totalPages, setTotalPages] = useState(0)
   const [total, setTotal] = useState(0)
   const [sortBy, setSortBy] = useState("")
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc")
@@ -52,34 +53,84 @@ export default function UniversalDataTable({
   const [filterStatus, setFilterStatus] = useState("")
   const [actionLoading, setActionLoading] = useState<{ [key: number]: string }>({})
   const router = useRouter()
-  const limit = 10
+  const limit = 20 // Increase limit for infinite scroll
+  const observerTarget = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    fetchData()
-  }, [page, search, sortBy, sortOrder, filterGender, filterStatus])
+    // Reset and fetch initial data when search or filters change
+    setData([])
+    setPage(1)
+    setHasNextPage(true)
+    fetchData(1, true)
+  }, [search, sortBy, sortOrder, filterGender, filterStatus])
 
-  const fetchData = async () => {
-    setLoading(true)
+  // Intersection Observer for infinite scroll
+  const lastElementRef = useCallback((node: HTMLTableRowElement) => {
+    if (loading || loadingMore) return
+    if (observerTarget.current) observerTarget.current = null
+    
+    const observer = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting && hasNextPage && !loadingMore) {
+        loadMore()
+      }
+    }, {
+      threshold: 0.1,
+      rootMargin: '100px'
+    })
+    
+    if (node) {
+      observer.observe(node)
+      observerTarget.current = node
+    }
+    
+    return () => {
+      if (observerTarget.current) {
+        observer.unobserve(observerTarget.current)
+      }
+    }
+  }, [loading, loadingMore, hasNextPage])
+
+  const fetchData = async (pageNum: number = page, reset: boolean = false) => {
+    if (reset) {
+      setLoading(true)
+    } else {
+      setLoadingMore(true)
+    }
+    
     try {
-      const result = await getPaginatedData(model, page, limit, search, {
+      const result = await getPaginatedData(model, pageNum, limit, search, {
         sortBy,
         sortOrder,
         filterGender,
         filterStatus,
       })
-      setData(result.data)
-      setTotalPages(result.totalPages)
+      
+      if (reset) {
+        setData(result.data)
+      } else {
+        setData(prevData => [...prevData, ...result.data])
+      }
+      
       setTotal(result.total)
+      setHasNextPage(result.data.length === limit && (pageNum * limit) < result.total)
+      
     } catch (error) {
       console.error("Error fetching data:", error)
     } finally {
       setLoading(false)
+      setLoadingMore(false)
     }
+  }
+
+  const loadMore = () => {
+    if (!hasNextPage || loadingMore) return
+    const nextPage = page + 1
+    setPage(nextPage)
+    fetchData(nextPage, false)
   }
 
   const handleSearch = (value: string) => {
     setSearch(value)
-    setPage(1)
   }
 
   const handleSort = (field: string) => {
@@ -89,7 +140,6 @@ export default function UniversalDataTable({
       setSortBy(field)
       setSortOrder("asc")
     }
-    setPage(1)
   }
 
   const handleQuickAction = async (id: number, action: "approve" | "reject") => {
@@ -111,7 +161,11 @@ export default function UniversalDataTable({
 
       if (result?.success) {
         toast({ title: "Success", description: result.success })
-        fetchData() // Refresh data
+        // Reset and refetch data after action
+        setData([])
+        setPage(1)
+        setHasNextPage(true)
+        fetchData(1, true)
       } else if (result?.error) {
         toast({ title: "Error", description: result.error, variant: "destructive" })
       }
@@ -141,7 +195,11 @@ export default function UniversalDataTable({
       const result = await onDelete(model, id)
       if (result.success) {
         toast({ title: "Success", description: result.success })
-        fetchData()
+        // Reset and refetch data after deletion
+        setData([])
+        setPage(1)
+        setHasNextPage(true)
+        fetchData(1, true)
       } else {
         toast({ title: "Error", description: result.error, variant: "destructive" })
       }
@@ -184,7 +242,6 @@ export default function UniversalDataTable({
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">{title}</h1>
         <p className="text-gray-600 dark:text-gray-400">Manage and view all {title.toLowerCase()} records.</p>
       </div>
-
       <Card>
         <CardHeader>
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
@@ -273,109 +330,105 @@ export default function UniversalDataTable({
                         </td>
                       </tr>
                     ) : (
-                      data.map((row: any, index) => (
-                        <tr
-                          key={row.id || index}
-                          className="border-b border-gray-100 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-800/50"
-                        >
-                          {columns.map((column) => (
-                            <td key={column.key} className="py-3 px-4 text-gray-700 dark:text-gray-300">
-                              {column.renderCell
-                                ? column.renderCell(row[column.key], row)
-                                : column.key === "status"
-                                  ? getStatusBadge(row[column.key])
-                                  : formatValue(row[column.key])}
-                            </td>
-                          ))}
-                          <td className="py-3 px-4">
-                            <div className="flex items-center space-x-1">
-                              {/* Quick action buttons for pending applications */}
-                              {showQuickActions && actionType && row.status === "PENDING" && (
-                                <>
-                                  <Button
-                                    size="sm"
-                                    variant="outline"
-                                    onClick={() => handleQuickAction(row.id, "approve")}
-                                    disabled={actionLoading[row.id] === "approve"}
-                                    className="text-green-600 hover:text-green-700 border-green-200 hover:border-green-300"
-                                  >
-                                    {actionLoading[row.id] === "approve" ? (
-                                      <div className="animate-spin rounded-full h-3 w-3 border-2 border-green-600 border-t-transparent" />
-                                    ) : (
-                                      <Check className="h-3 w-3" />
-                                    )}
-                                  </Button>
-                                  <Button
-                                    size="sm"
-                                    variant="outline"
-                                    onClick={() => handleQuickAction(row.id, "reject")}
-                                    disabled={actionLoading[row.id] === "reject"}
-                                    className="text-red-600 hover:text-red-700 border-red-200 hover:border-red-300"
-                                  >
-                                    {actionLoading[row.id] === "reject" ? (
-                                      <div className="animate-spin rounded-full h-3 w-3 border-2 border-red-600 border-t-transparent" />
-                                    ) : (
-                                      <X className="h-3 w-3" />
-                                    )}
-                                  </Button>
-                                </>
-                              )}
-                              
-                              <DropdownMenu>
-                                <DropdownMenuTrigger asChild>
-                                  <Button variant="ghost" size="sm">
-                                    <MoreHorizontal className="h-4 w-4" />
-                                  </Button>
-                                </DropdownMenuTrigger>
-                                <DropdownMenuContent align="end">
-                                  <DropdownMenuItem onClick={() => handleView(row.id)}>
-                                    <Eye className="h-4 w-4 mr-2" />
-                                    View
-                                  </DropdownMenuItem>
-                                  <DropdownMenuItem onClick={() => handleEdit(row.id)}>
-                                    <Edit className="h-4 w-4 mr-2" />
-                                    Edit
-                                  </DropdownMenuItem>
-                                  {onDelete && (
-                                    <DropdownMenuItem onClick={() => handleDelete(row.id)} className="text-red-600">
-                                      <Trash2 className="h-4 w-4 mr-2" />
-                                      Delete
+                      data.map((row: any, index) => {
+                        const isLast = index === data.length - 1
+                        return (
+                          <tr
+                            key={row.id || index}
+                            ref={isLast ? lastElementRef : null}
+                            className="border-b border-gray-100 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-800/50"
+                          >
+                            {columns.map((column) => (
+                              <td key={column.key} className="py-3 px-4 text-gray-700 dark:text-gray-300">
+                                {column.renderCell
+                                  ? column.renderCell(row[column.key], row)
+                                  : column.key === "status"
+                                    ? getStatusBadge(row[column.key])
+                                    : formatValue(row[column.key])}
+                              </td>
+                            ))}
+                            <td className="py-3 px-4">
+                              <div className="flex items-center space-x-1">
+                                {/* Quick action buttons for pending applications */}
+                                {showQuickActions && actionType && row.status === "PENDING" && (
+                                  <>
+                                    <Button
+                                      size="sm"
+                                      variant="outline"
+                                      onClick={() => handleQuickAction(row.id, "approve")}
+                                      disabled={actionLoading[row.id] === "approve"}
+                                      className="text-green-600 hover:text-green-700 border-green-200 hover:border-green-300"
+                                    >
+                                      {actionLoading[row.id] === "approve" ? (
+                                        <div className="animate-spin rounded-full h-3 w-3 border-2 border-green-600 border-t-transparent" />
+                                      ) : (
+                                        <Check className="h-3 w-3" />
+                                      )}
+                                    </Button>
+                                    <Button
+                                      size="sm"
+                                      variant="outline"
+                                      onClick={() => handleQuickAction(row.id, "reject")}
+                                      disabled={actionLoading[row.id] === "reject"}
+                                      className="text-red-600 hover:text-red-700 border-red-200 hover:border-red-300"
+                                    >
+                                      {actionLoading[row.id] === "reject" ? (
+                                        <div className="animate-spin rounded-full h-3 w-3 border-2 border-red-600 border-t-transparent" />
+                                      ) : (
+                                        <X className="h-3 w-3" />
+                                      )}
+                                    </Button>
+                                  </>
+                                )}
+                                
+                                <DropdownMenu>
+                                  <DropdownMenuTrigger asChild>
+                                    <Button variant="ghost" size="sm">
+                                      <MoreHorizontal className="h-4 w-4" />
+                                    </Button>
+                                  </DropdownMenuTrigger>
+                                  <DropdownMenuContent align="end">
+                                    <DropdownMenuItem onClick={() => handleView(row.id)}>
+                                      <Eye className="h-4 w-4 mr-2" />
+                                      View
                                     </DropdownMenuItem>
-                                  )}
-                                </DropdownMenuContent>
-                              </DropdownMenu>
-                            </div>
-                          </td>
-                        </tr>
-                      ))
+                                    <DropdownMenuItem onClick={() => handleEdit(row.id)}>
+                                      <Edit className="h-4 w-4 mr-2" />
+                                      Edit
+                                    </DropdownMenuItem>
+                                    {onDelete && (
+                                      <DropdownMenuItem onClick={() => handleDelete(row.id)} className="text-red-600">
+                                        <Trash2 className="h-4 w-4 mr-2" />
+                                        Delete
+                                      </DropdownMenuItem>
+                                    )}
+                                  </DropdownMenuContent>
+                                </DropdownMenu>
+                              </div>
+                            </td>
+                          </tr>
+                        )
+                      })
                     )}
                   </tbody>
                 </table>
               </div>
 
-              {/* Pagination */}
-              {totalPages > 1 && (
-                <div className="flex items-center justify-between mt-6">
-                  <div className="text-sm text-gray-500 dark:text-gray-400">
-                    Showing {(page - 1) * limit + 1} to {Math.min(page * limit, total)} of {total} results
+              {/* Loading indicator for infinite scroll */}
+              {loadingMore && (
+                <div className="flex items-center justify-center py-8">
+                  <div className="flex items-center space-x-2 text-gray-500">
+                    <Loader2 className="h-5 w-5 animate-spin" />
+                    <span>Loading more...</span>
                   </div>
-                  <div className="flex items-center space-x-2">
-                    <Button variant="outline" size="sm" onClick={() => setPage(page - 1)} disabled={page === 1}>
-                      <ChevronLeft className="h-4 w-4" />
-                      Previous
-                    </Button>
-                    <span className="text-sm text-gray-500 dark:text-gray-400">
-                      Page {page} of {totalPages}
-                    </span>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() => setPage(page + 1)}
-                      disabled={page === totalPages}
-                    >
-                      Next
-                      <ChevronRight className="h-4 w-4" />
-                    </Button>
+                </div>
+              )}
+
+              {/* End of data indicator */}
+              {!hasNextPage && data.length > 0 && (
+                <div className="flex items-center justify-center py-8">
+                  <div className="text-sm text-gray-500 dark:text-gray-400">
+                    Showing all {total} results
                   </div>
                 </div>
               )}
