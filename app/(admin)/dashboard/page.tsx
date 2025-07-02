@@ -5,7 +5,7 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContaine
 import { Users, FileText, GraduationCap, MessageSquare, Calendar, BookOpen, UserCheck } from "lucide-react"
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { getDashboardStats, getMonthlyData, getProgramDistribution } from "@/actions/admin"
+import { getDashboardStats, getMonthlyData, getProgramDistribution, getTrainingApplicationGenderDistribution, getTrainingApplicationAgeDistribution, getTrainingApplicationOrganizationDistribution, getTrainingApplicationRoleDistribution, getTrainingApplicationStatusDistribution } from "@/actions/admin"
 
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#8884D8", "#82ca9d", "#ffc658", "#ff7300"]
 
@@ -43,21 +43,45 @@ export default function DashboardPage() {
   })
   const [monthlyData, setMonthlyData] = useState<MonthlyDataItem[]>([])
   const [programData, setProgramData] = useState<ProgramDataItem[]>([])
+  const [trainingGenderData, setTrainingGenderData] = useState<ProgramDataItem[]>([])
+  const [trainingAgeData, setTrainingAgeData] = useState<ProgramDataItem[]>([])
+  const [trainingOrgData, setTrainingOrgData] = useState<ProgramDataItem[]>([])
+  const [trainingRoleData, setTrainingRoleData] = useState<ProgramDataItem[]>([])
+  const [trainingStatusData, setTrainingStatusData] = useState<ProgramDataItem[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     async function fetchData() {
       try {
-        const [statsData, monthlyChartData, programChartData] = await Promise.all([
+        const [
+          statsData, 
+          monthlyChartData, 
+          programChartData,
+          trainingGenderChartData,
+          trainingAgeChartData,
+          trainingOrgChartData,
+          trainingRoleChartData,
+          trainingStatusChartData
+        ] = await Promise.all([
           getDashboardStats(),
           getMonthlyData(),
           getProgramDistribution(),
+          getTrainingApplicationGenderDistribution(),
+          getTrainingApplicationAgeDistribution(),
+          getTrainingApplicationOrganizationDistribution(),
+          getTrainingApplicationRoleDistribution(),
+          getTrainingApplicationStatusDistribution(),
         ])
 
         setStats(statsData)
         setMonthlyData(monthlyChartData as MonthlyDataItem[])
         setProgramData(programChartData as ProgramDataItem[])
+        setTrainingGenderData(trainingGenderChartData as ProgramDataItem[])
+        setTrainingAgeData(trainingAgeChartData as ProgramDataItem[])
+        setTrainingOrgData(trainingOrgChartData as ProgramDataItem[])
+        setTrainingRoleData(trainingRoleChartData as ProgramDataItem[])
+        setTrainingStatusData(trainingStatusChartData as ProgramDataItem[])
         setError(null)
       } catch (error) {
         console.error("Error fetching dashboard data:", error)
@@ -103,7 +127,7 @@ export default function DashboardPage() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         <Card className=" border-brand/30">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Program Applications</CardTitle>
+            <CardTitle className="text-sm font-medium">Chinese Program Applications</CardTitle>
             <FileText className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
@@ -228,6 +252,169 @@ export default function DashboardPage() {
             ) : (
               <div className="flex items-center justify-center h-[300px] text-gray-500">
                 No program data available
+              </div>
+            )}
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Training Applications Distribution Section */}
+      <div className="mb-6">
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Training Applications Analytics</h2>
+        <p className="text-gray-600 dark:text-gray-400">Distribution analysis of training application demographics and categories.</p>
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 mb-8">
+        <Card className=" border-brand/30">
+          <CardHeader>
+            <CardTitle>Gender Distribution</CardTitle>
+          </CardHeader>
+          <CardContent>
+            {trainingGenderData.length > 0 ? (
+              <ResponsiveContainer width="100%" height={250}>
+                <PieChart>
+                  <Pie
+                    data={trainingGenderData}
+                    cx="50%"
+                    cy="50%"
+                    labelLine={false}
+                    label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+                    outerRadius={70}
+                    fill="#8884d8"
+                    dataKey="value"
+                  >
+                    {trainingGenderData.map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                    ))}
+                  </Pie>
+                  <Tooltip />
+                </PieChart>
+              </ResponsiveContainer>
+            ) : (
+              <div className="flex items-center justify-center h-[250px] text-gray-500">
+                No gender data available
+              </div>
+            )}
+          </CardContent>
+        </Card>
+
+        <Card className=" border-brand/30">
+          <CardHeader>
+            <CardTitle>Age Groups</CardTitle>
+          </CardHeader>
+          <CardContent>
+            {trainingAgeData.length > 0 ? (
+              <ResponsiveContainer width="100%" height={250}>
+                <BarChart data={trainingAgeData}>
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="name" />
+                  <YAxis />
+                  <Tooltip />
+                  <Bar dataKey="value" fill="#82ca9d" />
+                </BarChart>
+              </ResponsiveContainer>
+            ) : (
+              <div className="flex items-center justify-center h-[250px] text-gray-500">
+                No age data available
+              </div>
+            )}
+          </CardContent>
+        </Card>
+
+        <Card className=" border-brand/30">
+          <CardHeader>
+            <CardTitle>Application Status</CardTitle>
+          </CardHeader>
+          <CardContent>
+            {trainingStatusData.length > 0 ? (
+              <ResponsiveContainer width="100%" height={250}>
+                <PieChart>
+                  <Pie
+                    data={trainingStatusData}
+                    cx="50%"
+                    cy="50%"
+                    labelLine={false}
+                    label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+                    outerRadius={70}
+                    fill="#8884d8"
+                    dataKey="value"
+                  >
+                    {trainingStatusData.map((entry, index) => {
+                      let color = COLORS[index % COLORS.length]
+                      if (entry.name === "APPROVED") color = "#10B981"
+                      else if (entry.name === "REJECTED") color = "#EF4444"
+                      else if (entry.name === "PENDING") color = "#F59E0B"
+                      return <Cell key={`cell-${index}`} fill={color} />
+                    })}
+                  </Pie>
+                  <Tooltip />
+                </PieChart>
+              </ResponsiveContainer>
+            ) : (
+              <div className="flex items-center justify-center h-[250px] text-gray-500">
+                No status data available
+              </div>
+            )}
+          </CardContent>
+        </Card>
+
+        <Card className=" border-brand/30">
+          <CardHeader>
+            <CardTitle>Organization Types</CardTitle>
+          </CardHeader>
+          <CardContent>
+            {trainingOrgData.length > 0 ? (
+              <ResponsiveContainer width="100%" height={250}>
+                <PieChart>
+                  <Pie
+                    data={trainingOrgData}
+                    cx="50%"
+                    cy="50%"
+                    labelLine={false}
+                    label={({ name, percent }) => `${name.length > 8 ? name.substring(0, 8) + '...' : name} ${(percent * 100).toFixed(0)}%`}
+                    outerRadius={70}
+                    fill="#8884d8"
+                    dataKey="value"
+                  >
+                    {trainingOrgData.map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                    ))}
+                  </Pie>
+                  <Tooltip />
+                </PieChart>
+              </ResponsiveContainer>
+            ) : (
+              <div className="flex items-center justify-center h-[250px] text-gray-500">
+                No organization data available
+              </div>
+            )}
+          </CardContent>
+        </Card>
+
+        <Card className=" border-brand/30">
+          <CardHeader>
+            <CardTitle>Applicant Roles</CardTitle>
+          </CardHeader>
+          <CardContent>
+            {trainingRoleData.length > 0 ? (
+              <ResponsiveContainer width="100%" height={250}>
+                <BarChart data={trainingRoleData}>
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis 
+                    dataKey="name" 
+                    angle={-45}
+                    textAnchor="end"
+                    height={80}
+                    fontSize={12}
+                  />
+                  <YAxis />
+                  <Tooltip />
+                  <Bar dataKey="value" fill="#ffc658" />
+                </BarChart>
+              </ResponsiveContainer>
+            ) : (
+              <div className="flex items-center justify-center h-[250px] text-gray-500">
+                No role data available
               </div>
             )}
           </CardContent>

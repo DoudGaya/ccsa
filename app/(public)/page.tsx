@@ -17,6 +17,7 @@ import { EventList } from "@/components/home/event-list";
 import ActivityGrid from "./activities/_components/ActivityGrid";
 import ChinaProgramSection from "@/components/ChinaProgramSection";
 import { ArticlesList } from "./news-and-events/_components/ArticlesList";
+import MandateAreas from "../components/home/MandateAreas";
 
 export default async function Home() {
   const activities = await getAllActivities() as SanityTypes.Activity[];
@@ -34,6 +35,7 @@ export default async function Home() {
       <HeroSection />
       <HomeShowCaseCarousel />
       <ChinaProgramSection />
+      <MandateAreas />
       {/* <HomeNews articles={articles} /> */}
 
       <div className=" container mx-auto px-4 py-8 w-full">

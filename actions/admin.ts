@@ -142,7 +142,7 @@ export async function getPaginatedData(
     const skip = (page - 1) * limit
 
     // Extract sorting and filtering options
-    const { sortBy, sortOrder, filterGender, filterStatus, ...otherFilters } = filters
+    const { sortBy, sortOrder, filterGender, filterStatus, filterOrganization, filterRole, ...otherFilters } = filters
     
     const whereClause: any = { ...otherFilters }
 
@@ -152,6 +152,12 @@ export async function getPaginatedData(
     }
     if (filterStatus) {
       whereClause.status = filterStatus
+    }
+    if (filterOrganization) {
+      whereClause.organization = filterOrganization
+    }
+    if (filterRole) {
+      whereClause.role = filterRole
     }
 
     // Add search functionality based on model
@@ -185,6 +191,8 @@ export async function getPaginatedData(
             { middleName: { contains: search, mode: "insensitive" } },
             { email: { contains: search, mode: "insensitive" } },
             { organization: { contains: search, mode: "insensitive" } },
+            { role: { contains: search, mode: "insensitive" } },
+            { training: { contains: search, mode: "insensitive" } },
           ]
           break
         case "eventBooking":
@@ -229,7 +237,7 @@ export async function getPaginatedData(
     let orderBy: any = { createdAt: "desc" } // default
     if (sortBy && (model === "trainingApplication" || model === "programApplication")) {
       // Only allow sorting for specific fields
-      const allowedSortFields = ["age", "gender", "status", "createdAt"]
+      const allowedSortFields = ["age", "gender", "status", "createdAt", "organization", "role", "firstName", "lastName"]
       if (allowedSortFields.includes(sortBy)) {
         orderBy = { [sortBy]: sortOrder === "desc" ? "desc" : "asc" }
       }
@@ -261,5 +269,122 @@ export async function getPaginatedData(
       limit: 10,
       totalPages: 0,
     }
+  }
+}
+
+export async function getTrainingApplicationGenderDistribution() {
+  try {
+    const genderCounts = await db.trainingApplication.groupBy({
+      by: ["gender"],
+      _count: {
+        gender: true,
+      },
+    })
+
+    return genderCounts.map((item) => ({
+      name: item.gender || "Not Specified",
+      value: item._count.gender,
+    }))
+  } catch (error) {
+    console.error("Error fetching training application gender distribution:", error)
+    return []
+  }
+}
+
+export async function getTrainingApplicationAgeDistribution() {
+  try {
+    const applications = await db.trainingApplication.findMany({
+      select: { age: true },
+      where: { 
+        age: { 
+          gte: 1 
+        } 
+      },
+    })
+
+    // Group ages into ranges
+    const ageGroups = {
+      "18-25": 0,
+      "26-35": 0,
+      "36-45": 0,
+      "46-55": 0,
+      "56-65": 0,
+      "65+": 0,
+    }
+
+    applications.forEach((app) => {
+      const age = app.age
+      if (age && age >= 18 && age <= 25) ageGroups["18-25"]++
+      else if (age && age >= 26 && age <= 35) ageGroups["26-35"]++
+      else if (age && age >= 36 && age <= 45) ageGroups["36-45"]++
+      else if (age && age >= 46 && age <= 55) ageGroups["46-55"]++
+      else if (age && age >= 56 && age <= 65) ageGroups["56-65"]++
+      else if (age && age > 65) ageGroups["65+"]++
+    })
+
+    return Object.entries(ageGroups).map(([range, count]) => ({
+      name: range,
+      value: count,
+    }))
+  } catch (error) {
+    console.error("Error fetching training application age distribution:", error)
+    return []
+  }
+}
+
+export async function getTrainingApplicationOrganizationDistribution() {
+  try {
+    const organizationCounts = await db.trainingApplication.groupBy({
+      by: ["organization"],
+      _count: {
+        organization: true,
+      },
+    })
+
+    return organizationCounts.map((item) => ({
+      name: item.organization || "Not Specified",
+      value: item._count.organization,
+    }))
+  } catch (error) {
+    console.error("Error fetching training application organization distribution:", error)
+    return []
+  }
+}
+
+export async function getTrainingApplicationRoleDistribution() {
+  try {
+    const roleCounts = await db.trainingApplication.groupBy({
+      by: ["role"],
+      _count: {
+        role: true,
+      },
+    })
+
+    return roleCounts.map((item) => ({
+      name: item.role || "Not Specified",
+      value: item._count.role,
+    }))
+  } catch (error) {
+    console.error("Error fetching training application role distribution:", error)
+    return []
+  }
+}
+
+export async function getTrainingApplicationStatusDistribution() {
+  try {
+    const statusCounts = await db.trainingApplication.groupBy({
+      by: ["status"],
+      _count: {
+        status: true,
+      },
+    })
+
+    return statusCounts.map((item) => ({
+      name: item.status || "PENDING",
+      value: item._count.status,
+    }))
+  } catch (error) {
+    console.error("Error fetching training application status distribution:", error)
+    return []
   }
 }

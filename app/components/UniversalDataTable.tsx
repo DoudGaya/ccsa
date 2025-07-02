@@ -2,7 +2,7 @@
 
 import type React from "react"
 import { useState, useEffect, useCallback, useRef } from "react"
-import { Search, Eye, Edit, Trash2, MoreHorizontal, Check, X, ArrowUpDown, Loader2 } from "lucide-react"
+import { Search, Eye, Edit, Trash2, MoreHorizontal, Check, X, ArrowUpDown, Loader2, FilterX } from "lucide-react"
 import { useRouter } from "next/navigation"
 
 import { Button } from "@/components/ui/button"
@@ -51,6 +51,8 @@ export default function UniversalDataTable({
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc")
   const [filterGender, setFilterGender] = useState("")
   const [filterStatus, setFilterStatus] = useState("")
+  const [filterOrganization, setFilterOrganization] = useState("")
+  const [filterRole, setFilterRole] = useState("")
   const [actionLoading, setActionLoading] = useState<{ [key: number]: string }>({})
   const router = useRouter()
   const limit = 20 // Increase limit for infinite scroll
@@ -62,7 +64,7 @@ export default function UniversalDataTable({
     setPage(1)
     setHasNextPage(true)
     fetchData(1, true)
-  }, [search, sortBy, sortOrder, filterGender, filterStatus])
+  }, [search, sortBy, sortOrder, filterGender, filterStatus, filterOrganization, filterRole])
 
   // Intersection Observer for infinite scroll
   const lastElementRef = useCallback((node: HTMLTableRowElement) => {
@@ -103,6 +105,8 @@ export default function UniversalDataTable({
         sortOrder,
         filterGender,
         filterStatus,
+        filterOrganization,
+        filterRole,
       })
       
       if (reset) {
@@ -140,6 +144,15 @@ export default function UniversalDataTable({
       setSortBy(field)
       setSortOrder("asc")
     }
+  }
+
+  const clearFilters = () => {
+    setFilterGender("")
+    setFilterStatus("")
+    setFilterOrganization("")
+    setFilterRole("")
+    setSortBy("")
+    setSortOrder("asc")
   }
 
   const handleQuickAction = async (id: number, action: "approve" | "reject") => {
@@ -209,17 +222,36 @@ export default function UniversalDataTable({
   const formatValue = (value: any) => {
     if (value === null || value === undefined) return "-"
     if (typeof value === "boolean") return value ? "Yes" : "No"
+    
+    // Handle Date objects
     if (value instanceof Date) {
-      return isNaN(value.getTime()) ? "Invalid Date" : value.toLocaleDateString()
+      return isNaN(value.getTime()) ? "-" : value.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric'
+      })
     }
-    if (typeof value === "string" && value.includes("T")) {
-      try {
-        const date = new Date(value)
-        return isNaN(date.getTime()) ? "Invalid Date" : date.toLocaleDateString()
-      } catch {
-        return value
+    
+    // Handle date strings (ISO format, etc.)
+    if (typeof value === "string") {
+      // Check if it looks like a date string
+      if (value.includes("T") || value.match(/^\d{4}-\d{2}-\d{2}/)) {
+        try {
+          const date = new Date(value)
+          if (!isNaN(date.getTime()) && date.getFullYear() > 1900 && date.getFullYear() < 3000) {
+            return date.toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'short',
+              day: 'numeric'
+            })
+          }
+        } catch (error) {
+          console.warn('Date parsing error for value:', value, error)
+        }
       }
+      return value
     }
+    
     return value.toString()
   }
 
@@ -274,6 +306,39 @@ export default function UniversalDataTable({
                       <SelectItem value="REJECTED">Rejected</SelectItem>
                     </SelectContent>
                   </Select>
+
+                  <Select value={filterOrganization || "all"} onValueChange={(value) => setFilterOrganization(value === "all" ? "" : value)}>
+                    <SelectTrigger className="w-40">
+                      <SelectValue placeholder="Organization" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="all">All Organizations</SelectItem>
+                      <SelectItem value="Government">Government</SelectItem>
+                      <SelectItem value="NGO">NGO</SelectItem>
+                      <SelectItem value="Private Company">Private Company</SelectItem>
+                      <SelectItem value="University">University</SelectItem>
+                      <SelectItem value="Research Institution">Research Institution</SelectItem>
+                      <SelectItem value="International Organization">International Organization</SelectItem>
+                      <SelectItem value="Other">Other</SelectItem>
+                    </SelectContent>
+                  </Select>
+
+                  <Select value={filterRole || "all"} onValueChange={(value) => setFilterRole(value === "all" ? "" : value)}>
+                    <SelectTrigger className="w-36">
+                      <SelectValue placeholder="Role" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="all">All Roles</SelectItem>
+                      <SelectItem value="Farmer">Farmer</SelectItem>
+                      <SelectItem value="Extension Agent">Extension Agent</SelectItem>
+                      <SelectItem value="Researcher">Researcher</SelectItem>
+                      <SelectItem value="Policy Maker">Policy Maker</SelectItem>
+                      <SelectItem value="Student">Student</SelectItem>
+                      <SelectItem value="Private Sector">Private Sector</SelectItem>
+                      <SelectItem value="NGO Worker">NGO Worker</SelectItem>
+                      <SelectItem value="Other">Other</SelectItem>
+                    </SelectContent>
+                  </Select>
                   
                   <Button
                     variant="outline"
@@ -284,6 +349,39 @@ export default function UniversalDataTable({
                     <ArrowUpDown className="h-4 w-4" />
                     Age {sortBy === "age" && (sortOrder === "asc" ? "↑" : "↓")}
                   </Button>
+
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => handleSort("organization")}
+                    className="flex items-center gap-1"
+                  >
+                    <ArrowUpDown className="h-4 w-4" />
+                    Org {sortBy === "organization" && (sortOrder === "asc" ? "↑" : "↓")}
+                  </Button>
+
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => handleSort("createdAt")}
+                    className="flex items-center gap-1"
+                  >
+                    <ArrowUpDown className="h-4 w-4" />
+                    Date {sortBy === "createdAt" && (sortOrder === "asc" ? "↑" : "↓")}
+                  </Button>
+
+                  {/* Clear Filters Button */}
+                  {(filterGender || filterStatus || filterOrganization || filterRole || sortBy) && (
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={clearFilters}
+                      className="flex items-center gap-1 text-gray-600 hover:text-gray-800"
+                    >
+                      <FilterX className="h-4 w-4" />
+                      Clear Filters
+                    </Button>
+                  )}
                 </>
               )}
               

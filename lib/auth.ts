@@ -1,5 +1,8 @@
 import type { NextAuthOptions } from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
+import GoogleProvider from "next-auth/providers/google"
+import GitHubProvider from "next-auth/providers/github"
+import AzureADProvider from "next-auth/providers/azure-ad"
 import { PrismaAdapter } from "@next-auth/prisma-adapter"
 import { db } from "@/lib/prisma"
 import bcrypt from "bcryptjs"
@@ -26,6 +29,22 @@ interface ExtendedSession extends Session {
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(db),
   providers: [
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID!,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+      allowDangerousEmailAccountLinking: true,
+    }),
+    GitHubProvider({
+      clientId: process.env.GITHUB_ID!,
+      clientSecret: process.env.GITHUB_SECRET!,
+      allowDangerousEmailAccountLinking: true,
+    }),
+    AzureADProvider({
+      clientId: process.env.AZURE_AD_CLIENT_ID!,
+      clientSecret: process.env.AZURE_AD_CLIENT_SECRET!,
+      tenantId: process.env.AZURE_AD_TENANT_ID!,
+      allowDangerousEmailAccountLinking: true,
+    }),
     CredentialsProvider({
       name: "credentials",
       credentials: {
@@ -66,7 +85,15 @@ export const authOptions: NextAuthOptions = {
     strategy: "jwt",
   },
   callbacks: {
-    async jwt({ token, user }) {
+    async signIn({ user, account, profile }) {
+      // Allow OAuth sign-in even if account exists with same email
+      if (account?.provider === "google" || account?.provider === "github" || account?.provider === "azure-ad") {
+        return true
+      }
+      // For credentials provider, check normally
+      return true
+    },
+    async jwt({ token, user, account }) {
       if (user) {
         token.role = (user as ExtendedUser).role
       }
