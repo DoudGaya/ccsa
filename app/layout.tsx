@@ -8,6 +8,7 @@ import { Toaster } from "sonner";
 import { Toaster as SonnerToaster } from "sonner"
 import AuthProvider from "@/components/providers/AuthProvider";
 import { Analytics } from "@vercel/analytics/next"
+import GoogleAnalytics from "./components/GoogleAnalytics"
  
 
 
@@ -77,6 +78,7 @@ export default function RootLayout({
       <body
         className={`antialiased font-main`}
       >
+        <GoogleAnalytics />
         <AuthProvider>
           {children}
           <Analytics />
