@@ -7,6 +7,7 @@ import { ThemeProvider } from "./components/theme-provider";
 import { Toaster } from "sonner";
 import { Toaster as SonnerToaster } from "sonner"
 import AuthProvider from "@/components/providers/AuthProvider";
+import { Analytics } from "@vercel/analytics/next"
  
 
 
@@ -78,6 +79,7 @@ export default function RootLayout({
       >
         <AuthProvider>
           {children}
+          <Analytics />
           <Toaster />
           <SonnerToaster />
         </AuthProvider>
