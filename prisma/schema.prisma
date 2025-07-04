@@ -30,6 +30,7 @@ model TrainingApplication {
   email                   String @unique
   phone                   String
   organization            String
+  qualifications          String?
   gender                  Gender
   age                     Int
   role                    String

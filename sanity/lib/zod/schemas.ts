@@ -1,5 +1,6 @@
 import { Gender } from '@prisma/client'
 import * as z from 'zod'
+import { QUALIFICATION_VALUES } from '@/lib/constants'
 
 export const applicationSchema = z.object({
     firstName: z.string().min(2, {
@@ -14,6 +15,7 @@ export const applicationSchema = z.object({
     email: z.string().email({
         message: "Please add a valid email",
     }),
+    qualifications: z.enum(QUALIFICATION_VALUES as [string, ...string[]]).optional(),
     phone: z.string().min(2, {
         message: "Phone must be at least 2 characters",
     }),

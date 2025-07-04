@@ -5,7 +5,6 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
 import { Button } from "@/components/ui/button"
-import { Textarea } from '@/components/ui/textarea'
 import { Input } from "@/components/ui/input"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { useRouter } from 'next/navigation'
@@ -24,6 +23,7 @@ import { useToast } from '@/hooks/use-toast'
 import { createApplication } from '@/actions/trainings'
 import { SanityTypes, TrainingApplication } from '@/@types'
 import { Gender } from '@prisma/client'
+import { QUALIFICATION_OPTIONS } from '@/lib/constants'
 
 interface SubmitApplicationProps {
   onSubmit: (data: TrainingApplication) => void
@@ -46,9 +46,9 @@ export function SingleTrainingApplicationForm({ onSubmit, onClose, training }: S
       email: '',
       phone: '',
       organization: '',
+      qualifications: undefined,
       gender: undefined,
       age: '',
-      // gender: undefined,
       role: '',
       training: training.slug,
     },
@@ -173,6 +173,31 @@ export function SingleTrainingApplicationForm({ onSubmit, onClose, training }: S
           />
           </div>
 
+          <FormField
+            control={form.control}
+            name="qualifications"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className='text-primary'>Qualifications</FormLabel>
+                <FormControl>
+                  <Select disabled={isPending} onValueChange={field.onChange} defaultValue={field.value}>
+                      <SelectTrigger className=' dark:border-gray-700 border-gray-200  dark:bg-dark text-primary active:border-primary'>
+                        <SelectValue placeholder="Select your highest qualification" />
+                      </SelectTrigger>
+                      <SelectContent>
+                            {QUALIFICATION_OPTIONS.map((option) => (
+                              <SelectItem key={option.value} value={option.value}>
+                                {option.label}
+                              </SelectItem>
+                            ))}
+                      </SelectContent>
+                    </Select>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
           <div className=" grid grid-cols-2 gap-4">
           <FormField
             control={form.control}
@@ -210,11 +235,11 @@ export function SingleTrainingApplicationForm({ onSubmit, onClose, training }: S
             name="gender"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className=' text-primary'>Status</FormLabel>
+                <FormLabel className=' text-primary'>Gender</FormLabel>
                 <FormControl>
                   <Select disabled={isPending} onValueChange={field.onChange} defaultValue={field.value}>
                       <SelectTrigger className=' dark:border-gray-700 border-gray-200  dark:bg-dark text-primary active:border-primary'>
-                        <SelectValue placeholder="Select Home Status" />
+                        <SelectValue placeholder="Select Gender" />
                       </SelectTrigger>
                       <SelectContent>
                             <SelectItem value={Gender.Male}>Male</SelectItem>
