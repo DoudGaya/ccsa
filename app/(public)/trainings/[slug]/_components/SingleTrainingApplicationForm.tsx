@@ -23,7 +23,6 @@ import { useToast } from '@/hooks/use-toast'
 import { createApplication } from '@/actions/trainings'
 import { SanityTypes, TrainingApplication } from '@/@types'
 import { Gender } from '@prisma/client'
-import { QUALIFICATION_OPTIONS } from '@/lib/constants'
 
 interface SubmitApplicationProps {
   onSubmit: (data: TrainingApplication) => void
@@ -46,7 +45,6 @@ export function SingleTrainingApplicationForm({ onSubmit, onClose, training }: S
       email: '',
       phone: '',
       organization: '',
-      qualifications: undefined,
       gender: undefined,
       age: '',
       role: '',
@@ -172,31 +170,6 @@ export function SingleTrainingApplicationForm({ onSubmit, onClose, training }: S
             )}
           />
           </div>
-
-          <FormField
-            control={form.control}
-            name="qualifications"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className='text-primary'>Qualifications</FormLabel>
-                <FormControl>
-                  <Select disabled={isPending} onValueChange={field.onChange} defaultValue={field.value}>
-                      <SelectTrigger className=' dark:border-gray-700 border-gray-200  dark:bg-dark text-primary active:border-primary'>
-                        <SelectValue placeholder="Select your highest qualification" />
-                      </SelectTrigger>
-                      <SelectContent>
-                            {QUALIFICATION_OPTIONS.map((option) => (
-                              <SelectItem key={option.value} value={option.value}>
-                                {option.label}
-                              </SelectItem>
-                            ))}
-                      </SelectContent>
-                    </Select>
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
 
           <div className=" grid grid-cols-2 gap-4">
           <FormField

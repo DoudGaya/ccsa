@@ -74,6 +74,7 @@ export default function DashboardPage() {
           getTrainingApplicationStatusDistribution(),
         ])
 
+        // @ts-ignore
         setStats(statsData)
         setMonthlyData(monthlyChartData as MonthlyDataItem[])
         setProgramData(programChartData as ProgramDataItem[])
@@ -358,7 +359,7 @@ export default function DashboardPage() {
           </CardContent>
         </Card>
 
-        <Card className=" border-brand/30">
+        {/* <Card className=" border-brand/30">
           <CardHeader>
             <CardTitle>Organization Types</CardTitle>
           </CardHeader>
@@ -389,7 +390,7 @@ export default function DashboardPage() {
               </div>
             )}
           </CardContent>
-        </Card>
+        </Card> */}
 
         <Card className=" border-brand/30">
           <CardHeader>

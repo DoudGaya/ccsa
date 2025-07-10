@@ -5,7 +5,6 @@ generator client {
 datasource db {
   provider  = "postgresql"
   url       = env("DATABASE_URL")
-  directUrl = env("DIRECT_URL")
 }
 
 model eventBooking {
@@ -30,7 +29,6 @@ model TrainingApplication {
   email                   String @unique
   phone                   String
   organization            String
-  qualifications          String?
   gender                  Gender
   age                     Int
   role                    String
@@ -78,7 +76,7 @@ model Volunteers {
 }
 
 model ProgramApplication {
-  id                    Int      @id @default(autoincrement())
+  id                      Int      @id @default(autoincrement())
   firstName               String
   middleName              String?
   surname                 String

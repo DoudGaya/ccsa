@@ -199,7 +199,6 @@ export interface TrainingApplication {
     email: string;
     phone: string;
     organization: string;
-    qualifications?: "Primary" | "Secondary" | "NCE" | "ND" | "HND" | "BSc" | "MSc" | "PhD" | "Professional Certificate" | "Diploma" | "Other";
     gender: "Male" | "Female";
     age: number;
     role: string;

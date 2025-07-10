@@ -100,6 +100,7 @@ export default function UniversalDataTable({
     }
     
     try {
+      console.log(`Fetching data for model: ${model}`)
       const result = await getPaginatedData(model, pageNum, limit, search, {
         sortBy,
         sortOrder,
@@ -109,17 +110,45 @@ export default function UniversalDataTable({
         filterRole,
       })
       
-      if (reset) {
-        setData(result.data)
-      } else {
-        setData(prevData => [...prevData, ...result.data])
+      console.log(`Received result:`, result)
+      
+      // Handle null or undefined result
+      if (!result) {
+        console.error("Received null or undefined result from server")
+        if (reset) {
+          setData([])
+          setTotal(0)
+          setHasNextPage(false)
+        }
+        return
       }
       
-      setTotal(result.total)
-      setHasNextPage(result.data.length === limit && (pageNum * limit) < result.total)
+      // Ensure data is an array
+      const safeData = Array.isArray(result.data) ? result.data : []
+      const safeTotal = typeof result.total === 'number' ? result.total : 0
+      
+      if (reset) {
+        setData(safeData)
+      } else {
+        setData(prevData => [...prevData, ...safeData])
+      }
+      
+      setTotal(safeTotal)
+      setHasNextPage(safeData.length === limit && (pageNum * limit) < safeTotal)
       
     } catch (error) {
       console.error("Error fetching data:", error)
+      toast({
+        title: "Error",
+        description: `Failed to load ${title}: ${error instanceof Error ? error.message : 'Unknown error'}`,
+        variant: "destructive",
+      })
+      // Set empty data on error
+      if (reset) {
+        setData([])
+        setTotal(0)
+        setHasNextPage(false)
+      }
     } finally {
       setLoading(false)
       setLoadingMore(false)

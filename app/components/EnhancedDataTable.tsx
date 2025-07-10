@@ -49,7 +49,7 @@ export default function EnhancedDataTable({
   showActions = false,
   actionType,
 }: EnhancedDataTableProps) {
-  const [data, setData] = useState([])
+  const [data, setData] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
   const [search, setSearch] = useState("")
   const [page, setPage] = useState(1)

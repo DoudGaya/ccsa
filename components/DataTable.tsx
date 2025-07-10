@@ -23,8 +23,7 @@ interface DataTableProps {
 }
 
 export default function DataTable({ model, title, columns }: DataTableProps) {
-
-  const [data, setData] = useState([])
+  const [data, setData] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
   const [search, setSearch] = useState("")
   const [page, setPage] = useState(1)
