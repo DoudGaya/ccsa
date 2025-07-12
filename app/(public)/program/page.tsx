@@ -57,9 +57,9 @@ const specializedInstitutions = [
 ]
 
 const importantDates = [
-  { event: "Application Window", date: "May 1–14, 2025" },
-  { event: "Payment Deadline", date: "May 28, 2025" },
-  { event: "Visa Processing", date: "May 15–June 28, 2025" },
+  { event: "Application Window", date: "July 1st to 31st, 2025" },
+  { event: "Payment Deadline", date: "August 15, 2025" },
+  { event: "Visa Processing", date: "July 15th to August 12, 2025" },
   { event: "Departure to China", date: "August 15–28, 2025" },
 ]
 
