@@ -22,7 +22,7 @@ const page = () => {
               </h3>
               <p>
                 To foster climate-smart agricultural systems that promote food security, 
-                enhance livelihoods, and sustain the environment through innovation, 
+                enhance livelihoods and sustain the environment through innovation, 
                 education, research and practice.
               </p>
             </div>
@@ -34,7 +34,7 @@ const page = () => {
               <p>
                 To drive the transformation of agriculture in Sub-Saharan Africa by advancing 
                 climate-smart practices through cutting-edge research, innovative education, 
-                and collaborative partnerships, fostering resilience, enhancing capacity, and 
+                and collaborative partnerships, fostering resilience, enhancing capacity and 
                 ensuring sustainability in agricultural systems.
               </p>
             </div>
