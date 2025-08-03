@@ -2,22 +2,15 @@ import Image from "next/image"
 import Link from "next/link"
 import {
   Leaf,
-  Cpu,
-  Briefcase,
-  FileText,
-  Handshake,
   ArrowLeft,
-  CheckCircle2,
-  Users,
   BookOpen,
-  Presentation,
 } from "lucide-react"
 import { getAllTrainings, getSingleTraining } from "@/sanity/lib/quesries/trainingQueries"
 import { SanityTypes } from "@/@types"
 import PublicBanners from "@/app/components/PublicBanners"
 import placeHolder from '@/public/placeholder-img.png'
-import { TrainingActionArea } from "../_component/TrainingActionArea"
 import { SingleTrainingActionArea } from "./_components/SingleTrainingActionArea"
+import { PortableText } from "next-sanity"
 
 
 
@@ -47,7 +40,7 @@ export default async function TrainingProgramPage({ params }: { params: Promise<
 
   return (
    <div className="">
-     <PublicBanners title="Training Programmes" message={"Aligned with CCSA Mandates" } />
+     <PublicBanners title="Training Programmes" message={ training.title } />
     <div className=" grid  container mx-auto grid-cols-1 md:grid-cols-4 gap-4">
       <div className=" col-span-3">
       <div className="container mx-auto px-4 py-8 max-w-5xl">
@@ -61,7 +54,7 @@ export default async function TrainingProgramPage({ params }: { params: Promise<
           <div className=" rounded-full p-2 bg-green-300">
           <Leaf className="h-6 w-6 text-green-900 rounded-full" />
           </div>
-          <span className={`ml-2 font-medium text-green-950 text-xl`}>{training.mandate}</span>
+          <span className={`ml-2 font-medium text-green-950 text-xl`}>Training Programme</span>
         </div>
         <h1 className="text-3xl text-brand font-bold mb-2">{training.title}</h1>
       </div>
@@ -73,95 +66,20 @@ export default async function TrainingProgramPage({ params }: { params: Promise<
           alt={training.title}
           width={1000}
           height={500}
-          className="w-full object-cover h-80"
+          className="w-full object-cover h-80 rounded-lg"
         />
       </div>
 
-      {/* Overview */}
-      <section className={`mb-8 p-6 rounded-lg border-2 border-green-500  `}>
+      {/* Training Content */}
+      <section className={`mb-8 p-6 rounded-lg border-2 border-green-500`}>
         <h2 className="text-2xl font-semibold mb-4 flex items-center">
           <BookOpen className="h-6 w-6 mr-2 text-gray-700" />
-          Overview
+          Training Details
         </h2>
-        <p>{training.overview}</p>
-      </section>
-
-      {/* Learning Outcomes */}
-      <section className="mb-8">
-        <h2 className="text-2xl font-semibold mb-4 flex items-center">
-          <CheckCircle2 className="h-6 w-6 mr-2 text-gray-700" />
-          Learning Outcomes
-        </h2>
-        <div className="bg-white p-6 rounded-lg shadow-sm border border-green-200">
-          <p className="mb-4">Upon completing the programme, participants will:</p>
-          <ul className="space-y-2">
-            {training.learningOutcomes.map((outcome, index) => (
-              <li key={index} className="flex items-start">
-                <CheckCircle2 className="h-5 w-5 mr-2 text-green-600 mt-0.5 flex-shrink-0" />
-                <span>{outcome}</span>
-              </li>
-            ))}
-          </ul>
+        <div className="prose prose-lg dark:prose-invert max-w-none">
+          <PortableText value={training.body} />
         </div>
-      </section>
-
-      {/* Curriculum */}
-      <section className="mb-8">
-        <h2 className="text-2xl font-semibold mb-4 flex items-center">
-          <BookOpen className="h-6 w-6 mr-2 text-gray-700" />
-          Curriculum & Pedagogy
-        </h2>
-        <div className="bg-white p-6 rounded-lg shadow-sm border border-green-200">
-          <ol className="list-decimal pl-5 space-y-2">
-            {training.curriculum.map((item, index) => (
-              <li key={index} className="pl-2">
-                {item}
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
-        {/* <div className="bg-white p-6 rounded-lg shadow-sm border border-green-200">
-          {training.pedagogy && training.pedagogy.length > 0 ? (
-            <ul className="list-disc pl-5 space-y-2">
-              {training.pedagogy.map((item, index) => (
-                <li key={index} className="pl-2">
-                  {item}
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p className="text-gray-500">No pedagogy information available.</p>
-          )}
-        </div> */}
-
-      {/* Pedagogy */}
-      {/* <section className="mb-8">
-        <h2 className="text-2xl font-semibold mb-4 flex items-center">
-          <Presentation className="h-6 w-6 mr-2 text-gray-700" />
-          Pedagogy
-        </h2>
-      
-      </section> */}
-
-      {/* Target Audience */}
-      <section className="mb-8">
-        <h2 className="text-2xl font-semibold mb-4 flex items-center">
-          <Users className="h-6 w-6 mr-2 text-gray-700" />
-          Target Audience
-        </h2>
-        <div className="bg-white p-6 rounded-lg shadow-sm border border-green-200">
-          <ul className="list-disc pl-5 space-y-2">
-            {training.targetAudience.map((item, index) => (
-              <li key={index} className="pl-2">
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      {/* Application */}
+      </section>      {/* Application */}
       <section className={`  p-6 rounded-lg mb-8`}>
         <h2 className={`text-xl font-semibold mb-4`}>Ready to Apply?</h2>
         <p className="mb-6">
@@ -200,10 +118,9 @@ export default async function TrainingProgramPage({ params }: { params: Promise<
                   <div
                     className={`inline-flex items-center bg-green-300 px-3 py-1 rounded-full mb-2`}
                   >
-                    {/* {relatedtraining.mandateIcon} */}
                     <Leaf className=" h-6 w-6" />
                     <span className={`ml-2 text-xs font-medium text-green-900`}>
-                      {relatedtraining.mandate}
+                      Training Programme
                     </span>
                   </div>
                   <h3 className="font-semibold mb-2 line-clamp-2">{relatedtraining.title}</h3>
