@@ -57,11 +57,11 @@ export function BookingModal() {
       // For example using a server action or API route
       await new Promise((resolve) => setTimeout(resolve, 1000)) // Simulating API call
 
-      console.log("Booking submitted:", {
-        eventId: event._id,
-        eventTitle: event.title,
-        ...data,
-      })
+      // console.log("Booking submitted:", {
+      //   eventId: event._id,
+      //   eventTitle: event.title,
+      //   ...data,
+      // })
 
       form.reset()
       bookingModal.onClose()

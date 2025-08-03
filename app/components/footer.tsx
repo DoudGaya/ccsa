@@ -4,6 +4,30 @@ import { Facebook, Twitter, LinkedinIcon as LinkedIn, Instagram } from 'lucide-r
 import useInvalidPathName from '@/lib/use-invalid-path'
 import { ModeToggle } from './dark-button'
 
+const socialLinks = [
+  {
+    name: 'Facebook',
+    url: 'https://web.facebook.com/profile.php?id=61550571397019',
+    icon:  <Facebook size={20} />
+  },
+  {
+    name: 'Twitter',
+    url: 'https://x.com/cosmouniversity',
+    icon:<Twitter size={20} />
+  },
+  {
+    name: 'Instagram',
+    url: 'https://www.instagram.com/cosmo_university/',
+    icon: <LinkedIn size={20} />
+  },
+  {
+    name: 'LinkedIn',
+    url: 'https://www.linkedin.com/company/cosmopolitan-university',
+    icon: <Instagram size={20} />
+  },
+]
+
+
 export default function Footer() {
   const isInvalidPath = useInvalidPathName()
   if (isInvalidPath) return <></>
@@ -19,6 +43,11 @@ export default function Footer() {
               fosters resilience, sustainability, and innovation in agricultural systems to address 
               climate change challenges. 
             </p>
+             <div className=" my-3">
+              <p className="">
+              No. 1 Masarki Close, Parakou street, Wuse II Abuja
+            </p>
+             </div>
           </div>
           <div>
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
@@ -29,25 +58,28 @@ export default function Footer() {
               <li><Link href="/innovation/farmer-incubation" className="text-sm hover:text-green-400 transition-colors">Farmer Incubation Program</Link></li>
               {/* <li><Link href="/knowledge-hub" className="text-sm hover:text-green-400 transition-colors">Knowledge Hub</Link></li> */}
               <li><Link href="/resources/agri-institutions" className="text-sm hover:text-green-400 transition-colors">Agri- Institutions</Link></li>
+              <li><Link href="/auth/signin" className="text-sm hover:text-green-400 transition-colors">---</Link></li>
             </ul>
           </div>
           <div>
             <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
             <p className="text-sm text-gray-300 mb-2">Cosmopolitan University, Abuja</p>
             <p className="text-sm text-gray-300 mb-4">Email: ccsa@cosmopolitan.edu.ng</p>
+           
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-300 hover:text-white transition-colors">
-                <Facebook size={20} />
-              </a>
-              <a href="#" className="text-gray-300 hover:text-white transition-colors">
-                <Twitter size={20} />
-              </a>
-              <a href="#" className="text-gray-300 hover:text-white transition-colors">
-                <LinkedIn size={20} />
-              </a>
-              <a href="#" className="text-gray-300 hover:text-white transition-colors">
-                <Instagram size={20} />
-              </a>
+              {
+                socialLinks.map((link) => (
+                  <Link
+                    key={link.name}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-300 hover:text-green-400 transition-colors"
+                  >
+                    {link.icon}
+                  </Link>
+                ))
+              }
             </div>
           </div>
         </div>

@@ -72,7 +72,7 @@ export const researchItems = [
     {
       title: " Capacity Building",
       description:`
-       Develop innovative programs to increase the capacity of students, farmers, policymakers, practitioners, and other stakeholders on climate-resilient practices with a clear focus on agriculture.
+       Develop innovative programs to increase the capacity of students, farmers, policymakers, practitioners, and other stakeholders on climate-smart practices with a clear focus on agriculture.
       `,
       icon: <Cpu className="h-6 w-6 text-blue-600" />,
       color: "bg-blue-100",

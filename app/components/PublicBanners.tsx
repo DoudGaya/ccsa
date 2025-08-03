@@ -1,6 +1,5 @@
 import React from 'react'
 import banner from '@/public/clear-banner.jpg'
-
 const PublicBanners = ( {
   title,
   message,
@@ -20,7 +19,7 @@ const PublicBanners = ( {
         <div className=" max-w-6xl mx-auto h-full justify-center flex items-center px-4 text-center">
         <div className="container max-w-6xl mx-auto px-4 backdrop-filter text-center py-10  bg-opacity-50 p-8 rounded-lg">
           <h1 className="text-4xl md:text-5xl lg:text-6xl text-white font-bold mb-4">{ title }</h1>
-          <p className="text-2xl text-blue-2 w-full flex text-center mx-auto font-semibold max-w-3xl text-white">
+          <p className="text-2xl text-blue-2 w-full flex line-clamp-2 text-center mx-auto font-semibold max-w-3xl text-white">
             {message}
           </p>
         </div>

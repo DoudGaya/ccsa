@@ -13,7 +13,9 @@ export const createApplication = async (values: z.infer<typeof applicationSchema
          return { error: "field Validation failed " }
     }
     const { 
-        name,
+        firstName,
+        middleName,
+        lastName,
         email,
         gender,
         age,
@@ -27,7 +29,9 @@ export const createApplication = async (values: z.infer<typeof applicationSchema
         email,
         training,
         age : parseInt(age),
-        name,
+        firstName,
+        middleName,
+        lastName,
         organization,
         phone,
         role,

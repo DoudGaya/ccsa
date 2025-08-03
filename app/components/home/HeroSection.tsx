@@ -31,12 +31,12 @@ export default function HeroSection() {
         </div>
           <AnimatedText 
             text="Centre for Climate-Smart Agriculture (CCSA)" 
-            className="text-3xl tracking-wider sm:text-3xl  md:text-5xl lg:text-6xl xl:text-5xl font-blog font-bold  break-words"
+            className="text-3xl tracking-wider sm:text-3xl  md:text-5xl lg:text-6xl xl:text-5xl font-main font-bold  break-words"
           />
-          <p className=' text-2xl font-semibold font-blog'>Cosmopolitan University Abuja</p>
+          <p className=' text-2xl font-semibold font-main'>Cosmopolitan University Abuja</p>
           <TextCarousel 
             texts={heroTexts} 
-            className="text-xl sm:text-2xl font-blog md:text-2xl lg:text-2xl break-words"
+            className="text-xl sm:text-2xl font-main md:text-2xl lg:text-2xl break-words"
           />
           <div className=" w-full flex-col flex md:flex-row md:space-y-0 space-y-4 px-10 justify-center md:space-x-4 mt-8">
            

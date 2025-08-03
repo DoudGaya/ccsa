@@ -20,11 +20,22 @@ export default function Image() {
           width: '100%',
           height: '100%',
           display: 'flex',
+          flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
         }}
       >
-        CCSA - Cosmopolitan University Abuja
+        <p
+         style={{
+          fontSize: 128,
+          background: 'white',
+          width: '100%',
+          height: '100%',
+          fontFamily: 'Inter, sans-serif'
+          ,
+        }}
+        >CCSA</p>
+         <p>Cosmopolitan University Abuja</p>
       </div>
     ),
     {

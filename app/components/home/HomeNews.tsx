@@ -60,6 +60,9 @@ export default function HomeNews({
     })
   }
 
+
+  // console.log("Articles:", articles)
+
   const formatDate = (dateString: string) => {
     const date = new Date(dateString)
     return new Intl.DateTimeFormat("en-US", {
@@ -74,15 +77,15 @@ export default function HomeNews({
       <div className="container mx-auto px-4 mb-12">
         <div className="flex flex-col md:flex-row justify-between items-center gap-6 mb-12">
           <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-gray-800 to-gray-500 dark:from-gray-200 dark:to-gray-400 bg-clip-text text-transparent">
-            Latest News & Updates
+            News & Articles
           </h2>
           <Button
             asChild
             variant="outline"
             className="group border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800"
           >
-            <Link href="/activities" className="flex items-center gap-2">
-              Browse all articles
+            <Link href="/news-and-events" className="flex items-center gap-2">
+              News and events
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </Link>
           </Button>
@@ -95,9 +98,8 @@ export default function HomeNews({
         <div className="absolute right-0 top-0 w-32 h-full bg-gradient-to-l from-white dark:from-gray-950 to-transparent z-10" />
 
         {/* Scrolling Content */}
-        <div ref={containerRef} className="py-8" onMouseEnter={handleHover} onMouseLeave={handleHoverEnd}>
+        {/* <div ref={containerRef} className="py-8" onMouseEnter={handleHover} onMouseLeave={handleHoverEnd}>
           <motion.div animate={controls} initial={{ x: 0 }} className="flex gap-6">
-            {/* First Set of Articles */}
             {[...Array(2)].map((_, setIndex) => (
               <div key={setIndex} className="flex space-x-6">
                 {articles.map((article, index) => (
@@ -106,7 +108,7 @@ export default function HomeNews({
               </div>
             ))}
           </motion.div>
-        </div>
+        </div> */}
       </div>
     </section>
   )

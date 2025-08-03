@@ -2,11 +2,13 @@ import type {
    Metadata 
 } from "next";
 import "./globals.css";
-import Navbar from "./components/Navbar";
-import Footer from "./components/footer";
 import { ThemeProvider } from "./components/theme-provider";
 // import { Toaster } from "@/components/ui/sonner"
 import { Toaster } from "sonner";
+import { Toaster as SonnerToaster } from "sonner"
+import AuthProvider from "@/components/providers/AuthProvider";
+import { Analytics } from "@vercel/analytics/next"
+import GoogleAnalytics from "./components/GoogleAnalytics"
  
 
 
@@ -76,17 +78,13 @@ export default function RootLayout({
       <body
         className={`antialiased font-main`}
       >
-        {/* <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          > */}
-        <Navbar />
-        {children}
-        <Toaster />
-        <Footer />
-      {/* </ThemeProvider> */}
+        <GoogleAnalytics />
+        <AuthProvider>
+          {children}
+          <Analytics />
+          <Toaster />
+          <SonnerToaster />
+        </AuthProvider>
       </body>
     </html>
   );

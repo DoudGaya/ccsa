@@ -19,7 +19,7 @@ const aboutItems: { title: string; href: string; description: string }[] = [
   {
     title: "Vision & Mission",
     href: "/about/vision-mission",
-    description: "Our commitment to fostering climate-resilient agricultural systems.",
+    description: "Our commitment to fostering climate-smart agricultural systems.",
   },
   {
     title: "Objectives",
@@ -93,8 +93,8 @@ export const trainings = [
 
   {
     id: 2,
-    url: "/trainings/certificate-in-climate-resilient-agriculture-with-artificial-intelligence-craai",
-    title: "Certificate in Climate-Resilient Agriculture with Artificial Intelligence (CRAAI)",
+    url: "/trainings/certificate-in-climate-smart-agriculture-with-artificial-intelligence-craai",
+    title: "Certificate in climate-smart Agriculture with Artificial Intelligence (CRAAI)",
     subtitle: "Develop skills to build resilient agricultural systems using AI-driven solutions"
   },
 
@@ -178,16 +178,16 @@ export const innovationItems: { title: string; href: string; description: string
     href: "/innovation/investment-opportunities",
     description: "Investment opportunities in Value-Added Agriculture.",
   },
-  {
-    title: "Data Analytics",
-    href: "/innovation/data-analytics",
-    description: "Harnessing data for improved agricultural practices and decision-making.",
-  },
-  {
-    title: "Sustainable Practices",
-    href: "/innovation/sustainable-practices",
-    description: "Promoting sustainable agricultural practices for long-term viability.",
-  }
+  // {
+  //   title: "Data Analytics",
+  //   href: "/innovation/data-analytics",
+  //   description: "Harnessing data for improved agricultural practices and decision-making.",
+  // },
+  // {
+  //   title: "Sustainable Practices",
+  //   href: "/innovation/sustainable-practices",
+  //   description: "Promoting sustainable agricultural practices for long-term viability.",
+  // }
 ]
 
 
@@ -386,7 +386,7 @@ ListItem.displayName = "ListItem"
 //   {
 //     title: "Vision & Mission",
 //     href: "/about/vision-mission",
-//     description: "Our commitment to fostering climate-resilient agricultural systems.",
+//     description: "Our commitment to fostering climate-smart agricultural systems.",
 //   },
 //   {
 //     title: "Objectives",
