@@ -1,15 +1,13 @@
 import React from 'react'
-import { AboutBanner } from '../_component/AboutBanner'
+// import { AboutBanner } from '../_component/AboutBanner'
+import PublicBanners from '@/app/components/PublicBanners'
 import AboutBannerImage from '@/public/about-banner.jpg'
 
 
 const page = () => {
   return (
     <div>
-    <AboutBanner 
-        title="Advisory Board" 
-        description=''                                
-        bannerImage={AboutBannerImage.src} />
+      <PublicBanners title="Advisory Board" message='' />
     </div>
   )
 }
