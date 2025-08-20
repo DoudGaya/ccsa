@@ -173,7 +173,6 @@ const MemberSlug = async ({params}: {params: Promise<Params>} ) => {
         ))}
       </div>
     </div>
-      
     </div>
   )
     }

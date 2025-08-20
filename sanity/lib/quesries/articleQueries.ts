@@ -25,8 +25,8 @@ export const getAllArticles = () => {
     `
     return client.fetch(query, {}, { 
         next: { 
-            revalidate: 60, // Revalidate every 60 seconds
-            tags: ['articles'] // Add cache tags
+            revalidate: 60, 
+            tags: ['articles']
         } 
     })
 }
