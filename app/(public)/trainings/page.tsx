@@ -7,6 +7,7 @@ import { SanityTypes } from "@/@types"
 import placeHolder from '@/public/placeholder-img.png'
 import { TrainingActionArea } from "./_component/TrainingActionArea"
 import { CustomTrainingAction } from "./_component/CustomTrainingAction"
+import { PortableText } from "next-sanity"
 
 
 export default async function TrainingPrograms() {
@@ -135,12 +136,13 @@ export default async function TrainingPrograms() {
                 </div>
                 <div className="md:w-2/3 p-6">
                   <div className={`inline-flex items-center bg-green-400 px-3 py-1 rounded-full mb-3`}>
-                    {/* {program.mandateIcon} */}
                     <Leaf className="h-4 w-4 text-white" />
-                    <span className={`ml-2 text-sm font-medium `}>{program.mandate}</span>
+                    <span className={`ml-2 text-sm font-medium text-white`}>Training Programme</span>
                   </div>
                   <h3 className="text-xl font-semibold mb-3">{program.title}</h3>
-                  <p className="mb-4">{program.overview}</p>
+                  <div className="prose prose-sm mb-4 overflow-hidden" style={{ display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical' }}>
+                    <PortableText value={program.body} />
+                  </div>
                   <Link
                     href={`/trainings/${program.slug}`}
                     className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium"

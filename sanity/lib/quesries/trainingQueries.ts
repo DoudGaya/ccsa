@@ -8,17 +8,9 @@ export const getAllTrainings = () => {
         _type,
         _id,
         title,
-        overview,
         'slug': slug.current,
-        'pedagogy': Pedagogy[],
-        'learningOutcomes': learningOutcomes[],
-        'curriculum': curriculum[],
-        'targetAudience': targetAudience[],
-        'imageUrl': images[0].asset->url,
-        _createdAt,
-        mandate,
-        venue,
-        location,
+        body,
+        'imageUrl': imageUrl.asset->url 
     }
     `
     return client.fetch(query, {}, { 
@@ -35,17 +27,9 @@ export const getSingleTraining = (slug: string) => {
         _type,
         _id,
         title,
-        overview,
         'slug': slug.current,
-        'pedagogy': Pedagogy[], // Fixed typo from Pedalogy to Pedagogy
-        'learningOutcomes': learningOutcomes[],
-        'curriculum': curriculum[],
-        'targetAudience': targetAudience[],
-        'imageUrl': images[0].asset->url,
-        _createdAt,
-        mandate,
-        venue,
-        location,
+        body,
+        'imageUrl': imageUrl.asset->url
     }[0]
     `
     return client.fetch(query, { slug }, { 
