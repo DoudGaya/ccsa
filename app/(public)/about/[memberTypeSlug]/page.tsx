@@ -19,24 +19,48 @@ type Params = {
 
 const MemberSlug = async ({params}: {params: Promise<Params>} ) => {
   
-  if (!(await params).memberTypeSlug) {
+  const resolvedParams = await params;
+  console.log("🔍 Raw params:", resolvedParams);
+  console.log("🔍 memberTypeSlug:", resolvedParams.memberTypeSlug);
+  
+  if (!resolvedParams.memberTypeSlug) {
+    console.log("❌ No memberTypeSlug found, returning notFound");
     return notFound()
   }
-  const {memberTypeSlug} = await params
+  
+  const {memberTypeSlug} = resolvedParams;
+  console.log("✅ Processing memberTypeSlug:", memberTypeSlug);
 
-    const memberType = await getSingleMemberType(memberTypeSlug) as SanityTypes.MemberType
-    const members = await getAllMemberType(memberTypeSlug) as SanityTypes.Member[]
+  try {
+    console.log("📡 Fetching data for:", memberTypeSlug);
+    
+    const memberType = await getSingleMemberType(memberTypeSlug) as SanityTypes.MemberType;
+    console.log("📋 MemberType result:", memberType);
+    
+    if (!memberType || !memberType.slug) {
+      console.log("❌ No memberType found for slug:", memberTypeSlug);
+      // Let's show a fallback page instead of 404 for debugging
+      return (
+        <div className="container mx-auto px-4 py-16">
+          <h1 className="text-2xl font-bold text-red-600">Debug: Member Type Not Found</h1>
+          <p>Searched for slug: <code>{memberTypeSlug}</code></p>
+          <p>Result: <code>{JSON.stringify(memberType)}</code></p>
+        </div>
+      );
+    }
+    
+    const members = await getAllMemberType(memberTypeSlug) as SanityTypes.Member[];
+    const managementMembers = await getManagementMembers('management-team') as SanityTypes.Member[];
+    const priority = await getPriorityBoardMembers(memberTypeSlug) as SanityTypes.Member[];
+    const noPriority = await getBoardMembersWithoutPriority(memberTypeSlug) as SanityTypes.Member[];
 
-
-    const managementMembers = await getManagementMembers('management-team') as SanityTypes.Member[]
-
-
-
-    const priority = await getPriorityBoardMembers(memberTypeSlug) as SanityTypes.Member[]
-    const noPriority = await getBoardMembersWithoutPriority(memberTypeSlug) as SanityTypes.Member[]
-
-
-
+    console.log("📊 Data loaded:", {
+      memberType: memberType?.slug,
+      membersCount: members?.length || 0,
+      managementMembersCount: managementMembers?.length || 0,
+      priorityCount: priority?.length || 0,
+      noPriorityCount: noPriority?.length || 0
+    });
 
     if (memberType.slug == 'advisory-board') {
       return (
@@ -173,9 +197,20 @@ const MemberSlug = async ({params}: {params: Promise<Params>} ) => {
         ))}
       </div>
     </div>
+      
     </div>
   )
     }
+  } catch (error) {
+    console.error("❌ Error loading data for memberTypeSlug:", memberTypeSlug, error);
+    return (
+      <div className="container mx-auto px-4 py-16">
+        <h1 className="text-2xl font-bold text-red-600">Error Loading Page</h1>
+        <p>Slug: <code>{memberTypeSlug}</code></p>
+        <p>Error: <code>{error instanceof Error ? error.message : 'Unknown error'}</code></p>
+      </div>
+    );
+  }
 }
 
 export default MemberSlug
