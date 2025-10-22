@@ -5,6 +5,7 @@ import SocialShare from "@/app/components/SocialShare"
 // import SocialShare from "@/components/SocialShare"
 import EnhancedCommentsSection from "@/app/components/EnhancedCommentsSection"
 import { PortableText } from "next-sanity"
+import { formatDate } from "@/lib/utils"
 import Image from "next/image"
 // import EnhancedCommentsSection from "@/components/EnhancedCommentsSection"
 
@@ -25,7 +26,9 @@ export default function ArticleContents({ article }: ArticleContentsProps) {
           </div>
           <div className="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400 mb-8">
             {article.author?.name && <span>By {article.author.name}</span>}
-            {article._createdAt && <span>{new Date(article._createdAt).toLocaleDateString()}</span>}
+            {/* {formatDate(article.dateCreated)} */}
+            {article.dateCreated && <span>{formatDate(article.dateCreated)}</span>}
+            {/* {article.dateCreated && <span>{new Date(article.dateCreated).toLocaleDateString()}</span>} */}
             {article.type?.name && (
               <span className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-1 rounded">
                 {article.type.name}
