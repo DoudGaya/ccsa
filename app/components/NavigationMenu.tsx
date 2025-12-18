@@ -312,25 +312,25 @@ export function NavMenu() {
             </NavigationMenuContent>
           </NavigationMenuItem>
           <NavigationMenuItem>
-          <Link href="/trainings" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Trainings
+            <NavigationMenuLink asChild>
+              <Link href="/trainings" className={navigationMenuTriggerStyle()}>
+                Trainings
+              </Link>
             </NavigationMenuLink>
-          </Link>
-        </NavigationMenuItem>
-          <NavigationMenuItem>
-            <Link href="/news-and-events" legacyBehavior passHref>
-              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                News and Events
-              </NavigationMenuLink>
-            </Link>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <Link href="/activities" legacyBehavior passHref>
-              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+            <NavigationMenuLink asChild>
+              <Link href="/news-and-events" className={navigationMenuTriggerStyle()}>
+                News and Events
+              </Link>
+            </NavigationMenuLink>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <NavigationMenuLink asChild>
+              <Link href="/activities" className={navigationMenuTriggerStyle()}>
                 Activities
-              </NavigationMenuLink>
-            </Link>
+              </Link>
+            </NavigationMenuLink>
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>

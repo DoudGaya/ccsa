@@ -10,7 +10,7 @@ import { SanityTypes } from "@/@types"
 import PublicBanners from "@/app/components/PublicBanners"
 import placeHolder from '@/public/placeholder-img.png'
 import { SingleTrainingActionArea } from "./_components/SingleTrainingActionArea"
-import { PortableText } from "next-sanity"
+import { PortableText } from "@portabletext/react"
 
 
 

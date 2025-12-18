@@ -1,4 +1,5 @@
-import { PortableTextProps, SanityImageAssetDocument } from "next-sanity";
+import { SanityImageAssetDocument } from "next-sanity";
+import { PortableTextProps } from "@portabletext/react";
 
 export namespace SanityTypes {
     export interface Article {

@@ -7,7 +7,7 @@ import { SanityTypes } from "@/@types"
 import placeHolder from '@/public/placeholder-img.png'
 import { TrainingActionArea } from "./_component/TrainingActionArea"
 import { CustomTrainingAction } from "./_component/CustomTrainingAction"
-import { PortableText } from "next-sanity"
+import { PortableText } from "@portabletext/react"
 
 
 export default async function TrainingPrograms() {

@@ -1,4 +1,4 @@
-import { revalidateTag, revalidatePath } from 'next/cache'
+import { revalidatePath } from 'next/cache'
 import { NextRequest, NextResponse } from 'next/server'
 
 // This should match your webhook secret in Sanity
@@ -21,13 +21,10 @@ export async function POST(request: NextRequest) {
       // Revalidate specific article page
       if (slug?.current) {
         revalidatePath(`/articles/${slug.current}`)
-        revalidateTag(`article-${slug.current}`)
       }
       
       // Revalidate articles list
       revalidatePath('/articles')
-      revalidateTag('articles')
-      revalidateTag('article')
 
       console.log(`Revalidated article: ${slug?.current || 'unknown'}`)
     }
@@ -37,13 +34,10 @@ export async function POST(request: NextRequest) {
       // Revalidate specific training page
       if (slug?.current) {
         revalidatePath(`/trainings/${slug.current}`)
-        revalidateTag(`training-${slug.current}`)
       }
       
       // Revalidate trainings list
       revalidatePath('/trainings')
-      revalidateTag('trainings')
-      revalidateTag('training')
 
       console.log(`Revalidated training: ${slug?.current || 'unknown'}`)
     }

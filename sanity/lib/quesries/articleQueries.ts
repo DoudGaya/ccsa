@@ -3,7 +3,7 @@ import { client } from "../client";
 
 export const getAllArticles = () => {
     const query = groq`
-    *[_type == "article"] | order(_createdAt desc) {
+    *[_type == "article"] | order(dateCreated desc) {
         _id,
         title,
         overview,

@@ -41,7 +41,7 @@ const MemberSlug = async ( ) => {
         description={'Our Standing Committee is made up of a group of individuals who are responsible for the day-to-day operations of the organization.'}
       /> */}
 
-<div className="container mx-auto px-4 py-8 max-w-5xl font-main font-semibold">
+<div className="container mx-auto px-4 py-8 max-w-5xl font-main ">
       <h1 className="text-3xl font-bold mb-8 text-center">Standing Committees</h1>
 
       {/* this is where the actual standing committee goes */}
