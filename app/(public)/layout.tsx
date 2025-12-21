@@ -3,6 +3,7 @@
 // import Footer from "./components/footer";
 import Navbar from "../components/Navbar";
 import Footer from "../components/footer";
+import AgriChatbot from "@/components/AgriChatbot";
 
 
 export default function RootLayout({
@@ -15,6 +16,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <Footer />
+        <AgriChatbot />
     </div>
   );
 }
