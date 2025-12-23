@@ -14,15 +14,28 @@ export default {
   		fontFamily: {
   			poppins: [
   				'Poppins',
+  				'-apple-system',
+  				'BlinkMacSystemFont',
+  				'Segoe UI',
+  				'Roboto',
+  				'Helvetica',
+  				'Arial',
   				'sans-serif'
   			],
 			'blog': [
 				'PT Serif',
-				'sans-serif'
+				'Georgia',
+				'Cambria',
+				'Times New Roman',
+				'serif'
 			],
 			'main': [
-				"Comic Neue", 
+				"Comic Neue",
 				'cursive',
+				'Segoe UI',
+				'Roboto',
+				'Helvetica',
+				'Arial',
 				'sans-serif'
 			]
   		},
