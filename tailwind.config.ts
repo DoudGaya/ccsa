@@ -14,7 +14,7 @@ export default {
   		fontFamily: {
   			poppins: [
   				'Poppins',
-  				'-apple-system',
+  				// '-apple-system',
   				'BlinkMacSystemFont',
   				'Segoe UI',
   				'Roboto',
@@ -31,7 +31,7 @@ export default {
 			],
 			'main': [
 				"Comic Neue",
-				'cursive',
+				// 'cursive',
 				'Segoe UI',
 				'Roboto',
 				'Helvetica',
