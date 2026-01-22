@@ -9,7 +9,13 @@ import { Toaster as SonnerToaster } from "sonner"
 import AuthProvider from "@/components/providers/AuthProvider";
 import { Analytics } from "@vercel/analytics/next"
 import GoogleAnalytics from "./components/GoogleAnalytics"
- 
+import { Comic_Neue } from "next/font/google";
+
+const comicNeue = Comic_Neue({
+  subsets: ["latin"],
+  weight: ["300", "400", "700"],
+  variable: "--font-comic-neue",
+}); 
 
 
 export const metadata: Metadata = {
@@ -75,12 +81,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-      </head>
       <body
-        className={`antialiased font-main`}
+        className={`antialiased ${comicNeue.variable} font-main`}
         suppressHydrationWarning
       >
         <GoogleAnalytics />
