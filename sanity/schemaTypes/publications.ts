@@ -61,6 +61,13 @@ export const Publication = defineType({
             name: 'url',
             title: 'Url',
             type: 'url',
-        })
+        }),
+        defineField({
+            name: 'authors',
+            title: 'Authors',
+            type: 'array',
+            of: [{ type: 'string' }],
+            description: 'List of author names for this publication (e.g. "Dr. John Smith"). Used primarily for journals.',
+        }),
     ]
 })  

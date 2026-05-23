@@ -46,6 +46,8 @@ export namespace SanityTypes {
         title: string;
         description: string;
         slug: string;
+        descriptionLabel?: string;
+        category?: 'journal' | 'document' | 'other';
     }
 
     export interface EthicsType {
@@ -149,6 +151,7 @@ export namespace SanityTypes {
         url: string;
         fileUrl: string;
         author: Author;
+        authors?: string[];
         date: Date;
         publicationType: PublicationType;
         tags: string[];
