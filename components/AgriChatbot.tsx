@@ -38,6 +38,10 @@ const HANDS_FREE_STATUS_LABELS: Record<VoiceStatus, string> = {
 }
 
 declare global {
+  interface SpeechRecognitionEvent extends Event {
+    readonly results: SpeechRecognitionResultList
+    readonly resultIndex: number
+  }
   interface Window {
     SpeechRecognition: new () => {
       continuous: boolean; interimResults: boolean; lang: string
