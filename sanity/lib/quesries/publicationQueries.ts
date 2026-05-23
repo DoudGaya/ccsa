@@ -13,6 +13,8 @@ export const getPublicationByType = (type: string) => {
         title,
         description,
         'slug' : slug.current,
+        descriptionLabel,
+        category,
     }[0]
     `
     return client.fetch(query, {type})
@@ -27,6 +29,7 @@ export const getAllPublicationByType = (type: string) => {
         title,
         description,
         'slug' : slug.current,
+        authors,
         author->{
             name,
             email,
@@ -34,13 +37,49 @@ export const getAllPublicationByType = (type: string) => {
             bio,
         },
         'fileUrl': file.asset->url,
+        'previewImageUrl': previewImage.asset->url,
         url,
         publicationType->{
             title,
             description,
-            'slug': slug.current
+            'slug': slug.current,
+            descriptionLabel,
+            category,
         }
     }
     `
     return client.fetch(query, {type})
+}
+
+
+export const getPublicationDetail = (typeSlug: string, itemSlug: string) => {
+    const query = groq`
+        *[_type == "publication" && slug.current == $itemSlug && publicationType->slug.current == $typeSlug][0] {
+            _id,
+            title,
+            description,
+            'slug': slug.current,
+            authors,
+            date,
+            tags,
+            'fileUrl': file.asset->url,
+            'previewImageUrl': previewImage.asset->url,
+            url,
+            author->{
+                name,
+                email,
+                'slug': slug.current,
+                bio,
+                'imageUrl': image.asset->url,
+            },
+            publicationType->{
+                title,
+                description,
+                'slug': slug.current,
+                descriptionLabel,
+                category,
+            }
+        }
+    `
+    return client.fetch(query, { typeSlug, itemSlug })
 }

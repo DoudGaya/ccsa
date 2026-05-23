@@ -69,5 +69,14 @@ export const Publication = defineType({
             of: [{ type: 'string' }],
             description: 'List of author names for this publication (e.g. "Dr. John Smith"). Used primarily for journals.',
         }),
+        defineField({
+            name: 'previewImage',
+            title: 'Preview Image',
+            type: 'image',
+            description: 'Upload a cover image or screenshot of the top section of the document. Shown as a preview before users request access. If left blank, the site will attempt to show a clipped view of the PDF.',
+            options: {
+                hotspot: true,
+            },
+        }),
     ]
 })  

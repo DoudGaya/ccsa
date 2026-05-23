@@ -150,6 +150,7 @@ export namespace SanityTypes {
         slug: string;
         url: string;
         fileUrl: string;
+        previewImageUrl?: string;
         author: Author;
         authors?: string[];
         date: Date;

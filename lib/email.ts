@@ -56,3 +56,38 @@ export async function generateRejectionEmail(name: string, program: string, reas
     </div>
   `
 }
+
+export async function generateAccessRequestConfirmationEmail(name: string, publicationTitle: string) {
+  return `
+    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+      <h2 style="color: #2563eb;">Access Request Received</h2>
+      <p>Dear ${name},</p>
+      <p>Thank you for your interest in <strong>${publicationTitle}</strong>.</p>
+      <p>We have received your request for access and our team will review it shortly. You will be contacted once a decision has been made.</p>
+      <p>Best regards,<br>CCSA Team<br>Cosmopolitan University Abuja</p>
+    </div>
+  `
+}
+
+export async function generateAccessRequestAdminEmail(
+  name: string,
+  email: string,
+  organization: string | undefined,
+  publicationTitle: string,
+  reason: string | undefined,
+) {
+  return `
+    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+      <h2 style="color: #1e40af;">New Publication Access Request</h2>
+      <p>A new access request has been submitted for <strong>${publicationTitle}</strong>.</p>
+      <table style="border-collapse: collapse; width: 100%; margin-top: 16px;">
+        <tr><td style="padding: 8px; border: 1px solid #e5e7eb; font-weight: bold;">Name</td><td style="padding: 8px; border: 1px solid #e5e7eb;">${name}</td></tr>
+        <tr><td style="padding: 8px; border: 1px solid #e5e7eb; font-weight: bold;">Email</td><td style="padding: 8px; border: 1px solid #e5e7eb;">${email}</td></tr>
+        ${organization ? `<tr><td style="padding: 8px; border: 1px solid #e5e7eb; font-weight: bold;">Organisation</td><td style="padding: 8px; border: 1px solid #e5e7eb;">${organization}</td></tr>` : ""}
+        ${reason ? `<tr><td style="padding: 8px; border: 1px solid #e5e7eb; font-weight: bold;">Reason</td><td style="padding: 8px; border: 1px solid #e5e7eb;">${reason}</td></tr>` : ""}
+      </table>
+      <p style="margin-top: 16px;">Please review this request in the admin panel.</p>
+      <p>CCSA Team</p>
+    </div>
+  `
+}

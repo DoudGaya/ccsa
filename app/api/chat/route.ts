@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 
 export async function POST(request: NextRequest) {
   try {
-    const { message, conversationHistory } = await request.json()
+    const { message, conversationHistory, language } = await request.json()
 
     if (!message) {
       return NextResponse.json({ error: 'Message is required' }, { status: 400 })
@@ -60,7 +60,21 @@ GUIDELINES:
 - Be concise but thorough.
 - If asked about the company/website, use the "ABOUT CCSA" and "KEY PROGRAMS" sections.
 - Always prioritize sustainable and environmentally friendly solutions.
-- If you don't know a specific detail about the company not listed here, politely ask them to contact ccsa@cosmopolitan.edu.ng.`
+- If you don't know a specific detail about the company not listed here, politely ask them to contact ccsa@cosmopolitan.edu.ng.
+
+LANGUAGE:
+- ALWAYS respond in clear, formal British or American English by default.
+- Do NOT use Nigerian Pidgin, slang, or informal expressions unless the user has explicitly selected a different language.
+- If the user writes to you in Yoruba, Igbo, or Hausa, you may respond in that language.
+- A preferred language override may be appended below — follow it strictly if present.${language && language !== 'en' ? (() => {
+      const langNames: Record<string, string> = {
+        pcm: 'Nigerian Pidgin English (Naija)',
+        yo: 'Yoruba',
+        ig: 'Igbo',
+        ha: 'Hausa',
+      }
+      return `\n\nPREFERRED LANGUAGE FOR THIS CONVERSATION: ${langNames[language] ?? 'English'}. Please respond in this language.`
+    })() : ''}`
 
     const messages = [
       { role: 'system', content: systemPrompt },
