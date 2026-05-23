@@ -71,7 +71,7 @@ export default function AgriChatbot() {
   }])
   const [input, setInput] = useState('')
   const [isLoading, setIsLoading] = useState(false)
-  const [voiceEnabled, setVoiceEnabled] = useState(true)  // female voice on by default
+  const [voiceEnabled, setVoiceEnabled] = useState(false)  // voice off by default in chat mode
   const [isSpeaking, setIsSpeaking] = useState(false)
   const [speechSupported, setSpeechSupported] = useState(false)
 
@@ -254,7 +254,7 @@ export default function AgriChatbot() {
         if (finalText) doVoiceSubmitRef.current(finalText)
         else           setVoiceStatus('idle')
       } else {
-        if (finalText) doSubmitRef.current(finalText, true)
+        if (finalText) doSubmitRef.current(finalText, false)
       }
     }
 
