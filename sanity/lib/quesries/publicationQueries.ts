@@ -15,6 +15,7 @@ export const getPublicationByType = (type: string) => {
         'slug' : slug.current,
         descriptionLabel,
         category,
+        'bannerImage': bannerImage.asset->url,
     }[0]
     `
     return client.fetch(query, {type})
@@ -45,6 +46,7 @@ export const getAllPublicationByType = (type: string) => {
             'slug': slug.current,
             descriptionLabel,
             category,
+            'bannerImage': bannerImage.asset->url,
         }
     }
     `
@@ -78,6 +80,7 @@ export const getPublicationDetail = (typeSlug: string, itemSlug: string) => {
                 'slug': slug.current,
                 descriptionLabel,
                 category,
+                'bannerImage': bannerImage.asset->url,
             }
         }
     `

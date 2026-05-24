@@ -48,6 +48,7 @@ export namespace SanityTypes {
         slug: string;
         descriptionLabel?: string;
         category?: 'journal' | 'document' | 'other';
+        bannerImage?: string;
     }
 
     export interface EthicsType {

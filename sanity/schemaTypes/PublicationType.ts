@@ -44,5 +44,14 @@ export const publicationType = defineType({
                 layout: 'radio',
             },
         }),
+        defineField({
+            name: 'bannerImage',
+            title: 'Banner Image',
+            type: 'image',
+            description: 'Banner image shown at the top of the publications list and single publication pages.',
+            options: {
+                hotspot: true,
+            },
+        }),
     ],
 })

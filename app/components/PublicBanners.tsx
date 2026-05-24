@@ -3,15 +3,17 @@ import banner from '@/public/clear-banner.jpg'
 const PublicBanners = ( {
   title,
   message,
+  imageUrl,
 }: {
   title: string;
   message: string;
+  imageUrl?: string;
 }
 ) => {
   return (
     <div
       style={{
-        backgroundImage: `url(${banner.src})`,
+        backgroundImage: `url(${imageUrl ?? banner.src})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center'
       }}

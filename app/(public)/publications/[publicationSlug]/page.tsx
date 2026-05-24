@@ -38,6 +38,7 @@ const page = async (
         <PublicBanners
           title={pubType.title}
           message={pubType.description}
+          imageUrl={pubType.bannerImage}
         />
          { allPublicationByType.length > 0 ? <PublicationContents allPublicationsByType={allPublicationByType} /> 
         : 
