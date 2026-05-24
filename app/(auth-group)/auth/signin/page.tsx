@@ -1,8 +1,8 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, Suspense } from "react"
 import { signIn, useSession } from "next-auth/react"
-import { useRouter } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
 import Link from "next/link"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -21,11 +21,13 @@ import { Github, Mail, Building2 } from "lucide-react"
 
 type FormData = z.infer<typeof signInSchema>
 
-export default function SignInPage() {
+function SignInPageContent() {
   const [isLoading, setIsLoading] = useState(false)
   const [ssoLoading, setSsoLoading] = useState<string | null>(null)
   const [showForgotPassword, setShowForgotPassword] = useState(false)
   const router = useRouter()
+  const searchParams = useSearchParams()
+  const callbackUrl = searchParams.get("callbackUrl") || "/dashboard"
   const { data: session, status } = useSession()
 
   const {
@@ -41,9 +43,9 @@ export default function SignInPage() {
     if (status === "loading") return
 
     if (session) {
-      router.push("/dashboard")
+      router.push(callbackUrl)
     }
-  }, [session, status, router])
+  }, [session, status, router, callbackUrl])
 
   // Show loading while checking session
   if (status === "loading") {
@@ -76,7 +78,7 @@ export default function SignInPage() {
         toast("Success", {
           description: "Signed in successfully",
         })
-        router.push("/dashboard")
+        router.push(callbackUrl)
       }
     } catch (error) {
       toast("Error", {
@@ -92,7 +94,7 @@ export default function SignInPage() {
     try {
       // For SSO, we want to redirect directly
       await signIn(provider, {
-        callbackUrl: "/dashboard",
+        callbackUrl: callbackUrl,
       })
     } catch (error) {
       toast("Error", {
@@ -196,6 +198,18 @@ export default function SignInPage() {
 
       <ForgotPasswordModal isOpen={showForgotPassword} onClose={() => setShowForgotPassword(false)} />
     </div>
+  )
+}
+
+export default function SignInPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600"></div>
+      </div>
+    }>
+      <SignInPageContent />
+    </Suspense>
   )
 }
 

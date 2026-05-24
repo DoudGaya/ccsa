@@ -26,6 +26,12 @@ interface ExtendedSession extends Session {
   }
 }
 
+// Emails that are automatically granted ADMIN access via SSO
+const ADMIN_EMAILS = [
+  "rislan@cosmopolitan.edu.ng",
+  "abdulrahman.dauda@cosmopolitan.edu.ng",
+]
+
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(db),
   secret: process.env.NEXTAUTH_SECRET,
@@ -97,6 +103,10 @@ export const authOptions: NextAuthOptions = {
     async jwt({ token, user, account }) {
       if (user) {
         token.role = (user as ExtendedUser).role
+      }
+      // Auto-grant ADMIN role to designated admin emails
+      if (token.email && ADMIN_EMAILS.includes(token.email)) {
+        token.role = "ADMIN"
       }
       return token
     },

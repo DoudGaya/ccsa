@@ -15,7 +15,9 @@ export default withAuth(
 
     // Redirect unauthenticated users away from dashboard
     if (isDashboard && !isAuth) {
-      return NextResponse.redirect(new URL("/auth/signin", req.url))
+      const signInUrl = new URL("/auth/signin", req.url)
+      signInUrl.searchParams.set("callbackUrl", req.nextUrl.pathname)
+      return NextResponse.redirect(signInUrl)
     }
 
     return NextResponse.next()

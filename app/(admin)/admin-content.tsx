@@ -81,6 +81,11 @@ export default function AdminContent({ children }: { children: React.ReactNode }
       return
     }
 
+    if ((session.user as { role?: string })?.role !== "ADMIN") {
+      router.push("/")
+      return
+    }
+
     setIsLoading(false)
   }, [session, status, router])
 
