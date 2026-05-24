@@ -104,8 +104,8 @@ export const authOptions: NextAuthOptions = {
       if (user) {
         token.role = (user as ExtendedUser).role
       }
-      // Auto-grant ADMIN role to designated admin emails
-      if (token.email && ADMIN_EMAILS.includes(token.email)) {
+      // Auto-grant ADMIN role to designated admin emails (case-insensitive)
+      if (token.email && ADMIN_EMAILS.some(e => e.toLowerCase() === token.email!.toLowerCase())) {
         token.role = "ADMIN"
       }
       return token

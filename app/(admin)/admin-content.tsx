@@ -81,13 +81,22 @@ export default function AdminContent({ children }: { children: React.ReactNode }
       return
     }
 
-    if ((session.user as { role?: string })?.role !== "ADMIN") {
-      router.push("/")
-      return
+    if ((session.user as { role?: string })?.role === "ADMIN") {
+      setIsLoading(false)
     }
-
-    setIsLoading(false)
   }, [session, status, router])
+
+  if (!isLoading && session && (session.user as { role?: string })?.role !== "ADMIN") {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold text-gray-900 mb-2">Access Denied</h1>
+          <p className="text-gray-600 mb-1">You are signed in as <strong>{session.user?.email}</strong></p>
+          <p className="text-gray-500 text-sm">This account does not have admin privileges.</p>
+        </div>
+      </div>
+    )
+  }
 
   const handleLogout = async () => {
     await signOut({ callbackUrl: "/" })

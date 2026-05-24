@@ -27,7 +27,11 @@ function SignInPageContent() {
   const [showForgotPassword, setShowForgotPassword] = useState(false)
   const router = useRouter()
   const searchParams = useSearchParams()
-  const callbackUrl = searchParams.get("callbackUrl") || "/dashboard"
+  // Always use a relative path so NextAuth doesn't fail the callbackUrl origin check
+  const rawCallbackUrl = searchParams.get("callbackUrl") || "/dashboard"
+  const callbackUrl = rawCallbackUrl.startsWith("http")
+    ? (() => { try { return new URL(rawCallbackUrl).pathname } catch { return "/dashboard" } })()
+    : rawCallbackUrl
   const { data: session, status } = useSession()
 
   const {
