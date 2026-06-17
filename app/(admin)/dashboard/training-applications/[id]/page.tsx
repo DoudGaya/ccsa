@@ -4,9 +4,11 @@ import { useState, useEffect } from "react"
 import { useParams, useRouter } from "next/navigation"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
 import { Badge } from "@/components/ui/badge"
-import { ArrowLeft, Edit, Check, X, Trash2, Mail, Phone, Calendar, Building, User, Award } from "lucide-react"
-import { approveApplication, rejectApplication, deleteApplication, getApplicationDetails } from "@/actions/application-management"
+import { ArrowLeft, Edit, Check, X, Trash2, Mail, Phone, Calendar, Building, User, Award, Send } from "lucide-react"
+import { approveApplication, rejectApplication, deleteApplication, getApplicationDetails, sendTrainingApplicationEmail } from "@/actions/application-management"
 import { toast } from "sonner"
 import { TrainingApplication } from "@/@types"
 
@@ -16,6 +18,9 @@ export default function TrainingApplicationViewPage() {
   const [application, setApplication] = useState<TrainingApplication | null>(null)
   const [loading, setLoading] = useState(true)
   const [actionLoading, setActionLoading] = useState("")
+  const [customSubject, setCustomSubject] = useState("")
+  const [customMessage, setCustomMessage] = useState("")
+  const [emailLoading, setEmailLoading] = useState(false)
 
   const id = Array.isArray(params.id) ? params.id[0] : params.id
 
@@ -79,6 +84,31 @@ export default function TrainingApplicationViewPage() {
       toast.error("An error occurred")
     } finally {
       setActionLoading("")
+    }
+  }
+
+  const handleSendCustomEmail = async () => {
+    if (!application) return
+
+    if (!customSubject.trim() || !customMessage.trim()) {
+      toast.error("Please add both a subject and a message")
+      return
+    }
+
+    setEmailLoading(true)
+    try {
+      const result = await sendTrainingApplicationEmail(application.id, customSubject, customMessage)
+      if (result.success) {
+        toast.success(result.success)
+        setCustomSubject("")
+        setCustomMessage("")
+      } else {
+        toast.error(result.error || "Failed to send email")
+      }
+    } catch (error) {
+      toast.error("An error occurred while sending the email")
+    } finally {
+      setEmailLoading(false)
     }
   }
 
@@ -259,6 +289,51 @@ export default function TrainingApplicationViewPage() {
           <div className="md:col-span-2">
             <label className="text-sm font-medium text-gray-500">Organization</label>
             <p className="text-lg">{application.organization}</p>
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center justify-between gap-3">
+            <span className="flex items-center">
+              <Send className="h-5 w-5 mr-2" />
+              Send Email to Applicant
+            </span>
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div>
+            <label className="mb-2 block text-sm font-medium text-gray-500">Subject</label>
+            <Input
+              value={customSubject}
+              onChange={(event) => setCustomSubject(event.target.value)}
+              placeholder="e.g. Your training application update"
+            />
+          </div>
+          <div>
+            <label className="mb-2 block text-sm font-medium text-gray-500">Message</label>
+            <Textarea
+              value={customMessage}
+              onChange={(event) => setCustomMessage(event.target.value)}
+              placeholder="Write a friendly message to the applicant..."
+              rows={6}
+            />
+          </div>
+          <div className="flex flex-wrap gap-3">
+            <Button onClick={handleSendCustomEmail} disabled={emailLoading} className="bg-brand hover:opacity-90">
+              {emailLoading ? "Sending..." : "Send custom email"}
+            </Button>
+            <Button
+              type="button"
+              variant="outline"
+              onClick={() => {
+                setCustomSubject(`Update on your ${application.training} training application`)
+                setCustomMessage(`Dear ${application.firstName},\n\nThank you for your application. We are reviewing your submission and will contact you shortly with the next steps.\n\nWarm regards,\nCCSA Team`)
+              }}
+            >
+              Use friendly template
+            </Button>
           </div>
         </CardContent>
       </Card>

@@ -1,7 +1,7 @@
 "use server"
 
 import { db } from "@/lib/prisma"
-import { sendEmail, generateApprovalEmail, generateRejectionEmail } from "@/lib/email"
+import { sendEmail, generateApprovalEmail, generateRejectionEmail, generateCustomTrainingEmail } from "@/lib/email"
 import { revalidatePath } from "next/cache"
 
 export async function approveApplication(id: number, type: "program" | "training") {
@@ -147,5 +147,32 @@ export async function updateTrainingApplication(id: number, data: any) {
     }
 
     return { error: "Failed to update training application" }
+  }
+}
+
+export async function sendTrainingApplicationEmail(id: number, subject: string, message: string) {
+  try {
+    const application = await db.trainingApplication.findUnique({ where: { id } })
+
+    if (!application) {
+      return { error: "Training application not found" }
+    }
+
+    await sendEmail({
+      to: application.email,
+      subject,
+      html: await generateCustomTrainingEmail(
+        `${application.firstName} ${application.middleName || ""} ${application.lastName}`.replace(/\s+/g, " ").trim(),
+        application.training,
+        subject,
+        message,
+      ),
+    })
+
+    revalidatePath(`/dashboard/training-applications/${id}`)
+    return { success: "Custom email sent successfully" }
+  } catch (error) {
+    console.error("Error sending custom training application email:", error)
+    return { error: "Failed to send custom email" }
   }
 }

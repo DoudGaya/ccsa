@@ -6,20 +6,21 @@
 // - Nodemailer with SMTP
 // - AWS SES
 
-export async function sendEmail({
-  to,
-  subject,
-  html,
-}: {
+type EmailInput = {
   to: string
   subject: string
   html: string
-}) {
+}
+
+const DEFAULT_FROM_EMAIL = process.env.EMAIL_FROM || process.env.ADMIN_EMAIL || "noreply@cosmopolitan.edu.ng"
+
+export async function sendEmail({ to, subject, html }: EmailInput) {
   try {
     // Mock email sending - replace with actual email service
     // console.log("Sending email to:", to)
     // console.log("Subject:", subject)
     // console.log("HTML:", html)
+    // console.log("From:", DEFAULT_FROM_EMAIL)
 
     // Simulate email sending delay
     await new Promise((resolve) => setTimeout(resolve, 1000))
@@ -31,30 +32,110 @@ export async function sendEmail({
   }
 }
 
- export async function generateApprovalEmail(name: string, program: string) {
+function sharedEmailShell({
+  title,
+  eyebrow,
+  body,
+  ctaLabel,
+  ctaHref,
+  accentColor = "#16a34a",
+}: {
+  title: string
+  eyebrow: string
+  body: string
+  ctaLabel?: string
+  ctaHref?: string
+  accentColor?: string
+}) {
   return `
-    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-      <h2 style="color: #16a34a;">Application Approved!</h2>
-      <p>Dear ${name},</p>
-      <p>Congratulations! Your application for the <strong>${program}</strong> has been approved.</p>
-      <p>We will contact you soon with further details about the next steps.</p>
-      <p>Best regards,<br>CCSA Team<br>Cosmopolitan University Abuja</p>
+    <div style="font-family: Arial, sans-serif; max-width: 640px; margin: 0 auto; background: #f8fafc; padding: 24px; color: #0f172a;">
+      <div style="background: white; border: 1px solid #e2e8f0; border-radius: 18px; overflow: hidden; box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);">
+        <div style="padding: 28px; background: linear-gradient(135deg, ${accentColor}, #0f766e); color: white;">
+          <p style="margin: 0 0 8px; text-transform: uppercase; letter-spacing: 0.08em; font-size: 12px; opacity: 0.9;">${eyebrow}</p>
+          <h2 style="margin: 0; font-size: 28px; line-height: 1.2;">${title}</h2>
+        </div>
+        <div style="padding: 28px; font-size: 16px; line-height: 1.7;">
+          ${body}
+          ${ctaLabel && ctaHref ? `<div style="margin-top: 28px;"><a href="${ctaHref}" style="display: inline-block; background: ${accentColor}; color: white; text-decoration: none; padding: 12px 18px; border-radius: 999px; font-weight: 700;">${ctaLabel}</a></div>` : ""}
+          <p style="margin-top: 32px; color: #475569;">Warm regards,<br><strong>CCSA Team</strong><br>Cosmopolitan University Abuja</p>
+        </div>
+      </div>
     </div>
   `
 }
 
+export async function generateTrainingSubmissionEmail(name: string, program: string) {
+  return sharedEmailShell({
+    title: "Your application has been received",
+    eyebrow: "Training Application Submitted",
+    accentColor: "#15803d",
+    body: `
+      <p>Dear ${name},</p>
+      <p>Thank you for applying for the <strong>${program}</strong> training programme.</p>
+      <p>Your application is now in our review queue. We are excited to review your details and will contact you as soon as there is an update.</p>
+      <p>If you need to make a correction or have any questions, you can simply reply to this email and our team will be glad to help.</p>
+    `,
+  })
+}
+
+export async function generateTrainingSubmissionAdminEmail(name: string, email: string, program: string) {
+  return sharedEmailShell({
+    title: "New training application received",
+    eyebrow: "Admin Notification",
+    accentColor: "#0f766e",
+    body: `
+      <p>A new training application has been submitted.</p>
+      <table style="width: 100%; border-collapse: collapse; margin-top: 18px;">
+        <tr><td style="padding: 10px 0; border-bottom: 1px solid #e2e8f0; font-weight: 700; width: 120px;">Applicant</td><td style="padding: 10px 0; border-bottom: 1px solid #e2e8f0;">${name}</td></tr>
+        <tr><td style="padding: 10px 0; border-bottom: 1px solid #e2e8f0; font-weight: 700;">Email</td><td style="padding: 10px 0; border-bottom: 1px solid #e2e8f0;">${email}</td></tr>
+        <tr><td style="padding: 10px 0; font-weight: 700;">Training</td><td style="padding: 10px 0;">${program}</td></tr>
+      </table>
+    `,
+  })
+}
+
+ export async function generateApprovalEmail(name: string, program: string) {
+  return sharedEmailShell({
+    title: "Application approved",
+    eyebrow: "Good news",
+    accentColor: "#16a34a",
+    body: `
+      <p>Dear ${name},</p>
+      <p>Congratulations. Your application for the <strong>${program}</strong> has been approved.</p>
+      <p>We will reach out shortly with the next steps, schedule details, and any additional information you may need.</p>
+    `,
+  })
+}
+
 export async function generateRejectionEmail(name: string, program: string, reason?: string) {
-  return `
-    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-      <h2 style="color: #dc2626;">Application Status Update</h2>
+  return sharedEmailShell({
+    title: "Application update",
+    eyebrow: "Status update",
+    accentColor: "#dc2626",
+    body: `
       <p>Dear ${name},</p>
       <p>Thank you for your interest in the <strong>${program}</strong>.</p>
-      <p>After careful review, we regret to inform you that your application was not successful at this time.</p>
-      ${reason ? `<p><strong>Reason:</strong> ${reason}</p>` : ""}
-      <p>We encourage you to apply for future programs.</p>
-      <p>Best regards,<br>CCSA Team<br>Cosmopolitan University Abuja</p>
-    </div>
-  `
+      <p>After careful review, we are unable to move forward with your application at this time.</p>
+      ${reason ? `<p><strong>Feedback:</strong> ${reason}</p>` : ""}
+      <p>We truly appreciate the time and effort you put into your application and hope you will consider future opportunities with us.</p>
+    `,
+  })
+}
+
+export async function generateCustomTrainingEmail(name: string, program: string, subject: string, message: string) {
+  return sharedEmailShell({
+    title: subject,
+    eyebrow: "Message from CCSA",
+    accentColor: "#2563eb",
+    body: `
+      <p>Dear ${name},</p>
+      <p>We are reaching out regarding your <strong>${program}</strong> application.</p>
+      <div style="background: #eff6ff; border-left: 4px solid #2563eb; padding: 16px 18px; border-radius: 12px; margin: 18px 0;">
+        <p style="margin: 0; white-space: pre-line;">${message}</p>
+      </div>
+      <p>If you need any clarification, please reply to this email and we will be happy to help.</p>
+    `,
+  })
 }
 
 export async function generateAccessRequestConfirmationEmail(name: string, publicationTitle: string) {

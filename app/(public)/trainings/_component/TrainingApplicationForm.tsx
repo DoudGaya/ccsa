@@ -23,6 +23,7 @@ import { useToast } from '@/hooks/use-toast'
 import { createApplication } from '@/actions/trainings'
 import { SanityTypes, TrainingApplication } from '@/@types'
 import { Gender } from '@prisma/client'
+import Link from 'next/link'
 
 interface SubmitApplicationProps {
   onSubmit: (data: TrainingApplication) => void
@@ -33,6 +34,8 @@ interface SubmitApplicationProps {
 
 export function TrainingApplicationForm({ onSubmit, onClose, trainings }: SubmitApplicationProps) {
   const [isPending, setIsPending] = useState(false)
+  const [submitted, setSubmitted] = useState(false)
+  const [successMessage, setSuccessMessage] = useState<string | null>(null)
   const router = useRouter()
   const { toast } = useToast()
 
@@ -58,13 +61,23 @@ export function TrainingApplicationForm({ onSubmit, onClose, trainings }: Submit
     try {
       let formDataToSubmit: any = { ...values };
       const data = await createApplication(formDataToSubmit)
-      // onSubmit(data.application as TrainingApplication)
+
+      if (data.error) {
+        throw new Error(data.error)
+      }
+
+      const redirectUrl = data.redirectUrl || "/trainings"
+      setSubmitted(true)
+      setSuccessMessage("Your application was submitted successfully. We will review it and get back to you shortly.")
       form.reset()
-      onClose()
+      onSubmit(data.application as TrainingApplication)
       toast({
-        title: "Thanks for your Application",
-        description: "Your application has been submitted successfully.",
+        title: "Application submitted",
+        description: "We have received your application and will review it shortly.",
       })
+
+      router.push(redirectUrl)
+      onClose()
     } catch (error) {
       console.error('Error submitting form:', error)
       toast({
@@ -76,6 +89,28 @@ export function TrainingApplicationForm({ onSubmit, onClose, trainings }: Submit
       setIsPending(false)
       router.refresh()
     }
+  }
+
+  if (submitted) {
+    return (
+      <div className="rounded-2xl border border-green-200 bg-green-50 p-6 text-center shadow-sm">
+        <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-green-100 text-green-700">
+          <svg aria-hidden="true" viewBox="0 0 24 24" className="h-7 w-7 fill-none stroke-current stroke-2">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+          </svg>
+        </div>
+        <h3 className="text-2xl font-semibold text-green-950">Application received</h3>
+        <p className="mt-2 text-sm text-green-900">{successMessage}</p>
+        <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-center">
+          <Button asChild className="bg-brand font-semibold">
+            <Link href="/trainings">Return to trainings</Link>
+          </Button>
+          <Button variant="outline" onClick={() => setSubmitted(false)}>
+            Submit another application
+          </Button>
+        </div>
+      </div>
+    )
   }
 
   

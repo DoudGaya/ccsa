@@ -3,6 +3,7 @@ import { db } from "@/lib/prisma"
 import * as z from 'zod'
 import { applicationSchema } from "@/sanity/lib/zod/schemas";
 import { customTrainingSchema, VolunteerApplicationSchema } from "@/lib/schema";
+import { sendEmail, generateTrainingSubmissionEmail, generateTrainingSubmissionAdminEmail } from "@/lib/email"
 
 
 
@@ -38,7 +39,25 @@ export const createApplication = async (values: z.infer<typeof applicationSchema
         gender,
        }
      })
-  return {success: 'Application Successfully', application}
+
+     const applicantName = [firstName, middleName, lastName].filter(Boolean).join(" ").trim() || firstName
+     const adminEmail = process.env.ADMIN_EMAIL
+
+     await sendEmail({
+       to: email,
+       subject: `Training application received - ${training}`,
+       html: await generateTrainingSubmissionEmail(applicantName, training),
+     })
+
+     if (adminEmail) {
+       await sendEmail({
+         to: adminEmail,
+         subject: `New training application - ${training}`,
+         html: await generateTrainingSubmissionAdminEmail(applicantName, email, training),
+       })
+     }
+
+  return {success: 'Application Successfully', application, redirectUrl: "/trainings/success"}
 }
 
 
@@ -101,5 +120,5 @@ export const customTrainingAction = async (values: z.infer<typeof customTraining
      }
    })
 
-return {success: 'Application Successfully', application}
+ return {success: 'Application Successfully', application}
 }

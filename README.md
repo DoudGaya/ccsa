@@ -34,3 +34,31 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Training Application Communication Setup
+
+Training application communication is now wired to:
+
+1. Send a friendly confirmation email to the applicant immediately after submission.
+2. Send an admin notification email when a new application is received.
+3. Send acceptance/rejection emails when admins approve or reject applications.
+4. Allow admins to send custom emails from the training application detail page.
+
+Required environment variables:
+
+```bash
+EMAIL_FROM=noreply@yourdomain.com
+ADMIN_EMAIL=ccsa@yourdomain.com
+```
+
+Optional SMTP variables (for production transport implementation):
+
+```bash
+SMTP_HOST=smtp.example.com
+SMTP_PORT=587
+SMTP_SECURE=false
+SMTP_USER=username
+SMTP_PASS=password
+```
+
+Current implementation in `lib/email.ts` is a safe mock sender. Replace `sendEmail` with your provider integration (Resend, SendGrid, Nodemailer, AWS SES) in production.
