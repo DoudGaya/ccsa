@@ -1,6 +1,7 @@
 "use server"
 
 import { db } from "@/lib/prisma"
+import { unstable_noStore as noStore } from "next/cache"
 
 export async function getDashboardStats() {
   try {
@@ -138,6 +139,7 @@ export async function getPaginatedData(
   search = "",
   filters: Record<string, any> = {},
 ) {
+  noStore() // Bypass production cache
   try {
     console.log(`Fetching data for model: ${model}, page: ${page}, limit: ${limit}, search: ${search}`)
     
@@ -237,9 +239,9 @@ export async function getPaginatedData(
 
     // Build orderBy clause
     let orderBy: any = { createdAt: "desc" } // default
-    if (sortBy && (model === "trainingApplication" || model === "programApplication")) {
-      // Only allow sorting for specific fields
-      const allowedSortFields = ["age", "gender", "status", "createdAt", "organization", "role", "firstName", "lastName"]
+    if (sortBy) {
+      // Allow sorting for common fields across all models
+      const allowedSortFields = ["age", "gender", "status", "createdAt", "organization", "role", "firstName", "lastName", "name"]
       if (allowedSortFields.includes(sortBy)) {
         orderBy = { [sortBy]: sortOrder === "desc" ? "desc" : "asc" }
       }

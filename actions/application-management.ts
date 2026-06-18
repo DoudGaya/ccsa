@@ -2,6 +2,7 @@
 
 import { db } from "@/lib/prisma"
 import { sendEmail, generateApprovalEmail, generateRejectionEmail, generateCustomTrainingEmail } from "@/lib/email"
+import { sendSMS } from "@/lib/sms"
 import { revalidatePath } from "next/cache"
 
 export async function approveApplication(id: number, type: "program" | "training") {
@@ -21,6 +22,10 @@ export async function approveApplication(id: number, type: "program" | "training
           application.program || "Program",
         ),
       })
+      await sendSMS(
+        application.phoneNumber,
+        `Dear ${application.firstName}, your application for ${application.program || "the program"} has been approved! Check your email for next steps. - CCSA`
+      )
 
       revalidatePath("/dashboard/program-applications")
       return { success: "Application approved and email sent" }
@@ -35,6 +40,10 @@ export async function approveApplication(id: number, type: "program" | "training
         subject: "Training Application Approved - CCSA",
         html: await generateApprovalEmail(application.firstName, application.training),
       })
+      await sendSMS(
+        application.phone,
+        `Dear ${application.firstName}, your application for ${application.training} has been approved! Check your email for next steps. - CCSA`
+      )
 
       revalidatePath("/dashboard/training-applications")
       return { success: "Training application approved and email sent" }
@@ -62,6 +71,10 @@ export async function rejectApplication(id: number, type: "program" | "training"
           reason,
         ),
       })
+      await sendSMS(
+        application.phoneNumber,
+        `Dear ${application.firstName}, we have an update on your application for ${application.program || "the program"}. Please check your email for details. - CCSA`
+      )
 
       revalidatePath("/dashboard/program-applications")
       return { success: "Application rejected and email sent" }
@@ -76,6 +89,10 @@ export async function rejectApplication(id: number, type: "program" | "training"
         subject: "Training Application Status Update - CCSA",
         html: await generateRejectionEmail(application.firstName, application.training, reason),
       })
+      await sendSMS(
+        application.phone,
+        `Dear ${application.firstName}, we have an update on your application for ${application.training}. Please check your email for details. - CCSA`
+      )
 
       revalidatePath("/dashboard/training-applications")
       return { success: "Training application rejected and email sent" }
@@ -168,6 +185,12 @@ export async function sendTrainingApplicationEmail(id: number, subject: string, 
         message,
       ),
     })
+    
+    // Also try to send a brief SMS for custom messages
+    await sendSMS(
+      application.phone,
+      `Dear ${application.firstName}, you have a new message from CCSA regarding ${application.training}. Please check your email.`
+    )
 
     revalidatePath(`/dashboard/training-applications/${id}`)
     return { success: "Custom email sent successfully" }

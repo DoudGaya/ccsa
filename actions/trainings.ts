@@ -4,6 +4,7 @@ import * as z from 'zod'
 import { applicationSchema } from "@/sanity/lib/zod/schemas";
 import { customTrainingSchema, VolunteerApplicationSchema } from "@/lib/schema";
 import { sendEmail, generateTrainingSubmissionEmail, generateTrainingSubmissionAdminEmail } from "@/lib/email"
+import { sendSMS } from "@/lib/sms"
 
 
 
@@ -56,6 +57,13 @@ export const createApplication = async (values: z.infer<typeof applicationSchema
            subject: `New training application - ${training}`,
            html: await generateTrainingSubmissionAdminEmail(applicantName, email, training),
          })
+       }
+
+       if (phone) {
+         await sendSMS(
+           phone,
+           `Dear ${applicantName}, your application for ${training} has been received and is under review. We will contact you soon. - CCSA`
+         )
        }
 
        return {success: 'Application Successfully', application, redirectUrl: "/trainings/success"}

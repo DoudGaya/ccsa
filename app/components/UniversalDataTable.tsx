@@ -1,8 +1,8 @@
 "use client"
 
 import type React from "react"
-import { useState, useEffect, useCallback, useRef } from "react"
-import { Search, Eye, Edit, Trash2, MoreHorizontal, Check, X, ArrowUpDown, Loader2, FilterX } from "lucide-react"
+import { useState, useEffect } from "react"
+import { Search, Eye, Edit, Trash2, MoreHorizontal, Check, X, ArrowUpDown, FilterX, ChevronLeft, ChevronRight } from "lucide-react"
 import { useRouter } from "next/navigation"
 
 import { Button } from "@/components/ui/button"
@@ -42,11 +42,10 @@ export default function UniversalDataTable({
 }: UniversalDataTableProps) {
   const [data, setData] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
-  const [loadingMore, setLoadingMore] = useState(false)
-  const [hasNextPage, setHasNextPage] = useState(true)
   const [search, setSearch] = useState("")
   const [page, setPage] = useState(1)
   const [total, setTotal] = useState(0)
+  const [totalPages, setTotalPages] = useState(1)
   const [sortBy, setSortBy] = useState("")
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc")
   const [filterGender, setFilterGender] = useState("")
@@ -55,49 +54,17 @@ export default function UniversalDataTable({
   const [filterRole, setFilterRole] = useState("")
   const [actionLoading, setActionLoading] = useState<{ [key: number]: string }>({})
   const router = useRouter()
-  const limit = 20 // Increase limit for infinite scroll
-  const observerTarget = useRef<HTMLDivElement>(null)
+  const limit = 20
 
+  // useEffect(() => {
   useEffect(() => {
     // Reset and fetch initial data when search or filters change
-    setData([])
     setPage(1)
-    setHasNextPage(true)
-    fetchData(1, true)
+    fetchData(1)
   }, [search, sortBy, sortOrder, filterGender, filterStatus, filterOrganization, filterRole])
 
-  // Intersection Observer for infinite scroll
-  const lastElementRef = useCallback((node: HTMLTableRowElement) => {
-    if (loading || loadingMore) return
-    if (observerTarget.current) observerTarget.current = null
-    
-    const observer = new IntersectionObserver(entries => {
-      if (entries[0].isIntersecting && hasNextPage && !loadingMore) {
-        loadMore()
-      }
-    }, {
-      threshold: 0.1,
-      rootMargin: '100px'
-    })
-    
-    if (node) {
-      observer.observe(node)
-      observerTarget.current = node
-    }
-    
-    return () => {
-      if (observerTarget.current) {
-        observer.unobserve(observerTarget.current)
-      }
-    }
-  }, [loading, loadingMore, hasNextPage])
-
-  const fetchData = async (pageNum: number = page, reset: boolean = false) => {
-    if (reset) {
-      setLoading(true)
-    } else {
-      setLoadingMore(true)
-    }
+  const fetchData = async (pageNum: number = page) => {
+    setLoading(true)
     
     try {
       console.log(`Fetching data for model: ${model}`)
@@ -110,56 +77,41 @@ export default function UniversalDataTable({
         filterRole,
       })
       
-      console.log(`Received result:`, result)
-      
-      // Handle null or undefined result
       if (!result) {
         console.error("Received null or undefined result from server")
-        if (reset) {
-          setData([])
-          setTotal(0)
-          setHasNextPage(false)
-        }
+        setData([])
+        setTotal(0)
+        setTotalPages(1)
         return
       }
       
-      // Ensure data is an array
       const safeData = Array.isArray(result.data) ? result.data : []
-      const safeTotal = typeof result.total === 'number' ? result.total : 0
+      const safeTotal = typeof result.total === "number" ? result.total : 0
       
-      if (reset) {
-        setData(safeData)
-      } else {
-        setData(prevData => [...prevData, ...safeData])
-      }
-      
+      setData(safeData)
       setTotal(safeTotal)
-      setHasNextPage(safeData.length === limit && (pageNum * limit) < safeTotal)
+      setTotalPages(result.totalPages || Math.ceil(safeTotal / limit) || 1)
       
     } catch (error) {
       console.error("Error fetching data:", error)
       toast({
         title: "Error",
-        description: `Failed to load ${title}: ${error instanceof Error ? error.message : 'Unknown error'}`,
+        description: `Failed to load ${title}: ${error instanceof Error ? error.message : "Unknown error"}`,
         variant: "destructive",
       })
-      // Set empty data on error
-      if (reset) {
-        setData([])
-        setTotal(0)
-        setHasNextPage(false)
-      }
+      setData([])
+      setTotal(0)
+      setTotalPages(1)
     } finally {
       setLoading(false)
-      setLoadingMore(false)
     }
   }
 
-  const loadMore = () => {
-    if (!hasNextPage || loadingMore) return
-    const nextPage = page + 1
-    setPage(nextPage)
-    fetchData(nextPage, false)
+  const handlePageChange = (newPage: number) => {
+    if (newPage >= 1 && newPage <= totalPages) {
+      setPage(newPage)
+      fetchData(newPage)
+    }
   }
 
   const handleSearch = (value: string) => {
@@ -204,10 +156,8 @@ export default function UniversalDataTable({
       if (result?.success) {
         toast({ title: "Success", description: result.success })
         // Reset and refetch data after action
-        setData([])
         setPage(1)
-        setHasNextPage(true)
-        fetchData(1, true)
+        fetchData(1)
       } else if (result?.error) {
         toast({ title: "Error", description: result.error, variant: "destructive" })
       }
@@ -238,10 +188,8 @@ export default function UniversalDataTable({
       if (result.success) {
         toast({ title: "Success", description: result.success })
         // Reset and refetch data after deletion
-        setData([])
         setPage(1)
-        setHasNextPage(true)
-        fetchData(1, true)
+        fetchData(1)
       } else {
         toast({ title: "Error", description: result.error, variant: "destructive" })
       }
@@ -310,64 +258,70 @@ export default function UniversalDataTable({
               {title} ({total} total)
             </CardTitle>
             <div className="flex items-center space-x-2 flex-wrap">
-              {/* Filters for training applications */}
+              {/* Dynamic Filters */}
+              {(model === "trainingApplication" || model === "eventBooking" || model === "volunteers") && (
+                <Select value={filterGender || "all"} onValueChange={(value) => setFilterGender(value === "all" ? "" : value)}>
+                  <SelectTrigger className="w-32">
+                    <SelectValue placeholder="Gender" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All Genders</SelectItem>
+                    <SelectItem value="Male">Male</SelectItem>
+                    <SelectItem value="Female">Female</SelectItem>
+                  </SelectContent>
+                </Select>
+              )}
+              
               {(model === "trainingApplication" || model === "programApplication") && (
-                <>
-                  <Select value={filterGender || "all"} onValueChange={(value) => setFilterGender(value === "all" ? "" : value)}>
-                    <SelectTrigger className="w-32">
-                      <SelectValue placeholder="Gender" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="all">All Genders</SelectItem>
-                      <SelectItem value="Male">Male</SelectItem>
-                      <SelectItem value="Female">Female</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  
-                  <Select value={filterStatus || "all"} onValueChange={(value) => setFilterStatus(value === "all" ? "" : value)}>
-                    <SelectTrigger className="w-32">
-                      <SelectValue placeholder="Status" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="all">All Status</SelectItem>
-                      <SelectItem value="PENDING">Pending</SelectItem>
-                      <SelectItem value="APPROVED">Approved</SelectItem>
-                      <SelectItem value="REJECTED">Rejected</SelectItem>
-                    </SelectContent>
-                  </Select>
+                <Select value={filterStatus || "all"} onValueChange={(value) => setFilterStatus(value === "all" ? "" : value)}>
+                  <SelectTrigger className="w-32">
+                    <SelectValue placeholder="Status" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All Status</SelectItem>
+                    <SelectItem value="PENDING">Pending</SelectItem>
+                    <SelectItem value="APPROVED">Approved</SelectItem>
+                    <SelectItem value="REJECTED">Rejected</SelectItem>
+                  </SelectContent>
+                </Select>
+              )}
 
-                  <Select value={filterOrganization || "all"} onValueChange={(value) => setFilterOrganization(value === "all" ? "" : value)}>
-                    <SelectTrigger className="w-40">
-                      <SelectValue placeholder="Organization" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="all">All Organizations</SelectItem>
-                      <SelectItem value="Government">Government</SelectItem>
-                      <SelectItem value="NGO">NGO</SelectItem>
-                      <SelectItem value="Private Company">Private Company</SelectItem>
-                      <SelectItem value="University">University</SelectItem>
-                      <SelectItem value="Research Institution">Research Institution</SelectItem>
-                      <SelectItem value="International Organization">International Organization</SelectItem>
-                      <SelectItem value="Other">Other</SelectItem>
-                    </SelectContent>
-                  </Select>
+              {(model === "trainingApplication" || model === "eventBooking" || model === "customCourse" || model === "volunteers") && (
+                <Select value={filterOrganization || "all"} onValueChange={(value) => setFilterOrganization(value === "all" ? "" : value)}>
+                  <SelectTrigger className="w-40">
+                    <SelectValue placeholder="Organization" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All Organizations</SelectItem>
+                    <SelectItem value="Government">Government</SelectItem>
+                    <SelectItem value="NGO">NGO</SelectItem>
+                    <SelectItem value="Private Company">Private Company</SelectItem>
+                    <SelectItem value="University">University</SelectItem>
+                    <SelectItem value="Research Institution">Research Institution</SelectItem>
+                    <SelectItem value="International Organization">International Organization</SelectItem>
+                    <SelectItem value="Other">Other</SelectItem>
+                  </SelectContent>
+                </Select>
+              )}
 
-                  <Select value={filterRole || "all"} onValueChange={(value) => setFilterRole(value === "all" ? "" : value)}>
-                    <SelectTrigger className="w-36">
-                      <SelectValue placeholder="Role" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="all">All Roles</SelectItem>
-                      <SelectItem value="Farmer">Farmer</SelectItem>
-                      <SelectItem value="Extension Agent">Extension Agent</SelectItem>
-                      <SelectItem value="Researcher">Researcher</SelectItem>
-                      <SelectItem value="Policy Maker">Policy Maker</SelectItem>
-                      <SelectItem value="Student">Student</SelectItem>
-                      <SelectItem value="Private Sector">Private Sector</SelectItem>
-                      <SelectItem value="NGO Worker">NGO Worker</SelectItem>
-                      <SelectItem value="Other">Other</SelectItem>
-                    </SelectContent>
-                  </Select>
+              {(model === "trainingApplication" || model === "user" || model === "eventBooking") && (
+                <Select value={filterRole || "all"} onValueChange={(value) => setFilterRole(value === "all" ? "" : value)}>
+                  <SelectTrigger className="w-36">
+                    <SelectValue placeholder="Role" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All Roles</SelectItem>
+                    <SelectItem value="Farmer">Farmer</SelectItem>
+                    <SelectItem value="Extension Agent">Extension Agent</SelectItem>
+                    <SelectItem value="Researcher">Researcher</SelectItem>
+                    <SelectItem value="Policy Maker">Policy Maker</SelectItem>
+                    <SelectItem value="Student">Student</SelectItem>
+                    <SelectItem value="Private Sector">Private Sector</SelectItem>
+                    <SelectItem value="NGO Worker">NGO Worker</SelectItem>
+                    <SelectItem value="Other">Other</SelectItem>
+                  </SelectContent>
+                </Select>
+              )}
                   
                   <Button
                     variant="outline"
@@ -411,8 +365,6 @@ export default function UniversalDataTable({
                       Clear Filters
                     </Button>
                   )}
-                </>
-              )}
               
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
@@ -462,7 +414,6 @@ export default function UniversalDataTable({
                         return (
                           <tr
                             key={row.id || index}
-                            ref={isLast ? lastElementRef : null}
                             className="border-b border-gray-100 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-800/50"
                           >
                             {columns.map((column) => (
@@ -541,21 +492,34 @@ export default function UniversalDataTable({
                 </table>
               </div>
 
-              {/* Loading indicator for infinite scroll */}
-              {loadingMore && (
-                <div className="flex items-center justify-center py-8">
-                  <div className="flex items-center space-x-2 text-gray-500">
-                    <Loader2 className="h-5 w-5 animate-spin" />
-                    <span>Loading more...</span>
+              {/* Standard Pagination */}
+              {total > 0 && (
+                <div className="flex flex-col sm:flex-row items-center justify-between border-t border-gray-200 dark:border-gray-700 pt-4 mt-4">
+                  <div className="text-sm text-gray-500 dark:text-gray-400 mb-4 sm:mb-0">
+                    Showing {Math.min((page - 1) * limit + 1, total)} to {Math.min(page * limit, total)} of {total} results
                   </div>
-                </div>
-              )}
-
-              {/* End of data indicator */}
-              {!hasNextPage && data.length > 0 && (
-                <div className="flex items-center justify-center py-8">
-                  <div className="text-sm text-gray-500 dark:text-gray-400">
-                    Showing all {total} results
+                  <div className="flex items-center space-x-2">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => handlePageChange(page - 1)}
+                      disabled={page <= 1}
+                    >
+                      <ChevronLeft className="h-4 w-4 mr-1" />
+                      Previous
+                    </Button>
+                    <div className="text-sm font-medium">
+                      Page {page} of {totalPages}
+                    </div>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => handlePageChange(page + 1)}
+                      disabled={page >= totalPages}
+                    >
+                      Next
+                      <ChevronRight className="h-4 w-4 ml-1" />
+                    </Button>
                   </div>
                 </div>
               )}
