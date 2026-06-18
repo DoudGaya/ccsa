@@ -36,6 +36,7 @@ export function TrainingApplicationForm({ onSubmit, onClose, trainings }: Submit
   const [isPending, setIsPending] = useState(false)
   const [submitted, setSubmitted] = useState(false)
   const [successMessage, setSuccessMessage] = useState<string | null>(null)
+  const [formError, setFormError] = useState<{ type: 'duplicate' | 'general'; message: string } | null>(null)
   const router = useRouter()
   const { toast } = useToast()
 
@@ -58,12 +59,19 @@ export function TrainingApplicationForm({ onSubmit, onClose, trainings }: Submit
 
   async function handleSubmit(values: z.infer<typeof applicationSchema>) {
     setIsPending(true)
+    setFormError(null)
     try {
       let formDataToSubmit: any = { ...values };
       const data = await createApplication(formDataToSubmit)
 
+      if (data.error === 'duplicate') {
+        setFormError({ type: 'duplicate', message: (data as any).errorMessage })
+        return
+      }
+
       if (data.error) {
-        throw new Error(data.error)
+        setFormError({ type: 'general', message: data.error })
+        return
       }
 
       const redirectUrl = data.redirectUrl || "/trainings"
@@ -80,11 +88,7 @@ export function TrainingApplicationForm({ onSubmit, onClose, trainings }: Submit
       onClose()
     } catch (error) {
       console.error('Error submitting form:', error)
-      toast({
-        title: "Error submitting form",
-        description: "An error occurred while submitting your application. Please try again.",
-        variant: "destructive",
-      })
+      setFormError({ type: 'general', message: 'An unexpected error occurred. Please try again.' })
     } finally {
       setIsPending(false)
       router.refresh()
@@ -117,6 +121,31 @@ export function TrainingApplicationForm({ onSubmit, onClose, trainings }: Submit
   return (
     <Form {...form} >
       <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8 dark:text-orange-200">
+        {formError && (
+          <div className={`flex gap-3 rounded-lg border px-4 py-3 ${
+            formError.type === 'duplicate'
+              ? 'border-amber-300 bg-amber-50 text-amber-900'
+              : 'border-red-300 bg-red-50 text-red-900'
+          }`}>
+            <div className="mt-0.5 shrink-0">
+              {formError.type === 'duplicate' ? (
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-5 text-amber-500">
+                  <path fillRule="evenodd" d="M9.401 3.003c1.155-2 4.043-2 5.197 0l7.355 12.748c1.154 2-.29 4.5-2.599 4.5H4.645c-2.309 0-3.752-2.5-2.598-4.5L9.4 3.003ZM12 8.25a.75.75 0 0 1 .75.75v3.75a.75.75 0 0 1-1.5 0V9a.75.75 0 0 1 .75-.75Zm0 8.25a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z" clipRule="evenodd" />
+                </svg>
+              ) : (
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-5 text-red-500">
+                  <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z" clipRule="evenodd" />
+                </svg>
+              )}
+            </div>
+            <div className="space-y-1">
+              <p className="text-sm font-semibold">
+                {formError.type === 'duplicate' ? 'Application already submitted' : 'Submission failed'}
+              </p>
+              <p className="text-sm">{formError.message}</p>
+            </div>
+          </div>
+        )}
         <div className="grid grid-cols-1 gap-4">
           <FormField
             control={form.control}

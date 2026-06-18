@@ -31,6 +31,14 @@ export const createProgramApplication = async (values: z.infer<typeof programApp
   } = fieldValidation.data
 
   try {
+    const existing = await db.programApplication.findFirst({
+      where: { email },
+    })
+
+    if (existing) {
+      return { error: 'duplicate', errorMessage: 'An application with this email address has already been submitted. Please check your inbox or contact us if you need assistance.' }
+    }
+
     const application = await db.programApplication.create({
       data: {
         firstName,
@@ -53,8 +61,11 @@ export const createProgramApplication = async (values: z.infer<typeof programApp
     })
 
     return { success: "Application submitted successfully", application }
-  } catch (error) {
+  } catch (error: any) {
+    if (error?.code === 'P2002') {
+      return { error: 'duplicate', errorMessage: 'An application with this email address has already been submitted. Please check your inbox or contact us if you need assistance.' }
+    }
     console.error("Error creating application:", error)
-    return { error: "Failed to submit application" }
+    return { error: "Failed to submit application. Please try again later." }
   }
 }

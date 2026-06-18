@@ -25,39 +25,47 @@ export const createApplication = async (values: z.infer<typeof applicationSchema
         role,
         training,
      } = fieldValidation.data
-     const application = await db.trainingApplication.create({
-       data: {
-        email,
-        training,
-        age : parseInt(age),
-        firstName,
-        middleName,
-        lastName,
-        organization,
-        phone,
-        role,
-        gender,
-       }
-     })
-
-     const applicantName = [firstName, middleName, lastName].filter(Boolean).join(" ").trim() || firstName
-     const adminEmail = process.env.ADMIN_EMAIL
-
-     await sendEmail({
-       to: email,
-       subject: `Training application received - ${training}`,
-       html: await generateTrainingSubmissionEmail(applicantName, training),
-     })
-
-     if (adminEmail) {
-       await sendEmail({
-         to: adminEmail,
-         subject: `New training application - ${training}`,
-         html: await generateTrainingSubmissionAdminEmail(applicantName, email, training),
+     try {
+       const application = await db.trainingApplication.create({
+         data: {
+          email,
+          training,
+          age : parseInt(age),
+          firstName,
+          middleName,
+          lastName,
+          organization,
+          phone,
+          role,
+          gender,
+         }
        })
-     }
 
-  return {success: 'Application Successfully', application, redirectUrl: "/trainings/success"}
+       const applicantName = [firstName, middleName, lastName].filter(Boolean).join(" ").trim() || firstName
+       const adminEmail = process.env.ADMIN_EMAIL
+
+       await sendEmail({
+         to: email,
+         subject: `Training application received - ${training}`,
+         html: await generateTrainingSubmissionEmail(applicantName, training),
+       })
+
+       if (adminEmail) {
+         await sendEmail({
+           to: adminEmail,
+           subject: `New training application - ${training}`,
+           html: await generateTrainingSubmissionAdminEmail(applicantName, email, training),
+         })
+       }
+
+       return {success: 'Application Successfully', application, redirectUrl: "/trainings/success"}
+     } catch (error: any) {
+       if (error?.code === 'P2002') {
+         return { error: 'duplicate', errorMessage: 'An application with this email address has already been submitted. Please check your inbox or contact us if you need assistance.' }
+       }
+       console.error('Error creating training application:', error)
+       return { error: 'Failed to submit application. Please try again later.' }
+     }
 }
 
 
