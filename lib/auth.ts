@@ -30,6 +30,7 @@ interface ExtendedSession extends Session {
 const ADMIN_EMAILS = [
   "rislan@cosmopolitan.edu.ng",
   "abdulrahman.dauda@cosmopolitan.edu.ng",
+  "abubakar.abdulgaffar@cosmopolitan.edu.ng",
 ]
 
 export const authOptions: NextAuthOptions = {

@@ -18,6 +18,7 @@ export async function getDashboardStats() {
       db.programApplication.count(),
       db.contact.count(),
       db.volunteers.count(),
+      db.trainingApplication.count(),
       db.eventBooking.count(),
       db.customCourse.count(),
       db.user.count(),
@@ -249,23 +250,7 @@ export async function getPaginatedData(
 
     console.log(`Database query for ${model}:`, { whereClause, skip, limit, orderBy })
 
-    // Add more specific error handling for trainingApplication
-    if (model === 'trainingApplication') {
-      try {
-        // First, test if we can connect to the table at all
-        const testCount = await db.trainingApplication.count()
-        console.log(`TrainingApplication table accessible, count: ${testCount}`)
-      } catch (testError) {
-        console.error('Cannot access trainingApplication table:', testError instanceof Error ? testError.message : 'Unknown error')
-        return {
-          data: [],
-          total: 0,
-          page: 1,
-          limit: 10,
-          totalPages: 0,
-        }
-      }
-    }
+    // We removed the isolated try-catch block that was silently swallowing trainingApplication table connection errors.
 
     const [data, total] = await Promise.all([
       dbModel.findMany({
@@ -291,17 +276,10 @@ export async function getPaginatedData(
       totalPages: Math.ceil(safeTotal / limit),
     }
   } catch (error) {
-    // Log only the error message, not the full error object to avoid serialization issues
-    console.error(`Error fetching ${model} data:`, error instanceof Error ? error.message : 'Unknown error')
-    
-    // Return safe fallback data instead of throwing
-    return {
-      data: [],
-      total: 0,
-      page: 1,
-      limit: 10,
-      totalPages: 0,
-    }
+    // Log the error so it shows up in production logs
+    console.error(`Error fetching ${model} data:`, error);
+    // Throw the error so the client-side UniversalDataTable can catch it and show a toast
+    throw error;
   }
 }
 
